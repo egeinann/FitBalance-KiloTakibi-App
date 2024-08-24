@@ -289,8 +289,8 @@ class _AddScreenState extends State<AddScreen> {
                   },
                 ),
                 const Icon(
-                  Ionicons.caret_back,
-                  size: 10,
+                  Icons.arrow_left_rounded,
+                  size: 20,
                 ),
               ],
             ),

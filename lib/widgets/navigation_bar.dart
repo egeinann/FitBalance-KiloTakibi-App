@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
-import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/views/add_screen.dart';
 import 'package:kilo_takibi_uyg/views/gallery_screen.dart';
 import 'package:kilo_takibi_uyg/views/graph_view_screen.dart';

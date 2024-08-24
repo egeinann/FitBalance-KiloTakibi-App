@@ -83,7 +83,7 @@ class _ChangeTargetWeightScreenState extends State<ChangeTargetWeightScreen> {
                           ),
                           const Icon(
                             Icons.arrow_left_rounded,
-                            size: 50,
+                            size: 30,
                           ),
                         ],
                       ),

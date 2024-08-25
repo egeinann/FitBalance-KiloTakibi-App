@@ -6,8 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
+import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import 'package:kilo_takibi_uyg/widgets/elevated_button.dart';
-import 'package:numberpicker/numberpicker.dart';
 
 class RecordListTile extends StatelessWidget {
   final Record rec;
@@ -17,6 +17,7 @@ class RecordListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.focusScope?.unfocus();
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -157,9 +158,9 @@ class RecordListTile extends StatelessWidget {
 
   // *** EDIT SHOW DIALOG ***
   void _showEditModalBottomSheet(BuildContext context, Record record) {
-    double _selectedValue = record.weight;
-    String? _note = record.note;
-    TextEditingController _noteController = TextEditingController(text: _note);
+    double selectedValue = record.weight;
+    String? note = record.note;
+    TextEditingController noteController = TextEditingController(text: note);
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
@@ -190,28 +191,19 @@ class RecordListTile extends StatelessWidget {
                           style: Theme.of(context).textTheme.titleLarge,
                           textAlign: TextAlign.center,
                         ),
-                        DecimalNumberPicker(
-                          selectedTextStyle:
-                              Theme.of(context).textTheme.displaySmall,
-                          textStyle: Theme.of(context).textTheme.bodySmall,
-                          itemCount: 3,
-                          itemWidth: MediaQuery.of(context).size.width * 0.12,
-                          itemHeight: MediaQuery.of(context).size.height * 0.05,
-                          axis: Axis.horizontal,
-                          minValue: 30,
-                          maxValue: 200,
-                          value: _selectedValue,
+                        Numbers(
+                          value: selectedValue,
                           onChanged: (value) {
                             setState(() {
-                              _selectedValue = value;
+                              selectedValue = value;
                             });
                           },
                         ),
                         SizedBox(height: Get.size.height * 0.02),
                         TextField(
-                          controller: _noteController,
+                          controller: noteController,
                           onChanged: (value) {
-                            _note = value;
+                            note = value;
                           },
                           maxLength: 120,
                           decoration: InputDecoration(
@@ -246,8 +238,8 @@ class RecordListTile extends StatelessWidget {
                             _controller.updateRecord(
                               record,
                               Record(
-                                weight: _selectedValue,
-                                note: _note,
+                                weight: selectedValue,
+                                note: note,
                                 dateTime: record.dateTime,
                                 photoUrl: record
                                     .photoUrl, // Fotoğraf URL'sini koruyun
@@ -255,7 +247,8 @@ class RecordListTile extends StatelessWidget {
                             );
 
                             Get.back();
-                            _noteController.clear();
+                            noteController.clear();
+                            Get.focusScope?.unfocus();
                           },
                           const Text(
                             "Save",

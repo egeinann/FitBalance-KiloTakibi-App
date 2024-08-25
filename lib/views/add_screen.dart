@@ -8,8 +8,8 @@ import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
+import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import 'package:kilo_takibi_uyg/widgets/elevated_button.dart';
-import 'package:numberpicker/numberpicker.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddScreen extends StatefulWidget {
@@ -135,7 +135,7 @@ class _AddScreenState extends State<AddScreen> {
             duration: const Duration(seconds: 1),
           );
 
-          FocusScope.of(context).unfocus();
+          Get.focusScope?.unfocus();
         },
         const Icon(Icons.add),
       ),
@@ -272,15 +272,7 @@ class _AddScreenState extends State<AddScreen> {
             Stack(
               alignment: Alignment.centerRight,
               children: [
-                DecimalNumberPicker(
-                  selectedTextStyle: Theme.of(context).textTheme.displaySmall,
-                  textStyle: Theme.of(context).textTheme.bodyMedium,
-                  itemCount: 3,
-                  itemWidth: Get.size.width * 0.14,
-                  itemHeight: Get.size.height * 0.05,
-                  axis: Axis.horizontal,
-                  minValue: 40,
-                  maxValue: 200,
+                Numbers(
                   value: _selectedValue,
                   onChanged: (value) {
                     setState(() {
@@ -293,7 +285,7 @@ class _AddScreenState extends State<AddScreen> {
                   size: 20,
                 ),
               ],
-            ),
+            ), // _selectedvalue
           ],
         ),
       ),

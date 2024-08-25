@@ -27,9 +27,13 @@ IndexedStack indexedStack() {
 // *** BOTTOM BAR ***
 Widget bottomNavigationBar(BuildContext context) {
   return Padding(
-    padding: EdgeInsets.only(bottom: Get.size.height*0.03,left:Get.size.width*0.05,right: Get.size.width*0.05),
+    padding: EdgeInsets.only(
+      bottom: Get.size.height * 0.03,
+      left: Get.size.width * 0.04,
+      right: Get.size.width * 0.04,
+    ),
     child: Container(
-      height: Get.size.height * 0.085, // Yükseklik ayarı yapılmış
+      height: Get.size.height * 0.09, // Yükseklik ayarı yapılmış
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.transparent,
@@ -51,9 +55,10 @@ Widget bottomNavigationBar(BuildContext context) {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30),
         child: BottomNavigationBar(
-          iconSize: Get.size.height*0.03,
+          iconSize: 24,
           showSelectedLabels: true,
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold,fontSize:12,fontFamily: "outfit"),
+          selectedLabelStyle: const TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 12, fontFamily: "outfit"),
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.show_chart),

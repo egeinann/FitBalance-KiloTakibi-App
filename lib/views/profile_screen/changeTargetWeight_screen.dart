@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
-import 'package:numberpicker/numberpicker.dart';
+import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 
 class ChangeTargetWeightScreen extends StatefulWidget {
   const ChangeTargetWeightScreen({super.key});
@@ -64,17 +64,7 @@ class _ChangeTargetWeightScreenState extends State<ChangeTargetWeightScreen> {
                         alignment: Alignment.centerRight,
                         children: [
                           Obx(
-                            () => DecimalNumberPicker(
-                              selectedTextStyle:
-                                  Theme.of(context).textTheme.displaySmall,
-                              textStyle: Theme.of(context).textTheme.bodySmall,
-                              itemCount: 3,
-                              itemWidth: Get.size.width * 0.14,
-                  itemHeight: Get.size.height * 0.06,
-                              axis: Axis.horizontal,
-                              minValue: 40,
-                              maxValue: 200,
-                              decimalPlaces: 1,
+                            () => Numbers(
                               value: _onboardingController.targetWeight.value,
                               onChanged: (value) {
                                 _onboardingController.setTargetWeight(value);
@@ -106,7 +96,8 @@ class _ChangeTargetWeightScreenState extends State<ChangeTargetWeightScreen> {
           onPressed: () {
             _onboardingController.targetWeight.value;
             Get.back();
-            Get.snackbar("Target Weight", "Your target weight has been updated");
+            Get.snackbar(
+                "Target Weight", "Your target weight has been updated");
           },
           child: const Icon(Icons.done),
         ),

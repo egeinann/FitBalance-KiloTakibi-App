@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import 'package:numberpicker/numberpicker.dart';
 import '../controller/onboarding_controller.dart';
 
@@ -44,17 +45,7 @@ class _TargetWeightScreenState extends State<TargetWeightScreen> {
                       alignment: Alignment.centerRight,
                       children: [
                         Obx(
-                          () => DecimalNumberPicker(
-                            selectedTextStyle:
-                                Theme.of(context).textTheme.displaySmall,
-                            textStyle: Theme.of(context).textTheme.bodySmall,
-                            itemCount: 3,
-                            itemWidth: Get.size.width * 0.14,
-                            itemHeight: Get.size.height * 0.06,
-                            axis: Axis.horizontal,
-                            minValue: 40,
-                            maxValue: 200,
-                            decimalPlaces: 1,
+                          () => Numbers(
                             value: onboardingController.targetWeight.value,
                             onChanged: (value) {
                               onboardingController.setTargetWeight(value);

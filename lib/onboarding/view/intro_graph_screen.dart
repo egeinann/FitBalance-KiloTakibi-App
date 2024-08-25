@@ -6,8 +6,6 @@ import 'package:lottie/lottie.dart';
 
 class IntroGraph extends StatelessWidget {
   const IntroGraph({super.key});
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

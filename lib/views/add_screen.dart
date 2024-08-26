@@ -32,22 +32,6 @@ class _AddScreenState extends State<AddScreen> {
     super.initState();
     _animateDecimalNumberPicker(); // Animasyonu başlat
   }
-
-  void _animateDecimalNumberPicker() {
-    Timer.periodic(const Duration(milliseconds: 50), (timer) {
-      setState(() {
-        if (_selectedValue < 70) {
-          _selectedValue += 5; // Her adımda 5 artır
-          if (_selectedValue > 70) {
-            _selectedValue = 70; // 70'ten büyük olmasın
-          }
-        } else {
-          timer.cancel(); // 70'e ulaştığında timer'ı durdur
-        }
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,13 +81,27 @@ class _AddScreenState extends State<AddScreen> {
     );
   }
 
-  // *** ADD BUTTON ***
-  Align bottomElevatedButton(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: appButton(
-        () {
-          if (_controller.isRecordExists(_selectedDate)) {
+
+
+  // *** DECIMAL OPENNING ANIMATION ***
+  void _animateDecimalNumberPicker() {
+    Timer.periodic(const Duration(milliseconds: 50), (timer) {
+      setState(() {
+        if (_selectedValue < 70) {
+          _selectedValue += 5; // Her adımda 5 artır
+          if (_selectedValue > 70) {
+            _selectedValue = 70; // 70'ten büyük olmasın
+          }
+        } else {
+          timer.cancel(); // 70'e ulaştığında timer'ı durdur
+        }
+      });
+    });
+  }
+
+  // *** FUNCTION FOR ADD BUTTON
+  void addPressed() {
+    if (_controller.isRecordExists(_selectedDate)) {
             Get.snackbar(
                 duration: const Duration(milliseconds: 1200),
                 "There is already a record for the same date.",
@@ -136,7 +134,14 @@ class _AddScreenState extends State<AddScreen> {
           );
 
           Get.focusScope?.unfocus();
-        },
+  }
+
+  // *** ADD BUTTON ***
+  Align bottomElevatedButton(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: appButton(
+        () => addPressed(),
         const Icon(Icons.add),
       ),
     );

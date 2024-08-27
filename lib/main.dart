@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/info/model/info_screen.dart';
+import 'package:kilo_takibi_uyg/info/view/nutrition_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
 
 void main() {
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         canPop: false,
         child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: OnboardingScreen(),
+          home: InfoScreen(),
           theme: ThemeClass.lightTheme,
           darkTheme: ThemeClass.darkTheme,
           themeMode: _controller.themeMode.value,

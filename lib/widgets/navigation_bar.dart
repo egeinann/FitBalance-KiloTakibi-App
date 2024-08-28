@@ -29,8 +29,8 @@ Widget bottomNavigationBar(BuildContext context) {
   return Padding(
     padding: EdgeInsets.only(
       bottom: Get.size.height * 0.03,
-      left: Get.size.width * 0.04,
-      right: Get.size.width * 0.04,
+      left: Get.size.width * 0.05,
+      right: Get.size.width * 0.05,
     ),
     child: Container(
       height: Get.size.height * 0.09, // Yükseklik ayarı yapılmış

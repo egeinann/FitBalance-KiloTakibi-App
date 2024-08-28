@@ -20,11 +20,6 @@ class GalleryScreen extends StatelessWidget {
         .toList();
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text("Gallery", style: Theme.of(context).textTheme.titleLarge),
-        centerTitle: true,
-      ),
       body: Padding(
         padding: context.paddingMedium,
         child: photoRecords.isEmpty

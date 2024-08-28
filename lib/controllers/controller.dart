@@ -3,6 +3,53 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 
 class Controller extends GetxController {
+  var currentTabIndex = 2.obs;
+  var appBarTitle = 'Add'.obs; // Başlangıç başlığı
+
+  // app bar başlığını güncelleme
+  void changeTabIndex(int index) {
+    currentTabIndex.value = index;
+    appBarTitle.value = getTitleForIndex(index); // AppBar başlığını güncelle
+  }
+
+  // Graph pageView index kontrolu
+  var graphPageIndex = 0.obs;
+  void onPageChanged(int index) {
+    graphPageIndex.value = index;
+    if (currentTabIndex.value == 0) {
+      appBarTitle.value = getTitleForIndex(0);
+    }
+  }
+
+  // grafikler arası başlık değişimleri
+  String getTitleForIndex(int index) {
+    switch (index) {
+      case 0:
+        if (records.length < 7) {
+          return "Graph";
+        } else {
+          switch (graphPageIndex.value) {
+            case 0:
+              return "Line Graph";
+            case 1:
+              return "Bar Graph";
+            default:
+              return "Error Graph";
+          }
+        }
+      case 1:
+        return 'Gallery';
+      case 2:
+        return 'Add';
+      case 3:
+        return 'History';
+      case 4:
+        return 'Profile';
+      default:
+        return 'App';
+    }
+  }
+
   // record objeleri tutan list
   RxList<Record> records = <Record>[].obs;
 
@@ -47,12 +94,6 @@ class Controller extends GetxController {
   // Aynı tarihte kayıt var mı kontrolü
   bool isRecordExists(DateTime date) {
     return records.any((record) => record.dateTime == date);
-  }
-
-  // bottom bar için index değişimleri
-  var currentTabIndex = 2.obs;
-  void changeTabIndex(int index) {
-    currentTabIndex.value = index;
   }
 
   // kayıtları güncelleme işlemi
@@ -143,6 +184,7 @@ class Controller extends GetxController {
       filteredRecords.assignAll(records);
     }
   }
+
   // Toggle buton durumu değiştiğinde çağrılan method
   void updateTimeRange(int index) {
     for (int i = 0; i < selectedTimeRange.length; i++) {
@@ -161,11 +203,5 @@ class Controller extends GetxController {
       selectedGenderRange[0] = false;
       selectedGenderRange[1] = true;
     }
-  }
-
-  // Graph pageView index kontrolu
-  var graphPageIndex = 0.obs;
-  void onPageChanged(int index) {
-    graphPageIndex.value = index;
   }
 }

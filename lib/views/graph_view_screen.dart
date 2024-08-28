@@ -7,7 +7,7 @@ import 'package:kilo_takibi_uyg/widgets/line_graph.dart';
 
 class GraphViewScreen extends StatefulWidget {
   const GraphViewScreen({super.key});
-  
+
   @override
   State<GraphViewScreen> createState() => _GraphViewScreenState();
 }
@@ -17,24 +17,20 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Obx(() =>Text(_controller.graphPageIndex.value==0?"Line Graph":"Bar Graph",style: Theme.of(context).textTheme.titleLarge)),
-        centerTitle: true,
-      ),
       body: Padding(
         padding: context.paddingLow,
-        child: Obx(
-          () => _controller.records.length >= 7
-              ? PageView(
+        child: Obx(() => _controller.records.length >= 7
+            ? PageView(
                 scrollDirection: Axis.vertical,
-                onPageChanged: (index) => _controller.onPageChanged(index),
+                onPageChanged: (index) {
+                  _controller.onPageChanged(index);
+                },
                 children: [
                   lineGraph(context),
                   barGraph(context),
                 ],
               )
-              : Center(
+            : Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -62,8 +58,7 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
                     ),
                   ],
                 ),
-              )
-        ),
+              )),
       ),
     );
   }

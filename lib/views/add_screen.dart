@@ -35,12 +35,6 @@ class _AddScreenState extends State<AddScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title:
-            Text("Add weight", style: Theme.of(context).textTheme.titleLarge),
-        centerTitle: true,
-      ),
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();

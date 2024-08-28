@@ -45,14 +45,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          "History",
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-        centerTitle: true,
-      ),
       body: Padding(
         padding: context.paddingLow,
         child: Column(

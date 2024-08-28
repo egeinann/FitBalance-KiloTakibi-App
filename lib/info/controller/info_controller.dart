@@ -15,7 +15,7 @@ class InfoController extends GetxController {
       );
     } else {
       Get.to(HomeScreen(),
-          transition: Transition.rightToLeft,
+          transition: Transition.downToUp,
           duration: const Duration(milliseconds: 700));
     }
   }

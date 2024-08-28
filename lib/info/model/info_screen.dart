@@ -15,11 +15,18 @@ class InfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "How can you control your weight ?",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      ),
       body: Center(
         child: Column(
           children: [
             Expanded(
-              flex: 9,
+              flex: 8,
               child: PageView(
                 controller: _infoController.pageController,
                 onPageChanged: (index) {
@@ -49,6 +56,7 @@ class InfoScreen extends StatelessWidget {
                       count: 4,
                     ),
                     FloatingActionButton(
+                      heroTag: "a",
                       backgroundColor: Theme.of(context).primaryColor,
                       foregroundColor:
                           Theme.of(context).scaffoldBackgroundColor,

@@ -6,6 +6,7 @@ import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/info/model/info_screen.dart';
 import 'package:kilo_takibi_uyg/info/view/nutrition_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
+import 'package:kilo_takibi_uyg/views/home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,15 +32,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return PopScope(
-        canPop: false,
-        child: GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: InfoScreen(),
-          theme: ThemeClass.lightTheme,
-          darkTheme: ThemeClass.darkTheme,
-          themeMode: _controller.themeMode.value,
-        ),
+      return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomeScreen(),
+        theme: ThemeClass.lightTheme,
+        darkTheme: ThemeClass.darkTheme,
+        themeMode: _controller.themeMode.value,
       );
     });
   }

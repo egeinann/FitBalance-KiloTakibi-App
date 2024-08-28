@@ -4,11 +4,10 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
+import 'package:kilo_takibi_uyg/info/model/info_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/views/profile_screen/changeName_screen.dart';
 import 'package:kilo_takibi_uyg/views/profile_screen/changeTargetWeight_screen.dart';
-import 'package:kilo_takibi_uyg/views/profile_screen/settings_screen.dart';
-
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -17,28 +16,12 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final OnboardingController _onboardingController = Get.put(OnboardingController());
+  final OnboardingController _onboardingController =
+      Get.put(OnboardingController());
   final Controller _controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: Text(
-          "Profile",
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Get.to(const SettingsScreen(),
-                  transition: Transition.fade);
-            },
-            icon: const Icon(Ionicons.settings),
-          ),
-        ],
-      ),
       body: Padding(
         padding: context.paddingLarge,
         child: SingleChildScrollView(
@@ -49,8 +32,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               nameContainer(context),
               SizedBox(height: Get.size.height * 0.02),
               targetWeightContainer(context),
-              SizedBox(height: Get.size.height * 0.1),
-              mail(context)
+              SizedBox(height: Get.size.height * 0.05),
+              info(context)
             ],
           ),
         ),
@@ -58,27 +41,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // *** GO SEND MAIL ***
-  Column mail(BuildContext context) {
+  // *** GO SEND info ***
+  Column info(BuildContext context) {
     return Column(
-              children: [
-                AutoSizeText("Are you having a problem?",
-                    style: Theme.of(context).textTheme.bodyMedium),
-                Padding(
-                  padding: context.paddingLarge,
-                  child: FloatingActionButton(
-                    heroTag: "a",
-                    backgroundColor: Theme.of(context).primaryColor,
-                    foregroundColor:
-                        Theme.of(context).scaffoldBackgroundColor,
-                    splashColor: Theme.of(context).scaffoldBackgroundColor,
-                    elevation: 20,
-                    onPressed: () {},
-                    child: const Icon(Icons.mail),
-                  ),
-                ),
-              ],
-            );
+      children: [
+        AutoSizeText("About weight control ?",
+            style: Theme.of(context).textTheme.bodyMedium),
+        Padding(
+          padding: context.paddingLarge,
+          child: FloatingActionButton(
+            heroTag: "a",
+            backgroundColor: Theme.of(context).primaryColor,
+            foregroundColor: Theme.of(context).scaffoldBackgroundColor,
+            splashColor: Theme.of(context).scaffoldBackgroundColor,
+            elevation: 20,
+            onPressed: () {
+              Get.to(InfoScreen(), transition: Transition.upToDown);
+            },
+            child: const Icon(Icons.help_center),
+          ),
+        ),
+      ],
+    );
   }
 
   // *** GENDER TOP IMAGE ***

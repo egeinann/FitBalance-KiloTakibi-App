@@ -32,6 +32,7 @@ class _AddScreenState extends State<AddScreen> {
     super.initState();
     _animateDecimalNumberPicker(); // Animasyonu başlat
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,8 +76,6 @@ class _AddScreenState extends State<AddScreen> {
     );
   }
 
-
-
   // *** DECIMAL OPENNING ANIMATION ***
   void _animateDecimalNumberPicker() {
     Timer.periodic(const Duration(milliseconds: 50), (timer) {
@@ -96,38 +95,39 @@ class _AddScreenState extends State<AddScreen> {
   // *** FUNCTION FOR ADD BUTTON
   void addPressed() {
     if (_controller.isRecordExists(_selectedDate)) {
-            Get.snackbar(
-                duration: const Duration(milliseconds: 1200),
-                "There is already a record for the same date.",
-                "",
-                snackPosition: SnackPosition.TOP,
-                backgroundColor: const Color.fromARGB(48, 255, 0, 0));
-            return;
-          }
+      Get.snackbar(
+        duration: const Duration(seconds: 1),
+        "There is already a record for the same date.",
+        "",
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: const Color.fromARGB(48, 255, 0, 0),
+      );
+      return;
+    }
 
-          _controller.addRecord(Record(
-            weight: _selectedValue,
-            dateTime: _selectedDate,
-            note: _note,
-            photoUrl: _photoUrl,
-          ));
+    _controller.addRecord(Record(
+      weight: _selectedValue,
+      dateTime: _selectedDate,
+      note: _note,
+      photoUrl: _photoUrl,
+    ));
 
-          _controller.goToHistoryScreen();
+    _controller.goToHistoryScreen();
 
-          _noteController.clear();
-          _note = null;
-          _photoUrl = null; // Fotoğraf URL'sini sıfırla
+    _noteController.clear();
+    _note = null;
+    _photoUrl = null; // Fotoğraf URL'sini sıfırla
 
-          Get.snackbar(
-            'Record added successfully',
-            "",
-            snackPosition: SnackPosition.TOP,
-            borderRadius: 10,
-            margin: const EdgeInsets.all(10),
-            duration: const Duration(seconds: 1),
-          );
+    Get.snackbar(
+      'Record added successfully',
+      "",
+      snackPosition: SnackPosition.TOP,
+      borderRadius: 10,
+      margin: const EdgeInsets.all(10),
+      duration: const Duration(seconds: 1),
+    );
 
-          Get.focusScope?.unfocus();
+    Get.focusScope?.unfocus();
   }
 
   // *** ADD BUTTON ***

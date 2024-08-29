@@ -15,7 +15,7 @@ class InfoController extends GetxController {
       );
     } else {
       Get.to(HomeScreen(),
-          transition: Transition.downToUp,
+          transition: Transition.native,
           duration: const Duration(milliseconds: 300));
       resetController(); // HomeScreen'e geçiş yaparken sıfırlama işlemi
     }
@@ -31,5 +31,11 @@ class InfoController extends GetxController {
     pageController.dispose();
     pageController = PageController();
     onLastPage.value = false;
+  }
+
+  // appbar-leading go-back
+  void goBack() {
+    Get.back();
+    resetController();
   }
 }

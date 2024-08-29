@@ -14,64 +14,74 @@ class InfoScreen extends StatelessWidget {
   final InfoController _infoController = Get.put(InfoController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          "How can you control your weight ?",
-          style: Theme.of(context).textTheme.bodyLarge,
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) =>
+          _infoController.resetController(),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              _infoController.goBack();
+            },
+            icon: const Icon(Ionicons.chevron_back),
+          ),
+          centerTitle: true,
+          title: Text(
+            "How can you control your weight ?",
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
         ),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Expanded(
-              flex: 8,
-              child: PageView(
-                controller: _infoController.pageController,
-                onPageChanged: (index) {
-                  _infoController.lastPage(index);
-                },
-                children: const [
-                  InfoNutritionScreen(),
-                  InfoWaterScreen(),
-                  InfoActivityScreen(),
-                  InfoSleepScreen(),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: context.paddingLarge,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SmoothPageIndicator(
-                      effect: WormEffect(
-                        dotColor: Theme.of(context).cardColor,
-                        activeDotColor: Theme.of(context).primaryColor,
-                      ),
-                      controller: _infoController.pageController,
-                      count: 4,
-                    ),
-                    FloatingActionButton(
-                      heroTag: "a",
-                      backgroundColor: Theme.of(context).primaryColor,
-                      foregroundColor:
-                          Theme.of(context).scaffoldBackgroundColor,
-                      splashColor: Theme.of(context).scaffoldBackgroundColor,
-                      elevation: 10,
-                      onPressed: () {
-                        _infoController.goToNextInfo();
-                      },
-                      child: const Icon(Ionicons.arrow_forward),
-                    ),
+        body: Center(
+          child: Column(
+            children: [
+              Expanded(
+                flex: 8,
+                child: PageView(
+                  controller: _infoController.pageController,
+                  onPageChanged: (index) {
+                    _infoController.lastPage(index);
+                  },
+                  children: const [
+                    InfoNutritionScreen(),
+                    InfoWaterScreen(),
+                    InfoActivityScreen(),
+                    InfoSleepScreen(),
                   ],
                 ),
               ),
-            ),
-          ],
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: context.paddingLarge,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SmoothPageIndicator(
+                        effect: WormEffect(
+                          dotColor: Theme.of(context).cardColor,
+                          activeDotColor: Theme.of(context).primaryColor,
+                        ),
+                        controller: _infoController.pageController,
+                        count: 4,
+                      ),
+                      FloatingActionButton(
+                        heroTag: "a",
+                        backgroundColor: Theme.of(context).primaryColor,
+                        foregroundColor:
+                            Theme.of(context).scaffoldBackgroundColor,
+                        splashColor: Theme.of(context).scaffoldBackgroundColor,
+                        elevation: 10,
+                        onPressed: () {
+                          _infoController.goToNextInfo();
+                        },
+                        child: const Icon(Ionicons.arrow_forward),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

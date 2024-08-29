@@ -36,15 +36,16 @@ class OnboardingController extends GetxController {
           duration: const Duration(seconds: 2),
         );
         pageController.animateToPage(
-        3,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      ); // Geçiş animasyonu ile NameScreen'e dön
+          3,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        ); // Geçiş animasyonu ile NameScreen'e dön
       } else {
         // Geçerli kullanıcı adı ile HomeScreen'e geçiş
         Get.to(HomeScreen(),
             transition: Transition.rightToLeft,
             duration: const Duration(milliseconds: 700));
+        resetController();
       }
     } else {
       // Son sayfada değilse bir sonraki sayfaya geçiş
@@ -53,5 +54,12 @@ class OnboardingController extends GetxController {
         curve: Curves.easeInOut,
       );
     }
+  }
+
+  // Controller sıfırlama
+  void resetController() {
+    pageController.dispose();
+    pageController = PageController();
+    onLastPage.value = false;
   }
 }

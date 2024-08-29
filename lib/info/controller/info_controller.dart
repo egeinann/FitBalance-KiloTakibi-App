@@ -6,7 +6,7 @@ class InfoController extends GetxController {
   PageController pageController = PageController();
   var onLastPage = false.obs;
 
-  // sayfa ilerleme
+  // Sayfa ilerleme
   void goToNextInfo() {
     if (!onLastPage.value) {
       pageController.nextPage(
@@ -16,12 +16,20 @@ class InfoController extends GetxController {
     } else {
       Get.to(HomeScreen(),
           transition: Transition.downToUp,
-          duration: const Duration(milliseconds: 700));
+          duration: const Duration(milliseconds: 300));
+      resetController(); // HomeScreen'e geçiş yaparken sıfırlama işlemi
     }
   }
 
-  // son sayfa ?
+  // Son sayfa mı?
   void lastPage(int index) {
     onLastPage.value = (index == 3);
+  }
+
+  // Controller sıfırlama
+  void resetController() {
+    pageController.dispose();
+    pageController = PageController();
+    onLastPage.value = false;
   }
 }

@@ -23,7 +23,7 @@ Obx lineGraph(BuildContext context) {
             Expanded(
               flex: 14,
               child: LineChart(
-                curve: Curves.easeInOutCubic,
+                curve: Curves.linearToEaseOut,
                 duration: const Duration(milliseconds: 200),
                 LineChartData(
                   lineTouchData: LineTouchData(

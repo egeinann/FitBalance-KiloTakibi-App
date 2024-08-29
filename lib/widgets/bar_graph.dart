@@ -109,15 +109,18 @@ List<BarChartGroupData> _getMonthlyAverageBarGroups() {
     [Colors.green, Colors.lightGreenAccent],
     [Colors.yellow, Colors.yellowAccent],
     [Colors.orange, Colors.deepOrangeAccent],
-    [Colors.purple, Colors.deepPurpleAccent],
-    [Colors.cyan, Colors.cyanAccent],
     [Colors.brown, Colors.brown.shade300],
-    [Colors.pink, Colors.pinkAccent],
+    [Colors.cyan, Colors.cyanAccent],
+    [Colors.purple, Colors.deepPurpleAccent],
+    [Colors.indigo, Colors.indigoAccent],
     [Colors.teal, Colors.tealAccent],
     [Colors.lime, Colors.limeAccent],
-    [Colors.indigo, Colors.indigoAccent]
+    [Colors.pink, Colors.pinkAccent]
   ];
-
+  /*
+  Colors.pink, Colors.pinkAccent
+  Colors.indigo, Colors.indigoAccent
+  */
   // Son 12 ayı almak için verileri tersine çevir ve son 12 öğeyi al
   final recentMonthlyData =
       monthlyData.entries.toList().reversed.take(12).toList().reversed.toList();

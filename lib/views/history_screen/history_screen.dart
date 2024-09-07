@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
+import 'package:kilo_takibi_uyg/views/history_screen/recordScreen.dart';
 import 'package:kilo_takibi_uyg/widgets/elevated_button.dart';
 import 'package:kilo_takibi_uyg/widgets/record_list_tile.dart';
 
@@ -14,8 +15,7 @@ class HistoryScreen extends StatefulWidget {
 
 class _HistoryScreenState extends State<HistoryScreen> {
   final Controller _controller = Get.find();
-  final ScrollController _scrollController = ScrollController();
-
+  ScrollController _scrollController = ScrollController();
   // Yeni bir record eklendiğinde listenin en altına kaydırma
   @override
   void initState() {
@@ -108,7 +108,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                       padding: const EdgeInsets.symmetric(
                                         vertical: 2,
                                       ),
-                                      child: RecordListTile(rec: record),
+                                      child: InkWell(
+                                        onTap: () =>
+                                            Get.to(RecordScreen(rec: record)),
+                                        child: RecordListTile(rec: record),
+                                      ),
                                     );
                                   },
                                 ),
@@ -198,7 +202,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
               ),
               onPressed: () {
                 _controller.deleteAllRecords();
-                Navigator.of(context).pop();
               },
             ),
           ],

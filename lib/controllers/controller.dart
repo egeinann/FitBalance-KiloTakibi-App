@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 
 class Controller extends GetxController {
-  var currentTabIndex = 2.obs;
+  var photoUrl = Rxn<String>(); // Reaktif bir değişken
+  var currentTabIndex = 2.obs; // homescreen sayfa index
   var appBarTitle = 'Add'.obs; // Başlangıç başlığı
+  RxList<Record> records = <Record>[].obs; // record objeleri tutan list
 
   // app bar başlığını güncelleme
   void changeTabIndex(int index) {
@@ -50,9 +52,6 @@ class Controller extends GetxController {
     }
   }
 
-  // record objeleri tutan list
-  RxList<Record> records = <Record>[].obs;
-
   // yeni record ekleme methodu
   void addRecord(Record record) {
     if (records.isEmpty || record.dateTime.isBefore(records.last.dateTime)) {
@@ -96,26 +95,29 @@ class Controller extends GetxController {
     return records.any((record) => record.dateTime == date);
   }
 
-  // kayıtları güncelleme işlemi
+  // updateRecord fonksiyonu
   void updateRecord(Record oldRecord, Record newRecord) {
-    records[records.indexWhere((element) => element == oldRecord)] = newRecord;
-    // işlem sonrası grafikleri güncelle
+    var index = records.indexWhere((rec) => rec == oldRecord);
+    if (index != -1) {
+      records[index] = newRecord;
+      records.refresh(); // Listenin UI'ı güncellemesi için refresh kullan
+      // işlem sonrası grafikleri güncelle
     updateFilteredRecords();
+    }
   }
 
-  // tab bar index 1 ye yönlendir
+  // navigationbar gallery ye yönlendir
   void goToAddScreen() {
     changeTabIndex(2);
   }
 
-  // tab bar index 2 ye yönlendir
+  // navigationbar history ye yönlendir
   void goToHistoryScreen() {
     changeTabIndex(3);
   }
 
   // tema yönetimi
   Rx<ThemeMode> themeMode = ThemeMode.system.obs;
-
   void switchTheme(bool isDark) {
     themeMode.value = isDark ? ThemeMode.dark : ThemeMode.light;
   }
@@ -202,6 +204,15 @@ class Controller extends GetxController {
     } else {
       selectedGenderRange[0] = false;
       selectedGenderRange[1] = true;
+    }
+  }
+
+  // Record'un fotoğrafını kaldırma fonksiyonu
+  void removePhoto(Record record) {
+    int index = records.indexOf(record);
+    if (index != -1) {
+      records[index] = records[index].copyWith(photoUrl: null);
+      update(); // Kayıtları günceller
     }
   }
 }

@@ -23,7 +23,6 @@ class _AddScreenState extends State<AddScreen> {
   double _selectedValue = 40.0; // Başlangıç değerini 40 olarak ayarlayın
   DateTime _selectedDate = DateTime.now();
   String? _note;
-  String? _photoUrl;
   final Controller _controller = Get.find();
   final TextEditingController _noteController = TextEditingController();
 
@@ -109,24 +108,14 @@ class _AddScreenState extends State<AddScreen> {
       weight: _selectedValue,
       dateTime: _selectedDate,
       note: _note,
-      photoUrl: _photoUrl,
+      photoUrl: _controller.photoUrl.value,
     ));
 
     _controller.goToHistoryScreen();
 
     _noteController.clear();
     _note = null;
-    _photoUrl = null; // Fotoğraf URL'sini sıfırla
-
-    Get.snackbar(
-      'Record added successfully',
-      "",
-      snackPosition: SnackPosition.TOP,
-      borderRadius: 10,
-      margin: const EdgeInsets.all(10),
-      duration: const Duration(seconds: 1),
-    );
-
+    _controller.photoUrl.value = null; // Fotoğraf URL'sini sıfırla
     Get.focusScope?.unfocus();
   }
 
@@ -293,7 +282,8 @@ class _AddScreenState extends State<AddScreen> {
 
   // *** ADD PHOTO ***
   Widget addPhotoContainer() {
-    return _photoUrl == null
+    return Obx(() {
+      return _controller.photoUrl.value == null
         ? Stack(
             children: [
               FloatingActionButton(
@@ -329,7 +319,7 @@ class _AddScreenState extends State<AddScreen> {
                     color: Theme.of(context).canvasColor,
                   ),
                   child: Image.file(
-                    File(_photoUrl!),
+                      File(_controller.photoUrl.value!),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -337,19 +327,18 @@ class _AddScreenState extends State<AddScreen> {
                   right: 0,
                   top: 0,
                   child: IconButton(
-                    icon:
-                        const Icon(Ionicons.close, color: Colors.red, size: 40),
+                      icon: const Icon(Ionicons.close,
+                          color: Colors.red, size: 40),
                     onPressed: () {
-                      setState(() {
-                        _photoUrl = null; // Fotoğrafı kaldır
-                      });
+                        _controller.photoUrl.value = null; // Fotoğrafı kaldır
                     },
                   ),
                 ),
               ],
             ),
           );
-  }
+    });
+}
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
@@ -379,7 +368,7 @@ class _AddScreenState extends State<AddScreen> {
 
       if (pickedFile != null) {
         setState(() {
-          _photoUrl = pickedFile.path;
+          _controller.photoUrl.value = pickedFile.path;
         });
       }
     }

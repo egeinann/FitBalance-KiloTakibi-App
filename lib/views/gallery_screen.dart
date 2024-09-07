@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 
@@ -10,7 +11,6 @@ class GalleryScreen extends StatelessWidget {
   final List<Record> records; // Fotoğrafları ve tarihleri göstermek için
 
   const GalleryScreen({super.key, required this.records});
-
   @override
   Widget build(BuildContext context) {
     // Filtrelenmiş kayıtları al (fotoğrafı olanları)
@@ -18,7 +18,7 @@ class GalleryScreen extends StatelessWidget {
         .where(
             (record) => record.photoUrl != null && record.photoUrl!.isNotEmpty)
         .toList();
-
+    final Controller _controller = Get.find();
     return Scaffold(
       body: Padding(
         padding: context.paddingMedium,
@@ -64,22 +64,29 @@ class GalleryScreen extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: Get.size.height * 0.01),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: record.photoUrl!.startsWith('file://')
-                                ? const SizedBox()
-                                : Image.file(File(record.photoUrl!),
-                                    fit: BoxFit.cover),
-                          ),
-                          SizedBox(height: Get.size.height * 0.005),
-                          Text(
-                            DateFormat("d MMM, y").format(record.dateTime),
-                            style: Theme.of(context).textTheme.bodySmall,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                      child: InkWell(
+                        onTap: () {
+                          // go history screen
+                          _controller.goToHistoryScreen();
+                          // HistoryScreen yüklendiğinde, ilgili kayda kaydırma işlemi
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: record.photoUrl!.startsWith('file://')
+                                  ? const SizedBox()
+                                  : Image.file(File(record.photoUrl!),
+                                      fit: BoxFit.cover),
+                            ),
+                            SizedBox(height: Get.size.height * 0.005),
+                            Text(
+                              DateFormat("d MMM, y").format(record.dateTime),
+                              style: Theme.of(context).textTheme.bodySmall,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );

@@ -18,26 +18,41 @@ class RecordListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.focusScope?.unfocus();
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
-          colors: [
-            Theme.of(context).canvasColor.withOpacity(0.9),
-            Theme.of(context).cardColor.withOpacity(0.9),
-          ],
-        ),
-      ),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: ListTile(
-            leading: customLeading(context),
-            title: customTitle(context),
-            trailing: customTrailing(context),
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: LinearGradient(
+              colors: [
+                Theme.of(context).canvasColor.withOpacity(0.1),
+                Theme.of(context).cardColor.withOpacity(0.9),
+              ],
+            ),
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: ListTile(
+                leading: customLeading(context),
+                title: customTitle(context),
+                trailing: customTrailing(context),
+              ),
+            ),
           ),
         ),
-      ),
+        Positioned(
+          right: 0,
+          top: 0,
+          child: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.close,
+              size: 10,
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -245,8 +260,8 @@ class RecordListTile extends StatelessWidget {
                                     .photoUrl, // Fotoğraf URL'sini koruyun
                               ),
                             );
-
-                            Get.back();
+                            Navigator.pop(
+                                context); // Kullanıcıyı geri döndürmek için
                             noteController.clear();
                             Get.focusScope?.unfocus();
                           },

@@ -22,6 +22,7 @@ class InfoScreen extends StatelessWidget {
           leading: IconButton(
             onPressed: () {
               _infoController.goBack();
+              _infoController.resetController();
             },
             icon: const Icon(Ionicons.chevron_back),
           ),

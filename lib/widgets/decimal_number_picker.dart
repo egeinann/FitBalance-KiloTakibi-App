@@ -22,11 +22,10 @@ class Numbers extends StatelessWidget {
       axis: Axis.horizontal,
       minValue: 40,
       maxValue: 200,
-      decimalPlaces: 1,
       value: value,
-      onChanged: (value) {
-        value = value;
-        onChanged(value);
+      onChanged: (newValue) {
+        final formattedValue = double.parse(newValue.toStringAsFixed(1));
+        onChanged(formattedValue); // Formatlanmış değeri geçirin
       },
     );
   }

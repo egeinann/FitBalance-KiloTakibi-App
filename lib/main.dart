@@ -3,10 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
-import 'package:kilo_takibi_uyg/info/model/info_screen.dart';
-import 'package:kilo_takibi_uyg/info/view/nutrition_screen.dart';
-import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
 import 'package:kilo_takibi_uyg/views/home_screen.dart';
+import 'package:kilo_takibi_uyg/views/history_screen/recordScreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +19,6 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   Get.put(Controller());
-
   runApp(MyApp());
 }
 

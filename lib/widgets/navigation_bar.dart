@@ -5,7 +5,7 @@ import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/views/add_screen.dart';
 import 'package:kilo_takibi_uyg/views/gallery_screen.dart';
 import 'package:kilo_takibi_uyg/views/graph_view_screen.dart';
-import 'package:kilo_takibi_uyg/views/history_screen.dart';
+import 'package:kilo_takibi_uyg/views/history_screen/history_screen.dart';
 import 'package:kilo_takibi_uyg/views/profile_screen/profile_screen.dart';
 
 final Controller _controller = Get.put(Controller());

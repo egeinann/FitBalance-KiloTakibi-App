@@ -24,39 +24,43 @@ class RecordScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
-      body: Padding(
-        padding: context.paddingLarge,
-        child: Center(
-          child: Stack(
-            alignment: Alignment.bottomRight,
+      body: Center(
+        child: Padding(
+          padding: context.paddingLarge,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  buildImage(),
-                  buildWeight(context),
-                  buildNote(context),
-                  buildPhoto(),
-                ],
-              ),
-              FloatingActionButton(
-                heroTag: "x",
-                backgroundColor: Theme.of(context).primaryColor,
-                foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-                splashColor: Theme.of(context).scaffoldBackgroundColor,
-                elevation: 10,
-                onPressed: () {
-                  _showEditModalBottomSheet(context);
-                },
-                child: const Icon(Icons.edit),
-              ),
+              buildImage(),
+              buildWeight(context),
+              buildNote(context),
+              buildPhoto(),
             ],
           ),
         ),
       ),
+      floatingActionButton: editActionButton(context),
     );
   }
 
+  // *** EDIT BUTTON ***
+  Widget editActionButton(BuildContext context) {
+    return Padding(
+      padding: context.paddingMedium,
+      child: FloatingActionButton(
+        heroTag: "x",
+        backgroundColor: Theme.of(context).primaryColor,
+        foregroundColor: Theme.of(context).scaffoldBackgroundColor,
+        splashColor: Theme.of(context).scaffoldBackgroundColor,
+        elevation: 10,
+        onPressed: () {
+          _showEditModalBottomSheet(context);
+        },
+        child: const Icon(Icons.edit),
+      ),
+    );
+  }
+
+  // *** IMAGE ***
   Expanded buildImage() {
     return Expanded(
       flex: 1,
@@ -70,42 +74,48 @@ class RecordScreen extends StatelessWidget {
     );
   }
 
+  // *** WEIGHT ***
   Padding buildWeight(BuildContext context) {
     return Padding(
-      padding: context.paddingLarge,
+      padding: context.paddingLow,
       child: Text("${rec.weight} kg",
           style: Theme.of(context).textTheme.titleLarge),
     );
   }
 
-  Column buildNote(BuildContext context) {
-    return Column(
-      children: [
-        if (rec.note != null && rec.note!.isNotEmpty)
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(5),
-                topRight: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(5),
-              ),
-              color: Theme.of(context).canvasColor,
+  // *** NOTE ***
+  Widget buildNote(BuildContext context) {
+    if (rec.note != null && rec.note!.isNotEmpty) {
+      return Padding(
+        padding: context.paddingLow,
+        child: Container(
+          margin: const EdgeInsets.all(5),
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(5),
+              topRight: Radius.circular(20),
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(5),
             ),
-            child: Text(
-              rec.note!,
-              style: Theme.of(context).textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-          )
-        else
-          Text("No notes !", style: Theme.of(context).textTheme.bodyLarge)
-      ],
-    );
+            color: Theme.of(context).canvasColor,
+          ),
+          child: Text(
+            rec.note!,
+            style: Theme.of(context).textTheme.bodyMedium,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
+    } else {
+      return Padding(
+        padding: context.paddingLow,
+        child: Text("No notes !", style: Theme.of(context).textTheme.bodyLarge),
+      );
+    }
   }
 
+  // *** PHOTO ***
   Widget buildPhoto() {
     if (rec.photoUrl != null && rec.photoUrl!.isNotEmpty) {
       return Expanded(
@@ -142,6 +152,15 @@ class RecordScreen extends StatelessWidget {
                           transition:
                               Transition.leftToRight, // Geçiş animasyonu
                         );
+                        Future.delayed(const Duration(milliseconds: 500), () {
+                          Get.snackbar(
+                            backgroundColor: Colors.green,
+                            duration: const Duration(seconds: 2),
+                            icon: const Icon(Icons.done),
+                            "Record updated",
+                            DateFormat("d MMMM, y").format(rec.dateTime),
+                          );
+                        });
                       },
                     ),
                   ),
@@ -153,6 +172,7 @@ class RecordScreen extends StatelessWidget {
     }
   }
 
+  // *** edit model bottom sheet  ***
   void _showEditModalBottomSheet(BuildContext context) {
     double selectedValue = rec.weight;
     String? note = rec.note;
@@ -264,11 +284,17 @@ class RecordScreen extends StatelessWidget {
     );
   }
 
-  // *** onpressed for save ***
+  // *** editActionButton save ***
   void onPressedSave(BuildContext context, double selectedValue, String? note,
       TextEditingController noteController) {
-    Get.focusScope?.unfocus();
-    Navigator.pop(context);
+    Future.delayed(
+      const Duration(milliseconds: 400),
+      () {
+        Get.focusScope?.unfocus();
+        Navigator.pop(context);
+      },
+    );
+
     _controller.updateRecord(
       rec,
       Record(
@@ -279,10 +305,17 @@ class RecordScreen extends StatelessWidget {
       ),
     );
     noteController.clear();
-    Future.delayed(const Duration(milliseconds: 400), () {
+    Future.delayed(const Duration(milliseconds: 700), () {
       Get.to(
         HomeScreen(),
         transition: Transition.leftToRight, // Geçiş animasyonu
+      );
+      Get.snackbar(
+        backgroundColor: Colors.green,
+        duration: const Duration(seconds: 2),
+        icon: const Icon(Icons.done),
+        "Record updated",
+        DateFormat("d MMMM, y").format(rec.dateTime),
       );
     });
   }

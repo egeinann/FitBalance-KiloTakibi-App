@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   Get.to(
                     const SettingsScreen(),
-                    transition: Transition.fade,
+                    transition: Transition.downToUp,
                   );
                 },
                 icon: const Icon(Ionicons.settings),

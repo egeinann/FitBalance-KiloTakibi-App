@@ -78,6 +78,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
               !_controller.isNotificationsEnabled.value;
         },
       ),
+      SettingsModel(
+        Icon(Ionicons.lock_closed),
+        "Privacy Policy",
+        null,
+        null,
+        onTap: () {},
+      ),
     ];
     return Scaffold(
       appBar: AppBar(

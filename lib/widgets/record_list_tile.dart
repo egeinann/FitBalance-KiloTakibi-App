@@ -6,8 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
-import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
-import 'package:kilo_takibi_uyg/widgets/elevated_button.dart';
 
 class RecordListTile extends StatelessWidget {
   final Record rec;
@@ -31,27 +29,39 @@ class RecordListTile extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: ListTile(
-                leading: customLeading(context),
-                title: customTitle(context),
-                trailing: customTrailing(context),
-              ),
+            child: ListTile(
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              leading: customLeading(context),
+              trailing: customTrailing(context),
             ),
           ),
         ),
-        Positioned(
-          right: 0,
-          top: 0,
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.close,
-              size: 10,
+        if (rec.note != null && rec.note!.isNotEmpty)
+          const Positioned(
+            top: 1,
+            right: 15,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.circle,
+                  color: Colors.green,
+                  size: 8,
+                ),
+                Text(
+                  "note",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: "outift",
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
             ),
-          ),
-        ),
+          )
       ],
     );
   }
@@ -64,7 +74,8 @@ class RecordListTile extends StatelessWidget {
         if (rec.photoUrl != null && rec.photoUrl!.isNotEmpty)
           (rec.photoUrl!.startsWith('file://'))
               ? const SizedBox()
-              : CircleAvatar(backgroundImage: FileImage(File(rec.photoUrl!))),
+              : CircleAvatar(
+                  backgroundImage: FileImage(File(rec.photoUrl!)), radius: 15),
         SizedBox(width: Get.size.width * 0.01),
         Text(
           DateFormat("d MMM, yy").format(rec.dateTime),
@@ -74,56 +85,17 @@ class RecordListTile extends StatelessWidget {
     );
   }
 
-  // *** TITLE ***
-  Widget customTitle(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  // *** TRAILING ***
+  Widget customTrailing(BuildContext context) {
+    return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           "${rec.weight} kg",
           style: Theme.of(context).textTheme.labelSmall,
         ),
-        if (rec.note != null && rec.note!.isNotEmpty)
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(5),
-                topRight: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(5),
-              ),
-              color: Theme.of(context).canvasColor,
-            ),
-            child: Text(
-              rec.note!,
-              style: Theme.of(context).textTheme.bodySmall,
-              textAlign: TextAlign.center,
-            ),
-          ),
-      ],
-    );
-  }
-
-  // *** TRAILING ***
-  Widget customTrailing(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        IconButton(
-          onPressed: () {
-            _showEditModalBottomSheet(context, rec);
-          },
-          icon: const Icon(Icons.edit),
-        ),
-        IconButton(
-          onPressed: () {
-            _deleteShowDialog(context);
-          },
-          icon: const Icon(Ionicons.trash),
-        ),
+        SizedBox(width: Get.size.width * 0.05),
+        const Icon(Ionicons.chevron_forward),
       ],
     );
   }
@@ -172,6 +144,7 @@ class RecordListTile extends StatelessWidget {
   }
 
   // *** EDIT SHOW DIALOG ***
+  /*
   void _showEditModalBottomSheet(BuildContext context, Record record) {
     double selectedValue = record.weight;
     String? note = record.note;
@@ -281,4 +254,5 @@ class RecordListTile extends StatelessWidget {
       },
     );
   }
+  */
 }

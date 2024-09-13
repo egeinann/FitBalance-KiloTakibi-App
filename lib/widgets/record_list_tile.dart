@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 
 class RecordListTile extends StatelessWidget {
@@ -90,9 +90,13 @@ class RecordListTile extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          "${rec.weight} kg",
-          style: Theme.of(context).textTheme.labelSmall,
+        Hero(
+          tag:
+              "${rec.weight}_${rec.dateTime.toIso8601String()}_weight", // Tarih ve kilo kombinasyonu
+          child: Text(
+            "${rec.weight} kg",
+            style: Theme.of(context).textTheme.labelSmall,
+          ),
         ),
         SizedBox(width: Get.size.width * 0.05),
         const Icon(Ionicons.chevron_forward),

@@ -102,7 +102,7 @@ class Controller extends GetxController {
       records[index] = newRecord;
       records.refresh(); // Listenin UI'ı güncellemesi için refresh kullan
       // işlem sonrası grafikleri güncelle
-    updateFilteredRecords();
+      updateFilteredRecords();
     }
   }
 

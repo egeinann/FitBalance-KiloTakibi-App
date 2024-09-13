@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/views/history_screen/recordScreen.dart';
+import 'package:kilo_takibi_uyg/view/history_screen/recordScreen.dart';
 import 'package:kilo_takibi_uyg/widgets/elevated_button.dart';
 import 'package:kilo_takibi_uyg/widgets/record_list_tile.dart';
 
@@ -63,6 +63,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       );
     }
   }
+
   // *** BUILD RECORDS ***
   Column buildRecords(BuildContext context) {
     return Column(
@@ -82,8 +83,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       vertical: 2,
                     ),
                     child: InkWell(
-                      onTap: () =>
-                                          Get.to(RecordScreen(rec: record),
+                      onTap: () => Get.to(RecordScreen(rec: record),
                           transition: Transition.rightToLeft),
                       child: RecordListTile(rec: record),
                     ),
@@ -154,7 +154,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "We couldn't find the records !",
+                  "We can't see any record here!",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 appButton(

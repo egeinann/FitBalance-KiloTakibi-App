@@ -2,12 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/info/model/info_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
-import 'package:kilo_takibi_uyg/views/profile_screen/changeName_screen.dart';
-import 'package:kilo_takibi_uyg/views/profile_screen/changeTargetWeight_screen.dart';
+import 'package:kilo_takibi_uyg/view/profile_screen/changeName_screen.dart';
+import 'package:kilo_takibi_uyg/view/profile_screen/changeTargetWeight_screen.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 

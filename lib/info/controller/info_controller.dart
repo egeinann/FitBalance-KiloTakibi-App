@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kilo_takibi_uyg/views/home_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen.dart';
 
 class InfoController extends GetxController {
   PageController pageController = PageController();

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
-import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
@@ -284,61 +284,61 @@ class _AddScreenState extends State<AddScreen> {
   Widget addPhotoContainer() {
     return Obx(() {
       return _controller.photoUrl.value == null
-        ? Stack(
-            children: [
-              FloatingActionButton(
-                heroTag: "d",
-                splashColor: Theme.of(context).primaryColor,
-                backgroundColor: Theme.of(context).cardColor,
-                onPressed: () {
-                  _pickImage();
-                },
-                child: const Icon(Ionicons.camera),
-              ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Theme.of(context).canvasColor,
-                  ),
-                  child: const Icon(Icons.add),
-                ),
-              ),
-            ],
-          )
-        : Padding(
-            padding: context.paddingLarge,
-            child: Stack(
+          ? Stack(
               children: [
-                Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Theme.of(context).canvasColor,
-                  ),
-                  child: Image.file(
-                      File(_controller.photoUrl.value!),
-                    fit: BoxFit.cover,
-                  ),
+                FloatingActionButton(
+                  heroTag: "d",
+                  splashColor: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).cardColor,
+                  onPressed: () {
+                    _pickImage();
+                  },
+                  child: const Icon(Ionicons.camera),
                 ),
                 Positioned(
+                  bottom: 0,
                   right: 0,
-                  top: 0,
-                  child: IconButton(
-                      icon: const Icon(Ionicons.close,
-                          color: Colors.red, size: 40),
-                    onPressed: () {
-                        _controller.photoUrl.value = null; // Fotoğrafı kaldır
-                    },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).canvasColor,
+                    ),
+                    child: const Icon(Icons.add),
                   ),
                 ),
               ],
-            ),
-          );
+            )
+          : Padding(
+              padding: context.paddingLarge,
+              child: Stack(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Theme.of(context).canvasColor,
+                    ),
+                    child: Image.file(
+                      File(_controller.photoUrl.value!),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    right: 0,
+                    top: 0,
+                    child: IconButton(
+                      icon: const Icon(Ionicons.close,
+                          color: Colors.red, size: 40),
+                      onPressed: () {
+                        _controller.photoUrl.value = null; // Fotoğrafı kaldır
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            );
     });
-}
+  }
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();

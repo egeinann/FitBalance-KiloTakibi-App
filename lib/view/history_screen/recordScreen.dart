@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
-import 'package:kilo_takibi_uyg/views/home_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 
 class RecordScreen extends StatelessWidget {
@@ -47,7 +47,7 @@ class RecordScreen extends StatelessWidget {
     return Padding(
       padding: context.paddingMedium,
       child: FloatingActionButton(
-        heroTag: "x",
+        heroTag: "${rec.photoUrl}_editButton",
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Theme.of(context).scaffoldBackgroundColor,
         splashColor: Theme.of(context).scaffoldBackgroundColor,
@@ -78,8 +78,12 @@ class RecordScreen extends StatelessWidget {
   Padding buildWeight(BuildContext context) {
     return Padding(
       padding: context.paddingLow,
-      child: Text("${rec.weight} kg",
-          style: Theme.of(context).textTheme.titleLarge),
+      child: Hero(
+        tag:
+            "${rec.weight}_${rec.dateTime.toIso8601String()}_weight", // Tarih ve kilo kombinasyonu
+        child: Text("${rec.weight} kg",
+            style: Theme.of(context).textTheme.titleLarge),
+      ),
     );
   }
 
@@ -252,7 +256,7 @@ class RecordScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: FloatingActionButton(
-                            heroTag: "x",
+                            heroTag: "_saveButton",
                             backgroundColor: Theme.of(context).primaryColor,
                             foregroundColor:
                                 Theme.of(context).scaffoldBackgroundColor,

@@ -1,12 +1,114 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
+import 'package:kilo_takibi_uyg/widgets/record_list_tile.dart';
 
 class Controller extends GetxController {
   var photoUrl = Rxn<String>(); // Reaktif bir değişken
   var currentTabIndex = 2.obs; // homescreen sayfa index
   var appBarTitle = 'Add'.obs; // Başlangıç başlığı
   RxList<Record> records = <Record>[].obs; // record objeleri tutan list
+  final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
+
+  // yeni record ekleme methodu
+  void addRecord(Record record) {
+    if (records.isEmpty || record.dateTime.isBefore(records.last.dateTime)) {
+      // Yeni öğe ekleme
+      records.add(record);
+      listKey.currentState?.insertItem(records.length - 1);
+    } else {
+      double lastWeight = records.last.weight;
+      DateTime lastDate = records.last.dateTime;
+
+      // Eksik tarihleri ekleme
+      while (lastDate
+          .isBefore(record.dateTime.subtract(const Duration(days: 1)))) {
+        lastDate = lastDate.add(const Duration(days: 1));
+        var newRecord = Record(
+          weight: lastWeight,
+          dateTime: lastDate,
+          note: null,
+        );
+        records.add(newRecord);
+        listKey.currentState?.insertItem(records.length - 1);
+      }
+
+      // Yeni kayıt ekleme
+      records.add(record);
+      listKey.currentState?.insertItem(records.length - 1);
+    }
+    // İşlem sonrası grafikleri güncelle
+    updateFilteredRecords();
+  }
+
+// mevcut recordu silme methodu
+  void deleteRecord(Record record) {
+    final int index = records.indexOf(record); // Silinecek öğenin indeksini bul
+    if (index == -1) return; // Eğer öğe bulunamazsa hiçbir şey yapma
+
+    // Öğeyi listeden kaldır
+
+    records.removeAt(index);
+
+    // Animasyonla öğeyi kaldır
+    listKey.currentState?.removeItem(
+      index,
+      (context, animation) => buildItem(record, animation),
+    );
+
+    // İşlem sonrası grafikleri güncelle
+    updateFilteredRecords();
+  }
+
+  void deleteAllRecords(GlobalKey<AnimatedListState> listKey) {
+    final int itemCount = records.length;
+
+    // Tüm öğeleri animasyonla kaldır
+    for (int i = itemCount - 1; i >= 0; i--) {
+      final record = records[i];
+      listKey.currentState?.removeItem(
+        i,
+        (context, animation) => buildItem(record, animation),
+        duration: const Duration(milliseconds: 300), // Animasyon süresi
+      );
+    }
+
+    // Tüm kayıtları temizle, animasyonun tamamlanmasını bekleyin
+    Future.delayed(
+      const Duration(
+          milliseconds: 400), // Animasyon süresine eşit veya biraz daha uzun
+      () {
+        records.clear();
+        updateFilteredRecords();
+      },
+    );
+  }
+
+  // updateRecord fonksiyonu
+  void updateRecord(Record oldRecord, Record newRecord) {
+    var index = records.indexWhere((rec) => rec == oldRecord);
+    if (index != -1) {
+      records[index] = newRecord;
+      records.refresh(); // Listenin UI'ı güncellemesi için refresh kullan
+      // işlem sonrası grafikleri güncelle
+      updateFilteredRecords();
+    }
+  }
+
+  Widget buildItem(Record record, Animation<double> animation) {
+    final animationCurve = CurvedAnimation(
+      parent: animation,
+      curve: Curves.easeInOut,
+    );
+
+    return SlideTransition(
+      position: Tween<Offset>(
+        begin: Offset(-1.0, 0.0), // Sağdan gelme
+        end: Offset.zero,
+      ).animate(animationCurve),
+      child: RecordListTile(rec: record),
+    );
+  }
 
   // app bar başlığını güncelleme
   void changeTabIndex(int index) {
@@ -52,58 +154,9 @@ class Controller extends GetxController {
     }
   }
 
-  // yeni record ekleme methodu
-  void addRecord(Record record) {
-    if (records.isEmpty || record.dateTime.isBefore(records.last.dateTime)) {
-      records.add(record);
-    } else {
-      double lastWeight = records.last.weight;
-      DateTime lastDate = records.last.dateTime;
-
-      while (lastDate
-          .isBefore(record.dateTime.subtract(const Duration(days: 1)))) {
-        lastDate = lastDate.add(const Duration(days: 1));
-        records.add(Record(
-          weight: lastWeight,
-          dateTime: lastDate,
-          note: null,
-        ));
-      }
-
-      records.add(record);
-    }
-    // işlem sonrası grafikleri güncelle
-    updateFilteredRecords();
-  }
-
-  // mevcut recordu silme methodu
-  void deleteRecord(Record record) {
-    records.remove(record);
-    // işlem sonrası grafikleri güncelle
-    updateFilteredRecords();
-  }
-
-  // tüm record listesini sil temizle
-  void deleteAllRecords() {
-    records.clear();
-    // işlem sonrası grafikleri güncelle
-    updateFilteredRecords();
-  }
-
   // Aynı tarihte kayıt var mı kontrolü
   bool isRecordExists(DateTime date) {
     return records.any((record) => record.dateTime == date);
-  }
-
-  // updateRecord fonksiyonu
-  void updateRecord(Record oldRecord, Record newRecord) {
-    var index = records.indexWhere((rec) => rec == oldRecord);
-    if (index != -1) {
-      records[index] = newRecord;
-      records.refresh(); // Listenin UI'ı güncellemesi için refresh kullan
-      // işlem sonrası grafikleri güncelle
-      updateFilteredRecords();
-    }
   }
 
   // navigationbar gallery ye yönlendir

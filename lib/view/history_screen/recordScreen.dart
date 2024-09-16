@@ -6,7 +6,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
-import 'package:kilo_takibi_uyg/view/home_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 
 class RecordScreen extends StatelessWidget {
@@ -151,11 +150,7 @@ class RecordScreen extends StatelessWidget {
                           color: Colors.red, size: 40),
                       onPressed: () {
                         _controller.removePhoto(rec);
-                        Get.to(
-                          HomeScreen(),
-                          transition:
-                              Transition.leftToRight, // Geçiş animasyonu
-                        );
+                        Get.back();
                         Future.delayed(const Duration(milliseconds: 500), () {
                           Get.snackbar(
                             backgroundColor: Colors.green,
@@ -309,11 +304,8 @@ class RecordScreen extends StatelessWidget {
       ),
     );
     noteController.clear();
-    Future.delayed(const Duration(milliseconds: 700), () {
-      Get.to(
-        HomeScreen(),
-        transition: Transition.leftToRight, // Geçiş animasyonu
-      );
+    Future.delayed(const Duration(milliseconds: 800), () {
+      Get.back();
       Get.snackbar(
         backgroundColor: Colors.green,
         duration: const Duration(seconds: 2),

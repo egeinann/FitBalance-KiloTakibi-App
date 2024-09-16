@@ -90,6 +90,11 @@ class RecordListTile extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
+        IconButton(
+            onPressed: () {
+              _deleteShowDialog(context);
+            },
+            icon: Icon(Icons.delete)),
         Hero(
           tag:
               "${rec.weight}_${rec.dateTime.toIso8601String()}_weight", // Tarih ve kilo kombinasyonu

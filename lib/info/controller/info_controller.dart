@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kilo_takibi_uyg/view/home_screen.dart';
 
 class InfoController extends GetxController {
   PageController pageController = PageController();
@@ -14,9 +13,7 @@ class InfoController extends GetxController {
         curve: Curves.easeInOut,
       );
     } else {
-      Get.to(HomeScreen(),
-          transition: Transition.native,
-          duration: const Duration(milliseconds: 300));
+      Get.back();
       resetController(); // HomeScreen'e geçiş yaparken sıfırlama işlemi
     }
   }

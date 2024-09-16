@@ -90,7 +90,7 @@ class _AddScreenState extends State<AddScreen> {
       });
     });
   }
-
+  
   // *** FUNCTION FOR ADD BUTTON
   void addPressed() {
     if (_controller.isRecordExists(_selectedDate)) {

@@ -4,7 +4,6 @@ import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/fade_no_record.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/recordScreen.dart';
-import 'package:kilo_takibi_uyg/widgets/elevated_button.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -90,11 +89,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
         Column(
           children: [
             SizedBox(
-              width: Get.size.width * 0.9,
+              width: Get.size.width * 0.8,
               child: const Divider(),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
                   padding: const EdgeInsets.all(5),
@@ -107,20 +106,21 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   ),
                   child: Text(
                     "${_controller.records.length} record",
-                    style: Theme.of(context).textTheme.displaySmall,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
-                appButton(
-                  () {
+                FloatingActionButton(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  foregroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  splashColor: Theme.of(context).scaffoldBackgroundColor,
+                  elevation: 20,
+                  onPressed: () {
                     deleteAllShowDialog(context);
                   },
-                  const Text(
-                    "all delete",
-                    style: TextStyle(fontFamily: "outfit"),
-                  ),
-                ),
+                  child: const Icon(Icons.delete),
+                )
               ],
-            )
+            ),
           ],
         ),
       ],

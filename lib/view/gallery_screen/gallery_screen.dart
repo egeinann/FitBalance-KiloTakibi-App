@@ -6,8 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
+import 'package:kilo_takibi_uyg/view/gallery_screen/photo_screen.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/recordScreen.dart';
-import 'package:kilo_takibi_uyg/view/photo_screen.dart';
 
 class GalleryScreen extends StatelessWidget {
   final List<Record> records; // Fotoğrafları ve tarihleri göstermek için

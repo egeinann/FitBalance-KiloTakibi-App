@@ -22,6 +22,15 @@ class RecordScreen extends StatelessWidget {
           DateFormat("d MMMM, y").format(rec.dateTime),
           style: Theme.of(context).textTheme.titleLarge,
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              _controller.deleteRecord(rec);
+              Get.back();
+            },
+            icon: const Icon(Icons.delete),
+          ),
+        ],
       ),
       body: Center(
         child: Padding(
@@ -290,7 +299,7 @@ class RecordScreen extends StatelessWidget {
       const Duration(milliseconds: 400),
       () {
         Get.focusScope?.unfocus();
-        Navigator.pop(context);
+        Get.back();
       },
     );
 

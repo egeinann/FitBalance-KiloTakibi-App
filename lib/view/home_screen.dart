@@ -5,9 +5,11 @@ import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/settings_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/navigation_bar.dart';
 
-// ignore: use_key_in_widget_constructors
 class HomeScreen extends StatelessWidget {
   final _controller = Get.put(Controller());
+
+  HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +40,20 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Obx(() {
-        return indexedStack(); // IndexedStack, gözlemlenen değişkeni içerir
+        return Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Theme.of(context)
+                    .scaffoldBackgroundColor, // Temadan alınan renk
+                Color.fromARGB(255, 27, 130, 208), // Benzer bir ton
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: indexedStack(), // IndexedStack, gözlemlenen değişkeni içerir
+        );
       }),
       bottomNavigationBar: Obx(() {
         return bottomNavigationBar(

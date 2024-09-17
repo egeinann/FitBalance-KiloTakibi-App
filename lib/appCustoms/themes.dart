@@ -8,16 +8,16 @@ class ThemeClass {
         const CardTheme(color: LightColors.colorLight), // record card color
     canvasColor: LightColors.colorMedium, // inside the container color
     cardColor: LightColors.colorLight, // the container color
-    scaffoldBackgroundColor: LightColors.colorbackground,
+    scaffoldBackgroundColor: LightColors.colorBackground,
     appBarTheme: const AppBarTheme(
-      backgroundColor: LightColors.colorbackground, // appBar backGround color
+      backgroundColor: LightColors.colorBackground, // appBar backGround color
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all(
             LightColors.colorPrimary), // elevatedButton backGround color
         foregroundColor: WidgetStateProperty.all(
-            LightColors.colorbackground), // elevatedButton foreGround color
+            LightColors.colorBackground), // elevatedButton foreGround color
         shadowColor: WidgetStateProperty.all(
             LightColors.colorPrimary), // elevatedButton shadow color
       ),

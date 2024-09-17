@@ -131,26 +131,31 @@ class _ChangeNameScreenState extends State<ChangeNameScreen> {
             splashColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 20,
             onPressed: () {
-              if (_onboardingController.nameController.text.isEmpty) {
-                Get.snackbar(
-                  "",
-                  "Please enter your name",
-                  snackStyle: SnackStyle.FLOATING,
-                  snackPosition: SnackPosition.TOP,
-                  duration: const Duration(seconds: 2),
-                );
-              } else {
-                _onboardingController.userName;
-                Get.focusScope?.unfocus();
-                Get.back();
-                Get.snackbar("${_onboardingController.userName}",
-                    "You changed your name");
-              }
+              changeNameSave();
             },
             child: const Icon(Icons.done),
           ),
         ),
       ),
     );
+  }
+
+  // *** NEW NICKNAME BUTTON SAVE ***
+  void changeNameSave() {
+    if (_onboardingController.nameController.text.isEmpty) {
+      Get.snackbar(
+        "",
+        "Please enter your name",
+        snackStyle: SnackStyle.FLOATING,
+        snackPosition: SnackPosition.TOP,
+        duration: const Duration(seconds: 2),
+      );
+    } else {
+      _onboardingController.userName;
+      Get.focusScope?.unfocus();
+      Get.back();
+      Get.snackbar(
+          "${_onboardingController.userName}", "You changed your name");
+    }
   }
 }

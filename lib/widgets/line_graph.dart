@@ -23,10 +23,13 @@ Obx lineGraph(BuildContext context) {
             Expanded(
               flex: 14,
               child: LineChart(
+                
                 curve: Curves.linearToEaseOut,
                 duration: const Duration(milliseconds: 200),
                 LineChartData(
+                  
                   lineTouchData: LineTouchData(
+                    
                     handleBuiltInTouches: true,
                     touchTooltipData: LineTouchTooltipData(
                       fitInsideHorizontally: true,
@@ -127,6 +130,7 @@ Obx lineGraph(BuildContext context) {
                       ),
                     ),
                   ),
+                  
                   borderData: FlBorderData(
                     show: true,
                     border: Border.all(color: Colors.grey, width: 0.1),
@@ -171,17 +175,21 @@ Obx lineGraph(BuildContext context) {
                         show: false,
                       ),
                       belowBarData: BarAreaData(
-                        show: true,
                         gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
                           colors: [
-                            Theme.of(context).cardColor.withOpacity(0.3),
-                            Theme.of(context).focusColor.withOpacity(0.4),
+                            Theme.of(context).primaryColor.withOpacity(0.3),
+                            Colors.transparent
                           ],
                         ),
+                        show: true,
+                        color: Theme.of(context).primaryColor.withOpacity(0.5),
                       ),
                     ),
                   ],
                 ),
+                
               ),
             ),
             // *** SELECTED TIME RANGE EXPANDED ***

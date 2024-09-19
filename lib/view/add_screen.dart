@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
 import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
@@ -90,16 +91,16 @@ class _AddScreenState extends State<AddScreen> {
       });
     });
   }
-  
+
   // *** FUNCTION FOR ADD BUTTON
   void addPressed() {
     if (_controller.isRecordExists(_selectedDate)) {
-      Get.snackbar(
-        duration: const Duration(seconds: 1),
-        "There is already a record for the same date.",
-        "",
-        snackPosition: SnackPosition.TOP,
-        backgroundColor: const Color.fromARGB(48, 255, 0, 0),
+      SnackbarHelper.showSnackbar(
+        title: "There is already a record for the same date",
+        message: "Change the date",
+        backgroundColor: Colors.red,
+        duration: const Duration(milliseconds: 1500),
+        icon: const Icon(Ionicons.calendar_outline),
       );
       return;
     }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
@@ -20,13 +21,12 @@ class RecordScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           DateFormat("d MMMM, y").format(rec.dateTime),
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         actions: [
           IconButton(
             onPressed: () {
-              _controller.deleteRecord(rec);
-              Get.back();
+              deleteShowDialog(context);
             },
             icon: const Icon(Icons.delete),
           ),
@@ -160,14 +160,16 @@ class RecordScreen extends StatelessWidget {
                       onPressed: () {
                         _controller.removePhoto(rec);
                         Get.back();
-                        Future.delayed(const Duration(milliseconds: 500), () {
-                          Get.snackbar(
-                            backgroundColor: Colors.green,
-                            duration: const Duration(seconds: 2),
-                            icon: const Icon(Icons.done),
-                            "Record updated",
-                            DateFormat("d MMMM, y").format(rec.dateTime),
-                          );
+                        _controller.goToHistoryScreen();
+                        Future.delayed(const Duration(milliseconds: 300), () {
+                          Get.back();
+                          SnackbarHelper.showSnackbar(
+                              title: "Record updated",
+                              message:
+                                  DateFormat("d MMMM, y").format(rec.dateTime),
+                              backgroundColor: Colors.green,
+                              duration: const Duration(milliseconds: 1500),
+                              icon: const Icon(Icons.camera_alt));
                         });
                       },
                     ),
@@ -313,15 +315,64 @@ class RecordScreen extends StatelessWidget {
       ),
     );
     noteController.clear();
-    Future.delayed(const Duration(milliseconds: 800), () {
+    Future.delayed(const Duration(milliseconds: 600), () {
       Get.back();
-      Get.snackbar(
+      SnackbarHelper.showSnackbar(
+          title: "Record updated",
+          message: DateFormat("d MMMM, y").format(rec.dateTime),
         backgroundColor: Colors.green,
-        duration: const Duration(seconds: 2),
-        icon: const Icon(Icons.done),
-        "Record updated",
-        DateFormat("d MMMM, y").format(rec.dateTime),
+          duration: const Duration(milliseconds: 1500),
+          icon: const Icon(Icons.save)
       );
     });
+  }
+
+  // *** DELETE SHOW DIALOG ***
+  Future<dynamic> deleteShowDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Delete Record",
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          content: Text(
+            "Are you sure you want to delete this record?",
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                "Cancel",
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text(
+                "Delete",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red,
+                ),
+              ),
+              onPressed: () {
+                _controller.deleteRecord(rec);
+                Get.back();
+                Future.delayed(
+                  const Duration(milliseconds: 200),
+                  () {
+                    Get.back();
+                  },
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

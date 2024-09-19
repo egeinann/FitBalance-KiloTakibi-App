@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
@@ -96,8 +98,13 @@ class _ChangeTargetWeightScreenState extends State<ChangeTargetWeightScreen> {
           onPressed: () {
             _onboardingController.targetWeight.value;
             Get.back();
-            Get.snackbar(
-                "Target Weight", "Your target weight has been updated");
+            SnackbarHelper.showSnackbar(
+              title: "Your target weight has been updated",
+              message: "Good luck",
+              backgroundColor: Colors.green,
+              duration: const Duration(seconds: 2),
+              icon: const Icon(Ionicons.golf),
+            );
           },
           child: const Icon(Icons.done),
         ),

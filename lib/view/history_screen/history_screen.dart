@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/fade_no_record.dart';
@@ -15,7 +16,6 @@ class HistoryScreen extends StatefulWidget {
 class _HistoryScreenState extends State<HistoryScreen> {
   final Controller _controller = Get.find();
   ScrollController scrollController = ScrollController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +50,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     });
   }
 
+  // *** NEW RECORD SCROLL BOTTOM ***
   void _scrollToBottom() {
     if (scrollController.hasClients) {
       scrollController.animateTo(
@@ -60,6 +61,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     }
   }
 
+  // *** BUILD RECORDS LIST ***
   Column buildRecords(BuildContext context) {
     return Column(
       children: [
@@ -127,6 +129,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     );
   }
 
+  // *** DELETE SHOW DIALOG ***
   Future<dynamic> deleteAllShowDialog(BuildContext context) {
     return showDialog(
       context: context,
@@ -161,9 +164,16 @@ class _HistoryScreenState extends State<HistoryScreen> {
               onPressed: () {
                 Navigator.of(context).pop(); // Dialog'u kapat
                 Future.delayed(
-                  Duration(milliseconds: 300), // Kısa bir gecikme ekleyin
+                  const Duration(milliseconds: 300), // Kısa bir gecikme ekleyin
                   () {
                     _controller.deleteAllRecords(_controller.listKey);
+                    SnackbarHelper.showSnackbar(
+                      title: "You deleted all records",
+                      message: "message",
+                      backgroundColor: Colors.red,
+                      duration: const Duration(milliseconds: 1500),
+                      icon: const Icon(Icons.delete),
+                    );
                   },
                 );
               },

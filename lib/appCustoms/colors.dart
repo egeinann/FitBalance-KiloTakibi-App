@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LightColors {
-  static const Color colorBackground =
-      Color(0xFFE8ECF1); // Renk olarak geri döndü
+  static const Color colorBackground = Color(0xFFE8ECF1);
   static const Color colorLight = Color(0xFFFFF7FC);
   static const Color colorMedium = Color(0xFFF6F5F2);
   static const Color colorPrimary = Color(0xFFEB5B00);

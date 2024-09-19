@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
@@ -27,12 +28,12 @@ class _ChangeNameScreenState extends State<ChangeNameScreen> {
           leading: IconButton(
             onPressed: () {
               if (_onboardingController.nameController.text.isEmpty) {
-                Get.snackbar(
-                  "",
-                  "Please enter your name",
-                  snackStyle: SnackStyle.FLOATING,
-                  snackPosition: SnackPosition.TOP,
-                  duration: const Duration(seconds: 2),
+                SnackbarHelper.showSnackbar(
+                  title: "Name ?",
+                  message: "Please enter your name",
+                  backgroundColor: Colors.red,
+                  duration: const Duration(milliseconds: 1500),
+                  icon: const Icon(Ionicons.cloud_offline),
                 );
               } else {
                 Get.back();
@@ -143,19 +144,24 @@ class _ChangeNameScreenState extends State<ChangeNameScreen> {
   // *** NEW NICKNAME BUTTON SAVE ***
   void changeNameSave() {
     if (_onboardingController.nameController.text.isEmpty) {
-      Get.snackbar(
-        "",
-        "Please enter your name",
-        snackStyle: SnackStyle.FLOATING,
-        snackPosition: SnackPosition.TOP,
-        duration: const Duration(seconds: 2),
+      SnackbarHelper.showSnackbar(
+        title: "Name ?",
+        message: "Please enter your name",
+        backgroundColor: Colors.red,
+        duration: const Duration(milliseconds: 1500),
+        icon: const Icon(Ionicons.cloud_offline),
       );
     } else {
       _onboardingController.userName;
       Get.focusScope?.unfocus();
       Get.back();
-      Get.snackbar(
-          "${_onboardingController.userName}", "You changed your name");
+      SnackbarHelper.showSnackbar(
+        title: "You changed your name",
+        message: "${_onboardingController.userName}",
+        backgroundColor: Colors.green,
+        duration: const Duration(milliseconds: 1500),
+        icon: const Icon(Ionicons.person),
+      );
     }
   }
 }

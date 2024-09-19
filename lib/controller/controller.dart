@@ -103,7 +103,7 @@ class Controller extends GetxController {
 
     return SlideTransition(
       position: Tween<Offset>(
-        begin: Offset(-1.0, 0.0), // Sağdan gelme
+        begin: const Offset(-1.0, 0.0), // Sağdan gelme
         end: Offset.zero,
       ).animate(animationCurve),
       child: RecordListTile(rec: record),

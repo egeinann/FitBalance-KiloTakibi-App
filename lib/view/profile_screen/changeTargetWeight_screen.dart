@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
@@ -89,12 +90,9 @@ class _ChangeTargetWeightScreenState extends State<ChangeTargetWeightScreen> {
       ),
       floatingActionButton: Padding(
         padding: context.paddingLarge,
-        child: FloatingActionButton(
-          heroTag: "a",
-          backgroundColor: Theme.of(context).primaryColor,
-          foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-          splashColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 20,
+        child: CustomFloatingActionButton(
+          heroTag: "profile",
+          widget: const Icon(Icons.done),
           onPressed: () {
             _onboardingController.targetWeight.value;
             Get.back();
@@ -106,7 +104,6 @@ class _ChangeTargetWeightScreenState extends State<ChangeTargetWeightScreen> {
               icon: const Icon(Ionicons.golf),
             );
           },
-          child: const Icon(Icons.done),
         ),
       ),
     );

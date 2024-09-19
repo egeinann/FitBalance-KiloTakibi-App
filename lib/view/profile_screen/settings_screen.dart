@@ -2,6 +2,7 @@ import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/settings_model.dart';
@@ -79,12 +80,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
         },
       ),
       SettingsModel(
-        Icon(Ionicons.lock_closed),
+        const Icon(Ionicons.lock_closed),
         "Privacy Policy",
-        null,
+        "Privacy Policy and Terms of Use",
         null,
         onTap: () {},
       ),
+      SettingsModel(
+        const Icon(Ionicons.cloud),
+        "Data management",
+        "Data backup, restore and data wipe",
+        null,
+        onTap: () {},
+      ),
+      SettingsModel(
+        const Icon(Ionicons.information_circle),
+        "About the app",
+        null,
+        null,
+        onTap: () {},
+      )
     ];
     return Scaffold(
       appBar: AppBar(
@@ -116,6 +131,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onTap: settingsList[index].onTap,
             );
           },
+        ),
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(20),
+        child: CustomFloatingActionButton(
+          heroTag: "profile",
+          widget: const Icon(Ionicons.mail),
+          onPressed: () {},
         ),
       ),
     );

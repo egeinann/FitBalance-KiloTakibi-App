@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/info/model/info_screen.dart';
@@ -50,16 +51,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             style: Theme.of(context).textTheme.bodyMedium),
         Padding(
           padding: context.paddingLarge,
-          child: FloatingActionButton(
-            heroTag: "a",
-            backgroundColor: Theme.of(context).primaryColor,
-            foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-            splashColor: Theme.of(context).scaffoldBackgroundColor,
-            elevation: 20,
+          child: CustomFloatingActionButton(
+            heroTag: "profile",
+            widget: const Icon(Ionicons.pulse),
             onPressed: () {
               Get.to(InfoScreen(), transition: Transition.upToDown);
             },
-            child: const Icon(Icons.help_center),
           ),
         ),
       ],

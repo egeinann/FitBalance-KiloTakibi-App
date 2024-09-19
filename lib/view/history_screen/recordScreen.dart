@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
@@ -54,16 +55,12 @@ class RecordScreen extends StatelessWidget {
   Widget editActionButton(BuildContext context) {
     return Padding(
       padding: context.paddingMedium,
-      child: FloatingActionButton(
+      child: CustomFloatingActionButton(
         heroTag: "${rec.photoUrl}_editButton",
-        backgroundColor: Theme.of(context).primaryColor,
-        foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-        splashColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 10,
+        widget: const Icon(Icons.edit),
         onPressed: () {
           _showEditModalBottomSheet(context);
         },
-        child: const Icon(Icons.edit),
       ),
     );
   }
@@ -217,6 +214,7 @@ class RecordScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.titleLarge,
                           textAlign: TextAlign.center,
                         ),
+                        SizedBox(height: Get.size.height * 0.01),
                         Numbers(
                           value: selectedValue,
                           onChanged: (value) {
@@ -225,7 +223,7 @@ class RecordScreen extends StatelessWidget {
                             });
                           },
                         ),
-                        SizedBox(height: Get.size.height * 0.02),
+                        SizedBox(height: Get.size.height * 0.01),
                         TextField(
                           controller: noteController,
                           onChanged: (value) {
@@ -258,30 +256,25 @@ class RecordScreen extends StatelessWidget {
                             counterText: "",
                           ),
                         ),
-                        SizedBox(height: Get.size.height * 0.02),
+                        SizedBox(height: Get.size.height * 0.01),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: FloatingActionButton(
-                            heroTag: "_saveButton",
-                            backgroundColor: Theme.of(context).primaryColor,
-                            foregroundColor:
-                                Theme.of(context).scaffoldBackgroundColor,
-                            splashColor:
-                                Theme.of(context).scaffoldBackgroundColor,
-                            elevation: 10,
-                            onPressed: () {
-                              onPressedSave(
-                                  context, selectedValue, note, noteController);
-                            },
-                            child: const Text(
+                          child: CustomFloatingActionButton(
+                            heroTag: "_savebutton",
+                            widget: const Text(
                               "Save",
                               style: TextStyle(
                                 fontFamily: "outfit",
                                 color: Colors.white,
                               ),
                             ),
+                            onPressed: () {
+                              onPressedSave(
+                                  context, selectedValue, note, noteController);
+                            },
                           ),
                         ),
+                        SizedBox(height: Get.size.height * 0.01)
                       ],
                     ),
                   ],
@@ -320,10 +313,9 @@ class RecordScreen extends StatelessWidget {
       SnackbarHelper.showSnackbar(
           title: "Record updated",
           message: DateFormat("d MMMM, y").format(rec.dateTime),
-        backgroundColor: Colors.green,
+          backgroundColor: Colors.green,
           duration: const Duration(milliseconds: 1500),
-          icon: const Icon(Icons.save)
-      );
+          icon: const Icon(Icons.save));
     });
   }
 

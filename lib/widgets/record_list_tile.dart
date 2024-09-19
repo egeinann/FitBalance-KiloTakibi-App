@@ -9,7 +9,7 @@ import 'package:kilo_takibi_uyg/models/record.dart';
 class RecordListTile extends StatelessWidget {
   final Record rec;
 
-  RecordListTile({super.key, required this.rec});
+  const RecordListTile({super.key, required this.rec});
 
   @override
   Widget build(BuildContext context) {

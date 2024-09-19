@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/appCustoms/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
@@ -111,16 +112,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
-                FloatingActionButton(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-                  splashColor: Theme.of(context).scaffoldBackgroundColor,
-                  elevation: 20,
+                CustomFloatingActionButton(
+                  widget: const Icon(Icons.delete),
                   onPressed: () {
                     deleteAllShowDialog(context);
                   },
-                  child: const Icon(Icons.delete),
-                )
+                ),
               ],
             ),
           ],
@@ -169,7 +166,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     _controller.deleteAllRecords(_controller.listKey);
                     SnackbarHelper.showSnackbar(
                       title: "You deleted all records",
-                      message: "message",
+                      message: "There are no more records",
                       backgroundColor: Colors.red,
                       duration: const Duration(milliseconds: 1500),
                       icon: const Icon(Icons.delete),

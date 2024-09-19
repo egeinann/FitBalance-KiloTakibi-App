@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
@@ -125,16 +126,12 @@ class _ChangeNameScreenState extends State<ChangeNameScreen> {
         ),
         floatingActionButton: Padding(
           padding: context.paddingLarge,
-          child: FloatingActionButton(
-            heroTag: "a",
-            backgroundColor: Theme.of(context).primaryColor,
-            foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-            splashColor: Theme.of(context).scaffoldBackgroundColor,
-            elevation: 20,
+          child: CustomFloatingActionButton(
+            heroTag: "profile",
+            widget: const Icon(Icons.done),
             onPressed: () {
               changeNameSave();
             },
-            child: const Icon(Icons.done),
           ),
         ),
       ),

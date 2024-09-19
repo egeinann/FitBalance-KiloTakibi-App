@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/info/controller/info_controller.dart';
 import 'package:kilo_takibi_uyg/info/view/activity_screen.dart';
@@ -65,18 +66,13 @@ class InfoScreen extends StatelessWidget {
                         controller: _infoController.pageController,
                         count: 4,
                       ),
-                      FloatingActionButton(
-                        heroTag: "a",
-                        backgroundColor: Theme.of(context).primaryColor,
-                        foregroundColor:
-                            Theme.of(context).scaffoldBackgroundColor,
-                        splashColor: Theme.of(context).scaffoldBackgroundColor,
-                        elevation: 10,
+                      CustomFloatingActionButton(
+                        heroTag: "profile",
+                        widget: const Icon(Ionicons.arrow_forward),
                         onPressed: () {
                           _infoController.goToNextInfo();
                         },
-                        child: const Icon(Ionicons.arrow_forward),
-                      ),
+                      )
                     ],
                   ),
                 ),

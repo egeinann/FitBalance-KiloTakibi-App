@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/appCustoms/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 import 'package:kilo_takibi_uyg/view/gallery_screen/photo_screen.dart';
@@ -92,18 +93,16 @@ class GalleryScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  FloatingActionButton(
+                  CustomFloatingActionButton(
                     heroTag: "${rec.photoUrl}_goRecordScreenButton",
-                    backgroundColor: Theme.of(context).primaryColor,
-                    foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-                    splashColor: Theme.of(context).scaffoldBackgroundColor,
-                    elevation: 10,
+                    widget: const Icon(Ionicons.arrow_forward),
                     onPressed: () {
-                      Get.to(RecordScreen(rec: rec),
-                          transition: Transition.rightToLeft);
+                      Get.to(
+                        RecordScreen(rec: rec),
+                        transition: Transition.rightToLeft,
+                      );
                     },
-                    child: const Icon(Ionicons.arrow_forward),
-                  )
+                  ),
                 ],
               ),
             ),

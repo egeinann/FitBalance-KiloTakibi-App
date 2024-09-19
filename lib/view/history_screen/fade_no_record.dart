@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
-import 'package:kilo_takibi_uyg/widgets/elevated_button.dart';
 
 class FadeNoRecord extends StatefulWidget {
+  const FadeNoRecord({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _FadeNoRecordState createState() => _FadeNoRecordState();
 }
 
@@ -12,7 +16,7 @@ class _FadeNoRecordState extends State<FadeNoRecord>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
-  final Controller controller = Get.find(); // GetX ile Controller'ı bul
+  final Controller controller = Get.find();
   @override
   void initState() {
     super.initState();
@@ -37,7 +41,6 @@ class _FadeNoRecordState extends State<FadeNoRecord>
     super.dispose();
   }
 
-  // Bu methodu burada tanımlayın veya bir `noRecord` methodunu `HistoryScreen` içinde tanımlayın
   Center noRecord(BuildContext context) {
     return Center(
       child: Column(
@@ -61,15 +64,13 @@ class _FadeNoRecordState extends State<FadeNoRecord>
                   "We can't see any record here!",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                appButton(
-                  () {
+                const SizedBox(height: 10),
+                CustomFloatingActionButton(
+                  widget: const FittedBox(child: Icon(Ionicons.chevron_back)),
+                  onPressed: () {
                     controller.goToAddScreen();
                   },
-                  Text(
-                    "Go to add screen",
-                    style: TextStyle(fontFamily: "outfit"),
-                  ),
-                )
+                ),
               ],
             ),
           ),

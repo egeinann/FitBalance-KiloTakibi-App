@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
+import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
+import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
-import 'package:kilo_takibi_uyg/widgets/elevated_button.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddScreen extends StatefulWidget {
@@ -124,9 +124,9 @@ class _AddScreenState extends State<AddScreen> {
   Align bottomElevatedButton(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
-      child: appButton(
-        () => addPressed(),
-        const Icon(Icons.add),
+      child: CustomFloatingActionButton(
+        widget: const Icon(Icons.add),
+        onPressed: () => addPressed(),
       ),
     );
   }

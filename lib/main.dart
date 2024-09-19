@@ -3,9 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
-import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen.dart';
-import 'package:kilo_takibi_uyg/view/history_screen/recordScreen.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

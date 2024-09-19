@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:kilo_takibi_uyg/appCustoms/floatingActionButton.dart';
-import 'package:kilo_takibi_uyg/appCustoms/snackbar.dart';
+import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
+import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
+import 'package:lottie/lottie.dart';
 
 class RecordScreen extends StatelessWidget {
   final Record rec;
@@ -39,7 +40,6 @@ class RecordScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              buildImage(),
               buildWeight(context),
               buildNote(context),
               buildPhoto(),
@@ -65,29 +65,46 @@ class RecordScreen extends StatelessWidget {
     );
   }
 
-  // *** IMAGE ***
-  Expanded buildImage() {
-    return Expanded(
-      flex: 1,
-      child: Padding(
-        padding: EdgeInsets.only(left: Get.size.width * 0.06),
-        child: const Image(
-          image: AssetImage("assets/images/homeScreen/recordScreen.png"),
-          fit: BoxFit.scaleDown,
-        ),
-      ),
-    );
-  }
-
   // *** WEIGHT ***
-  Padding buildWeight(BuildContext context) {
-    return Padding(
-      padding: context.paddingLow,
-      child: Hero(
-        tag:
-            "${rec.weight}_${rec.dateTime.toIso8601String()}_weight", // Tarih ve kilo kombinasyonu
-        child: Text("${rec.weight} kg",
-            style: Theme.of(context).textTheme.titleLarge),
+  Widget buildWeight(BuildContext context) {
+    return Expanded(
+      flex: 2,
+      child: Padding(
+        padding: context.paddingLow,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Lottie.asset(
+              'assets/lottie/recordScreenAnimated.json',
+              fit: BoxFit.scaleDown,
+            ),
+            Hero(
+              tag:
+                  "${rec.weight}_${rec.dateTime.toIso8601String()}_weight", // Tarih ve kilo kombinasyonu
+              child: Stack(
+                children: [
+                  // Kenarlık (dış) metin
+                  Text(
+                    '${rec.weight} kg',
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 3
+                            ..color = Colors.black, // Kenarlık rengi
+                        ),
+                  ),
+                  // İç metin
+                  Text(
+                    '${rec.weight} kg',
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: Colors.white, // İç metin rengi
+                        ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -117,10 +134,7 @@ class RecordScreen extends StatelessWidget {
         ),
       );
     } else {
-      return Padding(
-        padding: context.paddingLow,
-        child: Text("No notes !", style: Theme.of(context).textTheme.bodyLarge),
-      );
+      return const SizedBox();
     }
   }
 
@@ -128,7 +142,7 @@ class RecordScreen extends StatelessWidget {
   Widget buildPhoto() {
     if (rec.photoUrl != null && rec.photoUrl!.isNotEmpty) {
       return Expanded(
-        flex: 4,
+        flex: 5,
         child: (rec.photoUrl!.startsWith('file://'))
             ? const SizedBox()
             : Stack(

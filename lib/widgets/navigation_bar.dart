@@ -33,7 +33,7 @@ Widget bottomNavigationBar(BuildContext context) {
       right: Get.size.width * 0.06,
     ),
     child: Container(
-      height: Get.size.height * 0.09, // Yükseklik ayarı yapılmış
+      height: Get.size.height * 0.1, // Yükseklik ayarı yapılmış
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         color: Colors.transparent,

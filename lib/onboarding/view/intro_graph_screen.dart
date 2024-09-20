@@ -18,7 +18,7 @@ class IntroGraph extends StatelessWidget {
               Expanded(
                 flex: 4,
                 child: Lottie.asset(
-                  'assets/lottie/graph.json',
+                  'assets/lottie/graphOnboarding.json',
                   fit: BoxFit.scaleDown,
                 ),
               ),
@@ -32,7 +32,7 @@ class IntroGraph extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    SizedBox(height: Get.size.height * 0.05),
+                    SizedBox(height: Get.size.height * 0.02),
                     AutoSizeText(
                       'Track your progress with graphs!',
                       textAlign: TextAlign.center,

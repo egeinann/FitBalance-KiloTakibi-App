@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
+import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen.dart';
 
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
     return Obx(() {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+        home: OnboardingScreen(),
         theme: ThemeClass.lightTheme,
         darkTheme: ThemeClass.darkTheme,
         themeMode: _controller.themeMode.value,

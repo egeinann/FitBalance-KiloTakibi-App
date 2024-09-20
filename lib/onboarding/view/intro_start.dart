@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
+import 'package:lottie/lottie.dart';
 
 class IntroStart extends StatelessWidget {
   const IntroStart({super.key});
@@ -14,12 +15,11 @@ class IntroStart extends StatelessWidget {
           padding: context.paddingLarge,
           child: Column(
             children: [
-              const Expanded(
+              Expanded(
                 flex: 4,
-                child: Image(
-                  image:
-                      AssetImage("assets/images/onboarding/start_screen.png"),
-                      fit: BoxFit.scaleDown,
+                child: Lottie.asset(
+                  'assets/lottie/startOnboarding.json',
+                  fit: BoxFit.scaleDown,
                 ),
               ),
               Expanded(
@@ -32,7 +32,7 @@ class IntroStart extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    SizedBox(height: Get.size.height * 0.05),
+                    SizedBox(height: Get.size.height * 0.02),
                     AutoSizeText(
                       'Easily record your weight and achieve your goals!',
                       textAlign: TextAlign.center,

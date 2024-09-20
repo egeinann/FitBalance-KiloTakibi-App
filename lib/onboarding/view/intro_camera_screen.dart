@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
+import 'package:lottie/lottie.dart';
 
 class IntroCamera extends StatelessWidget {
   const IntroCamera({super.key});
@@ -15,10 +16,10 @@ class IntroCamera extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Expanded(
+              Expanded(
                 flex: 4,
-                child: Image(
-                  image: AssetImage("assets/images/onboarding/camera_screen.png"),
+                child: Lottie.asset(
+                  'assets/lottie/cameraOnboarding.json',
                   fit: BoxFit.scaleDown,
                 ),
               ),
@@ -30,7 +31,7 @@ class IntroCamera extends StatelessWidget {
                     AutoSizeText('Photo & Gallery',
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.titleLarge),
-                    SizedBox(height: Get.size.height * 0.05),
+                    SizedBox(height: Get.size.height * 0.02),
                     AutoSizeText(
                       'Document your changes with photos!',
                       textAlign: TextAlign.center,

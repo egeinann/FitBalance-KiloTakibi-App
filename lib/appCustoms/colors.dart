@@ -14,7 +14,7 @@ class DarkColors {
   static const Color colorbackground = Color(0xFF1E201E);
   static const Color colorDark = Color(0xFF3C3D37);
   static const Color colorMedium = Color(0xFF4F4A45);
-  static const Color colorPrimary = Color(0xFFFFB200);
+  static const Color colorPrimary = Color.fromARGB(255, 255, 113, 24);
   static const Color colorText = Color.fromARGB(255, 255, 245, 241);
   static const Color colorBottomBar = Color(0xFF2D3250);
   static const Color colorBottomBarIcons = Color.fromARGB(255, 255, 245, 223);

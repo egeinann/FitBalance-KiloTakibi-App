@@ -9,6 +9,7 @@ import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
+import 'package:kilo_takibi_uyg/widgets/textField.dart';
 import 'package:lottie/lottie.dart';
 
 class RecordScreen extends StatelessWidget {
@@ -238,37 +239,20 @@ class RecordScreen extends StatelessWidget {
                           },
                         ),
                         SizedBox(height: Get.size.height * 0.01),
-                        TextField(
+                        CustomTextField(
                           controller: noteController,
+                          labelText: "note",
                           onChanged: (value) {
                             note = value;
                           },
-                          maxLength: 120,
-                          decoration: InputDecoration(
-                            hintText: "Enter a note",
-                            filled: true,
-                            fillColor: Theme.of(context).canvasColor,
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 14, horizontal: 18),
-                            border: const OutlineInputBorder(
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
-                              ),
-                              borderSide: BorderSide.none,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: const BorderRadius.only(
-                                bottomRight: Radius.circular(20),
-                                topLeft: Radius.circular(20),
-                              ),
-                              borderSide: BorderSide(
-                                color: Theme.of(context).canvasColor,
-                                width: 2,
-                              ),
-                            ),
-                            counterText: "",
+                          titleIcon: IconButton(
+                            onPressed: () {
+                              noteController.clear(); // TextField'ı sıfırla
+                              note = ""; // note değişkenini de sıfırla
+                            },
+                            icon: const Icon(Icons.delete),
                           ),
+                          maxLength: 80,
                         ),
                         SizedBox(height: Get.size.height * 0.01),
                         Padding(

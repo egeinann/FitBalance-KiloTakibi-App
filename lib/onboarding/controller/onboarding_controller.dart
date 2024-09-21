@@ -42,7 +42,7 @@ class OnboardingController extends GetxController {
         ); // Geçiş animasyonu ile NameScreen'e dön
       } else {
         // Geçerli kullanıcı adı ile HomeScreen'e geçiş
-        Get.to(HomeScreen(),
+        Get.offAll(HomeScreen(),
             transition: Transition.rightToLeft,
             duration: const Duration(milliseconds: 700));
         resetController();

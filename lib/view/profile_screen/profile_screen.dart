@@ -21,6 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final OnboardingController _onboardingController =
       Get.put(OnboardingController());
   final Controller _controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

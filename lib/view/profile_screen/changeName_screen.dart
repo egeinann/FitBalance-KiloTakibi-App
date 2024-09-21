@@ -7,6 +7,7 @@ import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
+import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
 class ChangeNameScreen extends StatefulWidget {
   const ChangeNameScreen({super.key});
@@ -76,47 +77,18 @@ class _ChangeNameScreenState extends State<ChangeNameScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      TextField(
-                        inputFormatters: [
-                          FilteringTextInputFormatter.deny(
-                              RegExp(r'\s')), // Boşluk karakterlerini engeller
-                        ],
-                        maxLength: 12,
+                      CustomTextField(
                         controller: _onboardingController.nameController,
-                        decoration: InputDecoration(
-                          counterText: "",
-                          labelText: 'Your name',
-                          labelStyle: TextStyle(
-                            color: Colors.grey.shade700,
-                            fontSize: 16,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Theme.of(context).cardColor,
-                              width: 3.0,
-                            ),
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.grey.shade700,
-                              width: 3.0,
-                            ),
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          filled: true,
-                          fillColor: Theme.of(context).scaffoldBackgroundColor,
-                          prefixIcon: Icon(
-                            Ionicons.person,
-                            color: Colors.grey.shade700,
-                          ),
-                        ),
-                        cursorColor: Theme.of(context).focusColor,
-                        style: Theme.of(context).textTheme.titleLarge,
+                        labelText: "Your name",
                         onChanged: (value) {
                           _onboardingController.setUserName(value);
                         },
-                      ),
+                        titleIcon: Icon(
+                          Ionicons.person,
+                          color: Colors.grey.shade700,
+                        ),
+                        maxLength: 12,
+                      )
                     ],
                   ),
                 ),

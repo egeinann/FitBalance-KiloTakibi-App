@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
+import 'package:kilo_takibi_uyg/widgets/lottie_loading.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
@@ -12,6 +13,7 @@ import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
 class AddScreen extends StatefulWidget {
   const AddScreen({super.key});
@@ -38,7 +40,9 @@ class _AddScreenState extends State<AddScreen> {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          FocusScope.of(context).unfocus();
+          // FocusScope.of(context).unfocus();
+          // Sadece TextField odakta olduğunda klavyeyi kapat
+          Get.focusScope?.unfocus();
         },
         behavior: HitTestBehavior.opaque,
         child: Padding(
@@ -51,23 +55,38 @@ class _AddScreenState extends State<AddScreen> {
                   children: [
                     // *** WEIGHT CONTAINER ***
                     weightEntryContainer(),
-                    SizedBox(height: Get.size.height * 0.02),
+                    const Divider(
+                      thickness: 2,
+                      endIndent: 35,
+                      indent: 35,
+                    ),
                     // *** DATE CONTAINER ***
                     dateEntryContainer(context),
-                    SizedBox(height: Get.size.height * 0.02),
+                    const Divider(
+                      thickness: 2,
+                      endIndent: 35,
+                      indent: 35,
+                    ),
                     // *** NOTE CONTAINER ***
                     noteEntryContainer(),
-                    SizedBox(height: Get.size.height * 0.02),
+                    const Divider(
+                      thickness: 2,
+                      endIndent: 35,
+                      indent: 35,
+                    ),
                     // *** ADD PHOTO CONTAINER ***
                     addPhotoContainer(),
-                    SizedBox(height: Get.size.height * 0.15),
+                    SizedBox(height: Get.size.height * 0.12),
                   ],
                 ),
               ),
               // *** BOTTOM ELEVATED BUTTON ***
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: bottomElevatedButton(context),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: bottomElevatedButton(context),
+                ),
               ),
             ],
           ),
@@ -78,7 +97,7 @@ class _AddScreenState extends State<AddScreen> {
 
   // *** DECIMAL OPENNING ANIMATION ***
   void _animateDecimalNumberPicker() {
-    Timer.periodic(const Duration(milliseconds: 50), (timer) {
+    Timer.periodic(const Duration(milliseconds: 10), (timer) {
       setState(() {
         if (_selectedValue < 70) {
           _selectedValue += 5; // Her adımda 5 artır
@@ -99,7 +118,7 @@ class _AddScreenState extends State<AddScreen> {
         title: "There is already a record for the same date",
         message: "Change the date",
         backgroundColor: Colors.red,
-        duration: const Duration(milliseconds: 1500),
+        duration: const Duration(milliseconds: 1100),
         icon: const Icon(Ionicons.calendar_outline),
       );
       return;
@@ -141,88 +160,43 @@ class _AddScreenState extends State<AddScreen> {
             context: context,
             initialDate: DateTime.now(),
             firstDate: DateTime.now().subtract(const Duration(days: 365)),
-            lastDate: DateTime.now().add(const Duration(days: 500))) ??
+            lastDate: DateTime.now().add(const Duration(days: 100))) ??
         _selectedDate;
     setState(() {});
   }
 
   // *** ADD NOTE ***
   Widget noteEntryContainer() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).cardColor,
-      ),
-      child: Padding(
-        padding: context.paddingLarge,
-        child: TextField(
-          controller: _noteController,
-          maxLength: 60,
-          decoration: InputDecoration(
-            hintText: "Enter a note",
-            filled: true,
-            fillColor: Theme.of(context).canvasColor,
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
-            border: const OutlineInputBorder(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
-              borderSide: BorderSide.none,
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: const BorderRadius.only(
-                bottomRight: Radius.circular(20),
-                topLeft: Radius.circular(20),
-              ),
-              borderSide:
-                  BorderSide(color: Theme.of(context).canvasColor, width: 2),
-            ),
-            counterText: "",
-          ),
-          onChanged: (value) {
-            _note = value;
+    return Padding(
+      padding: context.paddingLarge,
+      child: CustomTextField(
+        controller: _noteController,
+        labelText: "note",
+        onChanged: (value) {
+          _note = value;
+        },
+        titleIcon: IconButton(
+          onPressed: () {
+            _noteController.clear(); // TextField'ı sıfırla
           },
+          icon: const Icon(Icons.delete),
         ),
+        maxLength: 80,
       ),
     );
   }
 
   // *** ADD DATE ***
   Widget dateEntryContainer(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).cardColor,
-      ),
-      child: InkWell(
-        onTap: () {
-          pickDate(context);
-        },
-        child: Padding(
-          padding: context.paddingLarge,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                  ),
-                  color: Theme.of(context).canvasColor,
-                ),
-                child: Text("SELECTED DATE",
-                    style: Theme.of(context).textTheme.bodyMedium),
-              ),
-              Text(
-                DateFormat("d MMM, y").format(_selectedDate),
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            ],
-          ),
+    return InkWell(
+      onTap: () {
+        pickDate(context);
+      },
+      child: Padding(
+        padding: context.paddingLarge,
+        child: Text(
+          DateFormat("d MMM, y").format(_selectedDate),
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
       ),
     );
@@ -230,53 +204,38 @@ class _AddScreenState extends State<AddScreen> {
 
   // *** ADD WEIGHT ***
   Widget weightEntryContainer() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).cardColor,
-      ),
-      child: Padding(
-        padding: context.paddingLarge,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        topRight: Radius.circular(10),
-                        bottomLeft: Radius.circular(10),
-                      ),
-                      color: Theme.of(context).canvasColor),
-                  child: Text("YOUR WEIGHT",
-                      style: Theme.of(context).textTheme.bodyMedium),
-                ),
-                Text("$_selectedValue kg",
-                    style: Theme.of(context).textTheme.displaySmall),
-              ],
-            ),
-            Stack(
-              alignment: Alignment.centerRight,
-              children: [
-                Numbers(
-                  value: _selectedValue,
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedValue = value;
-                    });
-                  },
-                ),
-                const Icon(
-                  Icons.arrow_left_rounded,
-                  size: 20,
-                ),
-              ],
-            ), // _selectedvalue
-          ],
-        ),
+    return Padding(
+      padding: context.paddingLarge,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("YOUR WEIGHT",
+                  style: Theme.of(context).textTheme.bodyMedium),
+              Text("$_selectedValue kg",
+                  style: Theme.of(context).textTheme.displaySmall),
+            ],
+          ),
+          Stack(
+            alignment: Alignment.centerRight,
+            children: [
+              Numbers(
+                value: _selectedValue,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedValue = value;
+                  });
+                },
+              ),
+              const Icon(
+                Ionicons.chevron_back,
+                size: 12,
+              ),
+            ],
+          ), // _selectedvalue
+        ],
       ),
     );
   }
@@ -284,60 +243,52 @@ class _AddScreenState extends State<AddScreen> {
   // *** ADD PHOTO ***
   Widget addPhotoContainer() {
     return Obx(() {
-      return _controller.photoUrl.value == null
-          ? Stack(
-              children: [
-                FloatingActionButton(
-                  heroTag: "d",
-                  splashColor: Theme.of(context).primaryColor,
-                  backgroundColor: Theme.of(context).cardColor,
-                  onPressed: () {
-                    _pickImage();
-                  },
-                  child: const Icon(Ionicons.camera),
+      if (_controller.isLoading.value) {
+        // Yükleme sırasında Lottie animasyonu göster
+        return const LottieWidget();
+      } else if (_controller.photoUrl.value == null) {
+        return Padding(
+          padding: context.paddingLarge,
+          child: FloatingActionButton(
+            heroTag: "onboarding",
+            splashColor: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).cardColor,
+            onPressed: () {
+              _pickImage();
+            },
+            child: const Icon(Ionicons.camera),
+          ),
+        );
+      } else {
+        return Padding(
+          padding: context.paddingLarge,
+          child: Stack(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Theme.of(context).canvasColor,
                 ),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).canvasColor,
-                    ),
-                    child: const Icon(Icons.add),
-                  ),
+                child: Image.file(
+                  File(_controller.photoUrl.value!),
+                  fit: BoxFit.cover,
                 ),
-              ],
-            )
-          : Padding(
-              padding: context.paddingLarge,
-              child: Stack(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Theme.of(context).canvasColor,
-                    ),
-                    child: Image.file(
-                      File(_controller.photoUrl.value!),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: IconButton(
-                      icon: const Icon(Ionicons.close,
-                          color: Colors.red, size: 40),
-                      onPressed: () {
-                        _controller.photoUrl.value = null; // Fotoğrafı kaldır
-                      },
-                    ),
-                  ),
-                ],
               ),
-            );
+              Positioned(
+                right: 0,
+                top: 0,
+                child: IconButton(
+                  icon: const Icon(Ionicons.close, color: Colors.red, size: 40),
+                  onPressed: () {
+                    _controller.photoUrl.value = null; // Fotoğrafı kaldır
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      }
     });
   }
 
@@ -365,13 +316,17 @@ class _AddScreenState extends State<AddScreen> {
     );
 
     if (source != null) {
+      _controller.isLoading.value = true; // Yükleme başlıyor
       final pickedFile = await picker.pickImage(source: source);
 
+      // Minimum gösterim süresi (örneğin, 1 saniye)
+      await Future.delayed(const Duration(milliseconds: 1100));
+
       if (pickedFile != null) {
-        setState(() {
-          _controller.photoUrl.value = pickedFile.path;
-        });
+        _controller.photoUrl.value = pickedFile.path;
       }
+
+      _controller.isLoading.value = false; // Yükleme tamamlandı
     }
   }
 }

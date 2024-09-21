@@ -18,6 +18,7 @@ class ChangeTargetWeightScreen extends StatefulWidget {
 
 class _ChangeTargetWeightScreenState extends State<ChangeTargetWeightScreen> {
   final OnboardingController _onboardingController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

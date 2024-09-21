@@ -4,6 +4,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_camera_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_graph_screen.dart';
+import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../view/intro_start.dart';
 import '../view/name_screen.dart';
@@ -53,16 +54,13 @@ class OnboardingScreen extends StatelessWidget {
                       controller: onboardingController.pageController,
                       count: 5,
                     ),
-                    FloatingActionButton(
-                      backgroundColor: Theme.of(context).primaryColor,
-                      foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-                      splashColor: Theme.of(context).scaffoldBackgroundColor,
-                      elevation: 10,
+                    CustomFloatingActionButton(
+                      heroTag: "onboarding",
+                      widget: const Icon(Ionicons.arrow_forward),
                       onPressed: () {
                         onboardingController.goToNextPage();
                       },
-                      child: const Icon(Ionicons.arrow_forward),
-                    ),
+                    )
                   ],
                 ),
               ),

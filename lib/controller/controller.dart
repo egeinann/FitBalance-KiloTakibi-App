@@ -8,7 +8,9 @@ class Controller extends GetxController {
   var currentTabIndex = 2.obs; // homescreen sayfa index
   var appBarTitle = 'Add'.obs; // Başlangıç başlığı
   RxList<Record> records = <Record>[].obs; // record objeleri tutan list
-  final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> listKey =
+      GlobalKey<AnimatedListState>(); // liste animasyonu için
+  RxBool isLoading = false.obs; // loading lottie için
 
   // yeni record ekleme methodu
   void addRecord(Record record) {

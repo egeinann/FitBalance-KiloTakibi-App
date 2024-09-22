@@ -138,7 +138,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       child: InkWell(
         onTap: () {
-          Get.to(const ChangeNameScreen(), transition: Transition.rightToLeft);
+          Get.to(const ChangeNameScreen(),
+              transition: Transition.rightToLeftWithFade);
         },
         child: Padding(
           padding: context.paddingLarge,
@@ -186,7 +187,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: InkWell(
         onTap: () {
           Get.to(const ChangeTargetWeightScreen(),
-              transition: Transition.rightToLeft);
+              transition: Transition.rightToLeftWithFade);
         },
         child: Padding(
           padding: context.paddingLarge,

@@ -41,7 +41,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         },
       ),
       SettingsModel(
-        const Icon(Ionicons.color_palette),
+        const Icon(Icons.format_color_fill_rounded),
         "Theme",
         null,
         SizedBox(

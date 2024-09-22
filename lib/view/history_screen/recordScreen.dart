@@ -55,10 +55,10 @@ class RecordScreen extends StatelessWidget {
   // *** EDIT BUTTON ***
   Widget editActionButton(BuildContext context) {
     return Padding(
-      padding: context.paddingMedium,
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
       child: CustomFloatingActionButton(
         heroTag: "${rec.photoUrl}_editButton",
-        widget: const Icon(Icons.edit),
+        widget: const Icon(Icons.draw),
         onPressed: () {
           _showEditModalBottomSheet(context);
         },
@@ -250,7 +250,7 @@ class RecordScreen extends StatelessWidget {
                               noteController.clear(); // TextField'ı sıfırla
                               note = ""; // note değişkenini de sıfırla
                             },
-                            icon: const Icon(Icons.delete),
+                            icon: const Icon(Icons.backspace),
                           ),
                           maxLength: 80,
                         ),

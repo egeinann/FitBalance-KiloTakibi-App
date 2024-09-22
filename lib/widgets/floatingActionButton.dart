@@ -20,7 +20,7 @@ class CustomFloatingActionButton extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Theme.of(context).scaffoldBackgroundColor,
         splashColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 20,
+        elevation: 10,
         onPressed: onPressed,
         child: widget);
   }

@@ -36,7 +36,6 @@ Widget bottomNavigationBar(BuildContext context) {
       height: Get.size.height * 0.1, // Yükseklik ayarı yapılmış
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Colors.transparent,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
@@ -63,22 +62,27 @@ Widget bottomNavigationBar(BuildContext context) {
             BottomNavigationBarItem(
               icon: Icon(Icons.show_chart),
               label: 'Graph',
+
             ),
             BottomNavigationBarItem(
               icon: Icon(Ionicons.image),
               label: 'Gallery',
+
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.add),
               label: 'Add',
+
             ),
             BottomNavigationBarItem(
               icon: Icon(Ionicons.layers),
               label: 'History',
+
             ),
             BottomNavigationBarItem(
               icon: Icon(Ionicons.person),
               label: 'Profile',
+
             ),
           ],
           currentIndex: _controller.currentTabIndex.value,

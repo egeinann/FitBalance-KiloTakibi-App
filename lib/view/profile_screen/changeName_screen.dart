@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';

@@ -41,26 +41,17 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Obx(() {
-        return Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Theme.of(context)
-                    .scaffoldBackgroundColor, // Temadan alınan renk
-                Color.fromARGB(255, 27, 130, 208), // Benzer bir ton
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          child: indexedStack(), // IndexedStack, gözlemlenen değişkeni içerir
-        );
-      }),
-      bottomNavigationBar: Obx(() {
-        return bottomNavigationBar(
-            context); // CustomBottomNavigationBar, gözlemlenen değişkeni içerir
-      }),
+      body: Obx(
+        () {
+          return indexedStack();
+        },
+      ),
+      bottomNavigationBar: Obx(
+        () {
+          return bottomNavigationBar(
+              context); // CustomBottomNavigationBar, gözlemlenen değişkeni içerir
+        },
+      ),
     );
   }
 }

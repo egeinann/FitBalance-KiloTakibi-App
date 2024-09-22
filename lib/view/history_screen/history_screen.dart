@@ -29,7 +29,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               flex: 12,
               child: Obx(
                 () => _controller.records.isEmpty
-                    ? FadeNoRecord() // Animasyonlu boş ekran widget'ı
+                    ? const FadeNoRecord() // Animasyonlu boş ekran widget'ı
                     : buildRecords(context),
               ),
             ),
@@ -80,7 +80,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   child: InkWell(
                     onTap: () => Get.to(
                         RecordScreen(rec: _controller.records[index]),
-                        transition: Transition.rightToLeft),
+                        transition: Transition.rightToLeftWithFade),
                     child: _controller.buildItem(
                         _controller.records[index], animation),
                   ),

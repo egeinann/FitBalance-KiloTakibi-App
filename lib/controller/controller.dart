@@ -4,6 +4,7 @@ import 'package:kilo_takibi_uyg/models/record.dart';
 import 'package:kilo_takibi_uyg/widgets/record_list_tile.dart';
 
 class Controller extends GetxController {
+  var hasPaid = false.obs;
   var photoUrl = Rxn<String>(); // Reaktif bir değişken
   var currentTabIndex = 2.obs; // homescreen sayfa index
   var appBarTitle = 'Add'.obs; // Başlangıç başlığı
@@ -11,7 +12,11 @@ class Controller extends GetxController {
   final GlobalKey<AnimatedListState> listKey =
       GlobalKey<AnimatedListState>(); // liste animasyonu için
   RxBool isLoading = false.obs; // loading lottie için
-
+  
+  // Grafik Ödeme işlemi gerçekleştirilirse bu fonksiyon çağrılır
+  void completePayment() {
+    hasPaid.value = true; // hasPaid durumunu true yapar
+  }
   // yeni record ekleme methodu
   void addRecord(Record record) {
     if (records.isEmpty || record.dateTime.isBefore(records.last.dateTime)) {

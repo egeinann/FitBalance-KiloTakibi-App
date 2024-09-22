@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
@@ -7,6 +6,8 @@ import '../controller/onboarding_controller.dart';
 
 class NameScreen extends StatelessWidget {
   final OnboardingController onboardingController = Get.find();
+
+  NameScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

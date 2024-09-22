@@ -144,6 +144,7 @@ class _AddScreenState extends State<AddScreen> {
     return Align(
       alignment: Alignment.bottomCenter,
       child: CustomFloatingActionButton(
+        heroTag: "onboarding",
         widget: const Icon(Icons.add),
         onPressed: () => addPressed(),
       ),
@@ -178,8 +179,9 @@ class _AddScreenState extends State<AddScreen> {
         titleIcon: IconButton(
           onPressed: () {
             _noteController.clear(); // TextField'ı sıfırla
+            _note = "";
           },
-          icon: const Icon(Icons.delete),
+          icon: const Icon(Icons.backspace),
         ),
         maxLength: 80,
       ),
@@ -250,7 +252,6 @@ class _AddScreenState extends State<AddScreen> {
         return Padding(
           padding: context.paddingLarge,
           child: FloatingActionButton(
-            heroTag: "onboarding",
             splashColor: Theme.of(context).primaryColor,
             backgroundColor: Theme.of(context).cardColor,
             onPressed: () {

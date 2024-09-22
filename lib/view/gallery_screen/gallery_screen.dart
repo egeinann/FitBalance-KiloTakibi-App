@@ -99,7 +99,7 @@ class GalleryScreen extends StatelessWidget {
                     onPressed: () {
                       Get.to(
                         RecordScreen(rec: rec),
-                        transition: Transition.rightToLeft,
+                        transition: Transition.rightToLeftWithFade,
                       );
                     },
                   ),

@@ -68,7 +68,9 @@ class _FadeNoRecordState extends State<FadeNoRecord>
                 CustomFloatingActionButton(
                   widget: const FittedBox(child: Icon(Ionicons.chevron_back)),
                   onPressed: () {
-                    controller.goToAddScreen();
+                    Future.delayed(const Duration(milliseconds: 200), () {
+                      controller.goToAddScreen();
+                    });
                   },
                 ),
               ],

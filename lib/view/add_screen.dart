@@ -97,7 +97,7 @@ class _AddScreenState extends State<AddScreen> {
 
   // *** DECIMAL OPENNING ANIMATION ***
   void _animateDecimalNumberPicker() {
-    Timer.periodic(const Duration(milliseconds: 10), (timer) {
+    Timer.periodic(const Duration(milliseconds: 20), (timer) {
       setState(() {
         if (_selectedValue < 70) {
           _selectedValue += 5; // Her adımda 5 artır
@@ -146,7 +146,12 @@ class _AddScreenState extends State<AddScreen> {
       child: CustomFloatingActionButton(
         heroTag: "onboarding",
         widget: const Icon(Icons.add),
-        onPressed: () => addPressed(),
+        onPressed: () => Future.delayed(
+          const Duration(milliseconds: 200),
+          () {
+            addPressed();
+          },
+        ),
       ),
     );
   }

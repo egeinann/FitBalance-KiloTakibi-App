@@ -8,19 +8,19 @@ import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 
-class ChangeTargetWeightScreen extends StatefulWidget {
-  const ChangeTargetWeightScreen({super.key});
+class ChangeTargetWeightScreen extends StatelessWidget {
+  ChangeTargetWeightScreen({super.key});
 
-  @override
-  State<ChangeTargetWeightScreen> createState() =>
-      _ChangeTargetWeightScreenState();
-}
-
-class _ChangeTargetWeightScreenState extends State<ChangeTargetWeightScreen> {
   final OnboardingController _onboardingController = Get.find();
-
+  
+  // Geçici hedef ağırlık değişkeni
+  final RxDouble _temporaryTargetWeight = RxDouble(0.0);
+  // done'ye basılmadan değişiklik olmayacak
   @override
   Widget build(BuildContext context) {
+    // Ekran açıldığında geçici hedef ağırlığı mevcut değere ayarlayın
+    _temporaryTargetWeight.value = _onboardingController.targetWeight.value;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -69,9 +69,9 @@ class _ChangeTargetWeightScreenState extends State<ChangeTargetWeightScreen> {
                         children: [
                           Obx(
                             () => Numbers(
-                              value: _onboardingController.targetWeight.value,
+                              value: _temporaryTargetWeight.value,
                               onChanged: (value) {
-                                _onboardingController.setTargetWeight(value);
+                                _temporaryTargetWeight.value = value;
                               },
                             ),
                           ),
@@ -95,7 +95,8 @@ class _ChangeTargetWeightScreenState extends State<ChangeTargetWeightScreen> {
           heroTag: "profile",
           widget: const Icon(Icons.done),
           onPressed: () {
-            _onboardingController.targetWeight.value;
+            // "Done" düğmesine basıldığında geçici hedef ağırlığı kaydet
+            _onboardingController.setTargetWeight(_temporaryTargetWeight.value);
             Get.back();
             SnackbarHelper.showSnackbar(
               title: "Your target weight has been updated",

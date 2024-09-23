@@ -70,7 +70,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         // Resmi gösteren kısım
         Obx(
-          () => Image(
+          () => AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300), // Animasyon süresi
+            child: Image(
+              key: ValueKey<bool>(_controller.selectedGenderRange[
+                  0]), // Animasyonu tetiklemek için bir anahtar
             image: AssetImage(
               _controller.selectedGenderRange[0]
                   ? "assets/images/profile/male.png"
@@ -79,6 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             fit: BoxFit.scaleDown,
             height: Get.size.height * 0.2,
           ),
+        ),
         ),
         Obx(
           () => ToggleButtons(
@@ -128,7 +133,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ],
     );
   }
-
   // *** NAME CONTAINER ***
   Container nameContainer(BuildContext context) {
     return Container(
@@ -138,7 +142,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       child: InkWell(
         onTap: () {
-          Get.to(const ChangeNameScreen(),
+          Get.to(ChangeNameScreen(),
               transition: Transition.rightToLeftWithFade);
         },
         child: Padding(
@@ -186,7 +190,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       child: InkWell(
         onTap: () {
-          Get.to(const ChangeTargetWeightScreen(),
+          Get.to(ChangeTargetWeightScreen(),
               transition: Transition.rightToLeftWithFade);
         },
         child: Padding(

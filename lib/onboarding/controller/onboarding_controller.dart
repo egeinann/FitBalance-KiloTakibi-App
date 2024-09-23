@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/view/home_screen.dart';
+import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 
 class OnboardingController extends GetxController {
   var currentIndex = 0.obs;
   var userName = ''.obs;
   var targetWeight = 70.0.obs;
   var onLastPage = false.obs;
+  final RxString temporaryUserName = ''.obs;
 
   PageController pageController = PageController();
   TextEditingController nameController = TextEditingController();
@@ -28,12 +31,12 @@ class OnboardingController extends GetxController {
     if (onLastPage.value) {
       // Son sayfadaysanız
       if (nameController.text.isEmpty) {
-        Get.snackbar(
-          "",
-          "Please enter your name",
-          snackStyle: SnackStyle.FLOATING,
-          snackPosition: SnackPosition.TOP,
+        SnackbarHelper.showSnackbar(
+          title: "Enter your name !",
+          message: "This section cannot be left blank",
+          backgroundColor: Colors.red,
           duration: const Duration(seconds: 2),
+          icon: const Icon(Ionicons.person),
         );
         pageController.animateToPage(
           3,
@@ -42,9 +45,11 @@ class OnboardingController extends GetxController {
         ); // Geçiş animasyonu ile NameScreen'e dön
       } else {
         // Geçerli kullanıcı adı ile HomeScreen'e geçiş
-        Get.offAll(HomeScreen(),
-            transition: Transition.rightToLeft,
-            duration: const Duration(milliseconds: 700));
+        Future.delayed(const Duration(milliseconds: 300), () {
+          Get.offAll(HomeScreen(),
+              transition: Transition.fadeIn,
+              duration: const Duration(seconds: 1));
+        });
         resetController();
       }
     } else {

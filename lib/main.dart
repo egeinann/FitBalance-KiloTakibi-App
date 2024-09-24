@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     return Obx(() {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: OnboardingScreen(),
+        home: HomeScreen(),
         theme: ThemeClass.lightTheme,
         darkTheme: ThemeClass.darkTheme,
         themeMode: _controller.themeMode.value,

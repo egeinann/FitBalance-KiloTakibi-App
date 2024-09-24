@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
@@ -29,7 +30,7 @@ class RecordScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              deleteShowDialog(context);
+              showDeleteConfirmation(rec);
             },
             icon: const Icon(Icons.delete),
           ),
@@ -90,7 +91,7 @@ class RecordScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.labelSmall!.copyWith(
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
+                            ..strokeWidth = 4
                             ..color = Colors.black, // Kenarlık rengi
                         ),
                   ),
@@ -98,7 +99,19 @@ class RecordScreen extends StatelessWidget {
                   Text(
                     '${rec.weight} kg',
                     style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                          color: Colors.white, // İç metin rengi
+                          foreground: Paint()
+                            ..shader = const LinearGradient(
+                              colors: <Color>[
+                                Colors.pink,
+                                Colors.pink,
+                                Colors.orange,
+                                Colors.orange,
+                                Colors.orange,
+                                Colors.pink, // Birinci renk
+                                Colors.orange, // İkinci renk
+                              ],
+                            ).createShader(const Rect.fromLTWH(
+                                0, 0, 200, 70)), // Boyutları ayarlayın
                         ),
                   ),
                 ],
@@ -170,19 +183,7 @@ class RecordScreen extends StatelessWidget {
                       icon: const Icon(Ionicons.close,
                           color: Colors.red, size: 40),
                       onPressed: () {
-                        _controller.removePhoto(rec);
-                        Get.back();
-                        _controller.goToHistoryScreen();
-                        Future.delayed(const Duration(milliseconds: 300), () {
-                          Get.back();
-                          SnackbarHelper.showSnackbar(
-                              title: "Record updated",
-                              message:
-                                  DateFormat("d MMMM, y").format(rec.dateTime),
-                              backgroundColor: Colors.green,
-                              duration: const Duration(milliseconds: 1500),
-                              icon: const Icon(Icons.camera_alt));
-                        });
+                        showDeletePhoto(rec);
                       },
                     ),
                   ),
@@ -193,7 +194,7 @@ class RecordScreen extends StatelessWidget {
       return const Expanded(flex: 4, child: Center(child: Text("No photo !")));
     }
   }
-
+  
   // *** edit model bottom sheet  ***
   void _showEditModalBottomSheet(BuildContext context) {
     double selectedValue = rec.weight;
@@ -317,50 +318,46 @@ class RecordScreen extends StatelessWidget {
     });
   }
 
-  // *** DELETE SHOW DIALOG ***
-  Future<dynamic> deleteShowDialog(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            "Delete Record",
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          content: Text(
-            "Are you sure you want to delete this record?",
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                "Cancel",
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: const Text(
-                "Delete",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                ),
-              ),
-              onPressed: () {
-                _controller.deleteRecord(rec);
-                Get.back();
-                Future.delayed(
-                  const Duration(milliseconds: 200),
-                  () {
-                    Get.back();
-                  },
-                );
-              },
-            ),
-          ],
+  // *** RECORD DELETE SHOW DIALOG ***
+  Future<dynamic> showDeleteConfirmation(Record rec) {
+    return DialogService.deleteShowDialog(
+      title: "Delete Record",
+      content: "Are you sure you want to delete this record ?",
+      onCancel: () {},
+      onConfirm: () {
+        Future.delayed(
+          const Duration(milliseconds: 200),
+          () {
+            Get.back(); // dialogu kapat
+            _controller.goToHistoryScreen(); // Geçiş yap
+            _controller.deleteRecord(rec); // Kayıt silme işlemi
+          },
+        );
+      },
+    );
+  }
+
+  // *** PHOTO DELETE SHOW DIALOG ***
+  Future<dynamic> showDeletePhoto(Record rec) {
+    return DialogService.deleteShowDialog(
+      title: "Delete Photo",
+      content: "Are you sure you want to delete this photo ?",
+      onCancel: () {},
+      onConfirm: () {
+        _controller.removePhoto(rec);
+        Get.back();
+        _controller.goToHistoryScreen();
+        Future.delayed(
+          const Duration(milliseconds: 300),
+          () {
+            Get.back();
+            SnackbarHelper.showSnackbar(
+                title: "Record updated",
+                message: DateFormat("d MMMM, y").format(rec.dateTime),
+                backgroundColor: Colors.green,
+                duration: const Duration(milliseconds: 1500),
+                icon: const Icon(Icons.camera_alt));
+          },
         );
       },
     );

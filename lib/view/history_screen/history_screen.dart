@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
@@ -128,54 +129,23 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   // *** DELETE SHOW DIALOG ***
   Future<dynamic> deleteAllShowDialog(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            "Delete all",
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          content: Text(
-            "Are you sure you want to delete all records?",
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                "Cancel",
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: const Text(
-                "Delete",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(); // Dialog'u kapat
-                Future.delayed(
-                  const Duration(milliseconds: 300), // Kısa bir gecikme ekleyin
-                  () {
-                    _controller.deleteAllRecords(_controller.listKey);
-                    SnackbarHelper.showSnackbar(
-                      title: "You deleted all records",
-                      message: "There are no more records",
-                      backgroundColor: Colors.red,
-                      duration: const Duration(milliseconds: 1500),
-                      icon: const Icon(Icons.delete),
-                    );
-                  },
-                );
-              },
-            ),
-          ],
+    return DialogService.deleteShowDialog(
+      title: "Delete all records !",
+      content: "Are you sure all records will be deleted ?",
+      onCancel: () {},
+      onConfirm: () {
+        Future.delayed(
+          const Duration(milliseconds: 300), // Kısa bir gecikme ekleyin
+          () {
+            _controller.deleteAllRecords(_controller.listKey);
+            SnackbarHelper.showSnackbar(
+              title: "You deleted all records",
+              message: "There are no more records",
+              backgroundColor: Colors.red,
+              duration: const Duration(milliseconds: 1500),
+              icon: const Icon(Icons.delete),
+            );
+          },
         );
       },
     );

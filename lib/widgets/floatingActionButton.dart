@@ -6,16 +6,19 @@ class CustomFloatingActionButton extends StatelessWidget {
   final Widget widget;
   final VoidCallback onPressed;
   final String? heroTag;
+  final bool? mini;
   const CustomFloatingActionButton({
     super.key,
     required this.widget,
     required this.onPressed,
     this.heroTag,
+    this.mini = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
+        mini: mini ?? false,
         heroTag: heroTag,
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Theme.of(context).scaffoldBackgroundColor,

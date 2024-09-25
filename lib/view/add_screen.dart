@@ -165,8 +165,8 @@ class _AddScreenState extends State<AddScreen> {
             },
             context: context,
             initialDate: DateTime.now(),
-            firstDate: DateTime.now().subtract(const Duration(days: 365)),
-            lastDate: DateTime.now().add(const Duration(days: 100))) ??
+            firstDate: DateTime.now().subtract(const Duration(days: 0)),
+            lastDate: DateTime.now().add(const Duration(days: 500))) ??
         _selectedDate;
     setState(() {});
   }

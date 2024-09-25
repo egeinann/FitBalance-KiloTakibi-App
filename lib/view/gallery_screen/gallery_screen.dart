@@ -49,7 +49,6 @@ class GalleryScreen extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,6 +63,7 @@ class GalleryScreen extends StatelessWidget {
                                     child: Hero(
                                       tag: "${rec.photoUrl!}_photo",
                                       child: Container(
+                                        width: Get.size.width * 0.4,
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(5),
@@ -94,12 +94,18 @@ class GalleryScreen extends StatelessWidget {
                     ],
                   ),
                   CustomFloatingActionButton(
+                    mini: true,
                     heroTag: "${rec.photoUrl}_goRecordScreenButton",
                     widget: const Icon(Ionicons.arrow_forward),
                     onPressed: () {
-                      Get.to(
-                        RecordScreen(rec: rec),
-                        transition: Transition.rightToLeftWithFade,
+                      Future.delayed(
+                        const Duration(milliseconds: 250),
+                        () {
+                          Get.to(
+                            RecordScreen(rec: rec),
+                            transition: Transition.rightToLeftWithFade,
+                          );
+                        },
                       );
                     },
                   ),

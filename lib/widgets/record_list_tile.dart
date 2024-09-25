@@ -17,6 +17,7 @@ class RecordListTile extends StatelessWidget {
     return Stack(
       children: [
         Container(
+          height: 60,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             gradient: LinearGradient(
@@ -29,7 +30,7 @@ class RecordListTile extends StatelessWidget {
           child: Center(
             child: ListTile(
               contentPadding:
-                  const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  const EdgeInsets.symmetric(horizontal: 10),
               leading: customLeading(context),
               trailing: customTrailing(context),
             ),

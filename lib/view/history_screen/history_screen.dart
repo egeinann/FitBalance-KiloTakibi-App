@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
@@ -113,11 +114,22 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
-                CustomFloatingActionButton(
-                  widget: const Icon(Icons.delete),
-                  onPressed: () {
-                    deleteAllShowDialog(context);
-                  },
+                Row(
+                  children: [
+                    CustomFloatingActionButton(
+                      widget: const Icon(Ionicons.search),
+                      onPressed: () {
+                        _showMonthSelector(context);
+                      },
+                    ),
+                    const SizedBox(width: 10),
+                    CustomFloatingActionButton(
+                      widget: const Icon(Icons.delete),
+                      onPressed: () {
+                        deleteAllShowDialog(context);
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -125,6 +137,108 @@ class _HistoryScreenState extends State<HistoryScreen> {
         ),
       ],
     );
+  }
+
+  // *** BOTTOM SHEET AÇMA ***
+  void _showMonthSelector(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.all(16.0),
+          height: 300,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Select Month',
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: ListView(
+                  children: List.generate(12, (index) {
+                    return ListTile(
+                      title: Center(
+                        child: Text(
+                          _getMonthName(index),
+                        ),
+                      ),
+                      onTap: () {
+                        // Ay seçimi yapıldığında kaydırma işlemi
+                        _scrollToMonth(index + 1); // Seçilen ay için kaydırma
+                        Navigator.pop(context); // BottomSheet'i kapat
+                      },
+                    );
+                  }),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  String _getMonthName(int index) {
+    List<String> months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ];
+    return months[index];
+  }
+
+  // *** SEÇİLEN AY İÇİN KAYDIRMA ***
+  void _scrollToMonth(int month) {
+    // Belirtilen ayda kayıtları filtreleyin
+    final monthRecords = _controller.records.where((record) {
+      return record.dateTime.month == month;
+    }).toList();
+
+    if (monthRecords.isNotEmpty) {
+      // Eğer kayıt varsa, ayın ortasını hesapla
+      int midIndex =
+          monthRecords.length ~/ 2; // Ayın ortasındaki kaydın indeksi
+      int index = _controller.records.indexOf(monthRecords[
+          midIndex]); // Ay ortasındaki kaydın ana kayıtlar listesindeki indeksi
+
+      // Kayıt yüksekliği ve padding
+      double itemHeight = 60.0; // Her bir kaydın yüksekliği
+      double paddingVertical = 2.0; // Her bir kaydın dikey padding'i
+      double totalItemHeight =
+          itemHeight + (paddingVertical * 2); // Toplam kayıt yüksekliği
+
+      // Ortalamak için kaydırma hesaplaması
+      double offset =
+          (MediaQuery.of(context).size.height / 2) - (totalItemHeight / 2);
+
+      // Kaydırma yap
+      scrollController.animateTo(
+        index * totalItemHeight -
+            offset, // Kayıt yüksekliğine göre kaydırma yap
+        duration: const Duration(milliseconds: 2000),
+        curve: Curves.easeOut,
+      );
+    } else {
+      // Kayıt yoksa bildirim göster
+      SnackbarHelper.showSnackbar(
+        icon: const Icon(Icons.error),
+        title: "No records found for this month",
+        message: "Please select a different month.",
+        backgroundColor: Colors.orange,
+        duration: const Duration(milliseconds: 1500),
+      );
+    }
   }
 
   // *** DELETE SHOW DIALOG ***

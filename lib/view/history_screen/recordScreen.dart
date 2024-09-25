@@ -159,35 +159,37 @@ class RecordScreen extends StatelessWidget {
         flex: 5,
         child: (rec.photoUrl!.startsWith('file://'))
             ? const SizedBox()
-            : Stack(
-                children: [
-                  Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(23)),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(
-                        10,
-                      ),
-                      child: Image(
-                        image: FileImage(
-                          File(rec.photoUrl!),
+            : Center(
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(23)),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                          10,
                         ),
-                        fit: BoxFit.cover,
+                        child: Image(
+                          image: FileImage(
+                            File(rec.photoUrl!),
+                          ),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: IconButton(
-                      icon: const Icon(Ionicons.close,
-                          color: Colors.red, size: 40),
-                      onPressed: () {
-                        showDeletePhoto(rec);
-                      },
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      child: IconButton(
+                        icon: const Icon(Ionicons.close,
+                            color: Colors.red, size: 40),
+                        onPressed: () {
+                          showDeletePhoto(rec);
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
       );
     } else {

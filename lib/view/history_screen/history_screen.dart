@@ -31,7 +31,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               flex: 12,
               child: Obx(
                 () => _controller.records.isEmpty
-                    ? const FadeNoRecord() // Animasyonlu boş ekran widget'ı
+                    ? const FadeNoRecord()
                     : buildRecords(context),
               ),
             ),
@@ -139,13 +139,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
     );
   }
 
-  // *** BOTTOM SHEET AÇMA ***
+  // *** SEARH BOTTOM SHEET ***
   void _showMonthSelector(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (context) {
         return Container(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(10.0),
           height: 300,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -180,6 +180,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     );
   }
 
+  // *** bottomsheet için aylar listesi ***
   String _getMonthName(int index) {
     List<String> months = [
       'January',

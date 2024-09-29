@@ -2,10 +2,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/info/model/info_screen.dart';
+import 'package:kilo_takibi_uyg/view/profile_screen/info/model/info_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeName_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeTargetWeight_screen.dart';
@@ -36,7 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(height: Get.size.height * 0.02),
               targetWeightContainer(context),
               SizedBox(height: Get.size.height * 0.05),
-              info(context)
+              floatingButtons(context)
             ],
           ),
         ),
@@ -44,21 +45,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // *** GO SEND info ***
-  Column info(BuildContext context) {
-    return Column(
+  // *** FLOATING BUTTONS ***
+  Widget floatingButtons(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        AutoSizeText("About weight control ?",
-            style: Theme.of(context).textTheme.bodyMedium),
-        Padding(
-          padding: context.paddingLarge,
-          child: CustomFloatingActionButton(
-            heroTag: "profile",
-            widget: const Icon(Ionicons.pulse),
-            onPressed: () {
-              Get.to(InfoScreen(), transition: Transition.upToDown);
-            },
-          ),
+        Column(
+          children: [
+            AutoSizeText("About weight control ?",
+                style: Theme.of(context).textTheme.bodySmall),
+            Padding(
+              padding: context.paddingLarge,
+              child: CustomFloatingActionButton(
+                heroTag: "profile",
+                widget: const Icon(Ionicons.pulse),
+                onPressed: () {
+                  Get.to(InfoScreen(), transition: Transition.fadeIn);
+                },
+              ),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            AutoSizeText("Calculate BMI",
+                style: Theme.of(context).textTheme.bodySmall),
+            Padding(
+              padding: context.paddingLarge,
+              child: CustomFloatingActionButton(
+                heroTag: "bmi",
+                widget: const Icon(Ionicons.accessibility),
+                onPressed: () {
+                  Get.to(BmiScreen(), transition: Transition.fadeIn);
+                },
+              ),
+            ),
+          ],
         ),
       ],
     );
@@ -133,6 +155,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ],
     );
   }
+
   // *** NAME CONTAINER ***
   Container nameContainer(BuildContext context) {
     return Container(

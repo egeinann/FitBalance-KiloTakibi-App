@@ -47,6 +47,7 @@ dependencies:
   smooth_page_indicator: ^1.2.0+3
   ionicons: ^0.2.2
   image_picker: ^1.1.2
+  gauge_indicator: ^0.4.3
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +83,7 @@ flutter:
     - assets/images/homeScreen/
     - assets/images/name/
     - assets/images/profile/
+    - assets/images/bmi/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

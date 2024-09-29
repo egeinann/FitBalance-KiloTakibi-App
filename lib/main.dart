@@ -5,6 +5,7 @@ import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen.dart';
+import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_screen.dart';
 
 
 void main() {

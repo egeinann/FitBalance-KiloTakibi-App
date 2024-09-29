@@ -74,8 +74,8 @@ class RecordListTile extends StatelessWidget {
           (rec.photoUrl!.startsWith('file://'))
               ? const SizedBox()
               : CircleAvatar(
-                  backgroundImage: FileImage(File(rec.photoUrl!)), radius: 15),
-        SizedBox(width: Get.size.width * 0.01),
+                  backgroundImage: FileImage(File(rec.photoUrl!)), radius: 14),
+        const SizedBox(width: 5),
         Text(
           DateFormat("d MMM, yy").format(rec.dateTime),
           style: Theme.of(context).textTheme.bodyMedium,
@@ -97,7 +97,7 @@ class RecordListTile extends StatelessWidget {
             style: Theme.of(context).textTheme.labelSmall,
           ),
         ),
-        SizedBox(width: Get.size.width * 0.05),
+        const SizedBox(width: 10),
         const Icon(Ionicons.chevron_forward),
       ],
     );

@@ -7,6 +7,7 @@ import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/controller/bmi_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_info.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
+import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class BmiScreen extends StatelessWidget {
@@ -18,7 +19,7 @@ class BmiScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("CALCULATE BMI",
+        title: Text("Calculate BMI",
             style: Theme.of(context).textTheme.titleLarge),
         centerTitle: true,
       ),
@@ -30,7 +31,6 @@ class BmiScreen extends StatelessWidget {
             const Divider(),
             inputWeight(context),
             outputRadialgauge(context),
-            SizedBox(height: Get.size.height * 0.1),
           ],
         ),
       ),
@@ -42,29 +42,12 @@ class BmiScreen extends StatelessWidget {
   Padding floatingButtonBmi(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
-      child: Container(
-        constraints: const BoxConstraints(
-          maxWidth: double
-              .infinity, // Genişliği sınırsız yaparak tam genişlemesini sağlıyoruz
-        ),
-        child: FloatingActionButton.extended(
-          backgroundColor: Theme.of(context).primaryColor,
-          foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-          splashColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 10,
-          heroTag: "bmi",
-          onPressed: () {
-            Get.to(const BmiInfoScreen(), transition: Transition.downToUp);
-          },
-          label: const Text(
-            "What is this BMI ?",
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: "outfit",
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+      child: CustomFloatingActionButton(
+        heroTag: "bmi",
+        widget: const Icon(Ionicons.help),
+        onPressed: () {
+          Get.to(const BmiInfoScreen(), transition: Transition.downToUp);
+        },
       ),
     );
   }
@@ -72,6 +55,7 @@ class BmiScreen extends StatelessWidget {
   // *** ÖLÇÜM BARI ***
   Widget outputRadialgauge(BuildContext context) {
     return Expanded(
+      flex: 3,
       child: Obx(
         () {
           double bmiValue = bmiController.bmiModel.value.bmi;
@@ -91,78 +75,86 @@ class BmiScreen extends StatelessWidget {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AnimatedRadialGauge(
-                duration: const Duration(seconds: 1),
-                curve: Curves.elasticOut,
-                radius: 100,
-                value: bmiValue,
-                axis: const GaugeAxis(
-                  min: 0,
-                  max: 40,
-                  degrees: 180,
-                  style: GaugeAxisStyle(
-                    thickness: 30,
-                    background: Colors.transparent,
-                    segmentSpacing: 2,
+              Expanded(
+                child: AnimatedRadialGauge(
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.elasticOut,
+                  radius: 100,
+                  value: bmiValue,
+                  axis: const GaugeAxis(
+                    min: 0,
+                    max: 40,
+                    degrees: 180,
+                    style: GaugeAxisStyle(
+                      thickness: 30,
+                      background: Colors.transparent,
+                      segmentSpacing: 2,
+                    ),
+                    pointer: GaugePointer.needle(
+                      height: 60,
+                      width: 40,
+                      color: Color.fromARGB(255, 13, 20, 202),
+                    ),
+                    progressBar: GaugeProgressBar.rounded(
+                      color: Colors.transparent,
+                    ),
+                    segments: [
+                      GaugeSegment(
+                        from: 0,
+                        to: 18.5,
+                        color: Color.fromARGB(255, 225, 203, 3),
+                        cornerRadius: Radius.circular(5),
+                      ),
+                      GaugeSegment(
+                        from: 18.5,
+                        to: 24.9,
+                        color: Colors.green,
+                        cornerRadius: Radius.circular(5),
+                      ),
+                      GaugeSegment(
+                        from: 25,
+                        to: 29.9,
+                        color: Colors.orange,
+                        cornerRadius: Radius.circular(5),
+                      ),
+                      GaugeSegment(
+                        from: 30,
+                        to: 40,
+                        color: Colors.red,
+                        cornerRadius: Radius.circular(5),
+                      ),
+                    ],
                   ),
-                  pointer: GaugePointer.needle(
-                    height: 60,
-                    width: 40,
-                    color: Color.fromARGB(255, 13, 20, 202),
-                  ),
-                  progressBar: GaugeProgressBar.rounded(
-                    color: Colors.transparent,
-                  ),
-                  segments: [
-                    GaugeSegment(
-                      from: 0,
-                      to: 18.5,
-                      color: Color.fromARGB(255, 225, 203, 3),
-                      cornerRadius: Radius.circular(5),
+                ),
+              ),
+              const SizedBox(height: 5),
+              Expanded(
+                child: Column(
+                  children: [
+                    Text('BMI: ${bmiValue.toStringAsFixed(1)}',
+                        style: Theme.of(context).textTheme.bodyLarge),
+                    Container(
+                      margin: const EdgeInsets.symmetric(vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Theme.of(context).canvasColor,
+                      ),
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 500),
+                        child: AutoSizeText(
+                          message,
+                          key: UniqueKey(),
+                          style: Theme.of(context).textTheme.bodyMedium,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
                     ),
-                    GaugeSegment(
-                      from: 18.5,
-                      to: 24.9,
-                      color: Colors.green,
-                      cornerRadius: Radius.circular(5),
-                    ),
-                    GaugeSegment(
-                      from: 25,
-                      to: 29.9,
-                      color: Colors.orange,
-                      cornerRadius: Radius.circular(5),
-                    ),
-                    GaugeSegment(
-                      from: 30,
-                      to: 40,
-                      color: Colors.red,
-                      cornerRadius: Radius.circular(5),
-                    ),
+                    const Icon(Ionicons.fitness),
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
-              Text('BMI: ${bmiValue.toStringAsFixed(1)}',
-                  style: Theme.of(context).textTheme.bodyLarge),
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 5),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).canvasColor,
-                ),
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 500),
-                  child: AutoSizeText(
-                    message,
-                    key: ValueKey<double>(bmiValue),
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-              const Icon(Ionicons.fitness),
             ],
           );
         },
@@ -172,57 +164,62 @@ class BmiScreen extends StatelessWidget {
 
   // *** KİLO GİRİŞİ ***
   Widget inputWeight(BuildContext context) {
-    return Stack(
-      alignment: Alignment.centerLeft,
-      children: [
-        const Icon(Ionicons.scale),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(() {
-              return Numbers(
-                value: bmiController.bmiModel.value.weight,
-                onChanged: (newWeight) {
-                  bmiController.updateWeight(newWeight); // Kilo güncelle
-                },
-              );
-            }),
-            Text("kg", style: Theme.of(context).textTheme.labelSmall),
-          ],
-        ),
-      ],
+    return Expanded(
+      child: Stack(
+        alignment: Alignment.centerLeft,
+        children: [
+          const Icon(Ionicons.scale),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Obx(() {
+                return Numbers(
+                  value: bmiController.bmiModel.value.weight,
+                  onChanged: (newWeight) {
+                    bmiController.updateWeight(newWeight); // Kilo güncelle
+                  },
+                );
+              }),
+              Text("kg", style: Theme.of(context).textTheme.labelSmall),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
   // *** BOY GİRİŞİ ***
   Widget inputHeight(BuildContext context) {
-    return Stack(
-      alignment: Alignment.centerLeft,
-      children: [
-        const Icon(Icons.height),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(
-              () => DecimalNumberPicker(
-                selectedTextStyle: Theme.of(context).textTheme.displaySmall,
-                textStyle: Theme.of(context).textTheme.bodySmall,
-                itemCount: 3,
-                itemWidth: Get.size.width * 0.14,
-                itemHeight: Get.size.height * 0.06,
-                axis: Axis.horizontal,
-                minValue: 100, // Minimum boy
-                maxValue: 250, // Maksimum boy
-                value: bmiController.bmiModel.value.height, // Başlangıç değeri
-                onChanged: (newHeight) {
-                  bmiController.updateHeight(newHeight); // Boyu güncelle
-                },
+    return Expanded(
+      child: Stack(
+        alignment: Alignment.centerLeft,
+        children: [
+          const Icon(Icons.height),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Obx(
+                () => DecimalNumberPicker(
+                  selectedTextStyle: Theme.of(context).textTheme.displaySmall,
+                  textStyle: Theme.of(context).textTheme.bodySmall,
+                  itemCount: 3,
+                  itemWidth: Get.size.width * 0.14,
+                  itemHeight: Get.size.height * 0.06,
+                  axis: Axis.horizontal,
+                  minValue: 100, // Minimum boy
+                  maxValue: 250, // Maksimum boy
+                  value:
+                      bmiController.bmiModel.value.height, // Başlangıç değeri
+                  onChanged: (newHeight) {
+                    bmiController.updateHeight(newHeight); // Boyu güncelle
+                  },
+                ),
               ),
-            ),
-            Text("cm", style: Theme.of(context).textTheme.labelSmall),
-          ],
-        ),
-      ],
+              Text("cm", style: Theme.of(context).textTheme.labelSmall),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

@@ -103,7 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   : "assets/images/profile/female.png",
             ),
             fit: BoxFit.scaleDown,
-            height: Get.size.height * 0.2,
+              height: Get.size.height * 0.2,
           ),
         ),
         ),

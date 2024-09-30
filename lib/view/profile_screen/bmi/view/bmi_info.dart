@@ -46,7 +46,7 @@ class BmiInfoScreen extends StatelessWidget {
                     Column(
                       children: [
                         const Icon(Ionicons.fitness),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 5),
                         Text("You must be healthy !",
                             style: Theme.of(context).textTheme.bodySmall)
                       ],

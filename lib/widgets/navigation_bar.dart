@@ -35,7 +35,7 @@ Widget bottomNavigationBar(BuildContext context) {
     child: Container(
       height: Get.size.height * 0.1, // Yükseklik ayarı yapılmış
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(40),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
@@ -52,37 +52,29 @@ Widget bottomNavigationBar(BuildContext context) {
         ],
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(40),
         child: BottomNavigationBar(
-          iconSize: 24,
-          showSelectedLabels: true,
-          selectedLabelStyle: const TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 12, fontFamily: "outfit"),
+          showSelectedLabels: false,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.show_chart),
-              label: 'Graph',
-
+              label: "",
             ),
             BottomNavigationBarItem(
               icon: Icon(Ionicons.image),
-              label: 'Gallery',
-
+              label: "",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.add),
-              label: 'Add',
-
+              label: "",
             ),
             BottomNavigationBarItem(
               icon: Icon(Ionicons.layers),
-              label: 'History',
-
+              label: "",
             ),
             BottomNavigationBarItem(
               icon: Icon(Ionicons.person),
-              label: 'Profile',
-
+              label: "",
             ),
           ],
           currentIndex: _controller.currentTabIndex.value,

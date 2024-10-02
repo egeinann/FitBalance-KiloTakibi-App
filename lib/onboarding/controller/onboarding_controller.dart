@@ -18,14 +18,17 @@ class OnboardingController extends GetxController {
     onLastPage.value = (index == 4);
   }
 
+  // NAME TUTAN FONK ***
   void setUserName(String name) {
     userName.value = name;
   }
 
+  // HEDEF KILO TUTAN FONK ***
   void setTargetWeight(double weight) {
     targetWeight.value = weight;
   }
 
+  // *** SONRAKİ SAYFAYA ADIMA GEÇİŞ ***
   void goToNextPage() {
     Get.focusScope?.unfocus();
     if (onLastPage.value) {
@@ -48,7 +51,7 @@ class OnboardingController extends GetxController {
         Future.delayed(const Duration(milliseconds: 300), () {
           Get.offAll(HomeScreen(),
               transition: Transition.fadeIn,
-              duration: const Duration(seconds: 1));
+              duration: const Duration(milliseconds: 1200));
         });
         resetController();
       }

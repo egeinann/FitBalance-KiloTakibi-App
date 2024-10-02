@@ -12,11 +12,40 @@ class Controller extends GetxController {
   final GlobalKey<AnimatedListState> listKey =
       GlobalKey<AnimatedListState>(); // liste animasyonu için
   RxBool isLoading = false.obs; // loading lottie için
-  
+  var selectedLanguage = 'en'.obs; // Varsayılan dil İngilizce
+  var locale = Locale('en').obs; // Varsayılan olarak İngilizce
+
+  // dili değiştir
+  void changeLanguage(String languageCode) {
+    switch (languageCode) {
+      case 'en':
+        locale.value = Locale('en'); // İngilizce
+        break;
+      case 'tr':
+        locale.value = Locale("tr"); // Türkçe
+        break;
+      case 'es':
+        locale.value = Locale('es'); // İspanyolca
+        break;
+      case 'fr':
+        locale.value = Locale('fr'); // Fransızca
+        break;
+      case 'de':
+        locale.value = Locale('de'); // Almanca
+        break;
+      case 'zh':
+        locale.value = Locale('zh'); // Çince
+        break;
+      default:
+        locale.value = Locale('en'); // Varsayılan dil
+    }
+  }
+
   // Grafik Ödeme işlemi gerçekleştirilirse bu fonksiyon çağrılır
   void completePayment() {
     hasPaid.value = true; // hasPaid durumunu true yapar
   }
+
   // yeni record ekleme methodu
   void addRecord(Record record) {
     if (records.isEmpty || record.dateTime.isBefore(records.last.dateTime)) {
@@ -186,22 +215,6 @@ class Controller extends GetxController {
   RxBool isNotificationsEnabled = true.obs;
   void toggleNotifications(bool isEnabled) {
     isNotificationsEnabled.value = isEnabled;
-  }
-
-  // Şu anki dil
-  RxString selectedLanguage = 'en'.obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-    // Varsayılan dili ayarlayın
-    selectedLanguage.value = Get.locale?.languageCode ?? 'en';
-  }
-
-  // Uygulama dilini güncelle
-  void changeLanguage(String locale) {
-    selectedLanguage.value = locale;
-    Get.updateLocale(Locale(locale));
   }
 
   // Bar grafiği için aylık ortalamaları hesaplama

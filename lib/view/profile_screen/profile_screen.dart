@@ -37,7 +37,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(height: Get.size.height * 0.02),
               targetWeightContainer(context),
               SizedBox(height: Get.size.height * 0.05),
-              floatingButtons(context)
+              floatingButtons(context),
+              SizedBox(height: Get.size.height * 0.1)
             ],
           ),
         ),
@@ -52,10 +53,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         Column(
           children: [
-            AutoSizeText("About weight control ?",
+            AutoSizeText("Weight balance",
                 style: Theme.of(context).textTheme.bodySmall),
             Padding(
-              padding: context.paddingLarge,
+              padding: context.paddingLow,
               child: CustomFloatingActionButton(
                 heroTag: "profile",
                 widget: const Icon(Ionicons.pulse),
@@ -71,7 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             AutoSizeText("Calculate BMI",
                 style: Theme.of(context).textTheme.bodySmall),
             Padding(
-              padding: context.paddingLarge,
+              padding: context.paddingLow,
               child: CustomFloatingActionButton(
                 heroTag: "bmi",
                 widget: const Icon(Ionicons.accessibility),

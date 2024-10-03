@@ -42,7 +42,7 @@ class GalleryScreen extends StatelessWidget {
         final rec = photoRecords[index];
         return GridTile(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: Get.size.height * 0.005),
+            padding: const EdgeInsets.symmetric(vertical: 5),
             child: Center(
               child: Stack(
                 alignment: Alignment.bottomRight,
@@ -99,7 +99,7 @@ class GalleryScreen extends StatelessWidget {
                     widget: const Icon(Ionicons.arrow_forward),
                     onPressed: () {
                       Future.delayed(
-                        const Duration(milliseconds: 250),
+                        const Duration(milliseconds: 200),
                         () {
                           Get.to(
                             RecordScreen(rec: rec),

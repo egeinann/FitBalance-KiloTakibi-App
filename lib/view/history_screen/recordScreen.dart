@@ -163,8 +163,10 @@ class RecordScreen extends StatelessWidget {
                 child: Stack(
                   children: [
                     Container(
+                      width: Get.size.width,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(23)),
+                        borderRadius: BorderRadius.circular(23),
+                      ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(
                           10,
@@ -196,7 +198,7 @@ class RecordScreen extends StatelessWidget {
       return const Expanded(flex: 4, child: Center(child: Text("No photo !")));
     }
   }
-  
+
   // *** edit model bottom sheet  ***
   void _showEditModalBottomSheet(BuildContext context) {
     double selectedValue = rec.weight;

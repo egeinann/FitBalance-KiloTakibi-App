@@ -27,13 +27,13 @@ IndexedStack indexedStack() {
 // *** BOTTOM BAR ***
 Widget bottomNavigationBar(BuildContext context) {
   return Padding(
-    padding: EdgeInsets.only(
-      bottom: Get.size.height * 0.04,
-      left: Get.size.width * 0.06,
-      right: Get.size.width * 0.06,
+    padding: const EdgeInsets.only(
+      bottom: 30,
+      left: 25,
+      right: 25,
     ),
     child: Container(
-      height: Get.size.height * 0.1, // Yükseklik ayarı yapılmış
+      height: 80, // Yükseklik ayarı yapılmış
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
         boxShadow: [

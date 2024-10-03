@@ -5,6 +5,7 @@ import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controller/controller.dart';
 import 'package:kilo_takibi_uyg/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen.dart';
 
 void main() {
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       return GetMaterialApp(
-        localizationsDelegates: [
+        localizationsDelegates: const [
           S.delegate,
           GlobalCupertinoLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,

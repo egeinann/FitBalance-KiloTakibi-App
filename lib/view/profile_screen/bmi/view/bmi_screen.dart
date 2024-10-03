@@ -44,7 +44,7 @@ class BmiScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
       child: CustomFloatingActionButton(
         heroTag: "bmi",
-        widget: const Icon(Ionicons.help),
+        widget: const Icon(Icons.question_mark_sharp),
         onPressed: () {
           Get.to(const BmiInfoScreen(), transition: Transition.downToUp);
         },

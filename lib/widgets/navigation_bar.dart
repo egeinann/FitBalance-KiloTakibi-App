@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:kilo_takibi_uyg/controller/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/view/add_screen.dart';
 import 'package:kilo_takibi_uyg/view/gallery_screen/gallery_screen.dart';
 import 'package:kilo_takibi_uyg/view/graph_view_screen.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/history_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/profile_screen.dart';
 
-final Controller _controller = Get.put(Controller());
+final Controller _controller = Get.find();
 
 // *** BOTTOM BAR ICIN INDEXLI SAYFALAR ***
 IndexedStack indexedStack() {

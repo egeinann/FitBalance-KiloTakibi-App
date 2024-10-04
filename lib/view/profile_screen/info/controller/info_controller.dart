@@ -5,7 +5,7 @@ class InfoController extends GetxController {
   PageController pageController = PageController();
   var onLastPage = false.obs;
 
-  // Sayfa ilerleme
+  // *** SAYFA İLERLEME ***
   void goToNextInfo() {
     if (!onLastPage.value) {
       pageController.nextPage(
@@ -18,19 +18,19 @@ class InfoController extends GetxController {
     }
   }
 
-  // Son sayfa mı?
+  // *** SON SAYFA MI ? KONTROLÜ ***
   void lastPage(int index) {
     onLastPage.value = (index == 3);
   }
 
-  // Controller sıfırlama
+  // *** CONTROLLER SIFIRLAMA ***
   void resetController() {
     pageController.dispose();
     pageController = PageController();
     onLastPage.value = false;
   }
 
-  // appbar-leading go-back
+  // *** APPBAR LEADING TAP ***
   void goBack() {
     Get.back();
     resetController();

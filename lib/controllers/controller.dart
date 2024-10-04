@@ -4,49 +4,22 @@ import 'package:kilo_takibi_uyg/models/record.dart';
 import 'package:kilo_takibi_uyg/widgets/record_list_tile.dart';
 
 class Controller extends GetxController {
-  var hasPaid = false.obs;
+  RxList<Record> records = <Record>[].obs; // record objeleri tutan liste
+  RxBool isLoading = false.obs; // loading lottie için
+  RxList<Record> filteredRecords = <Record>[]
+      .obs; // filtrelenmiş grafik zaman dilimi kayıtlarını tutan liste
+
+  final GlobalKey<AnimatedListState> listKey =
+      GlobalKey<AnimatedListState>(); // liste animasyonu için
+  var hasPaid = false.obs; // grafik ödeme durumu
   var photoUrl = Rxn<String>(); // Reaktif bir değişken
   var currentTabIndex = 2.obs; // homescreen sayfa index
   var appBarTitle = 'Add'.obs; // Başlangıç başlığı
-  RxList<Record> records = <Record>[].obs; // record objeleri tutan list
-  final GlobalKey<AnimatedListState> listKey =
-      GlobalKey<AnimatedListState>(); // liste animasyonu için
-  RxBool isLoading = false.obs; // loading lottie için
-  var selectedLanguage = 'en'.obs; // Varsayılan dil İngilizce
-  var locale = Locale('en').obs; // Varsayılan olarak İngilizce
+  var selectedTimeRange =
+      [true, false].obs; // grafik zaman dilimi filtreleme (all & 30days)
+  var graphPageIndex = 0.obs; // ödeme sonrası graphscreen'e geçiş
 
-  // dili değiştir
-  void changeLanguage(String languageCode) {
-    switch (languageCode) {
-      case 'en':
-        locale.value = Locale('en'); // İngilizce
-        break;
-      case 'tr':
-        locale.value = Locale("tr"); // Türkçe
-        break;
-      case 'es':
-        locale.value = Locale('es'); // İspanyolca
-        break;
-      case 'fr':
-        locale.value = Locale('fr'); // Fransızca
-        break;
-      case 'de':
-        locale.value = Locale('de'); // Almanca
-        break;
-      case 'zh':
-        locale.value = Locale('zh'); // Çince
-        break;
-      default:
-        locale.value = Locale('en'); // Varsayılan dil
-    }
-  }
-
-  // Grafik Ödeme işlemi gerçekleştirilirse bu fonksiyon çağrılır
-  void completePayment() {
-    hasPaid.value = true; // hasPaid durumunu true yapar
-  }
-
-  // yeni record ekleme methodu
+  // *** RECORD EKLEME İŞLEMİ ***
   void addRecord(Record record) {
     if (records.isEmpty || record.dateTime.isBefore(records.last.dateTime)) {
       // Yeni öğe ekleme
@@ -77,13 +50,12 @@ class Controller extends GetxController {
     updateFilteredRecords();
   }
 
-// mevcut recordu silme methodu
+// *** RECORD SİLME İŞLEMİ ***
   void deleteRecord(Record record) {
     final int index = records.indexOf(record); // Silinecek öğenin indeksini bul
     if (index == -1) return; // Eğer öğe bulunamazsa hiçbir şey yapma
 
     // Öğeyi listeden kaldır
-
     records.removeAt(index);
 
     // Animasyonla öğeyi kaldır
@@ -96,6 +68,7 @@ class Controller extends GetxController {
     updateFilteredRecords();
   }
 
+  // *** TÜM RECORDLARI SİLME İŞLEMİ ***
   void deleteAllRecords(GlobalKey<AnimatedListState> listKey) {
     final int itemCount = records.length;
 
@@ -112,7 +85,8 @@ class Controller extends GetxController {
     // Tüm kayıtları temizle, animasyonun tamamlanmasını bekleyin
     Future.delayed(
       const Duration(
-          milliseconds: 400), // Animasyon süresine eşit veya biraz daha uzun
+          milliseconds:
+              400), // bir üstteki duration animasyon süresine eşit veya daha uzun
       () {
         records.clear();
         updateFilteredRecords();
@@ -120,7 +94,7 @@ class Controller extends GetxController {
     );
   }
 
-  // updateRecord fonksiyonu
+  // *** RECORD GÜNCELLEME İŞLEMİ ***
   void updateRecord(Record oldRecord, Record newRecord) {
     var index = records.indexWhere((rec) => rec == oldRecord);
     if (index != -1) {
@@ -131,6 +105,16 @@ class Controller extends GetxController {
     }
   }
 
+  // *** RECORD FOTOĞRAF KALDIRMA İŞLEMİ ***
+  void removePhoto(Record record) {
+    int index = records.indexOf(record);
+    if (index != -1) {
+      records[index] = records[index].copyWith(photoUrl: null);
+      update(); // Kayıtları günceller
+    }
+  }
+
+  // *** RECORD HISTORYSCREEN LİSTE ANİMASYONU ***
   Widget buildItem(Record record, Animation<double> animation) {
     final animationCurve = CurvedAnimation(
       parent: animation,
@@ -146,14 +130,13 @@ class Controller extends GetxController {
     );
   }
 
-  // app bar başlığını güncelleme
+  // *** APPBAR BAŞLIK GÜNCELEME ***
   void changeTabIndex(int index) {
     currentTabIndex.value = index;
     appBarTitle.value = getTitleForIndex(index); // AppBar başlığını güncelle
   }
 
-  // Graph pageView index kontrolu
-  var graphPageIndex = 0.obs;
+  // *** ÖDEME SONRASI GRAPHSCREEN GEÇİŞ KONTROLU ***
   void onPageChanged(int index) {
     graphPageIndex.value = index;
     if (currentTabIndex.value == 0) {
@@ -161,7 +144,7 @@ class Controller extends GetxController {
     }
   }
 
-  // grafikler arası başlık değişimleri
+  // *** GRAFİKLER ARASI BAŞLIK DEĞİŞİMLERİ ***
   String getTitleForIndex(int index) {
     switch (index) {
       case 0:
@@ -190,34 +173,22 @@ class Controller extends GetxController {
     }
   }
 
-  // Aynı tarihte kayıt var mı kontrolü
+  // *** AYNI TARİHTE RECORD VAR MI KONTROLÜ ***
   bool isRecordExists(DateTime date) {
     return records.any((record) => record.dateTime == date);
   }
 
-  // navigationbar gallery ye yönlendir
+  // *** NAVBAR GALLERYSCREEN YÖNLENDİRME ***
   void goToAddScreen() {
     changeTabIndex(2);
   }
 
-  // navigationbar history ye yönlendir
+  // *** NAVBAR HISTORYSCREEN YÖNLENDİRME ***
   void goToHistoryScreen() {
     changeTabIndex(3);
   }
 
-  // tema yönetimi
-  Rx<ThemeMode> themeMode = ThemeMode.system.obs;
-  void switchTheme(bool isDark) {
-    themeMode.value = isDark ? ThemeMode.dark : ThemeMode.light;
-  }
-
-  // bildirimler switch yönetimi
-  RxBool isNotificationsEnabled = true.obs;
-  void toggleNotifications(bool isEnabled) {
-    isNotificationsEnabled.value = isEnabled;
-  }
-
-  // Bar grafiği için aylık ortalamaları hesaplama
+  // *** BAR GRAPH AYLIK ORTALAMA HESAPLAMA ***
   Map<String, double> calculateMonthlyAverages() {
     final Map<String, List<double>> monthlyWeights = {};
 
@@ -239,12 +210,7 @@ class Controller extends GetxController {
     return monthlyAverages;
   }
 
-// Filtrelenmiş kayıtları tutan liste
-  RxList<Record> filteredRecords = <Record>[].obs;
-
-  // Grafik Toggle butonları durumu
-  var selectedTimeRange = [true, false].obs;
-  // Filtrelenmiş kayıtları güncelleyen method
+  // *** GRAFİK İÇİN FİLTRELENMİŞ KAYITLAR (ALL & 30DAYS) ***
   void updateFilteredRecords() {
     if (selectedTimeRange[1]) {
       // Son 30 kaydı al ve tarihe göre doğru sırala
@@ -260,7 +226,7 @@ class Controller extends GetxController {
     }
   }
 
-  // Toggle buton durumu değiştiğinde çağrılan method
+  // *** LINEGRAPH ZAMANDİLİMİ TOGGLE BUTTONLARIN DEĞİŞİMİ ***
   void updateTimeRange(int index) {
     for (int i = 0; i < selectedTimeRange.length; i++) {
       selectedTimeRange[i] = i == index;
@@ -268,24 +234,8 @@ class Controller extends GetxController {
     updateFilteredRecords();
   }
 
-  // Cinsiyet Toggle butonların durumu
-  var selectedGenderRange = [true, false].obs;
-  void updateGenderRange(int index) {
-    if (index == 0) {
-      selectedGenderRange[0] = true;
-      selectedGenderRange[1] = false;
-    } else {
-      selectedGenderRange[0] = false;
-      selectedGenderRange[1] = true;
-    }
-  }
-
-  // Record'un fotoğrafını kaldırma fonksiyonu
-  void removePhoto(Record record) {
-    int index = records.indexOf(record);
-    if (index != -1) {
-      records[index] = records[index].copyWith(photoUrl: null);
-      update(); // Kayıtları günceller
-    }
+  // *** GRAFİK ÖDEME İŞLEMİ ***
+  void completePayment() {
+    hasPaid.value = true; // hasPaid durumunu true yapar
   }
 }

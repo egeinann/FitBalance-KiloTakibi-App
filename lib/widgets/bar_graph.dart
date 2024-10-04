@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:kilo_takibi_uyg/controller/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 
 final Controller _controller = Get.find();
 Obx barGraph(BuildContext context) {
@@ -13,7 +13,8 @@ Obx barGraph(BuildContext context) {
       child: Column(
         children: [
           // *** BAR CHART ***
-          Text("Averages of the last 1 year",style: Theme.of(context).textTheme.bodyMedium),
+          Text("Averages of the last 1 year",
+              style: Theme.of(context).textTheme.bodyMedium),
           Expanded(
             child: BarChart(
               BarChartData(
@@ -26,7 +27,8 @@ Obx barGraph(BuildContext context) {
                       showTitles: true,
                       interval: 20,
                       getTitlesWidget: (value, meta) {
-                        return Text(value.toInt().toString(),style: Theme.of(context).textTheme.bodySmall);
+                        return Text(value.toInt().toString(),
+                            style: Theme.of(context).textTheme.bodySmall);
                       },
                       reservedSize: Get.size.width * 0.08,
                     ),
@@ -82,7 +84,8 @@ Obx barGraph(BuildContext context) {
                     getTooltipColor: (group) => Theme.of(context)
                         .primaryColor, // Tooltip arka plan rengini burada belirleyin
                     getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                      return BarTooltipItem("${rod.toY} kg", // Tooltip'te gösterilecek ağırlık değeri
+                      return BarTooltipItem(
+                        "${rod.toY} kg", // Tooltip'te gösterilecek ağırlık değeri
                         const TextStyle(
                           color: Colors.white, // Tooltip metin rengi
                           fontWeight: FontWeight.bold,

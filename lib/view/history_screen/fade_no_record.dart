@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
-import 'package:kilo_takibi_uyg/controller/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 
 class FadeNoRecord extends StatefulWidget {
   const FadeNoRecord({super.key});

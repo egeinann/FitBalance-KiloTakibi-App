@@ -2,10 +2,9 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:kilo_takibi_uyg/controller/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 
 final Controller _controller = Get.find();
-
 Obx lineGraph(BuildContext context) {
   return Obx(
     () {

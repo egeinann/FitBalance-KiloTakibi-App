@@ -13,8 +13,7 @@ import '../controller/onboarding_controller.dart';
 
 class OnboardingScreen extends StatelessWidget {
   OnboardingScreen({super.key});
-  final OnboardingController onboardingController =
-      Get.put(OnboardingController());
+  final OnboardingController onboardingController = Get.find();
 
   @override
   Widget build(BuildContext context) {

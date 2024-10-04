@@ -11,7 +11,7 @@ import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class BmiScreen extends StatelessWidget {
-  final BMIController bmiController = Get.put(BMIController());
+  final BMIController bmiController = Get.find();
 
   BmiScreen({super.key}); // Controller'ı initialize et
 
@@ -19,6 +19,7 @@ class BmiScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: Text("Calculate BMI",
             style: Theme.of(context).textTheme.titleLarge),
         centerTitle: true,

@@ -12,7 +12,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class InfoScreen extends StatelessWidget {
   InfoScreen({super.key});
-  final InfoController _infoController = Get.put(InfoController());
+  final InfoController _infoController = Get.find();
   @override
   Widget build(BuildContext context) {
     return PopScope(

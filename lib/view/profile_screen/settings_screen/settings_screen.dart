@@ -2,10 +2,11 @@ import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/settings_screen/privacyPolicy_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/settings_screen/termsOfService_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
-import 'package:kilo_takibi_uyg/controller/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/settings_model.dart';
 
@@ -17,13 +18,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  late Controller _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = Get.find();
-  }
+  final SettingsController _settingscontroller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +29,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         null,
         Obx(
           () => Text(
-            _controller.selectedLanguage.toString(),
+            _settingscontroller.selectedLanguage.toString(),
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
@@ -49,16 +44,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
         SizedBox(
           width: Get.size.width * 0.15,
           child: DayNightSwitcher(
-            isDarkModeEnabled: _controller.themeMode.value == ThemeMode.dark,
+            isDarkModeEnabled:
+                _settingscontroller.themeMode.value == ThemeMode.dark,
             onStateChanged: (isDarkModeEnabled) {
-              _controller.switchTheme(isDarkModeEnabled);
+              _settingscontroller.switchTheme(isDarkModeEnabled);
             },
           ),
         ),
         onTap: () {
           bool isDarkModeEnabled =
-              _controller.themeMode.value == ThemeMode.dark;
-          _controller.switchTheme(!isDarkModeEnabled);
+              _settingscontroller.themeMode.value == ThemeMode.dark;
+          _settingscontroller.switchTheme(!isDarkModeEnabled);
         },
       ),
       SettingsModel(
@@ -70,15 +66,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
             inactiveThumbColor: const Color.fromARGB(255, 255, 17, 0),
             activeColor: const Color.fromARGB(255, 0, 255, 8),
             activeTrackColor: Theme.of(context).cardColor,
-            value: _controller.isNotificationsEnabled.value,
+            value: _settingscontroller.isNotificationsEnabled.value,
             onChanged: (isEnabled) {
-              _controller.toggleNotifications(isEnabled);
+              _settingscontroller.toggleNotifications(isEnabled);
             },
           ),
         ),
         onTap: () {
-          _controller.isNotificationsEnabled.value =
-              !_controller.isNotificationsEnabled.value;
+          _settingscontroller.isNotificationsEnabled.value =
+              !_settingscontroller.isNotificationsEnabled.value;
         },
       ),
       SettingsModel(
@@ -170,7 +166,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Obx(
                 () => Container(
                   decoration: BoxDecoration(
-                    color: _controller.selectedLanguage.value == 'tr'
+                    color: _settingscontroller.selectedLanguage.value == 'tr'
                         ? Theme.of(context).cardColor
                         : null,
                     borderRadius:
@@ -180,9 +176,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: Text('Türkçe',
                         style: Theme.of(context).textTheme.bodyLarge),
                     onTap: () {
-                      _controller.selectedLanguage.value =
+                      _settingscontroller.selectedLanguage.value =
                           'tr'; // Türkçe seçildi
-                      _controller.changeLanguage('tr'); // Dili değiştir
+                      _settingscontroller.changeLanguage('tr'); // Dili değiştir
                       Navigator.pop(context); // Aşağıdaki menüyü kapat
                     },
                   ),
@@ -191,7 +187,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Obx(
                 () => Container(
                   decoration: BoxDecoration(
-                    color: _controller.selectedLanguage.value == 'en'
+                    color: _settingscontroller.selectedLanguage.value == 'en'
                         ? Theme.of(context).cardColor
                         : null,
                     borderRadius:
@@ -201,9 +197,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: Text('English',
                         style: Theme.of(context).textTheme.bodyLarge),
                     onTap: () {
-                      _controller.selectedLanguage.value =
+                      _settingscontroller.selectedLanguage.value =
                           'en'; // İngilizce seçildi
-                      _controller.changeLanguage('en'); // Dili değiştir
+                      _settingscontroller.changeLanguage('en'); // Dili değiştir
                       Navigator.pop(context); // Aşağıdaki menüyü kapat
                     },
                   ),
@@ -212,7 +208,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Obx(
                 () => Container(
                   decoration: BoxDecoration(
-                    color: _controller.selectedLanguage.value == 'es'
+                    color: _settingscontroller.selectedLanguage.value == 'es'
                         ? Theme.of(context).cardColor
                         : null,
                     borderRadius:
@@ -222,9 +218,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: Text('Español',
                         style: Theme.of(context).textTheme.bodyLarge),
                     onTap: () {
-                      _controller.selectedLanguage.value =
+                      _settingscontroller.selectedLanguage.value =
                           'es'; // İspanyolca seçildi
-                      _controller.changeLanguage('es'); // Dili değiştir
+                      _settingscontroller.changeLanguage('es'); // Dili değiştir
                       Navigator.pop(context); // Aşağıdaki menüyü kapat
                     },
                   ),
@@ -233,7 +229,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Obx(
                 () => Container(
                   decoration: BoxDecoration(
-                    color: _controller.selectedLanguage.value == 'fr'
+                    color: _settingscontroller.selectedLanguage.value == 'fr'
                         ? Theme.of(context).cardColor
                         : null,
                     borderRadius:
@@ -243,9 +239,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: Text('Français',
                         style: Theme.of(context).textTheme.bodyLarge),
                     onTap: () {
-                      _controller.selectedLanguage.value =
+                      _settingscontroller.selectedLanguage.value =
                           'fr'; // Fransızca seçildi
-                      _controller.changeLanguage('fr'); // Dili değiştir
+                      _settingscontroller.changeLanguage('fr'); // Dili değiştir
                       Navigator.pop(context); // Aşağıdaki menüyü kapat
                     },
                   ),
@@ -254,7 +250,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Obx(
                 () => Container(
                   decoration: BoxDecoration(
-                    color: _controller.selectedLanguage.value == 'de'
+                    color: _settingscontroller.selectedLanguage.value == 'de'
                         ? Theme.of(context).cardColor
                         : null,
                     borderRadius:
@@ -264,9 +260,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: Text('Deutsch',
                         style: Theme.of(context).textTheme.bodyLarge),
                     onTap: () {
-                      _controller.selectedLanguage.value =
+                      _settingscontroller.selectedLanguage.value =
                           'de'; // Almanca seçildi
-                      _controller.changeLanguage('de'); // Dili değiştir
+                      _settingscontroller.changeLanguage('de'); // Dili değiştir
                       Navigator.pop(context); // Aşağıdaki menüyü kapat
                     },
                   ),
@@ -275,7 +271,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Obx(
                 () => Container(
                   decoration: BoxDecoration(
-                    color: _controller.selectedLanguage.value == 'po'
+                    color: _settingscontroller.selectedLanguage.value == 'po'
                         ? Theme.of(context).cardColor
                         : null,
                     borderRadius:
@@ -285,9 +281,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: Text('Português',
                         style: Theme.of(context).textTheme.bodyLarge),
                     onTap: () {
-                      _controller.selectedLanguage.value =
+                      _settingscontroller.selectedLanguage.value =
                           'po'; // Brezilyaca seçildi
-                      _controller.changeLanguage('po'); // Dili değiştir
+                      _settingscontroller.changeLanguage('po'); // Dili değiştir
                       Navigator.pop(context); // Aşağıdaki menüyü kapat
                     },
                   ),
@@ -296,7 +292,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Obx(
                 () => Container(
                   decoration: BoxDecoration(
-                    color: _controller.selectedLanguage.value == 'zh'
+                    color: _settingscontroller.selectedLanguage.value == 'zh'
                         ? Theme.of(context).cardColor
                         : null,
                     borderRadius:
@@ -306,9 +302,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: Text('中文',
                         style: Theme.of(context).textTheme.bodyLarge),
                     onTap: () {
-                      _controller.selectedLanguage.value =
+                      _settingscontroller.selectedLanguage.value =
                           'zh'; // Çince seçildi
-                      _controller.changeLanguage('zh'); // Dili değiştir
+                      _settingscontroller.changeLanguage('zh'); // Dili değiştir
                       Navigator.pop(context); // Aşağıdaki menüyü kapat
                     },
                   ),

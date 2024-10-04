@@ -2,9 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
-import 'package:kilo_takibi_uyg/controller/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/info/model/info_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
@@ -19,9 +20,9 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final OnboardingController _onboardingController =
-      Get.put(OnboardingController());
+  final OnboardingController _onboardingController = Get.find();
   final Controller _controller = Get.find();
+  final SettingsController _settingscontroller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -96,26 +97,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
           () => AnimatedSwitcher(
             duration: const Duration(milliseconds: 300), // Animasyon süresi
             child: Image(
-              key: ValueKey<bool>(_controller.selectedGenderRange[
+              key: ValueKey<bool>(_settingscontroller.selectedGenderRange[
                   0]), // Animasyonu tetiklemek için bir anahtar
-            image: AssetImage(
-              _controller.selectedGenderRange[0]
-                  ? "assets/images/profile/male.png"
-                  : "assets/images/profile/female.png",
-            ),
-            fit: BoxFit.scaleDown,
+              image: AssetImage(
+                _settingscontroller.selectedGenderRange[0]
+                    ? "assets/images/profile/male.png"
+                    : "assets/images/profile/female.png",
+              ),
+              fit: BoxFit.scaleDown,
               height: Get.size.height * 0.2,
+            ),
           ),
-        ),
         ),
         Obx(
           () => ToggleButtons(
             renderBorder: false,
             fillColor: Colors.transparent,
             splashColor: Colors.transparent,
-            isSelected: _controller.selectedGenderRange,
+            isSelected: _settingscontroller.selectedGenderRange,
             onPressed: (int index) {
-              _controller.updateGenderRange(index);
+              _settingscontroller.updateGenderRange(index);
             },
             children: [
               Padding(
@@ -124,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: _controller.selectedGenderRange[0]
+                    color: _settingscontroller.selectedGenderRange[0]
                         ? Theme.of(context).primaryColor
                         : Theme.of(context).canvasColor,
                   ),
@@ -140,7 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: _controller.selectedGenderRange[1]
+                    color: _settingscontroller.selectedGenderRange[1]
                         ? Theme.of(context).primaryColor
                         : Theme.of(context).canvasColor,
                   ),

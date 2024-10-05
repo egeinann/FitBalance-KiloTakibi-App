@@ -54,7 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         Column(
           children: [
-            AutoSizeText("Weight balance",
+            AutoSizeText("Weight balance".tr,
                 style: Theme.of(context).textTheme.bodySmall),
             Padding(
               padding: context.paddingLow,
@@ -70,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         Column(
           children: [
-            AutoSizeText("Calculate BMI",
+            AutoSizeText("Calculate BMI".tr,
                 style: Theme.of(context).textTheme.bodySmall),
             Padding(
               padding: context.paddingLow,
@@ -130,7 +130,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         : Theme.of(context).canvasColor,
                   ),
                   child: Text(
-                    "Male",
+                    "Male".tr,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),
@@ -146,7 +146,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         : Theme.of(context).canvasColor,
                   ),
                   child: Text(
-                    "Female",
+                    "Female".tr,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),
@@ -185,7 +185,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: Theme.of(context).canvasColor,
                 ),
                 child:
-                    Text("NAME", style: Theme.of(context).textTheme.bodySmall),
+                    Text("NAME".tr,
+                    style: Theme.of(context).textTheme.bodySmall),
               ),
               Row(
                 children: [
@@ -232,7 +233,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   color: Theme.of(context).canvasColor,
                 ),
-                child: Text("TARGET WEIGHT",
+                child: Text("TARGET WEIGHT".tr,
                     style: Theme.of(context).textTheme.bodySmall),
               ),
               Row(

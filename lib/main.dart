@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
-import 'package:kilo_takibi_uyg/generated/l10n.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:kilo_takibi_uyg/language/language.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
-import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/controller/bmi_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/info/controller/info_controller.dart';
@@ -40,16 +39,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       return GetMaterialApp(
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        locale: _settingscontroller.locale.value,
         debugShowCheckedModeBanner: false,
-        home: OnboardingScreen(),
+        translations: Languages(), // Dil çevirileri
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations
+              .delegate, // satırlar material hatası için eklendi
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: Languages.languageList, // Desteklenen diller
+        locale: Get.deviceLocale, // Cihazın dilini al
+        fallbackLocale: Languages.defa, // Varsayılan dil
+        home: HomeScreen(),
         theme: ThemeClass.lightTheme,
         darkTheme: ThemeClass.darkTheme,
         themeMode: _settingscontroller.themeMode.value,

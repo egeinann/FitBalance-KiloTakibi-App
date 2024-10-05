@@ -61,7 +61,7 @@ class _FadeNoRecordState extends State<FadeNoRecord>
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "No record found !",
+                  "No record found !".tr,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 10),

@@ -83,9 +83,10 @@ class GalleryScreen extends StatelessWidget {
                                     ),
                                   ),
                           ),
-                          SizedBox(height: Get.size.height * 0.005),
+                          const SizedBox(height: 2),
                           Text(
-                            DateFormat("d MMM, y").format(rec.dateTime),
+                            DateFormat("d MMMM, y", Get.locale.toString())
+                                .format(rec.dateTime),
                             style: Theme.of(context).textTheme.bodySmall,
                             textAlign: TextAlign.center,
                           ),
@@ -99,7 +100,7 @@ class GalleryScreen extends StatelessWidget {
                     widget: const Icon(Ionicons.arrow_forward),
                     onPressed: () {
                       Future.delayed(
-                        const Duration(milliseconds: 200),
+                        const Duration(milliseconds: 150),
                         () {
                           Get.to(
                             RecordScreen(rec: rec),
@@ -139,7 +140,7 @@ class GalleryScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "You don't have any photos yet !",
+                  "You don't have any photos yet !".tr,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],

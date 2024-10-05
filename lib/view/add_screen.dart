@@ -115,8 +115,8 @@ class _AddScreenState extends State<AddScreen> {
   void addPressed() {
     if (_controller.isRecordExists(_selectedDate)) {
       SnackbarHelper.showSnackbar(
-        title: "There is already a record for the same date",
-        message: "Change the date",
+        title: "There is already a record for the same date".tr,
+        message: "Change the date".tr,
         backgroundColor: Colors.red,
         duration: const Duration(milliseconds: 1100),
         icon: const Icon(Ionicons.calendar_outline),
@@ -177,7 +177,7 @@ class _AddScreenState extends State<AddScreen> {
       padding: context.paddingLarge,
       child: CustomTextField(
         controller: _noteController,
-        labelText: "note",
+        labelText: "note".tr,
         onChanged: (value) {
           _note = value;
         },
@@ -202,7 +202,7 @@ class _AddScreenState extends State<AddScreen> {
       child: Padding(
         padding: context.paddingLarge,
         child: Text(
-          DateFormat("d MMM, y").format(_selectedDate),
+          DateFormat("d MMM, y", Get.locale.toString()).format(_selectedDate),
           style: Theme.of(context).textTheme.bodyLarge,
         ),
       ),
@@ -219,10 +219,12 @@ class _AddScreenState extends State<AddScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("YOUR WEIGHT",
+              Text("YOUR WEIGHT".tr,
                   style: Theme.of(context).textTheme.bodyMedium),
-              Text("$_selectedValue kg",
-                  style: Theme.of(context).textTheme.displaySmall),
+              Text(
+                "$_selectedValue ${"kg".tr}",
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
             ],
           ),
           Stack(
@@ -308,12 +310,12 @@ class _AddScreenState extends State<AddScreen> {
           children: <Widget>[
             ListTile(
               leading: const Icon(Icons.camera),
-              title: const Text('Take a photo'),
+              title: Text('Take a photo'.tr),
               onTap: () => Navigator.of(context).pop(ImageSource.camera),
             ),
             ListTile(
               leading: const Icon(Icons.photo_library),
-              title: const Text('Pick from gallery'),
+              title: Text('Pick from gallery'.tr),
               onTap: () => Navigator.of(context).pop(ImageSource.gallery),
             ),
           ],

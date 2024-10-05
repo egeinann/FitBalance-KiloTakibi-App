@@ -21,8 +21,9 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-          padding: context.paddingLow,
-          child: Obx(() {
+        padding: context.paddingLow,
+        child: Obx(
+          () {
             // Öncelikle ödeme durumunu kontrol edelim
             if (!_controller.hasPaid.value) {
               return Center(
@@ -50,9 +51,9 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
                                   'assets/lottie/recordScreenAnimated.json',
                                   fit: BoxFit.scaleDown,
                                 ),
-                                const AutoSizeText(
-                                  "89.90",
-                                  style: TextStyle(
+                                AutoSizeText(
+                                  "89.90".tr,
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontFamily: "outfit",
                                     fontWeight: FontWeight.bold,
@@ -73,7 +74,8 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
                           Container(
                             margin: const EdgeInsets.symmetric(horizontal: 50),
                             child: AutoSizeText(
-                              "You must pay to see graphs and track your progress in more detail.",
+                              "You must pay to see graphs and track your progress in more detail."
+                                  .tr,
                               textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
@@ -87,10 +89,10 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
                                     horizontal: 10,
                                   ),
                                   child: CustomFloatingActionButton(
-                                    widget: const AutoSizeText(
-                                      "Payment",
+                                    widget: AutoSizeText(
+                                      "Payment".tr,
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: "outfit",
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -106,10 +108,10 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
                                     horizontal: 10,
                                   ),
                                   child: CustomFloatingActionButton(
-                                    widget: const AutoSizeText(
-                                      "Developer",
+                                    widget: AutoSizeText(
+                                      "Developer".tr,
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: "outfit",
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -164,7 +166,7 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "After 1 week of analysis, the graphs appear!",
+                            "After 1 week of analysis, the graphs appear!".tr,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],
@@ -174,7 +176,9 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
                 ),
               );
             }
-          })),
+          },
+        ),
+      ),
     );
   }
 }

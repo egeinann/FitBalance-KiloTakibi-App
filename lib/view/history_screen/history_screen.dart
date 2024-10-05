@@ -110,7 +110,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     color: Theme.of(context).cardColor,
                   ),
                   child: Text(
-                    "${_controller.records.length} record",
+                    "${_controller.records.length} ${"Record".tr}", // Burada "Record" kelimesinin çevrildiğinden emin olun.
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
@@ -151,26 +151,29 @@ class _HistoryScreenState extends State<HistoryScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Select Month',
+                'Select Month'.tr,
                 style: Theme.of(context).textTheme.labelSmall,
               ),
               const SizedBox(height: 20),
               Expanded(
                 child: ListView(
-                  children: List.generate(12, (index) {
-                    return ListTile(
-                      title: Center(
-                        child: Text(
-                          _getMonthName(index),
+                  children: List.generate(
+                    12,
+                    (index) {
+                      return ListTile(
+                        title: Center(
+                          child: Text(
+                            _getMonthName(index),
+                          ),
                         ),
-                      ),
-                      onTap: () {
-                        // Ay seçimi yapıldığında kaydırma işlemi
-                        _scrollToMonth(index + 1); // Seçilen ay için kaydırma
-                        Navigator.pop(context); // BottomSheet'i kapat
-                      },
-                    );
-                  }),
+                        onTap: () {
+                          // Ay seçimi yapıldığında kaydırma işlemi
+                          _scrollToMonth(index + 1); // Seçilen ay için kaydırma
+                          Navigator.pop(context); // BottomSheet'i kapat
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
@@ -183,18 +186,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
   // *** bottomsheet için aylar listesi ***
   String _getMonthName(int index) {
     List<String> months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
+      'January'.tr,
+      'February'.tr,
+      'March'.tr,
+      'April'.tr,
+      'May'.tr,
+      'June'.tr,
+      'July'.tr,
+      'August'.tr,
+      'September'.tr,
+      'October'.tr,
+      'November'.tr,
+      'December'.tr
     ];
     return months[index];
   }
@@ -234,8 +237,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
       // Kayıt yoksa bildirim göster
       SnackbarHelper.showSnackbar(
         icon: const Icon(Icons.error),
-        title: "No records found for this month",
-        message: "Please select a different month.",
+        title: "No records found for this month".tr,
+        message: "Please select a different month.".tr,
         backgroundColor: Colors.orange,
         duration: const Duration(milliseconds: 1500),
       );
@@ -245,8 +248,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
   // *** DELETE SHOW DIALOG ***
   Future<dynamic> deleteAllShowDialog(BuildContext context) {
     return DialogService.deleteShowDialog(
-      title: "Delete all records !",
-      content: "Are you sure all records will be deleted ?",
+      title: "Delete all records !".tr,
+      content: "Are you sure all records will be deleted ?".tr,
       onCancel: () {},
       onConfirm: () {
         Future.delayed(
@@ -254,8 +257,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
           () {
             _controller.deleteAllRecords(_controller.listKey);
             SnackbarHelper.showSnackbar(
-              title: "You deleted all records",
-              message: "There are no more records",
+              title: "You deleted all records".tr,
+              message: "There are no more records".tr,
               backgroundColor: Colors.red,
               duration: const Duration(milliseconds: 1500),
               icon: const Icon(Icons.delete),

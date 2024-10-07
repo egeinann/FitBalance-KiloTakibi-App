@@ -149,27 +149,27 @@ class Controller extends GetxController {
     switch (index) {
       case 0:
         if (records.length < 7) {
-          return "Graph";
+          return "Graph".tr;
         } else {
           switch (graphPageIndex.value) {
             case 0:
-              return "Line Graph";
+              return "Line Graph".tr;
             case 1:
-              return "Bar Graph";
+              return "Bar Graph".tr;
             default:
-              return "Error Graph";
+              return "Error Graph".tr;
           }
         }
       case 1:
-        return 'Gallery';
+        return 'Gallery'.tr;
       case 2:
-        return 'Add';
+        return 'Add'.tr;
       case 3:
-        return 'History';
+        return 'History'.tr;
       case 4:
-        return 'Profile';
+        return 'Profile'.tr;
       default:
-        return 'App';
+        return 'App'.tr;
     }
   }
 

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/view/settings_screen/about_the_app_sceen.dart';
+import 'package:kilo_takibi_uyg/view/settings_screen/data_management_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/privacyPolicy_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/termsOfService_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -24,7 +26,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final settingsList = [
       SettingsModel(
         const Icon(Ionicons.earth),
-        "Language",
+        "Language".tr,
         null,
         Obx(
           () => Text(
@@ -38,7 +40,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       SettingsModel(
         const Icon(Icons.format_color_fill_rounded),
-        "Theme",
+        "Theme".tr,
         null,
         SizedBox(
           width: Get.size.width * 0.15,
@@ -58,8 +60,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       SettingsModel(
         const Icon(Ionicons.notifications),
-        "Notifications",
-        "Reminder for process tracking",
+        "Notifications".tr,
+        "Reminder for process tracking".tr,
         Obx(
           () => Switch(
             inactiveThumbColor: const Color.fromARGB(255, 255, 17, 0),
@@ -78,8 +80,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       SettingsModel(
         const Icon(Ionicons.lock_closed),
-        "Privacy Policy",
-        "Privacy Policy",
+        "Privacy Policy".tr,
+        "Protection of personal data".tr,
         null,
         onTap: () {
           Get.to(const PrivacyPolicyScreen());
@@ -87,8 +89,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       SettingsModel(
         const Icon(Ionicons.document_text),
-        "Terms of service",
-        "You have accepted these terms.",
+        "Terms of service".tr,
+        "You have accepted these terms".tr,
         null,
         onTap: () {
           Get.to(const TermsOfServiceScreen());
@@ -96,22 +98,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       SettingsModel(
         const Icon(Ionicons.cloud),
-        "Data management",
-        "Data backup, restore and data wipe",
+        "Data management".tr,
+        "Data backup, restore and data wipe".tr,
         null,
-        onTap: () {},
+        onTap: () {
+          Get.to(const DataManagementScreen());
+        },
       ),
       SettingsModel(
         const Icon(Ionicons.information_circle),
-        "About the app",
+        "About the app".tr,
         null,
         null,
-        onTap: () {},
+        onTap: () {
+          Get.to(const AboutTheAppScreen());
+        },
       )
     ];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings', style: Theme.of(context).textTheme.titleLarge),
+        title:
+            Text('Settings'.tr, style: Theme.of(context).textTheme.titleLarge),
         centerTitle: true,
       ),
       body: Padding(

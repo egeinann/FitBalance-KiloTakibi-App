@@ -72,6 +72,32 @@ class Languages extends Translations {
           "Female": "Female",
           "NAME": "NAME",
           "TARGET WEIGHT": "TARGET WEIGHT",
+
+          // Controller
+          'Graph': 'Graph',
+          'Line Graph': 'Line Graph',
+          'Bar Graph': 'Bar Graph',
+          'Error Graph': 'Error Graph',
+          'Gallery': 'Gallery',
+          'Add': 'Add',
+          'History': 'History',
+          'Profile': 'Profile',
+          'App': 'App',
+
+          // SettingsScreen
+          'Language': 'Language',
+          'Theme': 'Theme',
+          'Notifications': 'Notifications',
+          'Reminder for process tracking': 'Reminder for process tracking',
+          'Privacy Policy': 'Privacy Policy',
+          'Protection of personal data': 'Protection of personal data',
+          'Terms of service': 'Terms of service',
+          'You have accepted these terms': 'You have accepted these terms',
+          'Data management': 'Data management',
+          'Data backup, restore and data wipe':
+              'Data backup, restore and data wipe',
+          'About the app': 'About the app',
+          'Settings': 'Settings',
         },
         'tr_TR': {
           // GraphViewScreen
@@ -128,6 +154,32 @@ class Languages extends Translations {
           "Female": "Kadın",
           "NAME": "İSİM",
           "TARGET WEIGHT": "HEDEF AĞIRLIK",
+
+          // Controller
+          'Graph': 'Grafik',
+          'Line Graph': 'Çizgi Grafiği',
+          'Bar Graph': 'Çubuk Grafiği',
+          'Error Graph': 'Hata Grafiği',
+          'Gallery': 'Galeri',
+          'Add': 'Ekle',
+          'History': 'Geçmiş',
+          'Profile': 'Profil',
+          'App': 'Uygulama',
+
+          // SettingsScreen
+          'Language': 'Dil',
+          'Theme': 'Tema',
+          'Notifications': 'Bildirimler',
+          'Reminder for process tracking': 'Süreç takibi için hatırlatıcı',
+          'Privacy Policy': 'Gizlilik Politikası',
+          'Protection of personal data': 'Kişisel verilerin korunması',
+          'Terms of service': 'Hizmet Şartları',
+          'You have accepted these terms': 'Bu şartları kabul ettiniz',
+          'Data management': 'Veri yönetimi',
+          'Data backup, restore and data wipe':
+              'Veri yedekleme, geri yükleme ve veri silme',
+          'About the app': 'Uygulama Hakkında',
+          'Settings': 'Ayarlar',
         },
         'es_ES': {
           // GraphViewScreen
@@ -185,6 +237,33 @@ class Languages extends Translations {
           "Female": "Femenino",
           "NAME": "NOMBRE",
           "TARGET WEIGHT": "PESO OBJETIVO",
+
+          // Controller
+          'Graph': 'Gráfico',
+          'Line Graph': 'Gráfico de líneas',
+          'Bar Graph': 'Gráfico de barras',
+          'Error Graph': 'Gráfico de error',
+          'Gallery': 'Galería',
+          'Add': 'Agregar',
+          'History': 'Historial',
+          'Profile': 'Perfil',
+          'App': 'Aplicación',
+
+          // SettingsScreen
+          'Language': 'Idioma',
+          'Theme': 'Tema',
+          'Notifications': 'Notificaciones',
+          'Reminder for process tracking':
+              'Recordatorio para el seguimiento de procesos',
+          'Privacy Policy': 'Política de privacidad',
+          'Protection of personal data': 'Protección de datos personales',
+          'Terms of service': 'Términos de servicio',
+          'You have accepted these terms': 'Has aceptado estos términos',
+          'Data management': 'Gestión de datos',
+          'Data backup, restore and data wipe':
+              'Copia de seguridad de datos, restauración y borrado de datos',
+          'About the app': 'Acerca de la aplicación',
+          'Settings': 'Ajustes',
         },
         'fr_FR': {
           // GraphViewScreen
@@ -245,6 +324,32 @@ class Languages extends Translations {
           "Female": "Femme",
           "NAME": "NOM",
           "TARGET WEIGHT": "POIDS CIBLE",
+
+          // Controller
+          'Graph': 'Graphique',
+          'Line Graph': 'Graphique en lignes',
+          'Bar Graph': 'Graphique en barres',
+          'Error Graph': 'Graphique d\'erreur',
+          'Gallery': 'Galerie',
+          'Add': 'Ajouter',
+          'History': 'Historique',
+          'Profile': 'Profil',
+          'App': 'Application',
+
+          // SettingsScreen
+          'Language': 'Langue',
+          'Theme': 'Thème',
+          'Notifications': 'Notifications',
+          'Reminder for process tracking': 'Rappel pour le suivi des processus',
+          'Privacy Policy': 'Politique de confidentialité',
+          'Protection of personal data': 'Protection des données personnelles',
+          'Terms of service': 'Conditions de service',
+          'You have accepted these terms': 'Vous avez accepté ces conditions',
+          'Data management': 'Gestion des données',
+          'Data backup, restore and data wipe':
+              'Sauvegarde, restauration et suppression des données',
+          'About the app': 'À propos de l\'application',
+          'Settings': 'Paramètres',
         },
         'de_DE': {
           // GraphViewScreen
@@ -303,6 +408,33 @@ class Languages extends Translations {
           "Female": "Weiblich",
           "NAME": "NAME",
           "TARGET WEIGHT": "ZIELGEWICHT",
+
+          // Controller
+          'Graph': 'Diagramm',
+          'Line Graph': 'Liniendiagramm',
+          'Bar Graph': 'Balkendiagramm',
+          'Error Graph': 'Fehlerdiagramm',
+          'Gallery': 'Galerie',
+          'Add': 'Hinzufügen',
+          'History': 'Verlauf',
+          'Profile': 'Profil',
+          'App': 'App',
+
+          // SettingsScreen
+          'Language': 'Sprache',
+          'Theme': 'Thema',
+          'Notifications': 'Benachrichtigungen',
+          'Reminder for process tracking': 'Erinnerung zur Prozessverfolgung',
+          'Privacy Policy': 'Datenschutzrichtlinie',
+          'Protection of personal data': 'Schutz personenbezogener Daten',
+          'Terms of service': 'Nutzungsbedingungen',
+          'You have accepted these terms':
+              'Sie haben diese Bedingungen akzeptiert',
+          'Data management': 'Datenverwaltung',
+          'Data backup, restore and data wipe':
+              'Datensicherung, Wiederherstellung und Datenlöschung',
+          'About the app': 'Über die App',
+          'Settings': 'Einstellungen',
         },
         'pt_PT': {
           // GraphViewScreen
@@ -361,6 +493,33 @@ class Languages extends Translations {
           "Female": "Feminino",
           "NAME": "NOME",
           "TARGET WEIGHT": "PESO ALVO",
+
+          // Controller
+          'Graph': 'Gráfico',
+          'Line Graph': 'Gráfico de linhas',
+          'Bar Graph': 'Gráfico de barras',
+          'Error Graph': 'Gráfico de erro',
+          'Gallery': 'Galeria',
+          'Add': 'Adicionar',
+          'History': 'Histórico',
+          'Profile': 'Perfil',
+          'App': 'Aplicativo',
+
+          // SettingsScreen
+          'Language': 'Idioma',
+          'Theme': 'Tema',
+          'Notifications': 'Notificações',
+          'Reminder for process tracking':
+              'Lembrete para acompanhamento de processos',
+          'Privacy Policy': 'Política de privacidade',
+          'Protection of personal data': 'Proteção de dados pessoais',
+          'Terms of service': 'Termos de serviço',
+          'You have accepted these terms': 'Você aceitou estes termos',
+          'Data management': 'Gestão de dados',
+          'Data backup, restore and data wipe':
+              'Backup de dados, restauração e limpeza de dados',
+          'About the app': 'Sobre o aplicativo',
+          'Settings': 'Configurações',
         },
         'zh_CN': {
           // GraphViewScreen
@@ -414,6 +573,31 @@ class Languages extends Translations {
           "Female": "女性",
           "NAME": "名字",
           "TARGET WEIGHT": "目标体重",
+
+          // Controller
+          'Graph': '图表',
+          'Line Graph': '折线图',
+          'Bar Graph': '柱状图',
+          'Error Graph': '错误图表',
+          'Gallery': '图库',
+          'Add': '添加',
+          'History': '历史',
+          'Profile': '个人资料',
+          'App': '应用程序',
+
+          // SettingsScreen
+          'Language': '语言',
+          'Theme': '主题',
+          'Notifications': '通知',
+          'Reminder for process tracking': '进程跟踪提醒',
+          'Privacy Policy': '隐私政策',
+          'Protection of personal data': '个人数据保护',
+          'Terms of service': '服务条款',
+          'You have accepted these terms': '您已接受这些条款',
+          'Data management': '数据管理',
+          'Data backup, restore and data wipe': '数据备份、恢复和数据清除',
+          'About the app': '关于应用程序',
+          'Settings': '设置',
         },
       };
 }

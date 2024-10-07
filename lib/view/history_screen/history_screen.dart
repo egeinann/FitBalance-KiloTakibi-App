@@ -79,7 +79,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               itemBuilder: (context, index, animation) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 2),
-                  child: InkWell(
+                  child: GestureDetector(
                     onTap: () => Get.to(
                         RecordScreen(rec: _controller.records[index]),
                         transition: Transition.rightToLeftWithFade),

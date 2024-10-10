@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 
 class DataManagementScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class DataManagementScreen extends StatelessWidget {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         title: Text(
-          'Data Management',
+          'Data Management'.tr,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         centerTitle: true,
@@ -33,9 +34,9 @@ class DataManagementScreen extends StatelessWidget {
                   //   SnackBar(content: Text("Data backed up successfully!")),
                   // );
                 },
-                label: const Text(
-                  "Backup Data",
-                  style: TextStyle(
+                label: Text(
+                  "Backup Data".tr,
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: "outfit",
                       color: Colors.white),
@@ -55,9 +56,9 @@ class DataManagementScreen extends StatelessWidget {
                   //   SnackBar(content: Text("Data restored successfully!")),
                   // );
                 },
-                label: const Text(
-                  "Restore Data",
-                  style: TextStyle(
+                label: Text(
+                  "Restore Data".tr,
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: "outfit",
                       color: Colors.white),
@@ -74,9 +75,9 @@ class DataManagementScreen extends StatelessWidget {
                 onPressed: () {
                   // _showWipeDataDialog(context);
                 },
-                label: const Text(
-                  "Wipe Data",
-                  style: TextStyle(
+                label: Text(
+                  "Wipe Data".tr,
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: "outfit",
                       color: Colors.white),

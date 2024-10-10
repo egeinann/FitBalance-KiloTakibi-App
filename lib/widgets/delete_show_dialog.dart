@@ -92,7 +92,7 @@ class __BlurDialogState extends State<_BlurDialog>
               actions: <Widget>[
                 TextButton(
                   child: Text(
-                    "Cancel",
+                    "Cancel".tr,
                     style: Get.textTheme.labelSmall,
                   ),
                   onPressed: () {
@@ -102,9 +102,9 @@ class __BlurDialogState extends State<_BlurDialog>
                   },
                 ),
                 TextButton(
-                  child: const Text(
-                    "Delete",
-                    style: TextStyle(
+                  child: Text(
+                    "Delete".tr,
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.red,
                     ),

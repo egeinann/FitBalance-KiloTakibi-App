@@ -13,7 +13,7 @@ Obx barGraph(BuildContext context) {
       child: Column(
         children: [
           // *** BAR CHART ***
-          Text("Averages of the last 1 year",
+          Text("Averages of the last 1 year".tr,
               style: Theme.of(context).textTheme.bodyMedium),
           Expanded(
             child: BarChart(
@@ -52,7 +52,8 @@ Obx barGraph(BuildContext context) {
                               monthIndex,
                         );
                         final year = int.parse(monthYear.split('-')[0]);
-                        final month = DateFormat('MMM\n yy')
+                        final month =
+                            DateFormat('MMM\n yy', Get.locale.toString())
                             .format(DateTime(year, monthIndex));
                         return SideTitleWidget(
                           axisSide: meta.axisSide,
@@ -85,7 +86,7 @@ Obx barGraph(BuildContext context) {
                         .primaryColor, // Tooltip arka plan rengini burada belirleyin
                     getTooltipItem: (group, groupIndex, rod, rodIndex) {
                       return BarTooltipItem(
-                        "${rod.toY} kg", // Tooltip'te gösterilecek ağırlık değeri
+                        "${rod.toY} ${'kg'.tr}", // Tooltip'te gösterilecek ağırlık değeri
                         const TextStyle(
                           color: Colors.white, // Tooltip metin rengi
                           fontWeight: FontWeight.bold,

@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 
@@ -12,7 +13,7 @@ class AboutTheAppScreen extends StatelessWidget {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         title: Text(
-          'About The App',
+          'About The App'.tr,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         centerTitle: true,
@@ -27,23 +28,24 @@ class AboutTheAppScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                AutoSizeText('FitBalance',
+                AutoSizeText('FitBalance'.tr,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyLarge),
                 const SizedBox(height: 10),
                 AutoSizeText(
-                    'This app helps you track your weight and analyze your progress step by step. You can add photos, notes, and see BMI calculations for a more detailed analysis.',
+                    'This app helps you track your weight and analyze your progress step by step. You can add photos, notes, and see BMI calculations for a more detailed analysis.'
+                        .tr,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(height: 10),
-                AutoSizeText('Version: 1.0.0',
+                AutoSizeText('Version: 1.0.0'.tr,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(height: 5),
-                AutoSizeText('Developed by: egedeveloper',
+                AutoSizeText('Developed by: egedeveloper'.tr,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium),
-                AutoSizeText('Mail: fitbalance.app@gmail.com',
+                AutoSizeText('Mail: fitbalance.app@gmail.com'.tr,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium),
               ],
@@ -56,7 +58,7 @@ class AboutTheAppScreen extends StatelessWidget {
                 children: [
                   const Icon(Ionicons.fitness),
                   const SizedBox(height: 5),
-                  Text("You must be healthy !",
+                  Text("You must be healthy !".tr,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodySmall)
                 ],

@@ -37,22 +37,22 @@ class RecordListTile extends StatelessWidget {
           ),
         ),
         if (rec.note != null && rec.note!.isNotEmpty)
-          const Positioned(
+          Positioned(
             top: 1,
             right: 15,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
+                const Icon(
                   Icons.circle,
                   color: Colors.green,
                   size: 8,
                 ),
                 Text(
-                  "note",
+                  "note".tr,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "outift",
+                  style: const TextStyle(
+                    fontFamily: "outfit",
                     color: Colors.green,
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
@@ -77,7 +77,7 @@ class RecordListTile extends StatelessWidget {
                   backgroundImage: FileImage(File(rec.photoUrl!)), radius: 14),
         const SizedBox(width: 5),
         Text(
-          DateFormat("d MMM, yy").format(rec.dateTime),
+          DateFormat("d MMM, yy", Get.locale.toString()).format(rec.dateTime),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],
@@ -93,7 +93,7 @@ class RecordListTile extends StatelessWidget {
           tag:
               "${rec.weight}_${rec.dateTime.toIso8601String()}_weight", // Tarih ve kilo kombinasyonu
           child: Text(
-            "${rec.weight} kg",
+            "${rec.weight} ${"kg".tr}",
             style: Theme.of(context).textTheme.labelSmall,
           ),
         ),

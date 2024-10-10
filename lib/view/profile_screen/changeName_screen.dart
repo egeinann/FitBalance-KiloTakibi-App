@@ -28,7 +28,7 @@ class ChangeNameScreen extends StatelessWidget {
         ),
         centerTitle: true,
         title: Text(
-          "Name",
+          "Name".tr,
           style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
@@ -62,7 +62,7 @@ class ChangeNameScreen extends StatelessWidget {
                   children: [
                     CustomTextField(
                       controller: _onboardingController.nameController,
-                      labelText: "Your name",
+                      labelText: "Your name".tr,
                       onChanged: (value) {
                         _onboardingController.temporaryUserName.value = value;
                       },
@@ -96,8 +96,8 @@ class ChangeNameScreen extends StatelessWidget {
   void changeNameSave() {
     if (_onboardingController.temporaryUserName.value.isEmpty) {
       SnackbarHelper.showSnackbar(
-        title: "Name ?",
-        message: "Please enter your name",
+        title: "Name ?".tr,
+        message: "Please enter your name".tr,
         backgroundColor: Colors.red,
         duration: const Duration(milliseconds: 1500),
         icon: const Icon(Ionicons.cloud_offline),
@@ -108,7 +108,7 @@ class ChangeNameScreen extends StatelessWidget {
       Get.focusScope?.unfocus();
       Get.back();
       SnackbarHelper.showSnackbar(
-        title: "You changed your name",
+        title: "You changed your name".tr,
         message: "${_onboardingController.userName}",
         backgroundColor: Colors.green,
         duration: const Duration(milliseconds: 1500),

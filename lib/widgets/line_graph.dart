@@ -15,8 +15,8 @@ Obx lineGraph(BuildContext context) {
             // *** TEXTS TIME RANGE EXPANDED ***
             Text(
               _controller.selectedTimeRange[0]
-                  ? "All records"
-                  : "Records of the last 30 days",
+                  ? "All records".tr
+                  : "Records of the last 30 days".tr,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             // *** LINE CHART EXPANDED
@@ -49,7 +49,7 @@ Obx lineGraph(BuildContext context) {
                                   barSpot.x,
                             );
                             return LineTooltipItem(
-                              '${DateFormat('d MMM, y').format(record.dateTime)}\n${record.weight} kg',
+                              '${DateFormat('d MMM, y', Get.locale.toString()).format(record.dateTime)}\n${record.weight} ${"kg".tr}',
                               const TextStyle(color: Colors.white),
                             );
                           }).toList();
@@ -117,7 +117,10 @@ Obx lineGraph(BuildContext context) {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text(DateFormat('d MMM').format(date),
+                                    Text(
+                                        DateFormat(
+                                                'd MMM', Get.locale.toString())
+                                            .format(date),
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodySmall),
@@ -222,7 +225,7 @@ Obx lineGraph(BuildContext context) {
                             : Theme.of(context).canvasColor,
                       ),
                       child: Text(
-                        "all records",
+                        "all records".tr,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
@@ -238,7 +241,7 @@ Obx lineGraph(BuildContext context) {
                             : Theme.of(context).canvasColor,
                       ),
                       child: Text(
-                        "last 30 days",
+                        "last 30 days".tr,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),

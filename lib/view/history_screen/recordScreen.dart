@@ -24,7 +24,7 @@ class RecordScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          DateFormat("d MMMM, y").format(rec.dateTime),
+          DateFormat("d MMMM, y", Get.locale.toString()).format(rec.dateTime),
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         actions: [
@@ -87,7 +87,7 @@ class RecordScreen extends StatelessWidget {
                 children: [
                   // Kenarlık (dış) metin
                   Text(
-                    '${rec.weight} kg',
+                    '${rec.weight} ${"kg".tr}',
                     style: Theme.of(context).textTheme.labelSmall!.copyWith(
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
@@ -97,7 +97,7 @@ class RecordScreen extends StatelessWidget {
                   ),
                   // İç metin
                   Text(
-                    '${rec.weight} kg',
+                    '${rec.weight} ${"kg".tr}',
                     style: Theme.of(context).textTheme.labelSmall!.copyWith(
                           foreground: Paint()
                             ..shader = const LinearGradient(
@@ -195,7 +195,7 @@ class RecordScreen extends StatelessWidget {
               ),
       );
     } else {
-      return const Expanded(flex: 4, child: Center(child: Text("No photo !")));
+      return Expanded(flex: 4, child: Center(child: Text("No photo !".tr)));
     }
   }
 
@@ -223,14 +223,15 @@ class RecordScreen extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   children: [
                     Text(
-                      DateFormat("d MMM, y").format(rec.dateTime),
+                      DateFormat("d MMM, y", Get.locale.toString())
+                          .format(rec.dateTime),
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          "Edit Record",
+                          "Edit Record".tr,
                           style: Theme.of(context).textTheme.titleLarge,
                           textAlign: TextAlign.center,
                         ),
@@ -246,7 +247,7 @@ class RecordScreen extends StatelessWidget {
                         SizedBox(height: Get.size.height * 0.01),
                         CustomTextField(
                           controller: noteController,
-                          labelText: "note",
+                          labelText: "note".tr,
                           onChanged: (value) {
                             note = value;
                           },
@@ -264,9 +265,9 @@ class RecordScreen extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: CustomFloatingActionButton(
                             heroTag: "_savebutton",
-                            widget: const Text(
-                              "Save",
-                              style: TextStyle(
+                            widget: Text(
+                              "Save".tr,
+                              style: const TextStyle(
                                 fontFamily: "outfit",
                                 color: Colors.white,
                               ),
@@ -314,8 +315,9 @@ class RecordScreen extends StatelessWidget {
     Future.delayed(const Duration(milliseconds: 600), () {
       Get.back();
       SnackbarHelper.showSnackbar(
-          title: "Record updated",
-          message: DateFormat("d MMMM, y").format(rec.dateTime),
+          title: "Record updated".tr,
+          message: DateFormat("d MMMM, y", Get.locale.toString())
+              .format(rec.dateTime),
           backgroundColor: Colors.green,
           duration: const Duration(milliseconds: 1500),
           icon: const Icon(Icons.save));
@@ -325,8 +327,8 @@ class RecordScreen extends StatelessWidget {
   // *** RECORD DELETE SHOW DIALOG ***
   Future<dynamic> showDeleteConfirmation(Record rec) {
     return DialogService.deleteShowDialog(
-      title: "Delete Record",
-      content: "Are you sure you want to delete this record ?",
+      title: "Delete Record".tr,
+      content: "Are you sure you want to delete this record ?".tr,
       onCancel: () {},
       onConfirm: () {
         Future.delayed(
@@ -344,8 +346,8 @@ class RecordScreen extends StatelessWidget {
   // *** PHOTO DELETE SHOW DIALOG ***
   Future<dynamic> showDeletePhoto(Record rec) {
     return DialogService.deleteShowDialog(
-      title: "Delete Photo",
-      content: "Are you sure you want to delete this photo ?",
+      title: "Delete Photo".tr,
+      content: "Are you sure you want to delete this photo ?".tr,
       onCancel: () {},
       onConfirm: () {
         _controller.removePhoto(rec);
@@ -356,8 +358,9 @@ class RecordScreen extends StatelessWidget {
           () {
             Get.back();
             SnackbarHelper.showSnackbar(
-                title: "Record updated",
-                message: DateFormat("d MMMM, y").format(rec.dateTime),
+                title: "Record updated".tr,
+                message: DateFormat("d MMMM, y", Get.locale.toString())
+                    .format(rec.dateTime),
                 backgroundColor: Colors.green,
                 duration: const Duration(milliseconds: 1500),
                 icon: const Icon(Icons.camera_alt));

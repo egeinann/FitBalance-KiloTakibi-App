@@ -27,7 +27,7 @@ class ChangeTargetWeightScreen extends StatelessWidget {
         scrolledUnderElevation: 0,
         centerTitle: true,
         title: Text(
-          "Target Weight",
+          "Target Weight".tr,
           style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
@@ -47,7 +47,8 @@ class ChangeTargetWeightScreen extends StatelessWidget {
               Padding(
                 padding: context.paddingLarge,
                 child: AutoSizeText(
-                  'A healthy life starts with the right goals. Choose your target weight and remember your belief in yourself every step of the way.',
+                  'A healthy life starts with the right goals. Choose your target weight and remember your belief in yourself every step of the way.'
+                      .tr,
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
@@ -100,8 +101,8 @@ class ChangeTargetWeightScreen extends StatelessWidget {
             _onboardingController.setTargetWeight(_temporaryTargetWeight.value);
             Get.back();
             SnackbarHelper.showSnackbar(
-              title: "Your target weight has been updated",
-              message: "Good luck",
+              title: "Your target weight has been updated".tr,
+              message: "Good luck".tr,
               backgroundColor: Colors.green,
               duration: const Duration(seconds: 2),
               icon: const Icon(Ionicons.golf),

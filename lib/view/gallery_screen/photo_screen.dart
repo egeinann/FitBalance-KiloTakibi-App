@@ -42,7 +42,7 @@ class PhotoScreen extends StatelessWidget {
               ),
             );
     } else {
-      return const Expanded(flex: 4, child: Center(child: Text("No photo !")));
+      return const Expanded(flex: 4, child: Center(child: Text("Error")));
     }
   }
 }

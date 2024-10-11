@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 
@@ -19,7 +20,7 @@ class InfoWaterScreen extends StatelessWidget {
               children: [
                 RotatedBox(
                   quarterTurns: 3,
-                  child: Text("W A T E R",
+                  child: Text("W A T E R".tr,
                       style: Theme.of(context).textTheme.displaySmall),
                 ),
                 const Padding(
@@ -38,7 +39,8 @@ class InfoWaterScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 AutoSizeText(
-                  'Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.',
+                  'Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.'
+                      .tr,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),

@@ -7,6 +7,7 @@ import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/language/language.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
+import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/controller/bmi_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/info/controller/info_controller.dart';
@@ -23,7 +24,7 @@ void main() {
   // Üst alt bildirim panelleri renk şemaları transparent
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-  // BURADAKİ PUT İŞLEMLERİ UYGULAMA BAŞLADIĞI GİBİ AKTİF OLUR - HER SAYFANIN KENDİSİNE VERİLİRSE O SAYFA AÇILAMDAN RAM DE YER KAPLAMAZ
+  // BURADAKİ PUT İŞLEMLERİ UYGULAMA BAŞLADIĞI GİBİ AKTİF OLUR - HER SAYFANIN KENDİSİNE VERİLİRSE O SAYFA AÇILMADAN RAM DE YER KAPLAMAZ
   Get.put(Controller());
   Get.put(OnboardingController());
   Get.put(BMIController());

@@ -20,7 +20,7 @@ class BmiScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        title: Text("Calculate BMI",
+        title: Text("Calculate BMI".tr,
             style: Theme.of(context).textTheme.titleLarge),
         centerTitle: true,
       ),
@@ -44,7 +44,7 @@ class BmiScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
       child: CustomFloatingActionButton(
-        heroTag: "bmi",
+        heroTag: "bmi".tr,
         widget: const Icon(Icons.question_mark_sharp),
         onPressed: () {
           Get.to(const BmiInfoScreen(), transition: Transition.downToUp);
@@ -64,13 +64,13 @@ class BmiScreen extends StatelessWidget {
 
           // BMI değerine göre mesajı belirle
           if (bmiValue < 18.5) {
-            message = "Zayıf görünüyorsunuz, kilo almalısınız.";
+            message = "You look underweight, you should gain weight.".tr;
           } else if (bmiValue >= 18.5 && bmiValue < 25) {
-            message = "Vücudunuz oldukça iyi görünüyor.";
+            message = "Your body looks quite good.".tr;
           } else if (bmiValue >= 25 && bmiValue < 30) {
-            message = "Hafif bir kilo fazlanız var.";
+            message = "You have a slight excess weight.".tr;
           } else {
-            message = "Oldukça kilolu görünüyorsunuz, Kilo vermelisiniz.";
+            message = "You look quite overweight, you should lose weight.".tr;
           }
 
           return Column(
@@ -132,7 +132,7 @@ class BmiScreen extends StatelessWidget {
               Expanded(
                 child: Column(
                   children: [
-                    Text('BMI: ${bmiValue.toStringAsFixed(1)}',
+                    Text('${"BMI: ".tr} ${bmiValue.toStringAsFixed(1)}',
                         style: Theme.of(context).textTheme.bodyLarge),
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 5),
@@ -181,7 +181,7 @@ class BmiScreen extends StatelessWidget {
                   },
                 );
               }),
-              Text("kg", style: Theme.of(context).textTheme.labelSmall),
+              Text("kg".tr, style: Theme.of(context).textTheme.labelSmall),
             ],
           ),
         ],
@@ -216,7 +216,7 @@ class BmiScreen extends StatelessWidget {
                   },
                 ),
               ),
-              Text("cm", style: Theme.of(context).textTheme.labelSmall),
+              Text("cm".tr, style: Theme.of(context).textTheme.labelSmall),
             ],
           ),
         ],

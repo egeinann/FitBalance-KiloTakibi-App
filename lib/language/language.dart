@@ -5,8 +5,8 @@ class Languages extends Translations {
   static const defa = Locale("en", "US"); // default dil
   static final languageList = [
     // dil listesi
-    const Locale("tr", "TR"),
     const Locale("en", "US"),
+    const Locale("tr", "TR"),
     const Locale("es", "ES"),
     const Locale("fr", "FR"),
     const Locale("de", "DE"),
@@ -72,6 +72,51 @@ class Languages extends Translations {
           "Female": "Female",
           "NAME": "NAME",
           "TARGET WEIGHT": "TARGET WEIGHT",
+
+          // BmiInfoScreen
+          "What is this BMI ?": "What is this BMI?",
+          "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range.":
+              "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range.",
+          "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese":
+              "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese",
+          "You must be healthy !": "You must be healthy!",
+
+          // BmiScreen
+          "Calculate BMI": "Calculate BMI",
+          "You look underweight, you should gain weight.":
+              "You look underweight, you should gain weight.",
+          "Your body looks quite good.": "Your body looks quite good.",
+          "You have a slight excess weight.":
+              "You have a slight excess weight.",
+          "You look quite overweight, you should lose weight.":
+              "You look quite overweight, you should lose weight.",
+          'BMI: ': "BMI: ",
+          "kg": "kg",
+          "cm": "cm",
+          'bmi': "BMI",
+
+          // InfoScreen
+          "Healthy Weight Control": "Healthy Weight Control",
+
+          // InfoNutritionScreen
+          "N U T R I T I O N": "N U T R I T I O N",
+          "The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.":
+              "The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.",
+
+          // InfoWaterScreen
+          "W A T E R": "W A T E R",
+          "Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.":
+              "Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.",
+
+          // InfoActivityScreen
+          "A C T I V I T Y": "A C T I V I T Y",
+          "Regular exercise plays a big role in weight control. Try to do at least 150 minutes of moderate aerobic activity per week. Activities such as walking, running, swimming or cycling will help you lose weight and maintain your overall health.":
+              "Regular exercise plays a big role in weight control. Try to do at least 150 minutes of moderate aerobic activity per week. Activities such as walking, running, swimming or cycling will help you lose weight and maintain your overall health.",
+
+          // InfoSleepScreen
+          "S L E E P": "S L E E P",
+          "Sufficient and quality sleep is necessary for the body to rest and renew. Make sure to sleep 7-9 hours a day. Insufficient sleep can increase appetite and lead to weight gain. Maintaining your sleep pattern supports weight control.":
+              "Sufficient and quality sleep is necessary for the body to rest and renew. Make sure to sleep 7-9 hours a day. Insufficient sleep can increase appetite and lead to weight gain. Maintaining your sleep pattern supports weight control.",
 
           // Controller
           'Graph': 'Graph',
@@ -278,6 +323,50 @@ class Languages extends Translations {
           "NAME": "İSİM",
           "TARGET WEIGHT": "HEDEF AĞIRLIK",
 
+          // BmiInfoScreen
+          "What is this BMI ?": "BMI nedir?",
+          "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range.":
+              "BMI (Vücut Kitle İndeksi), bir kişinin kilosu ve boyuna göre vücut yağını tahmin eden bir ölçüdür. Bir bireyin sağlıklı bir kilo aralığında olup olmadığını değerlendirmek için kullanılır.",
+          "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese":
+              "18.5'in altında: Zayıf.\n18.5 - 24.9: Normal kilo\n25 - 29.9: Fazla kilolu\n30 ve üstü: Obez",
+          "You must be healthy !": "Sağlıklı olmalısın!",
+
+          // BmiScreen
+          "Calculate BMI": "BMI Hesapla",
+          "You look underweight, you should gain weight.":
+              "Zayıf görünüyorsunuz, kilo almalısınız.",
+          "Your body looks quite good.": "Vücudunuz oldukça iyi görünüyor.",
+          "You have a slight excess weight.": "Hafif bir kilo fazlanız var.",
+          "You look quite overweight, you should lose weight.":
+              "Oldukça kilolu görünüyorsunuz, Kilo vermelisiniz.",
+          'BMI: ': "BMI: ",
+          "kg": "kg",
+          "cm": "cm",
+          'bmi': "VKI",
+
+          // InfoScreen
+          "Healthy Weight Control": "Sağlıklı Kilo Kontrolü",
+
+          // InfoNutritionScreen
+          "N U T R I T I O N": "B E S L E N M E",
+          "The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.":
+              "Sağlıklı kilo kontrolünün temeli dengeli ve düzenli bir diyettir. Her öğünde, protein, karbonhidrat ve sağlıklı yağların dengesini tüketmeye özen gösterin. Fast food ve işlenmiş gıdalardan kaçının, taze meyve, sebze ve tam tahıl ürünlerini tercih edin.",
+
+          // InfoWaterScreen
+          "W A T E R": "S U",
+          "Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.":
+              "Yeterli su alımı metabolizmanızı hızlandırarak kilo vermenize yardımcı olur. Günde en az 8 bardak su içmeye çalışın. Su içmek, tokluk hissinizi artırarak gereksiz atıştırmalıklardan kaçınmanıza yardımcı olabilir.",
+
+          // InfoActivityScreen
+          "A C T I V I T Y": "A K T İ V İ T E",
+          "Regular exercise plays a big role in weight control. Try to do at least 150 minutes of moderate aerobic activity per week. Activities such as walking, running, swimming or cycling will help you lose weight and maintain your overall health.":
+              "Düzenli egzersiz, kilo kontrolünde büyük bir rol oynar. Haftada en az 150 dakika orta dereceli aerobik aktivite yapmaya çalışın. Yürüyüş, koşu, yüzme veya bisiklet gibi aktiviteler kilo vermenize ve genel sağlığınızı korumanıza yardımcı olacaktır.",
+
+          // InfoSleepScreen
+          "S L E E P": "U Y K U",
+          "Sufficient and quality sleep is necessary for the body to rest and renew. Make sure to sleep 7-9 hours a day. Insufficient sleep can increase appetite and lead to weight gain. Maintaining your sleep pattern supports weight control.":
+              "Yeterli ve kaliteli uyku, vücudun dinlenmesi ve yenilenmesi için gereklidir. Günde 7-9 saat uyuduğunuzdan emin olun. Yetersiz uyku iştahı artırabilir ve kilo alımına neden olabilir. Uyku düzeninizi korumak kilo kontrolünü destekler.",
+
           // Controller
           'Graph': 'Grafik',
           'Line Graph': 'Çizgi Grafiği',
@@ -482,6 +571,50 @@ class Languages extends Translations {
           "Female": "Femenino",
           "NAME": "NOMBRE",
           "TARGET WEIGHT": "PESO OBJETIVO",
+
+          // BmiInfoScreen
+          "What is this BMI ?": "¿Qué es este IMC?",
+          "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range.":
+              "El IMC (Índice de Masa Corporal) es una medida que estima la grasa corporal en función del peso y la altura de una persona. Se utiliza para evaluar si una persona está en un rango de peso saludable.",
+          "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese":
+              "Menos de 18.5:  Bajo peso.\n18.5 - 24.9:  Peso normal\n25 - 29.9:  Sobrepeso\n30 y más:  Obesidad",
+          "You must be healthy !": "¡Debes estar sano!",
+
+          // BmiScreen
+          "Calculate BMI": "Calcular IMC",
+          "You look underweight, you should gain weight.":
+              "Te ves delgado, deberías ganar peso.",
+          "Your body looks quite good.": "Tu cuerpo se ve bastante bien.",
+          "You have a slight excess weight.": "Tienes un ligero sobrepeso.",
+          "You look quite overweight, you should lose weight.":
+              "Te ves bastante con sobrepeso, deberías perder peso.",
+          'BMI: ': "IMC: ",
+          "kg": "kg",
+          "cm": "cm",
+          'bmi': "IMC",
+
+          // InfoScreen
+          "Healthy Weight Control": "Control de Peso Saludable",
+
+          // InfoNutritionScreen
+          "N U T R I T I O N": "N U T R I C I Ó N",
+          "The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.":
+              "La base de un control de peso saludable es una dieta equilibrada y regular. En cada comida, asegúrate de consumir un equilibrio de proteínas, carbohidratos y grasas saludables. Evita la comida rápida y los alimentos procesados, prefiere frutas frescas, verduras y productos integrales.",
+
+          // InfoWaterScreen
+          "W A T E R": "A G U A",
+          "Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.":
+              "El consumo adecuado de agua te ayuda a perder peso acelerando tu metabolismo. Intenta beber al menos 8 vasos de agua al día. Beber agua puede ayudarte a evitar picoteos innecesarios aumentando tu sensación de saciedad.",
+
+          // InfoActivityScreen
+          "A C T I V I T Y": "A C T I V I D A D",
+          "Regular exercise plays a big role in weight control. Try to do at least 150 minutes of moderate aerobic activity per week. Activities such as walking, running, swimming or cycling will help you lose weight and maintain your overall health.":
+              "El ejercicio regular desempeña un papel importante en el control de peso. Intenta hacer al menos 150 minutos de actividad aeróbica moderada por semana. Actividades como caminar, correr, nadar o andar en bicicleta te ayudarán a perder peso y mantener tu salud general.",
+
+          // InfoSleepScreen
+          "S L E E P": "D O R M I R",
+          "Sufficient and quality sleep is necessary for the body to rest and renew. Make sure to sleep 7-9 hours a day. Insufficient sleep can increase appetite and lead to weight gain. Maintaining your sleep pattern supports weight control.":
+              "Un sueño suficiente y de calidad es necesario para que el cuerpo descanse y se renueve. Asegúrate de dormir entre 7 y 9 horas al día. La falta de sueño puede aumentar el apetito y provocar aumento de peso. Mantener tu patrón de sueño apoya el control de peso.",
 
           // Controller
           'Graph': 'Gráfico',
@@ -693,6 +826,50 @@ class Languages extends Translations {
           "NAME": "NOM",
           "TARGET WEIGHT": "POIDS CIBLE",
 
+          // BmiInfoScreen
+          "What is this BMI ?": "Qu'est-ce que l'IMC ?",
+          "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range.":
+              "L'IMC (Indice de Masse Corporelle) est une mesure qui estime la graisse corporelle en fonction du poids et de la taille d'une personne. Il est utilisé pour évaluer si une personne se trouve dans une plage de poids saine.",
+          "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese":
+              "Moins de 18.5: Insuffisance pondérale.\n18.5 - 24.9: Poids normal\n25 - 29.9: Surpoids\n30 et plus: Obésité",
+          "You must be healthy !": "Vous devez être en bonne santé !",
+
+          // BmiScreen
+          "Calculate BMI": "Calculer l'IMC",
+          "You look underweight, you should gain weight.":
+              "Vous semblez maigre, vous devriez prendre du poids.",
+          "Your body looks quite good.": "Votre corps a l'air plutôt bien.",
+          "You have a slight excess weight.": "Vous avez un léger surpoids.",
+          "You look quite overweight, you should lose weight.":
+              "Vous semblez en surpoids, vous devriez perdre du poids.",
+          'BMI: ': "IMC: ",
+          "kg": "kg",
+          "cm": "cm",
+          'bmi': "IMC",
+
+          // InfoScreen
+          "Healthy Weight Control": "Contrôle de Poids Sain",
+
+          // InfoNutritionScreen
+          "N U T R I T I O N": "N U T R I T I O N",
+          "The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.":
+              "La base d'un contrôle de poids sain est une alimentation équilibrée et régulière. À chaque repas, veillez à consommer un équilibre de protéines, de glucides et de graisses saines. Évitez la restauration rapide et les aliments transformés, préférez les fruits frais, les légumes et les produits à grains entiers.",
+
+          // InfoWaterScreen
+          "W A T E R": "E A U",
+          "Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.":
+              "Une consommation adéquate d'eau vous aide à perdre du poids en accélérant votre métabolisme. Essayez de boire au moins 8 verres d'eau par jour. Boire de l'eau peut vous aider à éviter les grignotages inutiles en augmentant votre sensation de satiété.",
+
+          // InfoActivityScreen
+          "A C T I V I T Y": "A C T I V I T É",
+          "Regular exercise plays a big role in weight control. Try to do at least 150 minutes of moderate aerobic activity per week. Activities such as walking, running, swimming or cycling will help you lose weight and maintain your overall health.":
+              "L'exercice régulier joue un rôle important dans le contrôle du poids. Essayez de faire au moins 150 minutes d'activité aérobique modérée par semaine. Des activités comme la marche, la course, la natation ou le cyclisme vous aideront à perdre du poids et à maintenir votre santé générale.",
+
+          // InfoSleepScreen
+          "S L E E P": "S O M M E I L",
+          "Sufficient and quality sleep is necessary for the body to rest and renew. Make sure to sleep 7-9 hours a day. Insufficient sleep can increase appetite and lead to weight gain. Maintaining your sleep pattern supports weight control.":
+              "Un sommeil suffisant et de qualité est nécessaire pour que le corps se repose et se renouvelle. Assurez-vous de dormir 7 à 9 heures par jour. Un sommeil insuffisant peut augmenter l'appétit et entraîner une prise de poids. Maintenir votre rythme de sommeil soutient le contrôle du poids.",
+
           // Controller
           'Graph': 'Graphique',
           'Line Graph': 'Graphique en lignes',
@@ -900,6 +1077,50 @@ class Languages extends Translations {
           "Female": "Weiblich",
           "NAME": "NAME",
           "TARGET WEIGHT": "ZIELGEWICHT",
+
+          // BmiInfoScreen
+          "What is this BMI ?": "Was ist dieser BMI?",
+          "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range.":
+              "Der BMI (Body Mass Index) ist ein Maß, das den Körperfettanteil basierend auf dem Gewicht und der Größe einer Person schätzt. Er wird verwendet, um zu beurteilen, ob eine Person sich im gesunden Gewichtsbereich befindet.",
+          "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese":
+              "Unter 18.5: Untergewicht.\n18.5 - 24.9: Normalgewicht\n25 - 29.9: Übergewicht\n30 und mehr: Fettleibig",
+          "You must be healthy !": "Du musst gesund sein!",
+
+          // BmiScreen
+          "Calculate BMI": "BMI berechnen",
+          "You look underweight, you should gain weight.":
+              "Sie sehen untergewichtig aus, Sie sollten zunehmen.",
+          "Your body looks quite good.": "Ihr Körper sieht ziemlich gut aus.",
+          "You have a slight excess weight.": "Sie haben leichtes Übergewicht.",
+          "You look quite overweight, you should lose weight.":
+              "Sie sehen ziemlich übergewichtig aus, Sie sollten abnehmen.",
+          'BMI: ': "BMI: ",
+          "kg": "kg",
+          "cm": "cm",
+          'bmi': "BMI",
+
+          // InfoScreen
+          "Healthy Weight Control": "Gesunde Gewichtskontrolle",
+
+          // InfoNutritionScreen
+          "N U T R I T I O N": "E R N Ä H R U N G",
+          "The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.":
+              "Die Grundlage einer gesunden Gewichtskontrolle ist eine ausgewogene und regelmäßige Ernährung. Achten Sie bei jeder Mahlzeit darauf, ein Gleichgewicht von Eiweiß, Kohlenhydraten und gesunden Fetten zu sich zu nehmen. Vermeiden Sie Fast Food und verarbeitete Lebensmittel, bevorzugen Sie frisches Obst, Gemüse und Vollkornprodukte.",
+
+          // InfoWaterScreen
+          "W A T E R": "W A S S E R",
+          "Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.":
+              "Ausreichende Wasseraufnahme hilft Ihnen, Gewicht zu verlieren, indem es Ihren Stoffwechsel beschleunigt. Versuchen Sie, mindestens 8 Gläser Wasser pro Tag zu trinken. Wasser trinken kann helfen, unnötiges Naschen zu vermeiden, indem es Ihr Sättigungsgefühl erhöht.",
+
+          // InfoActivityScreen
+          "A C T I V I T Y": "A K T I V I T Ä T",
+          "Regular exercise plays a big role in weight control. Try to do at least 150 minutes of moderate aerobic activity per week. Activities such as walking, running, swimming or cycling will help you lose weight and maintain your overall health.":
+              "Regelmäßige Bewegung spielt eine große Rolle bei der Gewichtskontrolle. Versuchen Sie, mindestens 150 Minuten mäßige aerobe Aktivität pro Woche zu machen. Aktivitäten wie Gehen, Laufen, Schwimmen oder Radfahren helfen Ihnen, Gewicht zu verlieren und Ihre allgemeine Gesundheit zu erhalten.",
+
+          // InfoSleepScreen
+          "S L E E P": "S C H L A F",
+          "Sufficient and quality sleep is necessary for the body to rest and renew. Make sure to sleep 7-9 hours a day. Insufficient sleep can increase appetite and lead to weight gain. Maintaining your sleep pattern supports weight control.":
+              "Ausreichender und qualitativ hochwertiger Schlaf ist notwendig, damit der Körper sich ausruht und erneuert. Achten Sie darauf, 7-9 Stunden pro Tag zu schlafen. Unzureichender Schlaf kann den Appetit steigern und zu einer Gewichtszunahme führen. Das Einhalten Ihres Schlafmusters unterstützt die Gewichtskontrolle.",
 
           // Controller
           'Graph': 'Diagramm',
@@ -1110,6 +1331,51 @@ class Languages extends Translations {
           "NAME": "NOME",
           "TARGET WEIGHT": "PESO ALVO",
 
+          // BmiInfoScreen
+          "What is this BMI ?": "O que é este IMC?",
+          "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range.":
+              "O IMC (Índice de Massa Corporal) é uma medida que estima a gordura corporal com base no peso e na altura de uma pessoa. É usado para avaliar se uma pessoa está dentro de uma faixa de peso saudável.",
+          "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese":
+              "Abaixo de 18.5: Abaixo do peso.\n18.5 - 24.9: Peso normal\n25 - 29.9: Sobrepeso\n30 ou mais: Obeso",
+          "You must be healthy !": "Deve estar saudável!",
+
+          // BmiScreen
+          "Calculate BMI": "Calcular IMC",
+          "You look underweight, you should gain weight.":
+              "Você parece estar abaixo do peso, deve ganhar peso.",
+          "Your body looks quite good.": "Seu corpo parece muito bom.",
+          "You have a slight excess weight.":
+              "Você está com um leve sobrepeso.",
+          "You look quite overweight, you should lose weight.":
+              "Você parece bem acima do peso, deve perder peso.",
+          'BMI: ': "IMC: ",
+          "kg": "kg",
+          "cm": "cm",
+          'bmi': "IMC",
+
+          // InfoScreen
+          "Healthy Weight Control": "Controle de Peso Saudável",
+
+          // InfoNutritionScreen
+          "N U T R I T I O N": "N U T R I Ç Ã O",
+          "The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.":
+              "A base do controle de peso saudável é uma dieta equilibrada e regular. Em cada refeição, certifique-se de consumir um equilíbrio de proteínas, carboidratos e gorduras saudáveis. Evite fast food e alimentos processados, prefira frutas frescas, vegetais e produtos integrais.",
+
+          // InfoWaterScreen
+          "W A T E R": "Á G U A",
+          "Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.":
+              "Uma ingestão adequada de água ajuda a perder peso, acelerando o seu metabolismo. Tente beber pelo menos 8 copos de água por dia. Beber água pode ajudar a evitar lanches desnecessários, aumentando a sensação de saciedade.",
+
+          // InfoActivityScreen
+          "A C T I V I T Y": "A T I V I D A D E",
+          "Regular exercise plays a big role in weight control. Try to do at least 150 minutes of moderate aerobic activity per week. Activities such as walking, running, swimming or cycling will help you lose weight and maintain your overall health.":
+              "O exercício regular desempenha um grande papel no controle de peso. Tente fazer pelo menos 150 minutos de atividade aeróbica moderada por semana. Atividades como caminhar, correr, nadar ou andar de bicicleta ajudarão a perder peso e a manter sua saúde geral.",
+
+          // InfoSleepScreen
+          "S L E E P": "D O R M I R",
+          "Sufficient and quality sleep is necessary for the body to rest and renew. Make sure to sleep 7-9 hours a day. Insufficient sleep can increase appetite and lead to weight gain. Maintaining your sleep pattern supports weight control.":
+              "O sono suficiente e de qualidade é necessário para o corpo descansar e se renovar. Certifique-se de dormir de 7 a 9 horas por dia. O sono insuficiente pode aumentar o apetite e levar ao ganho de peso. Manter seu padrão de sono apoia o controle de peso.",
+
           // Controller
           'Graph': 'Gráfico',
           'Line Graph': 'Gráfico de linhas',
@@ -1311,6 +1577,49 @@ class Languages extends Translations {
           "Female": "女性",
           "NAME": "名字",
           "TARGET WEIGHT": "目标体重",
+
+          // BmiInfoScreen
+          "What is this BMI ?": "这是什么 BMI?",
+          "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range.":
+              "BMI（身体质量指数）是根据一个人的体重和身高估算体脂的指标。它用于评估个人是否处于健康体重范围。",
+          "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese":
+              "18.5 以下: 体重过轻。\n18.5 - 24.9: 正常体重\n25 - 29.9: 超重\n30 及以上: 肥胖",
+          "You must be healthy !": "你必须健康！",
+
+          // BmiScreen
+          "Calculate BMI": "计算 BMI",
+          "You look underweight, you should gain weight.": "你看起来体重过轻，应该增重。",
+          "Your body looks quite good.": "你的身体看起来非常好。",
+          "You have a slight excess weight.": "你有些超重。",
+          "You look quite overweight, you should lose weight.":
+              "你看起来非常超重，应该减肥。",
+          'BMI: ': "BMI: ",
+          "kg": "公斤",
+          "cm": "厘米",
+          'bmi': "BMI",
+
+          // InfoScreen
+          "Healthy Weight Control": "健康的体重控制",
+
+          // InfoNutritionScreen
+          "N U T R I T I O N": "营 养",
+          "The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.":
+              "健康体重控制的基础是均衡和规律的饮食。每餐都应确保摄入蛋白质、碳水化合物和健康脂肪的平衡。避免快餐和加工食品，选择新鲜水果、蔬菜和全谷物产品。",
+
+          // InfoWaterScreen
+          "W A T E R": "水",
+          "Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.":
+              "足够的水摄入有助于通过加速代谢来减肥。试着每天喝至少8杯水。喝水可以通过增加饱腹感来帮助你避免不必要的零食。",
+
+          // InfoActivityScreen
+          "A C T I V I T Y": "活 动",
+          "Regular exercise plays a big role in weight control. Try to do at least 150 minutes of moderate aerobic activity per week. Activities such as walking, running, swimming or cycling will help you lose weight and maintain your overall health.":
+              "定期锻炼在控制体重方面起着重要作用。每周至少进行150分钟的中等强度有氧活动。像散步、跑步、游泳或骑自行车这样的活动有助于减肥并保持整体健康。",
+
+          // InfoSleepScreen
+          "S L E E P": "睡 眠",
+          "Sufficient and quality sleep is necessary for the body to rest and renew. Make sure to sleep 7-9 hours a day. Insufficient sleep can increase appetite and lead to weight gain. Maintaining your sleep pattern supports weight control.":
+              "充足和优质的睡眠是身体休息和恢复的必要条件。确保每天睡7-9个小时。睡眠不足会增加食欲并导致体重增加。保持你的睡眠模式有助于体重控制。",
 
           // Controller
           'Graph': '图表',

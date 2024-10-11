@@ -29,7 +29,7 @@ class InfoScreen extends StatelessWidget {
           ),
           centerTitle: true,
           title: Text(
-            "How can you control your weight ?",
+            "Healthy Weight Control".tr,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),

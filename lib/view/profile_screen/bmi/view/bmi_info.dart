@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 
@@ -11,7 +12,7 @@ class BmiInfoScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "What is this BMI ?",
+          "What is this BMI ?".tr,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         centerTitle: true,
@@ -34,12 +35,14 @@ class BmiInfoScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     AutoSizeText(
-                      "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range.",
+                      "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range."
+                          .tr,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     AutoSizeText(
-                      "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese",
+                      "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese"
+                          .tr,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
@@ -47,7 +50,7 @@ class BmiInfoScreen extends StatelessWidget {
                       children: [
                         const Icon(Ionicons.fitness),
                         const SizedBox(height: 5),
-                        Text("You must be healthy !",
+                        Text("You must be healthy !".tr,
                             style: Theme.of(context).textTheme.bodySmall)
                       ],
                     )

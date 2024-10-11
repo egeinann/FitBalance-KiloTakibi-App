@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 
 class InfoNutritionScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class InfoNutritionScreen extends StatelessWidget {
                 children: [
                   RotatedBox(
                     quarterTurns: 3,
-                    child: Text("N U T R I T I O N",
+                    child: Text("N U T R I T I O N".tr,
                         style: Theme.of(context).textTheme.displaySmall),
                   ),
                   const Image(
@@ -35,7 +36,8 @@ class InfoNutritionScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   AutoSizeText(
-                    'The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.',
+                    'The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.'
+                        .tr,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),

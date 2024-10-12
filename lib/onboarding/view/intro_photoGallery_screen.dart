@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:lottie/lottie.dart';
 
-class IntroCamera extends StatelessWidget {
-  const IntroCamera({super.key});
+class IntroPhotoGalleryScreen extends StatelessWidget {
+  const IntroPhotoGalleryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +28,12 @@ class IntroCamera extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    AutoSizeText('Photo & Gallery',
+                    AutoSizeText('Photo & Gallery'.tr,
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.titleLarge),
                     SizedBox(height: Get.size.height * 0.02),
                     AutoSizeText(
-                      'Document your changes with photos!',
+                      'Document your changes with photos!'.tr,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),

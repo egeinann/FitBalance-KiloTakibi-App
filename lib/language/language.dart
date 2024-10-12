@@ -17,6 +17,32 @@ class Languages extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          // OnboardingController
+          "Enter your name !": "Enter your name !",
+          "This section cannot be left blank":
+              "This section cannot be left blank",
+          // IntroStartScreen
+          "Welcome": "Welcome",
+          "Easily record your weight and achieve your goals!":
+              "Easily record your weight and achieve your goals!",
+
+          // IntroGraphScreen
+          "Graphs": "Graphs",
+          "Track your progress with graphs!":
+              "Track your progress with graphs!",
+
+          // IntroPhotoGalleryScreen
+          "Photo & Gallery": "Photo & Gallery",
+          "Document your changes with photos!":
+              "Document your changes with photos!",
+
+          // IntroNameScreen
+          "Enter your name": "Enter your name",
+          "Your name": "Your name",
+
+          // IntroTargetWeightScreen
+          "Enter your target weight": "Enter your target weight",
+
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'You must pay to see graphs and track your progress in more detail.',
@@ -268,6 +294,32 @@ class Languages extends Translations {
           'Good luck': 'Good luck',
         },
         'tr_TR': {
+          // OnboardingController
+          "Enter your name !": "Adınızı girin !",
+          "This section cannot be left blank": "Bu bölüm boş bırakılamaz",
+
+          // IntroStartScreen
+          "Welcome": "Hoş geldiniz",
+          "Easily record your weight and achieve your goals!":
+              "Kilonuzu kolayca kaydedin ve hedeflerinize ulaşın!",
+
+          // IntroGraphScreen
+          "Graphs": "Grafikler",
+          "Track your progress with graphs!":
+              "İlerlemenizi grafiklerle takip edin!",
+
+          // IntroPhotoGalleryScreen
+          "Photo & Gallery": "Fotoğraf ve Galeri",
+          "Document your changes with photos!":
+              "Değişimlerinizi fotoğraflarla belgeleyin!",
+
+          // IntroNameScreen
+          "Enter your name": "Adınızı girin",
+          "Your name": "Adınız",
+
+          // IntroTargetWeightScreen
+          "Enter your target weight": "Hedef kilonuzu girin",
+
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'Grafikleri görmek ve ilerlemeni daha ayrıntılı takip etmek için ödeme yapmalısın.',
@@ -516,6 +568,32 @@ class Languages extends Translations {
           'Good luck': 'Bol şans',
         },
         'es_ES': {
+          // OnboardingController
+          "Enter your name !": "¡Ingrese su nombre !",
+          "This section cannot be left blank":
+              "Esta sección no puede quedar vacía",
+          // IntroStartScreen
+          "Welcome": "¡Bienvenido!",
+          "Easily record your weight and achieve your goals!":
+              "¡Registra tu peso fácilmente y alcanza tus objetivos!",
+
+          // IntroGraphScreen
+          "Graphs": "Gráficos",
+          "Track your progress with graphs!":
+              "¡Sigue tu progreso con gráficos!",
+
+          // IntroPhotoGalleryScreen
+          "Photo & Gallery": "Foto y Galería",
+          "Document your changes with photos!":
+              "¡Documenta tus cambios con fotos!",
+
+          // IntroNameScreen
+          "Enter your name": "Ingrese su nombre",
+          "Your name": "Su nombre",
+
+          // IntroTargetWeightScreen
+          "Enter your target weight": "Ingrese su peso objetivo",
+
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'Debes pagar para ver gráficos y seguir tu progreso en más detalle.',
@@ -767,6 +845,33 @@ class Languages extends Translations {
           'Good luck': 'Buena suerte',
         },
         'fr_FR': {
+          // OnboardingController
+          "Enter your name !": "Entrez votre nom !",
+          "This section cannot be left blank":
+              "Cette section ne peut pas être laissée vide",
+
+          // IntroStartScreen
+          "Welcome": "Bienvenue",
+          "Easily record your weight and achieve your goals!":
+              "Enregistrez facilement votre poids et atteignez vos objectifs !",
+
+          // IntroGraphScreen
+          "Graphs": "Graphiques",
+          "Track your progress with graphs!":
+              "Suivez vos progrès avec des graphiques!",
+
+          // IntroPhotoGalleryScreen
+          "Photo & Gallery": "Photo et Galerie",
+          "Document your changes with photos!":
+              "Documentez vos changements avec des photos !",
+
+          // IntroNameScreen
+          "Enter your name": "Entrez votre nom",
+          "Your name": "Votre nom",
+
+          // IntroTargetWeightScreen
+          "Enter your target weight": "Entrez votre poids cible",
+
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'Vous devez payer pour voir des graphiques et suivre vos progrès plus en détail.',
@@ -1021,6 +1126,33 @@ class Languages extends Translations {
           'Good luck': 'Bonne chance',
         },
         'de_DE': {
+          // OnboardingController
+          "Enter your name !": "Geben Sie Ihren Namen ein !",
+          "This section cannot be left blank":
+              "Dieser Abschnitt darf nicht leer bleiben",
+
+          // IntroStartScreen
+          "Welcome": "Willkommen",
+          "Easily record your weight and achieve your goals!":
+              "Nehmen Sie Ihr Gewicht einfach auf und erreichen Sie Ihre Ziele!",
+
+          // IntroGraphScreen
+          "Graphs": "Diagramme",
+          "Track your progress with graphs!":
+              "Verfolgen Sie Ihren Fortschritt mit Diagrammen!",
+
+          // IntroPhotoGalleryScreen
+          "Photo & Gallery": "Foto & Galerie",
+          "Document your changes with photos!":
+              "Dokumentieren Sie Ihre Veränderungen mit Fotos!",
+
+          // IntroNameScreen
+          "Enter your name": "Geben Sie Ihren Namen ein",
+          "Your name": "Ihr Name",
+
+          // IntroTargetWeightScreen
+          "Enter your target weight": "Geben Sie Ihr Zielgewicht ein",
+
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'Sie müssen bezahlen, um Diagramme zu sehen und Ihren Fortschritt detaillierter zu verfolgen.',
@@ -1274,6 +1406,33 @@ class Languages extends Translations {
           'Good luck': 'Viel Glück',
         },
         'pt_PT': {
+          // OnboardingController
+          "Enter your name !": "Digite seu nome !",
+          "This section cannot be left blank":
+              "Esta seção não pode ficar em branco",
+
+          // IntroStartScreen
+          "Welcome": "Bem-vindo",
+          "Easily record your weight and achieve your goals!":
+              "Registe facilmente o seu peso e alcance os seus objetivos!",
+
+          // IntroGraphScreen
+          "Graphs": "Gráficos",
+          "Track your progress with graphs!":
+              "Acompanhe seu progresso com gráficos!",
+
+          // IntroPhotoGalleryScreen
+          "Photo & Gallery": "Foto & Galeria",
+          "Document your changes with photos!":
+              "Documente suas mudanças com fotos!",
+
+          // IntroNameScreen
+          "Enter your name": "Digite seu nome",
+          "Your name": "Seu nome",
+
+          // IntroTargetWeightScreen
+          "Enter your target weight": "Digite seu peso alvo",
+
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'Você deve pagar para ver gráficos e acompanhar seu progresso em mais detalhes.',
@@ -1526,6 +1685,30 @@ class Languages extends Translations {
           'Good luck': 'Boa sorte',
         },
         'zh_CN': {
+          // OnboardingController
+          "Enter your name !": "输入您的名字 !",
+          "This section cannot be left blank": "此部分不能为空",
+
+          // IntroStartScreen
+          "Welcome": "欢迎",
+          "Easily record your weight and achieve your goals!":
+              "轻松记录您的体重并实现您的目标！",
+
+          // IntroGraphScreen
+          "Graphs": "图表",
+          "Track your progress with graphs!": "通过图表跟踪您的进展！",
+
+          // IntroPhotoGalleryScreen
+          "Photo & Gallery": "照片与图库",
+          "Document your changes with photos!": "用照片记录您的变化！",
+
+          // IntroNameScreen
+          "Enter your name": "输入您的名字",
+          "Your name": "您的名字",
+
+          // IntroTargetWeightScreen
+          "Enter your target weight": "输入您的目标体重",
+
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               '您必须付费才能查看图表并更详细地跟踪您的进度。',

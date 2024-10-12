@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:lottie/lottie.dart';
 
-class IntroGraph extends StatelessWidget {
-  const IntroGraph({super.key});
+class IntroGraphScreen extends StatelessWidget {
+  const IntroGraphScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,13 +28,13 @@ class IntroGraph extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     AutoSizeText(
-                      'Graphs',
+                      'Graphs'.tr,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(height: Get.size.height * 0.02),
                     AutoSizeText(
-                      'Track your progress with graphs!',
+                      'Track your progress with graphs!'.tr,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),

@@ -35,8 +35,8 @@ class OnboardingController extends GetxController {
       // Son sayfadaysanız
       if (nameController.text.isEmpty) {
         SnackbarHelper.showSnackbar(
-          title: "Enter your name !",
-          message: "This section cannot be left blank",
+          title: "Enter your name !".tr,
+          message: "This section cannot be left blank".tr,
           backgroundColor: Colors.red,
           duration: const Duration(seconds: 2),
           icon: const Icon(Ionicons.person),

@@ -4,10 +4,10 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 import '../controller/onboarding_controller.dart';
 
-class NameScreen extends StatelessWidget {
+class IntroNameScreen extends StatelessWidget {
   final OnboardingController onboardingController = Get.find();
 
-  NameScreen({super.key});
+  IntroNameScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +23,20 @@ class NameScreen extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      'Enter your name',
+                      'Enter your name'.tr,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(height: Get.size.height * 0.03),
                     CustomTextField(
                       controller: onboardingController.nameController,
-                      labelText: "Your name",
+                      labelText: "Your name".tr,
                       onChanged: (value) {
                         onboardingController.setUserName(value);
                       },
                       titleIcon: Icon(
-                          Ionicons.person,
-                          color: Colors.grey.shade700,
-                        ),
+                        Ionicons.person,
+                        color: Colors.grey.shade700,
+                      ),
                       maxLength: 12,
                     ),
                   ],

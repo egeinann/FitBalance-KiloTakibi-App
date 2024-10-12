@@ -4,14 +4,15 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import '../controller/onboarding_controller.dart';
 
-class TargetWeightScreen extends StatefulWidget {
-  const TargetWeightScreen({super.key});
+class IntroTargetWeightScreen extends StatefulWidget {
+  const IntroTargetWeightScreen({super.key});
 
   @override
-  _TargetWeightScreenState createState() => _TargetWeightScreenState();
+  _IntroTargetWeightScreenState createState() =>
+      _IntroTargetWeightScreenState();
 }
 
-class _TargetWeightScreenState extends State<TargetWeightScreen> {
+class _IntroTargetWeightScreenState extends State<IntroTargetWeightScreen> {
   final OnboardingController onboardingController = Get.find();
 
   @override
@@ -28,7 +29,7 @@ class _TargetWeightScreenState extends State<TargetWeightScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Enter your target weight',
+                  'Enter your target weight'.tr,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 SizedBox(height: Get.size.height * 0.03),

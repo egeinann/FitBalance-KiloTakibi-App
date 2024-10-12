@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:lottie/lottie.dart';
 
-class IntroStart extends StatelessWidget {
-  const IntroStart({super.key});
+class IntroStartScreen extends StatelessWidget {
+  const IntroStartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +28,13 @@ class IntroStart extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     AutoSizeText(
-                      'Welcome',
+                      "Welcome".tr,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(height: Get.size.height * 0.02),
                     AutoSizeText(
-                      'Easily record your weight and achieve your goals!',
+                      'Easily record your weight and achieve your goals!'.tr,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),

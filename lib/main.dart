@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: Languages.languageList, // Desteklenen diller
         locale: Get.deviceLocale, // Cihazın dilini al
         fallbackLocale: Languages.defa, // Varsayılan dil
-        home: HomeScreen(),
+        home: OnboardingScreen(),
         theme: ThemeClass.lightTheme,
         darkTheme: ThemeClass.darkTheme,
         themeMode: _settingscontroller.themeMode.value,

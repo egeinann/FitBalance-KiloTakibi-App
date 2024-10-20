@@ -49,6 +49,7 @@ dependencies:
   intl_utils: ^2.8.7
   flutter_localizations:
     sdk: flutter
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -84,6 +85,7 @@ flutter:
     - assets/images/name/
     - assets/images/profile/
     - assets/images/bmi/
+    - assets/images/upgradePremium/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -96,10 +98,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: outfit
-      fonts:
-        - asset: assets/fonts/Outfit-Bold.ttf
+  # fonts:
+  #   - family: outfit
+  #     fonts:
+  #       - asset: assets/fonts/Outfit-Bold.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

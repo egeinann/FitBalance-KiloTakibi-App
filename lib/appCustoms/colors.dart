@@ -11,7 +11,7 @@ class LightColors {
 }
 
 class DarkColors {
-  static const Color colorbackground = Color(0xFF1E201E);
+  static const Color colorbackground = Color(0xFF171010);
   static const Color colorDark = Color(0xFF3C3D37);
   static const Color colorMedium = Color(0xFF4F4A45);
   static const Color colorPrimary = Color.fromARGB(255, 255, 113, 24);

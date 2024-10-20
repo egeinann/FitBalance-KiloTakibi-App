@@ -39,7 +39,7 @@ class InfoNutritionScreen extends StatelessWidget {
                     'The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.'
                         .tr,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const Icon(
                     Icons.local_dining_sharp,

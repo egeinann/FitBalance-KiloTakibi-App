@@ -40,13 +40,13 @@ Widget bottomNavigationBar(BuildContext context) {
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 1,
-            blurRadius: 10,
+            blurRadius: 15,
             offset: const Offset(-1, 1), // Gölgenin konumu
           ),
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 1,
-            blurRadius: 10,
+            blurRadius: 15,
             offset: const Offset(-1, 1), // Gölgenin konumu
           ),
         ],

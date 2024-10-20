@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 
 class DataManagementScreen extends StatelessWidget {
@@ -36,10 +37,10 @@ class DataManagementScreen extends StatelessWidget {
                 },
                 label: Text(
                   "Backup Data".tr,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "outfit",
-                      color: Colors.white),
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ), // Metin
                 icon: const Icon(Icons.cloud, color: Colors.white), // İkon
               ),
@@ -58,10 +59,10 @@ class DataManagementScreen extends StatelessWidget {
                 },
                 label: Text(
                   "Restore Data".tr,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "outfit",
-                      color: Colors.white),
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ), // Metin
                 icon: const Icon(Icons.restore, color: Colors.white), // İkon
               ),
@@ -77,10 +78,10 @@ class DataManagementScreen extends StatelessWidget {
                 },
                 label: Text(
                   "Wipe Data".tr,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "outfit",
-                      color: Colors.white),
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ), // Metin
                 icon: const Icon(Icons.delete, color: Colors.white), // İkon
               ),

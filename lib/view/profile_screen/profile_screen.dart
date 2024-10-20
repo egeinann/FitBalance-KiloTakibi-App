@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_screen.dart';
+import 'package:kilo_takibi_uyg/view/upgrade_premium_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
@@ -33,11 +34,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             children: [
               genderImage(context),
-              SizedBox(height: Get.size.height * 0.02),
+              const SizedBox(height: 20),
               nameContainer(context),
-              SizedBox(height: Get.size.height * 0.02),
+              const SizedBox(height: 5),
               targetWeightContainer(context),
-              SizedBox(height: Get.size.height * 0.05),
+              const SizedBox(height: 5),
+              premiumContainer(context),
+              const SizedBox(height: 20),
               floatingButtons(context),
               SizedBox(height: Get.size.height * 0.1)
             ],
@@ -171,23 +174,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               transition: Transition.rightToLeftWithFade);
         },
         child: Padding(
-          padding: context.paddingLarge,
+          padding: const EdgeInsets.all(15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                  ),
-                  color: Theme.of(context).canvasColor,
-                ),
-                child:
-                    Text("NAME".tr,
-                    style: Theme.of(context).textTheme.bodySmall),
-              ),
+              Text("NAME".tr, style: Theme.of(context).textTheme.bodySmall),
               Row(
                 children: [
                   Obx(
@@ -196,7 +187,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),
-                  SizedBox(width: Get.size.width * 0.03),
+                  const SizedBox(width: 5),
                   const Icon(Ionicons.chevron_forward),
                 ],
               ),
@@ -220,22 +211,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               transition: Transition.rightToLeftWithFade);
         },
         child: Padding(
-          padding: context.paddingLarge,
+          padding: const EdgeInsets.all(15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                  ),
-                  color: Theme.of(context).canvasColor,
-                ),
-                child: Text("TARGET WEIGHT".tr,
-                    style: Theme.of(context).textTheme.bodySmall),
-              ),
+              Text("TARGET WEIGHT".tr,
+                  style: Theme.of(context).textTheme.bodySmall),
               Row(
                 children: [
                   Obx(
@@ -244,7 +225,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),
-                  SizedBox(width: Get.size.width * 0.03),
+                  const SizedBox(width: 5),
+                  const Icon(Ionicons.chevron_forward),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // *** PREMIUM CONTAINER ***
+  Container premiumContainer(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Theme.of(context).cardColor,
+      ),
+      child: InkWell(
+        onTap: () {
+          Get.to(UpgradePremiumScreen(),
+              transition: Transition.rightToLeftWithFade);
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("PREMIUM MODE".tr,
+                  style: Theme.of(context).textTheme.bodySmall),
+              Row(
+                children: [
+                  _settingscontroller.activePremium.value == true
+                      ? Icon(Icons.rocket,
+                          color: Theme.of(context).primaryColor)
+                      : const Icon(
+                          Icons.rocket,
+                          color: Colors.grey,
+                        ),
+                  const SizedBox(width: 5),
                   const Icon(Ionicons.chevron_forward),
                 ],
               ),

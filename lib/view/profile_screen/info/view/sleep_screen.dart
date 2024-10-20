@@ -40,7 +40,7 @@ class InfoSleepScreen extends StatelessWidget {
                     'Sufficient and quality sleep is necessary for the body to rest and renew. Make sure to sleep 7-9 hours a day. Insufficient sleep can increase appetite and lead to weight gain. Maintaining your sleep pattern supports weight control.'
                         .tr,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const Icon(
                     Ionicons.moon_outline,

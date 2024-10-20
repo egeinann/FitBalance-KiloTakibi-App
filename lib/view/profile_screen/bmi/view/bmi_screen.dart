@@ -39,12 +39,12 @@ class BmiScreen extends StatelessWidget {
     );
   }
 
-  // *** WHAT IS THIS BMI BUTTON ***
+  // *** BMI INFO FLOATING BUTTON ***
   Padding floatingButtonBmi(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
       child: CustomFloatingActionButton(
-        heroTag: "bmi".tr,
+        heroTag: "bmi",
         widget: const Icon(Icons.question_mark_sharp),
         onPressed: () {
           Get.to(const BmiInfoScreen(), transition: Transition.downToUp);
@@ -128,9 +128,9 @@ class BmiScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 5),
               Expanded(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('${"BMI: ".tr} ${bmiValue.toStringAsFixed(1)}',
                         style: Theme.of(context).textTheme.bodyLarge),
@@ -173,14 +173,24 @@ class BmiScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Obx(() {
-                return Numbers(
-                  value: bmiController.bmiModel.value.weight,
-                  onChanged: (newWeight) {
-                    bmiController.updateWeight(newWeight); // Kilo güncelle
-                  },
-                );
-              }),
+              Obx(
+                () {
+                  return DecimalNumberPicker(
+                    selectedTextStyle: Theme.of(context).textTheme.displaySmall,
+                    textStyle: Theme.of(context).textTheme.bodySmall,
+                    itemCount: 3,
+                    itemWidth: Get.size.width * 0.14,
+                    itemHeight: Get.size.height * 0.05,
+                    axis: Axis.horizontal,
+                    minValue: 40,
+                    maxValue: 200,
+                    value: bmiController.bmiModel.value.weight,
+                    onChanged: (newWeight) {
+                      bmiController.updateWeight(newWeight);
+                    },
+                  );
+                },
+              ),
               Text("kg".tr, style: Theme.of(context).textTheme.labelSmall),
             ],
           ),
@@ -205,7 +215,7 @@ class BmiScreen extends StatelessWidget {
                   textStyle: Theme.of(context).textTheme.bodySmall,
                   itemCount: 3,
                   itemWidth: Get.size.width * 0.14,
-                  itemHeight: Get.size.height * 0.06,
+                  itemHeight: Get.size.height * 0.05,
                   axis: Axis.horizontal,
                   minValue: 100, // Minimum boy
                   maxValue: 250, // Maksimum boy

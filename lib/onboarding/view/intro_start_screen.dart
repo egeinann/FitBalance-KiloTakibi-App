@@ -11,38 +11,35 @@ class IntroStartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: context.paddingLarge,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 4,
-                child: Lottie.asset(
-                  'assets/lottie/startOnboarding.json',
-                  fit: BoxFit.scaleDown,
-                ),
+        child: Column(
+          children: [
+            Expanded(
+              flex: 4,
+              child: Lottie.asset(
+                'assets/lottie/startOnboarding.json',
+                fit: BoxFit.scaleDown,
               ),
-              Expanded(
-                flex: 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    AutoSizeText(
-                      "Welcome".tr,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    SizedBox(height: Get.size.height * 0.02),
-                    AutoSizeText(
-                      'Easily record your weight and achieve your goals!'.tr,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ],
-                ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  AutoSizeText(
+                    "Welcome".tr,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  SizedBox(height: Get.size.height * 0.02),
+                  AutoSizeText(
+                    'Easily record your weight and achieve your goals!'.tr,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

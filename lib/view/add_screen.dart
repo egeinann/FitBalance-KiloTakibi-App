@@ -216,33 +216,30 @@ class _AddScreenState extends State<AddScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("YOUR WEIGHT".tr,
-                  style: Theme.of(context).textTheme.bodyMedium),
-              Text(
-                "$_selectedValue ${"kg".tr}",
-                style: Theme.of(context).textTheme.displaySmall,
-              ),
-            ],
+          Expanded(
+            flex: 3,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("YOUR WEIGHT".tr,
+                    style: Theme.of(context).textTheme.bodyMedium),
+                Text(
+                  "$_selectedValue ${"kg".tr}",
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+              ],
+            ),
           ),
-          Stack(
-            alignment: Alignment.centerRight,
-            children: [
-              Numbers(
-                value: _selectedValue,
-                onChanged: (value) {
-                  setState(() {
-                    _selectedValue = value;
-                  });
-                },
-              ),
-              const Icon(
-                Ionicons.chevron_back,
-                size: 12,
-              ),
-            ],
+          Expanded(
+            flex: 2,
+            child: Numbers(
+              value: _selectedValue,
+              onChanged: (value) {
+                setState(() {
+                  _selectedValue = value;
+                });
+              },
+            ),
           ), // _selectedvalue
         ],
       ),

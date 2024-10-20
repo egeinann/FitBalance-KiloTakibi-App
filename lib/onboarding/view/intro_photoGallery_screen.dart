@@ -11,37 +11,34 @@ class IntroPhotoGalleryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: context.paddingLarge,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 4,
-                child: Lottie.asset(
-                  'assets/lottie/cameraOnboarding.json',
-                  fit: BoxFit.scaleDown,
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              flex: 4,
+              child: Lottie.asset(
+                'assets/lottie/cameraOnboarding.json',
+                fit: BoxFit.scaleDown,
               ),
-              Expanded(
-                flex: 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    AutoSizeText('Photo & Gallery'.tr,
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleLarge),
-                    SizedBox(height: Get.size.height * 0.02),
-                    AutoSizeText(
-                      'Document your changes with photos!'.tr,
+            ),
+            Expanded(
+              flex: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  AutoSizeText('Photo & Gallery'.tr,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ],
-                ),
+                      style: Theme.of(context).textTheme.titleLarge),
+                  SizedBox(height: Get.size.height * 0.02),
+                  AutoSizeText(
+                    'Document your changes with photos!'.tr,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

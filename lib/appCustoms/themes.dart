@@ -1,5 +1,105 @@
 import 'package:flutter/material.dart';
 import 'package:kilo_takibi_uyg/appCustoms/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class ThemeClass {
+  // *** LIGHT THEME ***
+  static ThemeData lightTheme = ThemeData.light().copyWith(
+    cardTheme: const CardTheme(color: LightColors.colorLight),
+    canvasColor: LightColors.colorMedium,
+    cardColor: LightColors.colorLight,
+    scaffoldBackgroundColor: LightColors.colorBackground,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: LightColors.colorBackground,
+    ),
+    textTheme: TextTheme(
+      titleLarge: GoogleFonts.poppins(
+        color: LightColors.colorPrimary,
+        fontSize: 22,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+      bodyLarge: GoogleFonts.poppins(
+        color: LightColors.colorText,
+        fontSize: 16,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+      bodyMedium: GoogleFonts.poppins(
+        color: LightColors.colorText,
+        fontSize: 14,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+      bodySmall: GoogleFonts.poppins(
+        color: LightColors.colorText,
+        fontSize: 12,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+      displaySmall: GoogleFonts.poppins(
+        color: LightColors.colorPrimary,
+        fontSize: 28,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+      labelSmall: GoogleFonts.poppins(
+        color: LightColors.colorPrimary,
+        fontSize: 20,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+    ),
+    primaryColor: LightColors.colorPrimary,
+    focusColor: LightColors.colorBottomBar,
+    indicatorColor: LightColors.colorBottomBarIcons,
+  );
+
+  // *** DARK THEME ***
+  static ThemeData darkTheme = ThemeData.dark().copyWith(
+    cardTheme: const CardTheme(color: DarkColors.colorDark),
+    canvasColor: DarkColors.colorMedium,
+    cardColor: DarkColors.colorDark,
+    scaffoldBackgroundColor: DarkColors.colorbackground,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: DarkColors.colorbackground,
+    ),
+    textTheme: TextTheme(
+      titleLarge: GoogleFonts.poppins(
+        color: DarkColors.colorPrimary,
+        fontSize: 22,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+      bodyLarge: GoogleFonts.poppins(
+        color: DarkColors.colorText,
+        fontSize: 16,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+      bodyMedium: GoogleFonts.poppins(
+        color: DarkColors.colorText,
+        fontSize: 14,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+      bodySmall: GoogleFonts.poppins(
+        color: DarkColors.colorText,
+        fontSize: 12,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+      displaySmall: GoogleFonts.poppins(
+        color: DarkColors.colorPrimary,
+        fontSize: 28,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+      labelSmall: GoogleFonts.poppins(
+        color: DarkColors.colorPrimary,
+        fontSize: 20,
+        fontWeight: FontWeight.w700, // Kalın font
+      ),
+    ),
+    primaryColor: DarkColors.colorPrimary,
+    focusColor: DarkColors.colorBottomBar,
+    indicatorColor: DarkColors.colorBottomBarIcons,
+  );
+}
+
+
+/*
+import 'package:flutter/material.dart';
+import 'package:kilo_takibi_uyg/appCustoms/colors.dart';
 
 class ThemeClass {
   // *** LIGHT THEME *** LIGHT THEME *** LIGHT THEME *** LIGHT THEME *** LIGHT THEME *** LIGHT THEME *** LIGHT THEME *** LIGHT THEME ***
@@ -106,3 +206,5 @@ class ThemeClass {
         DarkColors.colorBottomBarIcons, // icon Color (navigationBar)
   );
 }
+
+*/

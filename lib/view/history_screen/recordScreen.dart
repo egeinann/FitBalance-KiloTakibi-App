@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
@@ -99,19 +100,7 @@ class RecordScreen extends StatelessWidget {
                   Text(
                     '${rec.weight} ${"kg".tr}',
                     style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                          foreground: Paint()
-                            ..shader = const LinearGradient(
-                              colors: <Color>[
-                                Colors.pink,
-                                Colors.pink,
-                                Colors.orange,
-                                Colors.orange,
-                                Colors.orange,
-                                Colors.pink, // Birinci renk
-                                Colors.orange, // İkinci renk
-                              ],
-                            ).createShader(const Rect.fromLTWH(
-                                0, 0, 200, 70)), // Boyutları ayarlayın
+                          color: Colors.white, // Metin içi beyaz renk
                         ),
                   ),
                 ],
@@ -267,9 +256,9 @@ class RecordScreen extends StatelessWidget {
                             heroTag: "_savebutton",
                             widget: Text(
                               "Save".tr,
-                              style: const TextStyle(
-                                fontFamily: "outfit",
+                              style: GoogleFonts.poppins(
                                 color: Colors.white,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             onPressed: () {

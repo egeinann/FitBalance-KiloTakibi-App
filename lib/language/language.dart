@@ -46,8 +46,7 @@ class Languages extends Translations {
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'You must pay to see graphs and track your progress in more detail.',
-          'Payment': 'Payment',
-          'Developer': 'Developer',
+          "Upgrade premium": "Upgrade premium",
           'After 1 week of analysis, the graphs appear!':
               'After 1 week of analysis, the graphs appear!',
 
@@ -98,6 +97,7 @@ class Languages extends Translations {
           "Female": "Female",
           "NAME": "NAME",
           "TARGET WEIGHT": "TARGET WEIGHT",
+          "PREMIUM MODE": "PREMIUM MODE",
 
           // BmiInfoScreen
           "What is this BMI ?": "What is this BMI?",
@@ -156,6 +156,8 @@ class Languages extends Translations {
           'App': 'App',
 
           // SettingsScreen
+          "Premium": "Premium",
+          "Upgrade to Premium": "Upgrade to Premium",
           'Language': 'Language',
           'Theme': 'Theme',
           'Notifications': 'Notifications',
@@ -251,7 +253,7 @@ class Languages extends Translations {
 
           // LineGraph
           "all records": "All records",
-          "last 30 days": "Records of the last 30 days",
+          "last 30 days": "last 30 days",
           "kg": "kg",
           "All records": "All records",
           "Records of the last 30 days": "Records of the last 30 days",
@@ -292,6 +294,35 @@ class Languages extends Translations {
           'Your target weight has been updated':
               'Your target weight has been updated',
           'Good luck': 'Good luck',
+
+          // UpgradePremiumScreen
+          "No more ads!": "No more ads!",
+          "Graphics!": "Graphics!",
+          "Artificial Intelligence!": "Artificial Intelligence!",
+
+          "Rise for a Healthy Future!": "Rise for a Healthy Future!",
+          "Reach your goal with ad-free, uninterrupted tracking!":
+              "Reach your goal with ad-free, uninterrupted tracking!",
+          "Easily track your progress with graphs and boost your motivation!":
+              "Easily track your progress with graphs and boost your motivation!",
+          "Embark on a healthy journey with artificial intelligence suggestions!":
+              "Embark on a healthy journey with artificial intelligence suggestions!",
+          "Why choose premium?": "Why choose premium?",
+          "With Premium membership, you will have an ad-free experience. In addition, you can easily track your progress thanks to advanced graphic tracking and receive the most appropriate recommendations for your personal goals with the artificial intelligence model. Take advantage of Premium on your healthy life journey!":
+              "With Premium membership, you will have an ad-free experience. In addition, you can easily track your progress thanks to advanced graphic tracking and receive the most appropriate recommendations for your personal goals with the artificial intelligence model. Take advantage of Premium on your healthy life journey!",
+          "Premium membership is only \$39.90!\nAnd it is a one-time purchase.\nMembership is unlimited.":
+              "Premium membership is only \$39.90!\nAnd it is a one-time purchase.\nMembership is unlimited.",
+          "Upgrade premium": "Upgrade premium",
+          "It is a one-time purchase": "It is a one-time purchase",
+          "No more ads!": "No more ads!",
+          "Clean and simple interface without ads":
+              "Clean and simple interface without ads",
+          "Graphics!": "Graphics!",
+          "Weight tracking step by step with graphics":
+              "Weight tracking step by step with graphics",
+          "Artificial Intelligence!": "Artificial Intelligence!",
+          "Healthier suggestions with artificial intelligence chatbot":
+              "Healthier suggestions with artificial intelligence chatbot",
         },
         'tr_TR': {
           // OnboardingController
@@ -323,8 +354,7 @@ class Languages extends Translations {
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'Grafikleri görmek ve ilerlemeni daha ayrıntılı takip etmek için ödeme yapmalısın.',
-          'Payment': 'Ödeme',
-          'Developer': 'Geliştirici',
+          "Upgrade premium": "Premium’a yükselt",
           'After 1 week of analysis, the graphs appear!':
               '1 haftalık analizden sonra grafikler görünüyor!',
 
@@ -374,6 +404,7 @@ class Languages extends Translations {
           "Female": "Kadın",
           "NAME": "İSİM",
           "TARGET WEIGHT": "HEDEF AĞIRLIK",
+          "PREMIUM MODE": "PREMİUM MODU",
 
           // BmiInfoScreen
           "What is this BMI ?": "BMI nedir?",
@@ -431,6 +462,8 @@ class Languages extends Translations {
           'App': 'Uygulama',
 
           // SettingsScreen
+          "Premium": "Premium",
+          "Upgrade to Premium": "Premium'a yükseltin",
           'Language': 'Dil',
           'Theme': 'Tema',
           'Notifications': 'Bildirimler',
@@ -526,7 +559,7 @@ class Languages extends Translations {
 
           // LineGraph
           "all records": "Tüm kayıtlar",
-          "last 30 days": "Son 30 gün",
+          "last 30 days": "son 30 gün",
           "kg": "kg",
           "All records": "Tüm kayıtlar",
           "Records of the last 30 days": "Son 30 gün kayıtları",
@@ -566,6 +599,34 @@ class Languages extends Translations {
               'Sağlıklı bir yaşam doğru hedeflerle başlar. Hedef kilonuzu seçin ve her adımda kendinize olan inancınızı hatırlayın.',
           'Your target weight has been updated': 'Hedef kilonuz güncellendi',
           'Good luck': 'Bol şans',
+
+          // UpgradePremiumScreen
+          "No more ads!": "Artık reklam yok!",
+          "Graphics!": "Grafikler!",
+          "Artificial Intelligence!": "Yapay Zeka!",
+          "Rise for a Healthy Future!": "Sağlıklı Bir Gelecek İçin Yükselin!",
+          "Reach your goal with ad-free, uninterrupted tracking!":
+              "Reklamsız, kesintisiz takip ile hedefinize ulaşın!",
+          "Easily track your progress with graphs and boost your motivation!":
+              "Grafiklerle ilerlemenizi kolayca takip edin ve motivasyonunuzu artırın!",
+          "Embark on a healthy journey with artificial intelligence suggestions!":
+              "Yapay zeka önerileriyle sağlıklı bir yolculuğa çıkın!",
+          "Why choose premium?": "Neden premium'u seçmelisiniz?",
+          "With Premium membership, you will have an ad-free experience. In addition, you can easily track your progress thanks to advanced graphic tracking and receive the most appropriate recommendations for your personal goals with the artificial intelligence model. Take advantage of Premium on your healthy life journey!":
+              "Premium üyelik ile reklamsız bir deneyim yaşayacaksınız. Ayrıca gelişmiş grafik takibi sayesinde ilerlemenizi kolayca takip edebilir ve yapay zeka modeliyle kişisel hedeflerinize en uygun önerileri alabilirsiniz. Sağlıklı yaşam yolculuğunuzda Premium'un avantajlarından yararlanın!",
+          "Premium membership is only \$39.90!\nAnd it is a one-time purchase.\nMembership is unlimited.":
+              "Premium üyelik sadece 39,90 \$!\nVe bu tek seferlik bir satın alımdır.\nÜyelik sınırsızdır.",
+          "Upgrade premium": "Premium'a yükseltin",
+          "It is a one-time purchase": "Bu tek seferlik bir satın alımdır",
+          "No more ads!": "Artık reklam yok!",
+          "Clean and simple interface without ads":
+              "Reklamsız temiz ve basit arayüz",
+          "Graphics!": "Grafikler!",
+          "Weight tracking step by step with graphics":
+              "Grafiklerle adım adım kilo takibi",
+          "Artificial Intelligence!": "Yapay Zeka!",
+          "Healthier suggestions with artificial intelligence chatbot":
+              "Yapay zeka sohbet botuyla daha sağlıklı öneriler",
         },
         'es_ES': {
           // OnboardingController
@@ -597,8 +658,7 @@ class Languages extends Translations {
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'Debes pagar para ver gráficos y seguir tu progreso en más detalle.',
-          'Payment': 'Pago',
-          'Developer': 'Desarrollador',
+          "Upgrade premium": "Mejora a premium",
           'After 1 week of analysis, the graphs appear!':
               '¡Después de una semana de análisis, aparecen los gráficos!',
 
@@ -649,6 +709,7 @@ class Languages extends Translations {
           "Female": "Femenino",
           "NAME": "NOMBRE",
           "TARGET WEIGHT": "PESO OBJETIVO",
+          "PREMIUM MODE": "MODO PREMIUM",
 
           // BmiInfoScreen
           "What is this BMI ?": "¿Qué es este IMC?",
@@ -706,6 +767,8 @@ class Languages extends Translations {
           'App': 'Aplicación',
 
           // SettingsScreen
+          "Premium": "Premium",
+          "Upgrade to Premium": "Actualizar a Premium",
           'Language': 'Idioma',
           'Theme': 'Tema',
           'Notifications': 'Notificaciones',
@@ -802,7 +865,7 @@ class Languages extends Translations {
 
           // LineGraph
           "all records": "Todos los registros",
-          "last 30 days": "Registros de los últimos 30 días",
+          "last 30 days": "últimos 30 días",
           "kg": "kg",
           "All records": "Todos los registros",
           "Records of the last 30 days": "Registros de los últimos 30 días",
@@ -843,6 +906,34 @@ class Languages extends Translations {
           'Your target weight has been updated':
               'Tu peso objetivo ha sido actualizado',
           'Good luck': 'Buena suerte',
+
+          // UpgradePremiumScreen
+          "No more ads!": "¡Sin más anuncios!",
+          "Graphics!": "¡Gráficos!",
+          "Artificial Intelligence!": "¡Inteligencia Artificial!",
+          "Rise for a Healthy Future!": "¡Levántate por un Futuro Saludable!",
+          "Reach your goal with ad-free, uninterrupted tracking!":
+              "¡Alcanza tu objetivo con un seguimiento sin anuncios e ininterrumpido!",
+          "Easily track your progress with graphs and boost your motivation!":
+              "¡Sigue fácilmente tu progreso con gráficos y aumenta tu motivación!",
+          "Embark on a healthy journey with artificial intelligence suggestions!":
+              "¡Emprende un viaje saludable con sugerencias de inteligencia artificial!",
+          "Why choose premium?": "¿Por qué elegir premium?",
+          "With Premium membership, you will have an ad-free experience. In addition, you can easily track your progress thanks to advanced graphic tracking and receive the most appropriate recommendations for your personal goals with the artificial intelligence model. Take advantage of Premium on your healthy life journey!":
+              "Con la membresía Premium, tendrás una experiencia sin anuncios. Además, podrás seguir fácilmente tu progreso gracias al seguimiento avanzado de gráficos y recibirás las recomendaciones más adecuadas para tus objetivos personales con el modelo de inteligencia artificial. ¡Aprovecha el Premium en tu camino hacia una vida saludable!",
+          "Premium membership is only \$39.90!\nAnd it is a one-time purchase.\nMembership is unlimited.":
+              "La membresía Premium cuesta solo \$39.90!\nY es una compra única.\nLa membresía es ilimitada.",
+          "Upgrade premium": "Actualizar a premium",
+          "It is a one-time purchase": "Es una compra única",
+          "No more ads!": "¡No más anuncios!",
+          "Clean and simple interface without ads":
+              "Interfaz limpia y sencilla sin anuncios",
+          "Graphics!": "¡Gráficos!",
+          "Weight tracking step by step with graphics":
+              "Seguimiento de peso paso a paso con gráficos",
+          "Artificial Intelligence!": "¡Inteligencia Artificial!",
+          "Healthier suggestions with artificial intelligence chatbot":
+              "Sugerencias más saludables con el chatbot de inteligencia artificial",
         },
         'fr_FR': {
           // OnboardingController
@@ -875,8 +966,7 @@ class Languages extends Translations {
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'Vous devez payer pour voir des graphiques et suivre vos progrès plus en détail.',
-          'Payment': 'Paiement',
-          'Developer': 'Développeur',
+          "Upgrade premium": "Passer à premium",
           'After 1 week of analysis, the graphs appear!':
               'Après une semaine d’analyse, les graphiques apparaissent !',
 
@@ -930,6 +1020,7 @@ class Languages extends Translations {
           "Female": "Femme",
           "NAME": "NOM",
           "TARGET WEIGHT": "POIDS CIBLE",
+          "PREMIUM MODE": "MODE PREMIUM",
 
           // BmiInfoScreen
           "What is this BMI ?": "Qu'est-ce que l'IMC ?",
@@ -987,6 +1078,8 @@ class Languages extends Translations {
           'App': 'Application',
 
           // SettingsScreen
+          "Premium": "Premium",
+          "Upgrade to Premium": "Passer à Premium",
           'Language': 'Langue',
           'Theme': 'Thème',
           'Notifications': 'Notifications',
@@ -1082,7 +1175,7 @@ class Languages extends Translations {
 
           // LineGraph
           "all records": "Tous les enregistrements",
-          "last 30 days": "Enregistrements des 30 derniers jours",
+          "last 30 days": "derniers 30 jours",
           "kg": "kg",
           "All records": "Tous les enregistrements",
           "Records of the last 30 days":
@@ -1124,6 +1217,34 @@ class Languages extends Translations {
           'Your target weight has been updated':
               'Votre poids cible a été mis à jour',
           'Good luck': 'Bonne chance',
+
+          // UpgradePremiumScreen
+          "No more ads!": "Plus de publicité !",
+          "Graphics!": "Graphiques !",
+          "Artificial Intelligence!": "Intelligence Artificielle !",
+          "Rise for a Healthy Future!": "Levez-vous pour un avenir sain !",
+          "Reach your goal with ad-free, uninterrupted tracking!":
+              "Atteignez votre objectif avec un suivi sans publicité et ininterrompu !",
+          "Easily track your progress with graphs and boost your motivation!":
+              "Suivez facilement vos progrès avec des graphiques et boostez votre motivation !",
+          "Embark on a healthy journey with artificial intelligence suggestions!":
+              "Embarquez dans un voyage sain avec les suggestions de l'intelligence artificielle !",
+          "Why choose premium?": "Pourquoi choisir premium ?",
+          "With Premium membership, you will have an ad-free experience. In addition, you can easily track your progress thanks to advanced graphic tracking and receive the most appropriate recommendations for your personal goals with the artificial intelligence model. Take advantage of Premium on your healthy life journey!":
+              "Avec l'abonnement Premium, vous bénéficierez d'une expérience sans publicité. De plus, vous pourrez suivre facilement vos progrès grâce au suivi graphique avancé et recevoir les recommandations les plus adaptées à vos objectifs personnels grâce au modèle d'intelligence artificielle. Profitez du Premium pour votre parcours de vie sain !",
+          "Premium membership is only \$39.90!\nAnd it is a one-time purchase.\nMembership is unlimited.":
+              "L'abonnement Premium est seulement à 39,90 \$ !\nEt c'est un achat unique.\nL'abonnement est illimité.",
+          "Upgrade premium": "Passer à Premium",
+          "It is a one-time purchase": "C'est un achat unique",
+          "No more ads!": "Plus de publicité !",
+          "Clean and simple interface without ads":
+              "Interface propre et simple sans publicité",
+          "Graphics!": "Graphiques !",
+          "Weight tracking step by step with graphics":
+              "Suivi du poids étape par étape avec des graphiques",
+          "Artificial Intelligence!": "Intelligence Artificielle !",
+          "Healthier suggestions with artificial intelligence chatbot":
+              "Des suggestions plus saines avec le chatbot d'intelligence artificielle",
         },
         'de_DE': {
           // OnboardingController
@@ -1156,8 +1277,7 @@ class Languages extends Translations {
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'Sie müssen bezahlen, um Diagramme zu sehen und Ihren Fortschritt detaillierter zu verfolgen.',
-          'Payment': 'Zahlung',
-          'Developer': 'Entwickler',
+          "Upgrade premium": "Premium upgraden",
           'After 1 week of analysis, the graphs appear!':
               'Nach einer Woche der Analyse erscheinen die Diagramme!',
 
@@ -1209,6 +1329,7 @@ class Languages extends Translations {
           "Female": "Weiblich",
           "NAME": "NAME",
           "TARGET WEIGHT": "ZIELGEWICHT",
+          "PREMIUM MODE": "PREMIUM MODUS",
 
           // BmiInfoScreen
           "What is this BMI ?": "Was ist dieser BMI?",
@@ -1266,6 +1387,8 @@ class Languages extends Translations {
           'App': 'App',
 
           // SettingsScreen
+          "Premium": "Premium",
+          "Upgrade to Premium": "Auf Premium upgraden",
           'Language': 'Sprache',
           'Theme': 'Thema',
           'Notifications': 'Benachrichtigungen',
@@ -1363,7 +1486,7 @@ class Languages extends Translations {
 
           // LineGraph
           "all records": "Alle Aufzeichnungen",
-          "last 30 days": "Aufzeichnungen der letzten 30 Tage",
+          "last 30 days": "letzte 30 Tage",
           "kg": "kg",
           "All records": "Alle Aufzeichnungen",
           "Records of the last 30 days": "Aufzeichnungen der letzten 30 Tage",
@@ -1404,6 +1527,35 @@ class Languages extends Translations {
           'Your target weight has been updated':
               'Dein Zielgewicht wurde aktualisiert',
           'Good luck': 'Viel Glück',
+
+          // UpgradePremiumScreen
+          "No more ads!": "Keine Werbung mehr!",
+          "Graphics!": "Grafiken !",
+          "Artificial Intelligence!": "Künstliche Intelligenz !",
+          "Rise for a Healthy Future!":
+              "Steigen Sie für eine gesunde Zukunft auf!",
+          "Reach your goal with ad-free, uninterrupted tracking!":
+              "Erreichen Sie Ihr Ziel mit werbefreiem, unterbrechungsfreiem Tracking!",
+          "Easily track your progress with graphs and boost your motivation!":
+              "Verfolgen Sie Ihren Fortschritt einfach mit Grafiken und steigern Sie Ihre Motivation!",
+          "Embark on a healthy journey with artificial intelligence suggestions!":
+              "Beginnen Sie eine gesunde Reise mit Vorschlägen der künstlichen Intelligenz!",
+          "Why choose premium?": "Warum Premium wählen?",
+          "With Premium membership, you will have an ad-free experience. In addition, you can easily track your progress thanks to advanced graphic tracking and receive the most appropriate recommendations for your personal goals with the artificial intelligence model. Take advantage of Premium on your healthy life journey!":
+              "Mit der Premium-Mitgliedschaft haben Sie eine werbefreie Erfahrung. Außerdem können Sie Ihren Fortschritt dank fortgeschrittener Grafikverfolgung leicht verfolgen und erhalten die passendsten Empfehlungen für Ihre persönlichen Ziele mit dem künstlichen Intelligenzmodell. Nutzen Sie Premium auf Ihrer gesunden Lebensreise!",
+          "Premium membership is only \$39.90!\nAnd it is a one-time purchase.\nMembership is unlimited.":
+              "Die Premium-Mitgliedschaft kostet nur 39,90 \$!\nUnd es ist ein einmaliger Kauf.\nDie Mitgliedschaft ist unbegrenzt.",
+          "Upgrade premium": "Zu Premium upgraden",
+          "It is a one-time purchase": "Es ist ein einmaliger Kauf",
+          "No more ads!": "Keine Werbung mehr!",
+          "Clean and simple interface without ads":
+              "Saubere und einfache Benutzeroberfläche ohne Werbung",
+          "Graphics!": "Grafiken!",
+          "Weight tracking step by step with graphics":
+              "Gewichtsverfolgung Schritt für Schritt mit Grafiken",
+          "Artificial Intelligence!": "Künstliche Intelligenz!",
+          "Healthier suggestions with artificial intelligence chatbot":
+              "Gesündere Vorschläge mit dem KI-Chatbot",
         },
         'pt_PT': {
           // OnboardingController
@@ -1436,8 +1588,7 @@ class Languages extends Translations {
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               'Você deve pagar para ver gráficos e acompanhar seu progresso em mais detalhes.',
-          'Payment': 'Pagamento',
-          'Developer': 'Desenvolvedor',
+          "Upgrade premium": "Atualizar para premium",
           'After 1 week of analysis, the graphs appear!':
               'Após uma semana de análise, os gráficos aparecem!',
 
@@ -1489,6 +1640,7 @@ class Languages extends Translations {
           "Female": "Feminino",
           "NAME": "NOME",
           "TARGET WEIGHT": "PESO ALVO",
+          "PREMIUM MODE": "MODO PREMIUM",
 
           // BmiInfoScreen
           "What is this BMI ?": "O que é este IMC?",
@@ -1547,6 +1699,8 @@ class Languages extends Translations {
           'App': 'Aplicativo',
 
           // SettingsScreen
+          "Premium": "Premium",
+          "Upgrade to Premium": "Atualizar para Premium",
           'Language': 'Idioma',
           'Theme': 'Tema',
           'Notifications': 'Notificações',
@@ -1643,7 +1797,7 @@ class Languages extends Translations {
 
           // LineGraph
           "all records": "Todos os registros",
-          "last 30 days": "Registros dos últimos 30 dias",
+          "last 30 days": "últimos 30 dias",
           "kg": "kg",
           "All records": "Todos os registros",
           "Records of the last 30 days": "Registros dos últimos 30 dias",
@@ -1683,6 +1837,34 @@ class Languages extends Translations {
               'Uma vida saudável começa com os objetivos certos. Escolha seu peso alvo e lembre-se da sua crença em si mesmo a cada passo do caminho.',
           'Your target weight has been updated': 'Seu peso alvo foi atualizado',
           'Good luck': 'Boa sorte',
+
+          // UpgradePremiumScreen
+          "No more ads!": "Sem mais anúncios!",
+          "Graphics!": "Gráficos !",
+          "Artificial Intelligence!": "Inteligência Artificial !",
+          "Rise for a Healthy Future!": "Levante-se para um Futuro Saudável!",
+          "Reach your goal with ad-free, uninterrupted tracking!":
+              "Alcance seu objetivo com rastreamento sem anúncios e ininterrupto!",
+          "Easily track your progress with graphs and boost your motivation!":
+              "Acompanhe facilmente o seu progresso com gráficos e aumente sua motivação!",
+          "Embark on a healthy journey with artificial intelligence suggestions!":
+              "Embarque numa jornada saudável com sugestões de inteligência artificial!",
+          "Why choose premium?": "Por que escolher o premium?",
+          "With Premium membership, you will have an ad-free experience. In addition, you can easily track your progress thanks to advanced graphic tracking and receive the most appropriate recommendations for your personal goals with the artificial intelligence model. Take advantage of Premium on your healthy life journey!":
+              "Com a assinatura Premium, você terá uma experiência sem anúncios. Além disso, poderá acompanhar facilmente seu progresso graças ao rastreamento gráfico avançado e receber as recomendações mais adequadas para seus objetivos pessoais com o modelo de inteligência artificial. Aproveite o Premium na sua jornada de vida saudável!",
+          "Premium membership is only \$39.90!\nAnd it is a one-time purchase.\nMembership is unlimited.":
+              "A assinatura Premium custa apenas 39,90 \$!\nE é uma compra única.\nA assinatura é ilimitada.",
+          "Upgrade premium": "Atualizar para Premium",
+          "It is a one-time purchase": "É uma compra única",
+          "No more ads!": "Sem mais anúncios!",
+          "Clean and simple interface without ads":
+              "Interface limpa e simples sem anúncios",
+          "Graphics!": "Gráficos!",
+          "Weight tracking step by step with graphics":
+              "Acompanhamento do peso passo a passo com gráficos",
+          "Artificial Intelligence!": "Inteligência Artificial!",
+          "Healthier suggestions with artificial intelligence chatbot":
+              "Sugestões mais saudáveis com o chatbot de inteligência artificial",
         },
         'zh_CN': {
           // OnboardingController
@@ -1712,8 +1894,7 @@ class Languages extends Translations {
           // GraphViewScreen
           'You must pay to see graphs and track your progress in more detail.':
               '您必须付费才能查看图表并更详细地跟踪您的进度。',
-          'Payment': '付款',
-          'Developer': '开发者',
+          "Upgrade premium": "升级到高级版",
           'After 1 week of analysis, the graphs appear!': '经过一周的分析，图表出现！',
 
           // GalleryScreen
@@ -1760,6 +1941,7 @@ class Languages extends Translations {
           "Female": "女性",
           "NAME": "名字",
           "TARGET WEIGHT": "目标体重",
+          "PREMIUM MODE": "高级模式",
 
           // BmiInfoScreen
           "What is this BMI ?": "这是什么 BMI?",
@@ -1816,6 +1998,8 @@ class Languages extends Translations {
           'App': '应用程序',
 
           // SettingsScreen
+          "Premium": "高级",
+          "Upgrade to Premium": "升级到高级版",
           'Language': '语言',
           'Theme': '主题',
           'Notifications': '通知',
@@ -1909,7 +2093,7 @@ class Languages extends Translations {
 
           // LineGraph
           "all records": "所有记录",
-          "last 30 days": "最近30天的记录",
+          "last 30 days": "过去30天",
           "kg": "千克",
           "All records": "所有记录",
           "Records of the last 30 days": "最近30天的记录",
@@ -1947,6 +2131,32 @@ class Languages extends Translations {
               '健康的生活从正确的目标开始。选择你的目标体重，并在每一步都记住对自己的信心。',
           'Your target weight has been updated': '你的目标体重已更新',
           'Good luck': '祝你好运',
+
+          // UpgradePremiumScreen
+          "No more ads!": "没有广告了！",
+          "Graphics!": "图表！",
+          "Artificial Intelligence!": "人工智能！",
+          "Rise for a Healthy Future!": "为健康的未来而奋斗！",
+          "Reach your goal with ad-free, uninterrupted tracking!":
+              "通过无广告、不间断的跟踪达成目标！",
+          "Easily track your progress with graphs and boost your motivation!":
+              "通过图表轻松跟踪您的进度，提升动力！",
+          "Embark on a healthy journey with artificial intelligence suggestions!":
+              "通过人工智能建议，开启健康之旅！",
+          "Why choose premium?": "为什么选择高级版？",
+          "With Premium membership, you will have an ad-free experience. In addition, you can easily track your progress thanks to advanced graphic tracking and receive the most appropriate recommendations for your personal goals with the artificial intelligence model. Take advantage of Premium on your healthy life journey!":
+              "通过高级会员，您可以享受无广告的体验。此外，借助高级图形跟踪功能，您可以轻松跟踪进展，并通过人工智能模型获得最合适的个性化建议。在您的健康生活之旅中利用高级会员的优势！",
+          "Premium membership is only \$39.90!\nAnd it is a one-time purchase.\nMembership is unlimited.":
+              "高级会员只需39.90美元！\n这是一笔一次性购买。\n会员资格是无限制的。",
+          "Upgrade premium": "升级至高级版",
+          "It is a one-time purchase": "这是一笔一次性购买",
+          "No more ads!": "没有广告了！",
+          "Clean and simple interface without ads": "无广告的简洁界面",
+          "Graphics!": "图表！",
+          "Weight tracking step by step with graphics": "通过图表逐步跟踪体重变化",
+          "Artificial Intelligence!": "人工智能！",
+          "Healthier suggestions with artificial intelligence chatbot":
+              "通过人工智能聊天机器人获得更健康的建议",
         },
       };
 }

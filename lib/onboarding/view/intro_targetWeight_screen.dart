@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import '../controller/onboarding_controller.dart';
 
@@ -32,7 +33,7 @@ class _IntroTargetWeightScreenState extends State<IntroTargetWeightScreen> {
                   'Enter your target weight'.tr,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
-                SizedBox(height: Get.size.height * 0.03),
+                const SizedBox(height: 20),
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
@@ -40,22 +41,13 @@ class _IntroTargetWeightScreenState extends State<IntroTargetWeightScreen> {
                     color: Theme.of(context).cardColor,
                   ),
                   width: Get.size.width * 0.5,
-                  child: Stack(
-                    alignment: Alignment.centerRight,
-                    children: [
-                      Obx(
-                        () => Numbers(
-                          value: onboardingController.targetWeight.value,
-                          onChanged: (value) {
-                            onboardingController.setTargetWeight(value);
-                          },
-                        ),
-                      ),
-                      const Icon(
-                        Icons.arrow_left_rounded,
-                        size: 40,
-                      ),
-                    ],
+                  child: Obx(
+                    () => Numbers(
+                      value: onboardingController.targetWeight.value,
+                      onChanged: (value) {
+                        onboardingController.setTargetWeight(value);
+                      },
+                    ),
                   ),
                 ),
               ],

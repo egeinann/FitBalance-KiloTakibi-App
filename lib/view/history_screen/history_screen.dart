@@ -41,19 +41,29 @@ class _HistoryScreenState extends State<HistoryScreen> {
     );
   }
 
-  @override
+int previousRecordLength =
+      0; // önceki kayıt uzunluğunu tutuyor rec sayfası düzenleme-silme sonrası scroll sıfırlamaz (yapay zeka ile çözüldü)
+@override
   void initState() {
     super.initState();
+    // İlk değerleri al
+    previousRecordLength = _controller.records.length;
+    // Listen değiştiğinde dinleme yap
     _controller.records.listen((records) {
       if (records.isNotEmpty) {
+        // Yeni bir kayıt eklenmişse, listenin uzunluğu artar
+        if (records.length > previousRecordLength) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          _scrollToBottom();
+            _scrollToBottom(); // Sadece kayıt eklendiğinde kaydır
         });
+      }
+        // Şimdiki liste uzunluğunu güncelle
+        previousRecordLength = records.length;
       }
     });
   }
 
-  // *** NEW RECORD SCROLL BOTTOM ***
+// *** NEW RECORD SCROLL BOTTOM ***
   void _scrollToBottom() {
     if (scrollController.hasClients) {
       scrollController.animateTo(

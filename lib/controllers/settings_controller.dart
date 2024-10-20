@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 
 class SettingsController extends GetxController {
   var selectedGenderRange = [true, false].obs; // cinsiyet toggle buttons
+  RxBool activePremium = false.obs;
   RxBool isNotificationsEnabled = true.obs; // bilidirim durumu
   Rx<ThemeMode> themeMode = ThemeMode.system.obs; // tema durumu
   var selectedLanguage = 'en'.obs; // Varsayılan dil
-
   // *** CİNSİYET TOGGLE BUTTONLAR DEĞİŞİMİ ***
   void updateGenderRange(int index) {
     if (index == 0) {

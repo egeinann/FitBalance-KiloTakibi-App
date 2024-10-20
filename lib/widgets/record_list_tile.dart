@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
@@ -29,8 +30,7 @@ class RecordListTile extends StatelessWidget {
           ),
           child: Center(
             child: ListTile(
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 10),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 10),
               leading: customLeading(context),
               trailing: customTrailing(context),
             ),
@@ -51,11 +51,10 @@ class RecordListTile extends StatelessWidget {
                 Text(
                   "note".tr,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontFamily: "outfit",
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
                     color: Colors.green,
                     fontWeight: FontWeight.bold,
-                    fontSize: 12,
                   ),
                 ),
               ],

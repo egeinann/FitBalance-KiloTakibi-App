@@ -7,6 +7,7 @@ import 'package:kilo_takibi_uyg/view/settings_screen/about_the_app_sceen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/data_management_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/privacyPolicy_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/termsOfService_screen.dart';
+import 'package:kilo_takibi_uyg/view/upgrade_premium_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/settings_model.dart';
@@ -24,6 +25,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final settingsList = [
+      SettingsModel(
+        const Icon(Ionicons.rocket),
+        "Premium".tr,
+        "Upgrade to Premium".tr,
+        _settingscontroller.activePremium.value == true
+            ? Icon(Icons.rocket, color: Theme.of(context).primaryColor)
+            : const Icon(
+                Icons.rocket,
+                color: Colors.grey,
+              ),
+        onTap: () {
+          Get.to(UpgradePremiumScreen());
+        },
+      ),
       SettingsModel(
         const Icon(Ionicons.earth),
         "Language".tr,
@@ -124,12 +139,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: Padding(
         padding: context.paddingLow,
         child: ListView.builder(
-          itemCount: settingsList.length,
+          itemCount:
+              settingsList.length + 1, // Liste uzunluğunu bir artırıyoruz
           itemBuilder: (context, index) {
+            if (index == settingsList.length) {
+              return const SizedBox(
+                  height: 100); // Son öğe boşluk olarak eklendi
+            }
             return ListTile(
               leading: settingsList[index].icon,
-              title: Text(settingsList[index].text,
-                  style: Theme.of(context).textTheme.bodyLarge),
+              title: Text(
+                settingsList[index].text,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
               subtitle: settingsList[index].subText != null
                   ? Text(
                       settingsList[index].subText!,
@@ -177,35 +199,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: languageOptions.entries.map((entry) {
-            final languageCode = entry.key;
-            final languageName = entry.value;
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: languageOptions.entries.map((entry) {
+              final languageCode = entry.key;
+              final languageName = entry.value;
 
-            return Obx(() {
-              return Container(
-                decoration: BoxDecoration(
-                  color:
-                      _settingscontroller.selectedLanguage.value == languageCode
-                          ? Theme.of(context).cardColor
-                          : null,
-                  borderRadius:
-                      BorderRadius.circular(12), // Seçili olan itemin köşeleri
-                ),
-                child: ListTile(
-                  title: Text(languageName),
-                  onTap: () {
-                    _settingscontroller.changeLanguage(languageCode);
-                    Future.delayed(
-                      const Duration(milliseconds: 200),
-                      () => Get.back(),
-                    );
-                  },
-                ),
-              );
-            });
-          }).toList(),
+              return Obx(() {
+                return Container(
+                  decoration: BoxDecoration(
+                    color: _settingscontroller.selectedLanguage.value ==
+                            languageCode
+                        ? Theme.of(context).cardColor
+                        : null,
+                    borderRadius: BorderRadius.circular(
+                        12), // Seçili olan itemin köşeleri
+                  ),
+                  child: ListTile(
+                    title: Text(languageName),
+                    onTap: () {
+                      _settingscontroller.changeLanguage(languageCode);
+                      Future.delayed(
+                        const Duration(milliseconds: 200),
+                        () => Get.back(),
+                      );
+                    },
+                  ),
+                );
+              });
+            }).toList(),
+          ),
         ),
       ),
       backgroundColor: Theme.of(context).primaryColor,

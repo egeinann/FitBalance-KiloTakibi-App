@@ -42,7 +42,7 @@ class InfoWaterScreen extends StatelessWidget {
                   'Adequate water intake helps you lose weight by speeding up your metabolism. Try to drink at least 8 glasses of water a day. Drinking water can help you avoid unnecessary snacking by increasing your feeling of fullness.'
                       .tr,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const Icon(
                   Ionicons.water_outline,

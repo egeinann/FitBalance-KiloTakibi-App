@@ -12,7 +12,7 @@ class ChangeTargetWeightScreen extends StatelessWidget {
   ChangeTargetWeightScreen({super.key});
 
   final OnboardingController _onboardingController = Get.find();
-  
+
   // Geçici hedef ağırlık değişkeni
   final RxDouble _temporaryTargetWeight = RxDouble(0.0);
   // done'ye basılmadan değişiklik olmayacak
@@ -66,22 +66,13 @@ class ChangeTargetWeightScreen extends StatelessWidget {
                         color: Theme.of(context).cardColor,
                       ),
                       width: Get.size.width * 0.5,
-                      child: Stack(
-                        alignment: Alignment.centerRight,
-                        children: [
-                          Obx(
-                            () => Numbers(
-                              value: _temporaryTargetWeight.value,
-                              onChanged: (value) {
-                                _temporaryTargetWeight.value = value;
-                              },
-                            ),
-                          ),
-                          const Icon(
-                            Icons.arrow_left_rounded,
-                            size: 30,
-                          ),
-                        ],
+                      child: Obx(
+                        () => Numbers(
+                          value: _temporaryTargetWeight.value,
+                          onChanged: (value) {
+                            _temporaryTargetWeight.value = value;
+                          },
+                        ),
                       ),
                     ),
                   ],

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/services/notification_service.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_screen.dart';
 import 'package:kilo_takibi_uyg/view/upgrade_premium_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
-import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/info/model/info_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
@@ -22,9 +22,8 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final OnboardingController _onboardingController = Get.find();
-  final Controller _controller = Get.find();
   final SettingsController _settingscontroller = Get.find();
-
+  final NotificationService _notificationService = NotificationService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +41,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               premiumContainer(context),
               const SizedBox(height: 20),
               floatingButtons(context),
+              FloatingActionButton(
+                heroTag: "qweqwewq",
+                onPressed: () async {
+                  await _notificationService.showInstantNotification();
+                },
+                child: Icon(Icons.notification_add),
+              ),
               SizedBox(height: Get.size.height * 0.1)
             ],
           ),
@@ -162,17 +168,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   // *** NAME CONTAINER ***
-  Container nameContainer(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).cardColor,
-      ),
-      child: InkWell(
-        onTap: () {
-          Get.to(ChangeNameScreen(),
-              transition: Transition.rightToLeftWithFade);
-        },
+  Widget nameContainer(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(ChangeNameScreen(), transition: Transition.rightToLeftWithFade);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Theme.of(context).cardColor,
+        ),
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Row(
@@ -199,17 +204,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   // *** TARGETWEIGHT CONTAINER ***
-  Container targetWeightContainer(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).cardColor,
-      ),
-      child: InkWell(
-        onTap: () {
-          Get.to(ChangeTargetWeightScreen(),
-              transition: Transition.rightToLeftWithFade);
-        },
+  Widget targetWeightContainer(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(ChangeTargetWeightScreen(),
+            transition: Transition.rightToLeftWithFade);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Theme.of(context).cardColor,
+        ),
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Row(
@@ -237,17 +242,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   // *** PREMIUM CONTAINER ***
-  Container premiumContainer(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).cardColor,
-      ),
-      child: InkWell(
-        onTap: () {
-          Get.to(UpgradePremiumScreen(),
-              transition: Transition.rightToLeftWithFade);
-        },
+  Widget premiumContainer(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(UpgradePremiumScreen(),
+            transition: Transition.rightToLeftWithFade);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Theme.of(context).cardColor,
+        ),
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Row(

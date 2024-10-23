@@ -67,7 +67,8 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
                                     widget: AutoSizeText(
                                       "Upgrade premium".tr,
                                       textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(
+                                      style: const TextStyle(
+                                        fontFamily: 'Poppins',
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),

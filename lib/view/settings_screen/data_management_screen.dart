@@ -37,7 +37,8 @@ class DataManagementScreen extends StatelessWidget {
                 },
                 label: Text(
                   "Backup Data".tr,
-                  style: GoogleFonts.poppins(
+                  style: const TextStyle(
+                    fontFamily: 'Poppins',
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
@@ -59,7 +60,8 @@ class DataManagementScreen extends StatelessWidget {
                 },
                 label: Text(
                   "Restore Data".tr,
-                  style: GoogleFonts.poppins(
+                  style: const TextStyle(
+                    fontFamily: 'Poppins',
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
@@ -78,7 +80,8 @@ class DataManagementScreen extends StatelessWidget {
                 },
                 label: Text(
                   "Wipe Data".tr,
-                  style: GoogleFonts.poppins(
+                  style: const TextStyle(
+                    fontFamily: 'Poppins',
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),

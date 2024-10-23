@@ -73,26 +73,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
           _settingscontroller.switchTheme(!isDarkModeEnabled);
         },
       ),
-      SettingsModel(
-        const Icon(Ionicons.notifications),
-        "Notifications".tr,
-        "Reminder for process tracking".tr,
-        Obx(
-          () => Switch(
-            inactiveThumbColor: const Color.fromARGB(255, 255, 17, 0),
-            activeColor: const Color.fromARGB(255, 0, 255, 8),
-            activeTrackColor: Theme.of(context).cardColor,
-            value: _settingscontroller.isNotificationsEnabled.value,
-            onChanged: (isEnabled) {
-              _settingscontroller.toggleNotifications(isEnabled);
-            },
-          ),
-        ),
-        onTap: () {
-          _settingscontroller.isNotificationsEnabled.value =
-              !_settingscontroller.isNotificationsEnabled.value;
-        },
-      ),
+      // SettingsModel(
+      //   const Icon(Ionicons.notifications),
+      //   "Notifications".tr,
+      //   "Reminder for process tracking".tr,
+      //   Obx(
+      //     () => Switch(
+      //       inactiveThumbColor: const Color.fromARGB(255, 255, 17, 0),
+      //       activeColor: const Color.fromARGB(255, 0, 255, 8),
+      //       activeTrackColor: Theme.of(context).cardColor,
+      //       value: _settingscontroller.isNotificationEnabled.value,
+      //       onChanged: (value) {
+      //         _settingscontroller.isNotificationEnabled.value = value;
+      //       },
+      //     ),
+      //   ),
+      //   onTap: () {
+
+      //   },
+      // ),
       SettingsModel(
         const Icon(Ionicons.lock_closed),
         "Privacy Policy".tr,
@@ -128,7 +127,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         onTap: () {
           Get.to(const AboutTheAppScreen());
         },
-      )
+      ),
     ];
     return Scaffold(
       appBar: AppBar(

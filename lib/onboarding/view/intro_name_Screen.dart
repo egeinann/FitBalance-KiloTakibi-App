@@ -5,10 +5,23 @@ import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 import '../controller/onboarding_controller.dart';
 
-class IntroNameScreen extends StatelessWidget {
-  final OnboardingController onboardingController = Get.find();
+class IntroNameScreen extends StatefulWidget {
+  const IntroNameScreen({super.key});
 
-  IntroNameScreen({super.key});
+  @override
+  _IntroNameScreenState createState() => _IntroNameScreenState();
+}
+
+class _IntroNameScreenState extends State<IntroNameScreen> {
+  final OnboardingController onboardingController = Get.find();
+  final FocusNode _focusNode = FocusNode(); // FocusNode KASMA SORUNU İÇİN
+
+  @override
+  // KASMA SORUNU İÇİN DİSPOSE
+  void dispose() {
+    _focusNode.dispose(); // FocusNode'u temizliyoruz
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +44,7 @@ class IntroNameScreen extends StatelessWidget {
                     child: CustomTextField(
                       controller: onboardingController.nameController,
                       labelText: "Your name".tr,
+                      focusNode: _focusNode, // FocusNode kullanılıyor
                       onChanged: (value) {
                         onboardingController.setUserName(value);
                       },

@@ -51,7 +51,8 @@ class RecordListTile extends StatelessWidget {
                 Text(
                   "note".tr,
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(
+                  style: const TextStyle(
+                    fontFamily: 'Poppins',
                     fontSize: 12,
                     color: Colors.green,
                     fontWeight: FontWeight.bold,

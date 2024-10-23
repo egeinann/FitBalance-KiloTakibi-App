@@ -110,7 +110,8 @@ class UpgradePremiumScreen extends StatelessWidget {
           "Premium membership is only \$39.90!\nAnd it is a one-time purchase.\nMembership is unlimited."
               .tr,
           textAlign: TextAlign.center,
-          style: GoogleFonts.poppins(
+          style: TextStyle(
+            fontFamily: 'Poppins',
             color: Colors.green.shade500,
             fontWeight: FontWeight.bold,
           ),
@@ -149,7 +150,8 @@ class UpgradePremiumScreen extends StatelessWidget {
                 widget: AutoSizeText(
                   "Upgrade premium".tr,
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(
+                  style: const TextStyle(
+                    fontFamily: 'Poppins',
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),

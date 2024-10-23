@@ -17,6 +17,15 @@ class Languages extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          // NotificationService
+          'Log your weight today!': 'Log your weight today!',
+          'Track your progress!': 'Track your progress!',
+          'Don’t forget to weigh in!': 'Don’t forget to weigh in!',
+          'How’s your weight goal?': 'How’s your weight goal?',
+          'Keep it up!': 'Keep it up!',
+          'Update your weight now!': 'Update your weight now!',
+          'Eat healthy today?': 'Eat healthy today?',
+
           // OnboardingController
           "Enter your name !": "Enter your name !",
           "This section cannot be left blank":
@@ -154,6 +163,12 @@ class Languages extends Translations {
           'History': 'History',
           'Profile': 'Profile',
           'App': 'App',
+
+          // SettingsController
+          'Permission Required': 'Permission Required',
+          'You need to grant permission to enable notifications.':
+              'You need to grant permission to enable notifications.',
+          'OK': 'OK',
 
           // SettingsScreen
           "Premium": "Premium",
@@ -325,6 +340,15 @@ class Languages extends Translations {
               "Healthier suggestions with artificial intelligence chatbot",
         },
         'tr_TR': {
+          // NotificationService
+          'Log your weight today!': 'Bugün kilonu kaydet!',
+          'Track your progress!': 'İlerlemeni takip et!',
+          'Don’t forget to weigh in!': 'Tartılmayı unutma!',
+          'How’s your weight goal?': 'Kilo hedefin nasıl gidiyor?',
+          'Keep it up!': 'Böyle devam et!',
+          'Update your weight now!': 'Şimdi kilonu güncelle!',
+          'Eat healthy today?': 'Bugün sağlıklı beslendin mi?',
+
           // OnboardingController
           "Enter your name !": "Adınızı girin !",
           "This section cannot be left blank": "Bu bölüm boş bırakılamaz",
@@ -460,6 +484,12 @@ class Languages extends Translations {
           'History': 'Geçmiş',
           'Profile': 'Profil',
           'App': 'Uygulama',
+
+          // SettingsController
+          'Permission Required': 'İzin Gerekli',
+          'You need to grant permission to enable notifications.':
+              'Bildirimleri etkinleştirmek için izin vermeniz gerekiyor.',
+          'OK': 'Tamam',
 
           // SettingsScreen
           "Premium": "Premium",
@@ -629,6 +659,15 @@ class Languages extends Translations {
               "Yapay zeka sohbet botuyla daha sağlıklı öneriler",
         },
         'es_ES': {
+          // NotificationService
+          'Log your weight today!': 'Registra tu peso hoy!',
+          'Track your progress!': '¡Sigue tu progreso!',
+          'Don’t forget to weigh in!': '¡No olvides pesarte!',
+          'How’s your weight goal?': '¿Cómo va tu objetivo de peso?',
+          'Keep it up!': '¡Sigue así!',
+          'Update your weight now!': '¡Actualiza tu peso ahora!',
+          'Eat healthy today?': '¿Comiste sano hoy?',
+
           // OnboardingController
           "Enter your name !": "¡Ingrese su nombre !",
           "This section cannot be left blank":
@@ -765,6 +804,12 @@ class Languages extends Translations {
           'History': 'Historial',
           'Profile': 'Perfil',
           'App': 'Aplicación',
+
+          // SettingsController
+          'Permission Required': 'Permiso Requerido',
+          'You need to grant permission to enable notifications.':
+              'Necesitas conceder permiso para habilitar las notificaciones.',
+          'OK': 'Aceptar',
 
           // SettingsScreen
           "Premium": "Premium",
@@ -936,6 +981,15 @@ class Languages extends Translations {
               "Sugerencias más saludables con el chatbot de inteligencia artificial",
         },
         'fr_FR': {
+          // NotificationService
+          'Log your weight today!': 'Enregistre ton poids aujourd\'hui!',
+          'Track your progress!': 'Suis tes progrès!',
+          'Don’t forget to weigh in!': 'N\'oublie pas de te peser!',
+          'How’s your weight goal?': 'Comment va ton objectif de poids?',
+          'Keep it up!': 'Continue comme ça!',
+          'Update your weight now!': 'Mets à jour ton poids maintenant!',
+          'Eat healthy today?': 'As-tu mangé sainement aujourd\'hui?',
+
           // OnboardingController
           "Enter your name !": "Entrez votre nom !",
           "This section cannot be left blank":
@@ -1076,6 +1130,12 @@ class Languages extends Translations {
           'History': 'Historique',
           'Profile': 'Profil',
           'App': 'Application',
+
+          // SettingsController
+          'Permission Required': 'Permission Requise',
+          'You need to grant permission to enable notifications.':
+              'Vous devez accorder l’autorisation pour activer les notifications.',
+          'OK': 'Daccord',
 
           // SettingsScreen
           "Premium": "Premium",
@@ -1247,6 +1307,15 @@ class Languages extends Translations {
               "Des suggestions plus saines avec le chatbot d'intelligence artificielle",
         },
         'de_DE': {
+          // NotificationService
+          'Log your weight today!': 'Trage heute dein Gewicht ein!',
+          'Track your progress!': 'Verfolge deinen Fortschritt!',
+          'Don’t forget to weigh in!': 'Vergiss nicht, dich zu wiegen!',
+          'How’s your weight goal?': 'Wie läuft dein Gewichts-Ziel?',
+          'Keep it up!': 'Weiter so!',
+          'Update your weight now!': 'Aktualisiere jetzt dein Gewicht!',
+          'Eat healthy today?': 'Hast du heute gesund gegessen?',
+
           // OnboardingController
           "Enter your name !": "Geben Sie Ihren Namen ein !",
           "This section cannot be left blank":
@@ -1385,6 +1454,12 @@ class Languages extends Translations {
           'History': 'Verlauf',
           'Profile': 'Profil',
           'App': 'App',
+
+          // SettingsController
+          'Permission Required': 'Berechtigung Erforderlich',
+          'You need to grant permission to enable notifications.':
+              'Sie müssen die Berechtigung erteilen, um Benachrichtigungen zu aktivieren.',
+          'OK': 'OK',
 
           // SettingsScreen
           "Premium": "Premium",
@@ -1558,6 +1633,15 @@ class Languages extends Translations {
               "Gesündere Vorschläge mit dem KI-Chatbot",
         },
         'pt_PT': {
+          // NotificationService
+          'Log your weight today!': 'Registra o teu peso hoje!',
+          'Track your progress!': 'Acompanha o teu progresso!',
+          'Don’t forget to weigh in!': 'Não te esqueças de te pesar!',
+          'How’s your weight goal?': 'Como vai o teu objetivo de peso?',
+          'Keep it up!': 'Continua assim!',
+          'Update your weight now!': 'Atualiza o teu peso agora!',
+          'Eat healthy today?': 'Comeste de forma saudável hoje?',
+
           // OnboardingController
           "Enter your name !": "Digite seu nome !",
           "This section cannot be left blank":
@@ -1697,6 +1781,12 @@ class Languages extends Translations {
           'History': 'Histórico',
           'Profile': 'Perfil',
           'App': 'Aplicativo',
+
+          // SettingsController
+          'Permission Required': 'Permissão Necessária',
+          'You need to grant permission to enable notifications.':
+              'Você precisa conceder permissão para habilitar as notificações.',
+          'OK': 'OK',
 
           // SettingsScreen
           "Premium": "Premium",
@@ -1867,6 +1957,15 @@ class Languages extends Translations {
               "Sugestões mais saudáveis com o chatbot de inteligência artificial",
         },
         'zh_CN': {
+          // NotificationService
+          'Log your weight today!': '今天记录你的体重!',
+          'Track your progress!': '跟踪你的进度!',
+          'Don’t forget to weigh in!': '别忘了称体重!',
+          'How’s your weight goal?': '你的体重目标如何？',
+          'Keep it up!': '继续保持!',
+          'Update your weight now!': '现在更新你的体重!',
+          'Eat healthy today?': '今天吃得健康吗？',
+          
           // OnboardingController
           "Enter your name !": "输入您的名字 !",
           "This section cannot be left blank": "此部分不能为空",
@@ -1996,6 +2095,12 @@ class Languages extends Translations {
           'History': '历史',
           'Profile': '个人资料',
           'App': '应用程序',
+
+          // SettingsController
+          'Permission Required': '权限要求',
+          'You need to grant permission to enable notifications.':
+              '您需要授权才能启用通知。',
+          'OK': '好的',
 
           // SettingsScreen
           "Premium": "高级",

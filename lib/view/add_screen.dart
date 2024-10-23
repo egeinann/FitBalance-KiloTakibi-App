@@ -7,7 +7,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/lottie_loading.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
-import 'package:kilo_takibi_uyg/appCustoms/themes.dart';
+import 'package:kilo_takibi_uyg/config/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
@@ -28,6 +28,14 @@ class _AddScreenState extends State<AddScreen> {
   String? _note;
   final Controller _controller = Get.find();
   final TextEditingController _noteController = TextEditingController();
+  final FocusNode _focusNode = FocusNode(); // FocusNode KASMA SORUNU İÇİN
+
+  @override
+  // KASMA SORUNU İÇİN DİSPOSE
+  void dispose() {
+    _focusNode.dispose(); // FocusNode'u temizliyoruz
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -176,6 +184,7 @@ class _AddScreenState extends State<AddScreen> {
     return Padding(
       padding: context.paddingLarge,
       child: CustomTextField(
+        focusNode: _focusNode,
         controller: _noteController,
         labelText: "note".tr,
         onChanged: (value) {

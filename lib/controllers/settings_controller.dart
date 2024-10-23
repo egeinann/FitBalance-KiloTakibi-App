@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/services/notification_service.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class SettingsController extends GetxController {
   var selectedGenderRange = [true, false].obs; // cinsiyet toggle buttons
-  RxBool activePremium = false.obs;
-  RxBool isNotificationsEnabled = true.obs; // bilidirim durumu
+  RxBool activePremium = false.obs; // premiumEnabled
   Rx<ThemeMode> themeMode = ThemeMode.system.obs; // tema durumu
   var selectedLanguage = 'en'.obs; // Varsayılan dil
   // *** CİNSİYET TOGGLE BUTTONLAR DEĞİŞİMİ ***
@@ -18,10 +19,7 @@ class SettingsController extends GetxController {
     }
   }
 
-  // *** BİLDİRİMLER SWİTCH YÖNETİMİ ***
-  void toggleNotifications(bool isEnabled) {
-    isNotificationsEnabled.value = isEnabled;
-  }
+  // *** SWITCH BİLDİRİM DURUMU ***
 
   // *** TEMA DURUMU DEĞİŞTİRME ***
   void switchTheme(bool isDark) {

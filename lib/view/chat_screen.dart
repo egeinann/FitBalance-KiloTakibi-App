@@ -66,7 +66,7 @@ class ChatScreen extends StatelessWidget {
                             margin: const EdgeInsets.symmetric(horizontal: 50),
                             child: AutoSizeText(
                               "You should upgrade to premium to embark on a healthy journey with the artificial intelligence model."
-                                  .tr,
+                                  ,
                               textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
@@ -81,9 +81,10 @@ class ChatScreen extends StatelessWidget {
                                   ),
                                   child: CustomFloatingActionButton(
                                     widget: AutoSizeText(
-                                      "Upgrade premium".tr,
+                                      "Upgrade premium",
                                       textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(
+                                      style: const TextStyle(
+                                        fontFamily: 'Poppins',
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -108,16 +109,9 @@ class ChatScreen extends StatelessWidget {
                 Expanded(
                   flex: 9,
                   child: Container(
-                    color: Colors.red,
-                    child: SingleChildScrollView(
-                      reverse: true,
-                      child: Column(
-                        children: [
-                          Text("data"),
-                          SizedBox(height: 700),
-                          Text("data"),
-                        ],
-                      ),
+                    color: Colors.purple,
+                    child: const Center(
+                      child: Text("Gemini AI"),
                     ),
                   ),
                 ),

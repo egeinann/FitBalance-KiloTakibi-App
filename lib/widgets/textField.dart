@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final Function(String) onChanged;
   final int maxLength; // maxLength zorunlu hale getirildi
   final Widget? titleIcon;
+  final FocusNode? focusNode; // zorunlu değil
 
   const CustomTextField({
     super.key,
@@ -14,6 +15,7 @@ class CustomTextField extends StatelessWidget {
     required this.onChanged,
     this.titleIcon,
     required this.maxLength, // Zorunlu parametre
+    this.focusNode, // Parametreyi ekleyin
   });
 
   @override

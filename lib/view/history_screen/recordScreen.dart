@@ -256,7 +256,8 @@ class RecordScreen extends StatelessWidget {
                             heroTag: "_savebutton",
                             widget: Text(
                               "Save".tr,
-                              style: GoogleFonts.poppins(
+                              style: const TextStyle(
+                                fontFamily: 'Poppins',
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),

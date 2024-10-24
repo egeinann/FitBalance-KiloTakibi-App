@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kilo_takibi_uyg/services/notification_service.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class SettingsController extends GetxController {
   var selectedGenderRange = [true, false].obs; // cinsiyet toggle buttons

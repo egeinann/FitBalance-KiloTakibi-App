@@ -1,7 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import '../controller/onboarding_controller.dart';
 

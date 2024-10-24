@@ -15,16 +15,18 @@ import 'package:kilo_takibi_uyg/view/profile_screen/info/controller/info_control
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final NotificationService notificationService = NotificationService();
+
+  // Bildirim iznini kontrol et
   bool permissionGranted =
       await notificationService.requestNotificationPermission();
 
   if (permissionGranted) {
-    await notificationService.initialize(); // başlat
-    await notificationService.scheduleDailyNotification(); // zamanı başlat
+    await notificationService.initialize(); // Servisi başlat
   } else {
-    // İzin verilmediğinde bilgilendirme yapılabilir
+    // İzin verilmediğinde kullanıcıyı bilgilendir
+    print('Bildirim izni verilmedi.');
   }
-  
+
   // Uygulamayı sadece dikey moda ayarla
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -70,4 +72,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// flutter pub run intl_utils:generate
+
+// *** EĞER EN BAŞTA BİLDİRİM İZNİ İSTENECEKSE MAIN DE BUNU KULLAN ***
+// final NotificationService notificationService = NotificationService();
+
+//   // Bildirim iznini kontrol et
+//   bool permissionGranted =
+//       await notificationService.requestNotificationPermission();
+
+//   if (permissionGranted) {
+//     await notificationService.initialize(); // Servisi başlat
+//   } else {
+//     // İzin verilmediğinde kullanıcıyı bilgilendir
+//     print('Bildirim izni verilmedi.');
+//   }

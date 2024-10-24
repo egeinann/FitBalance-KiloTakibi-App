@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 
 class DataManagementScreen extends StatelessWidget {

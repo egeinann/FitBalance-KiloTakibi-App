@@ -44,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               FloatingActionButton(
                 heroTag: "qweqwewq",
                 onPressed: () async {
-                  await _notificationService.showInstantNotification();
+                  await _notificationService.showRandomNotification();
                 },
                 child: Icon(Icons.notification_add),
               ),

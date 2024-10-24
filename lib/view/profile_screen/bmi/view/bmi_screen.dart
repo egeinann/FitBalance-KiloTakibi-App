@@ -6,7 +6,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/controller/bmi_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_info.dart';
-import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:numberpicker/numberpicker.dart';
 

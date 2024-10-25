@@ -36,8 +36,9 @@ class HomeScreen extends StatelessWidget {
               visible: _controller.currentTabIndex.value == 4,
               child: IconButton(
                 onPressed: () {
+                  // SettingsScreen'e geçiş yap ve emailService'i aktar
                   Get.to(
-                    const SettingsScreen(),
+                    SettingsScreen(),
                     transition: Transition.downToUp,
                   );
                 },

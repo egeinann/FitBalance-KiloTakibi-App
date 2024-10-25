@@ -13,15 +13,15 @@ import 'package:kilo_takibi_uyg/view/profile_screen/bmi/controller/bmi_controlle
 import 'package:kilo_takibi_uyg/view/profile_screen/info/controller/info_controller.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final NotificationService notificationService = NotificationService();
-
-  // Bildirim iznini kontrol et
-  bool permissionGranted =
-      await notificationService.requestNotificationPermission();
+  WidgetsFlutterBinding.ensureInitialized(); // Flutter motorunu başlat
+  final NotificationService notificationService =
+      NotificationService(); // Servis sınıfını tanıtılıyor
+  bool permissionGranted = await notificationService
+      .requestNotificationPermission(); // Kullanıcıdan bildirim izni isteniyor
 
   if (permissionGranted) {
-    await notificationService.initialize(); // Servisi başlat
+    // İzin verildiyse servisi başlat
+    await notificationService.initialize();
   } else {
     // İzin verilmediğinde kullanıcıyı bilgilendir
     print('Bildirim izni verilmedi.');

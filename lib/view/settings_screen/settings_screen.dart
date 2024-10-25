@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/services/email_service.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/about_the_app_sceen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/data_management_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/privacyPolicy_screen.dart';
@@ -12,16 +13,11 @@ import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/settings_model.dart';
 
-class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key});
+class SettingsScreen extends StatelessWidget {
+  SettingsScreen({super.key});
 
-  @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
-}
-
-class _SettingsScreenState extends State<SettingsScreen> {
   final SettingsController _settingscontroller = Get.find();
-
+  final emailService = EmailService();
   @override
   Widget build(BuildContext context) {
     final settingsList = [
@@ -50,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         onTap: () {
-          _showLanguageSelectionBottomSheet();
+          _showLanguageSelectionBottomSheet(context);
         },
       ),
       SettingsModel(
@@ -174,23 +170,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: CustomFloatingActionButton(
           heroTag: "profile",
           widget: const Icon(Ionicons.mail),
-          onPressed: () {},
+          onPressed: () {
+            emailService.sendEmail(
+              to: 'fitbalance.contact@gmail.com',
+              subject: '',
+              body: '',
+            );
+          },
         ),
       ),
     );
   }
 
-  // dil seçimi
-  void _showLanguageSelectionBottomSheet() {
-    final languageOptions = {
-      'tr': 'Türkçe',
-      'en': 'English',
-      'es': 'Español',
-      'fr': 'Français',
-      'de': 'Deutsch',
-      'pt': 'Português',
-      'zh': '中国人',
-    };
+  // *** DİL SEÇİMİ İÇİN BOTTOMSHEET ***
+  void _showLanguageSelectionBottomSheet(BuildContext context) {
+    final _settingsController = Get.find<SettingsController>();
 
     Get.bottomSheet(
       Container(
@@ -201,24 +195,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: languageOptions.entries.map((entry) {
+            children: _settingsController.languageOptions.entries.map((entry) {
               final languageCode = entry.key;
               final languageName = entry.value;
 
               return Obx(() {
                 return Container(
                   decoration: BoxDecoration(
-                    color: _settingscontroller.selectedLanguage.value ==
+                    color: _settingsController.selectedLanguage.value ==
                             languageCode
                         ? Theme.of(context).cardColor
                         : null,
-                    borderRadius: BorderRadius.circular(
-                        12), // Seçili olan itemin köşeleri
+                    borderRadius: BorderRadius.circular(12),
                   ),
                   child: ListTile(
                     title: Text(languageName),
                     onTap: () {
-                      _settingscontroller.changeLanguage(languageCode);
+                      _settingsController.changeLanguage(languageCode);
                       Future.delayed(
                         const Duration(milliseconds: 200),
                         () => Get.back(),

@@ -6,9 +6,8 @@
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" /> // Pil optimizasyonunu göz ardı etme
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/> // Ön plan servisi izni
     <uses-permission android:name="android.permission.WAKE_LOCK"/> // Ekranı uyandırma
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/> // Bildirim gönderme
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/> // Android 13 ve sonrası için bildirim gönderme izni zorunlu, ekle
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" /> // Belirli bir saatte bildirim gösterme izni
     <application
         android:label="kilo_takibi_uyg"
         android:name="${applicationName}"

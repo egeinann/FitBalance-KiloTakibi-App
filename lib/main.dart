@@ -7,6 +7,7 @@ import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/language/language.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
+import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
 import 'package:kilo_takibi_uyg/services/notification_service.dart';
 import 'package:kilo_takibi_uyg/view/home_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/controller/bmi_controller.dart';

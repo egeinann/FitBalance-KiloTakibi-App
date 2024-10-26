@@ -45,6 +45,11 @@ class Languages extends Translations {
           "Document your changes with photos!":
               "Document your changes with photos!",
 
+          // IntroAiScreen
+          'Artificial Intelligence Model': 'Artificial Intelligence Model',
+          'Embark on a healthy journey with an AI powered chatbot, try premium!':
+              'Embark on a healthy journey with an AI powered chatbot, try premium!',
+
           // IntroNameScreen
           "Enter your name": "Enter your name",
           "Your name": "Your name",
@@ -368,6 +373,11 @@ class Languages extends Translations {
           "Document your changes with photos!":
               "Değişimlerinizi fotoğraflarla belgeleyin!",
 
+          // IntroAiScreen
+          'Artificial Intelligence Model': 'Yapay Zeka Modeli',
+          'Embark on a healthy journey with an AI powered chatbot, try premium!':
+              'Yapay zeka destekli sohbet robotu ile sağlıklı bir yolculuğa çıkın, premiumu deneyin!',
+
           // IntroNameScreen
           "Enter your name": "Adınızı girin",
           "Your name": "Adınız",
@@ -686,6 +696,11 @@ class Languages extends Translations {
           "Photo & Gallery": "Foto y Galería",
           "Document your changes with photos!":
               "¡Documenta tus cambios con fotos!",
+
+          // IntroAiScreen
+          'Artificial Intelligence Model': 'Modelo de Inteligencia Artificial',
+          'Embark on a healthy journey with an AI powered chatbot, try premium!':
+              'Embárcate en un viaje saludable con un chatbot impulsado por IA, ¡prueba premium!',
 
           // IntroNameScreen
           "Enter your name": "Ingrese su nombre",
@@ -1009,6 +1024,12 @@ class Languages extends Translations {
           "Photo & Gallery": "Photo et Galerie",
           "Document your changes with photos!":
               "Documentez vos changements avec des photos !",
+
+          // IntroAiScreen
+          'Artificial Intelligence Model':
+              'Modèle d\'Intelligence Artificielle',
+          'Embark on a healthy journey with an AI powered chatbot, try premium!':
+              'Embarquez pour un voyage sain avec un chatbot alimenté par IA, essayez premium!',
 
           // IntroNameScreen
           "Enter your name": "Entrez votre nom",
@@ -1336,6 +1357,11 @@ class Languages extends Translations {
           "Document your changes with photos!":
               "Dokumentieren Sie Ihre Veränderungen mit Fotos!",
 
+          // IntroAiScreen
+          'Artificial Intelligence Model': 'Künstliche Intelligenz Modell',
+          'Embark on a healthy journey with an AI powered chatbot, try premium!':
+              'Beginnen Sie eine gesunde Reise mit einem KI-gesteuerten Chatbot, probieren Sie Premium!',
+
           // IntroNameScreen
           "Enter your name": "Geben Sie Ihren Namen ein",
           "Your name": "Ihr Name",
@@ -1662,6 +1688,11 @@ class Languages extends Translations {
           "Document your changes with photos!":
               "Documente suas mudanças com fotos!",
 
+          // IntroAiScreen
+          'Artificial Intelligence Model': 'Modelo de Inteligência Artificial',
+          'Embark on a healthy journey with an AI powered chatbot, try premium!':
+              'Embarque em uma jornada saudável com um chatbot com IA, experimente o premium!',
+
           // IntroNameScreen
           "Enter your name": "Digite seu nome",
           "Your name": "Seu nome",
@@ -1965,7 +1996,7 @@ class Languages extends Translations {
           'Keep it up!': '继续保持!',
           'Update your weight now!': '现在更新你的体重!',
           'Eat healthy today?': '今天吃得健康吗？',
-          
+
           // OnboardingController
           "Enter your name !": "输入您的名字 !",
           "This section cannot be left blank": "此部分不能为空",
@@ -1982,6 +2013,11 @@ class Languages extends Translations {
           // IntroPhotoGalleryScreen
           "Photo & Gallery": "照片与图库",
           "Document your changes with photos!": "用照片记录您的变化！",
+
+          // IntroAiScreen
+          'Artificial Intelligence Model': '人工智能模型',
+          'Embark on a healthy journey with an AI powered chatbot, try premium!':
+              '踏上健康之旅，试试人工智能聊天机器人，试试高级版！',
 
           // IntroNameScreen
           "Enter your name": "输入您的名字",

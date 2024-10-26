@@ -26,9 +26,9 @@ class SettingsScreen extends StatelessWidget {
         "Premium".tr,
         "Upgrade to Premium".tr,
         _settingscontroller.activePremium.value == true
-            ? Icon(Icons.rocket, color: Theme.of(context).primaryColor)
+            ? Icon(Ionicons.rocket, color: Theme.of(context).primaryColor)
             : const Icon(
-                Icons.rocket,
+                Ionicons.rocket,
                 color: Colors.grey,
               ),
         onTap: () {

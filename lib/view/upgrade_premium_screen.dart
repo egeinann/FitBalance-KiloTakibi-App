@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
+import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class UpgradePremiumScreen extends StatelessWidget {
@@ -56,7 +57,7 @@ class UpgradePremiumScreen extends StatelessWidget {
         ListTile(
           leading: CircleAvatar(
             backgroundColor: Theme.of(context).cardColor,
-            child: const Icon(Ionicons.infinite),
+            child: const Icon(Ionicons.megaphone_outline),
           ),
           title: AutoSizeText(
             "Reach your goal with ad-free, uninterrupted tracking!".tr,
@@ -86,10 +87,8 @@ class UpgradePremiumScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        const Image(
-          image: AssetImage("assets/images/upgradePremium/premium_rocket.png"),
-          height: 200,
-          fit: BoxFit.scaleDown,
+        Lottie.asset('assets/lottie/premiumRocket.json',
+            fit: BoxFit.cover, height: 300
         ),
         const SizedBox(height: 10),
         AutoSizeText(

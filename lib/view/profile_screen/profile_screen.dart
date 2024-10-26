@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
-import 'package:kilo_takibi_uyg/services/notification_service.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_screen.dart';
 import 'package:kilo_takibi_uyg/view/upgrade_premium_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -23,7 +22,6 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   final OnboardingController _onboardingController = Get.find();
   final SettingsController _settingscontroller = Get.find();
-  final NotificationService _notificationService = NotificationService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,13 +39,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               premiumContainer(context),
               const SizedBox(height: 20),
               floatingButtons(context),
-              FloatingActionButton(
-                heroTag: "qweqwewq",
-                onPressed: () async {
-                  await _notificationService.showRandomNotification();
-                },
-                child: Icon(Icons.notification_add),
-              ),
               SizedBox(height: Get.size.height * 0.1)
             ],
           ),
@@ -263,10 +254,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Row(
                 children: [
                   _settingscontroller.activePremium.value == true
-                      ? Icon(Icons.rocket,
+                      ? Icon(Ionicons.rocket,
                           color: Theme.of(context).primaryColor)
                       : const Icon(
-                          Icons.rocket,
+                          Ionicons.rocket,
                           color: Colors.grey,
                         ),
                   const SizedBox(width: 5),

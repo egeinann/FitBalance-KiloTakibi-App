@@ -15,7 +15,7 @@ class OnboardingController extends GetxController {
   TextEditingController nameController = TextEditingController();
 
   void lastPage(int index) {
-    onLastPage.value = (index == 4);
+    onLastPage.value = (index == 5);
   }
 
   // NAME TUTAN FONK ***
@@ -42,7 +42,7 @@ class OnboardingController extends GetxController {
           icon: const Icon(Ionicons.person),
         );
         pageController.animateToPage(
-          3,
+          4,
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
         ); // Geçiş animasyonu ile NameScreen'e dön

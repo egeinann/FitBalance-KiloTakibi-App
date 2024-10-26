@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
+import 'package:kilo_takibi_uyg/onboarding/view/intro_ai_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_photoGallery_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_graph_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -31,12 +32,13 @@ class OnboardingScreen extends StatelessWidget {
                     Get.focusScope?.unfocus();
                     onboardingController.lastPage(index);
                   },
-                  children: [
-                    const IntroStartScreen(),
-                    const IntroGraphScreen(),
-                    const IntroPhotoGalleryScreen(),
+                  children: const [
+                    IntroStartScreen(),
+                    IntroGraphScreen(),
+                    IntroPhotoGalleryScreen(),
+                    IntroAiScreen(),
                     IntroNameScreen(),
-                    const IntroTargetWeightScreen(),
+                    IntroTargetWeightScreen(),
                   ],
                 ),
               ),
@@ -51,7 +53,7 @@ class OnboardingScreen extends StatelessWidget {
                         activeDotColor: Theme.of(context).primaryColor,
                       ),
                       controller: onboardingController.pageController,
-                      count: 5,
+                      count: 6,
                     ),
                     CustomFloatingActionButton(
                       heroTag: "onboarding",

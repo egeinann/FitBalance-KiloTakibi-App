@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/graphs_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/widgets/bar_graph.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -16,6 +17,7 @@ class GraphViewScreen extends StatefulWidget {
 
 class _GraphViewScreenState extends State<GraphViewScreen> {
   final Controller _controller = Get.find();
+  final GraphsController _graphsController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,7 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
         child: Obx(
           () {
             // Öncelikle ödeme durumunu kontrol edelim
-            if (!_controller.hasPaid.value) {
+            if (!_graphsController.hasPaid.value) {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -72,7 +74,7 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      _controller.completePayment();
+                                      _graphsController.completePayment();
                                     },
                                   ),
                                 ),
@@ -92,7 +94,7 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
               return PageView(
                 scrollDirection: Axis.vertical,
                 onPageChanged: (index) {
-                  _controller.onPageChanged(index);
+                  _graphsController.onPageChanged(index);
                 },
                 children: [
                   lineGraph(context),

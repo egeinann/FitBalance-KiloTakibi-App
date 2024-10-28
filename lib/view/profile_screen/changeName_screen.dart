@@ -42,7 +42,8 @@ class ChangeNameScreen extends StatelessWidget {
                 child: Obx(
                   () => Image(
                     image: AssetImage(
-                      _settingscontroller.selectedGenderRange[0]
+                      _settingscontroller.isMale
+                              .value // Cinsiyet durumu burada kontrol ediliyor
                           ? "assets/images/name/name_male.png"
                           : "assets/images/name/name_female.png",
                     ),

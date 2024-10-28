@@ -5,20 +5,22 @@ import 'package:kilo_takibi_uyg/view/home_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 
 class OnboardingController extends GetxController {
-  var currentIndex = 0.obs;
-  var userName = ''.obs;
-  var targetWeight = 70.0.obs;
-  var onLastPage = false.obs;
-  final RxString temporaryUserName = ''.obs;
-
+  var currentIndex = 0.obs; // 0'ınıc indexten başla
+  var userName = ''.obs; // kullanıcı adı
+  var targetWeight = 70.0.obs; // hedef kilo
+  var onLastPage = false.obs; // son sayfada mıyız?
+  final RxString temporaryUserName =
+      ''.obs; // profil ekranı için name değiştirme
+  
   PageController pageController = PageController();
   TextEditingController nameController = TextEditingController();
 
+  // *** son sayfa mı ***
   void lastPage(int index) {
     onLastPage.value = (index == 5);
   }
 
-  // NAME TUTAN FONK ***
+  // *** NAME değişkenini TUTAN FONK ***
   void setUserName(String name) {
     userName.value = name;
   }
@@ -64,7 +66,7 @@ class OnboardingController extends GetxController {
     }
   }
 
-  // Controller sıfırlama
+  // *** CONTROLLER SIFIRLAMA ***
   void resetController() {
     pageController.dispose();
     pageController = PageController();

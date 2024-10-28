@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/graphs_controller.dart';
 
 final Controller _controller = Get.find();
+final GraphsController _graphsController = Get.find();
 Obx barGraph(BuildContext context) {
   return Obx(() {
-    final monthlyData = _controller.calculateMonthlyAverages();
+    final monthlyData = _graphsController.calculateMonthlyAverages();
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -54,7 +56,7 @@ Obx barGraph(BuildContext context) {
                         final year = int.parse(monthYear.split('-')[0]);
                         final month =
                             DateFormat('MMM\n yy', Get.locale.toString())
-                            .format(DateTime(year, monthIndex));
+                                .format(DateTime(year, monthIndex));
                         return SideTitleWidget(
                           axisSide: meta.axisSide,
                           child: Text(month,
@@ -106,7 +108,7 @@ Obx barGraph(BuildContext context) {
 }
 
 List<BarChartGroupData> _getMonthlyAverageBarGroups() {
-  final monthlyData = _controller.calculateMonthlyAverages();
+  final monthlyData = _graphsController.calculateMonthlyAverages();
   final List<List<Color>> barGradients = [
     [Colors.red, Colors.redAccent],
     [Colors.blue, Colors.lightBlueAccent],

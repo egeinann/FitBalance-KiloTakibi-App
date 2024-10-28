@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kilo_takibi_uyg/models/record.dart';
+import 'package:kilo_takibi_uyg/controllers/graphs_controller.dart';
+import 'package:kilo_takibi_uyg/models/record.dart'; // model parametreleri ile ilgili hata alıyorsan... model sınıfı eklenmeli
 import 'package:kilo_takibi_uyg/widgets/record_list_tile.dart';
 
 class Controller extends GetxController {
+  final GraphsController _graphsController = Get.find();
   RxList<Record> records = <Record>[].obs; // record objeleri tutan liste
   RxBool isLoading = false.obs; // loading lottie için
-  RxList<Record> filteredRecords = <Record>[]
-      .obs; // filtrelenmiş grafik zaman dilimi kayıtlarını tutan liste
-
   final GlobalKey<AnimatedListState> listKey =
       GlobalKey<AnimatedListState>(); // liste animasyonu için
-  var hasPaid = false.obs; // grafik ödeme durumu
   var photoUrl = Rxn<String>(); // Reaktif bir değişken
   var currentTabIndex = 2.obs; // homescreen sayfa index
   var appBarTitle = 'Add'.obs; // Başlangıç başlığı
-  var selectedTimeRange =
-      [true, false].obs; // grafik zaman dilimi filtreleme (all & 30days)
   var graphPageIndex = 0.obs; // ödeme sonrası graphscreen'e geçiş
 
   // *** RECORD EKLEME İŞLEMİ ***
@@ -47,7 +43,7 @@ class Controller extends GetxController {
       listKey.currentState?.insertItem(records.length - 1);
     }
     // İşlem sonrası grafikleri güncelle
-    updateFilteredRecords();
+    _graphsController.updateFilteredRecords();
   }
 
 // *** RECORD SİLME İŞLEMİ ***
@@ -65,7 +61,7 @@ class Controller extends GetxController {
     );
 
     // İşlem sonrası grafikleri güncelle
-    updateFilteredRecords();
+    _graphsController.updateFilteredRecords();
   }
 
   // *** TÜM RECORDLARI SİLME İŞLEMİ ***
@@ -89,7 +85,7 @@ class Controller extends GetxController {
               400), // bir üstteki duration animasyon süresine eşit veya daha uzun
       () {
         records.clear();
-        updateFilteredRecords();
+        _graphsController.updateFilteredRecords();
       },
     );
   }
@@ -101,7 +97,7 @@ class Controller extends GetxController {
       records[index] = newRecord;
       records.refresh(); // Listenin UI'ı güncellemesi için refresh kullan
       // işlem sonrası grafikleri güncelle
-      updateFilteredRecords();
+      _graphsController.updateFilteredRecords();
     }
   }
 
@@ -130,21 +126,7 @@ class Controller extends GetxController {
     );
   }
 
-  // *** APPBAR BAŞLIK GÜNCELEME ***
-  void changeTabIndex(int index) {
-    currentTabIndex.value = index;
-    appBarTitle.value = getTitleForIndex(index); // AppBar başlığını güncelle
-  }
-
-  // *** ÖDEME SONRASI GRAPHSCREEN GEÇİŞ KONTROLU ***
-  void onPageChanged(int index) {
-    graphPageIndex.value = index;
-    if (currentTabIndex.value == 0) {
-      appBarTitle.value = getTitleForIndex(0);
-    }
-  }
-
-  // *** GRAFİKLER ARASI BAŞLIK DEĞİŞİMLERİ ***
+  // *** SAYFALAR ARASI BAŞLIK DEĞİŞİMLERİ ***
   String getTitleForIndex(int index) {
     switch (index) {
       case 0:
@@ -173,6 +155,12 @@ class Controller extends GetxController {
     }
   }
 
+  // *** APPBAR BAŞLIK GÜNCELEME ***
+  void changeTabIndex(int index) {
+    currentTabIndex.value = index;
+    appBarTitle.value = getTitleForIndex(index); // AppBar başlığını güncelle
+  }
+
   // *** AYNI TARİHTE RECORD VAR MI KONTROLÜ ***
   bool isRecordExists(DateTime date) {
     return records.any((record) => record.dateTime == date);
@@ -186,56 +174,5 @@ class Controller extends GetxController {
   // *** NAVBAR HISTORYSCREEN YÖNLENDİRME ***
   void goToHistoryScreen() {
     changeTabIndex(3);
-  }
-
-  // *** BAR GRAPH AYLIK ORTALAMA HESAPLAMA ***
-  Map<String, double> calculateMonthlyAverages() {
-    final Map<String, List<double>> monthlyWeights = {};
-
-    for (var record in records) {
-      final monthYear = '${record.dateTime.year}-${record.dateTime.month}';
-      if (monthlyWeights.containsKey(monthYear)) {
-        monthlyWeights[monthYear]!.add(record.weight);
-      } else {
-        monthlyWeights[monthYear] = [record.weight];
-      }
-    }
-
-    final Map<String, double> monthlyAverages = {};
-    monthlyWeights.forEach((monthYear, weights) {
-      final averageWeight = weights.reduce((a, b) => a + b) / weights.length;
-      monthlyAverages[monthYear] = averageWeight;
-    });
-
-    return monthlyAverages;
-  }
-
-  // *** GRAFİK İÇİN FİLTRELENMİŞ KAYITLAR (ALL & 30DAYS) ***
-  void updateFilteredRecords() {
-    if (selectedTimeRange[1]) {
-      // Son 30 kaydı al ve tarihe göre doğru sırala
-      List<Record> recordsList = records.toList(); // Convert RxList to List
-      recordsList.sort((a, b) =>
-          a.dateTime.compareTo(b.dateTime)); // Sort by dateTime ascending
-      int itemCount = recordsList.length < 30 ? recordsList.length : 30;
-      filteredRecords.assignAll(recordsList
-          .sublist(recordsList.length - itemCount)); // Update filteredRecords
-    } else {
-      // Tüm kayıtları göster
-      filteredRecords.assignAll(records);
-    }
-  }
-
-  // *** LINEGRAPH ZAMANDİLİMİ TOGGLE BUTTONLARIN DEĞİŞİMİ ***
-  void updateTimeRange(int index) {
-    for (int i = 0; i < selectedTimeRange.length; i++) {
-      selectedTimeRange[i] = i == index;
-    }
-    updateFilteredRecords();
-  }
-
-  // *** GRAFİK ÖDEME İŞLEMİ ***
-  void completePayment() {
-    hasPaid.value = true; // hasPaid durumunu true yapar
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/graphs_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
@@ -10,6 +11,7 @@ import 'package:kilo_takibi_uyg/widgets/textField.dart';
 class ChatScreen extends StatelessWidget {
   ChatScreen({super.key});
   final Controller _controller = Get.find();
+  final GraphsController _graphsController = Get.find();
   final TextEditingController _textFieldController = TextEditingController();
   String? _message;
   @override
@@ -27,7 +29,7 @@ class ChatScreen extends StatelessWidget {
           Obx(
             () {
               return Visibility(
-                visible: _controller.hasPaid.value,
+                visible: _graphsController.hasPaid.value,
                 child: IconButton(
                   onPressed: () {},
                   icon: const Icon(Icons.delete),
@@ -41,7 +43,7 @@ class ChatScreen extends StatelessWidget {
         padding: context.paddingLarge,
         child: Obx(
           () {
-            if (!_controller.hasPaid.value) {
+            if (!_graphsController.hasPaid.value) {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -64,8 +66,7 @@ class ChatScreen extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.symmetric(horizontal: 50),
                             child: AutoSizeText(
-                              "You should upgrade to premium to embark on a healthy journey with the artificial intelligence model."
-                                  ,
+                              "You should upgrade to premium to embark on a healthy journey with the artificial intelligence model.",
                               textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
@@ -89,7 +90,7 @@ class ChatScreen extends StatelessWidget {
                                       ),
                                     ),
                                     onPressed: () {
-                                      _controller.completePayment();
+                                      _graphsController.completePayment();
                                     },
                                   ),
                                 ),

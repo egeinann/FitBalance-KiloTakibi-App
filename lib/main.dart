@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/binding/controllers_binding.dart';
 import 'package:kilo_takibi_uyg/config/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/graphs_controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/language/language.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
@@ -37,18 +39,12 @@ void main() async {
   // Üst alt bildirim panelleri renk şemaları transparent
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-  // BURADAKİ PUT İŞLEMLERİ UYGULAMA BAŞLADIĞI GİBİ AKTİF OLUR - HER SAYFANIN KENDİSİNE VERİLİRSE O SAYFA AÇILMADAN RAM DE YER KAPLAMAZ
-  Get.put(Controller());
-  Get.put(OnboardingController());
-  Get.put(BMIController());
-  Get.put(InfoController());
-  Get.put(SettingsController());
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-  final SettingsController _settingscontroller = Get.find();
+  final SettingsController _settingscontroller = Get.put(SettingsController());
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -61,6 +57,7 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
+        initialBinding: AppBinding(),
         supportedLocales: Languages.languageList, // Desteklenen diller
         locale: Get.deviceLocale, // Cihazın dilini al
         fallbackLocale: Languages.defa, // Varsayılan dil

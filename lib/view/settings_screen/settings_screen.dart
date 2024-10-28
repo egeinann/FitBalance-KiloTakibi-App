@@ -12,6 +12,7 @@ import 'package:kilo_takibi_uyg/view/upgrade_premium_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/settings_model.dart';
+import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsScreen({super.key});
@@ -88,6 +89,43 @@ class SettingsScreen extends StatelessWidget {
 
       //   },
       // ),
+      SettingsModel(
+        const Icon(Ionicons.speedometer),
+        "Unit of weight".tr,
+        null,
+        SizedBox(
+          height: 45,
+          child: Obx(
+            () => customToggleButton(
+              context: context,
+              isSelected: [
+                _settingscontroller.isKgSelected.value,
+                !_settingscontroller.isKgSelected.value
+              ],
+              onPressed: (int index) {
+                _settingscontroller.toggleUnit();
+              },
+              children: const [
+                Text(
+                  'Kg',
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                  ),
+                ),
+                Text(
+                  'Lb',
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        onTap: () {
+          _settingscontroller.toggleUnit();
+        },
+      ),
       SettingsModel(
         const Icon(Ionicons.lock_closed),
         "Privacy Policy".tr,

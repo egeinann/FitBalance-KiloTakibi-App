@@ -7,9 +7,8 @@ import 'package:kilo_takibi_uyg/view/settings_screen/settings_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/navigation_bar.dart';
 
 class HomeScreen extends StatelessWidget {
-  final Controller _controller = Get.find();
   HomeScreen({super.key});
-  
+  final Controller _controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

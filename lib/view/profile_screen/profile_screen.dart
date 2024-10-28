@@ -11,6 +11,7 @@ import 'package:kilo_takibi_uyg/view/profile_screen/info/model/info_screen.dart'
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeName_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeTargetWeight_screen.dart';
+import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -89,18 +90,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   // *** GENDER TOP IMAGE ***
-  Column genderImage(BuildContext context) {
-    return Column(
-      children: [
-        // Resmi gösteren kısım
-        Obx(
-          () => AnimatedSwitcher(
+  Widget genderImage(BuildContext context) {
+    return Obx(
+      () => Column(
+        children: [
+          // RESİM
+          AnimatedSwitcher(
             duration: const Duration(milliseconds: 300), // Animasyon süresi
             child: Image(
-              key: ValueKey<bool>(_settingscontroller.selectedGenderRange[
-                  0]), // Animasyonu tetiklemek için bir anahtar
+              key: ValueKey<bool>(_settingscontroller
+                  .isMale.value), // Animasyonu tetiklemek için bir anahtar
               image: AssetImage(
-                _settingscontroller.selectedGenderRange[0]
+                _settingscontroller.isMale.value
                     ? "assets/images/profile/male.png"
                     : "assets/images/profile/female.png",
               ),
@@ -108,53 +109,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: Get.size.height * 0.2,
             ),
           ),
-        ),
-        Obx(
-          () => ToggleButtons(
-            renderBorder: false,
-            fillColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            isSelected: _settingscontroller.selectedGenderRange,
+          const SizedBox(height: 10),
+          // TOGGLEBUTTONLAR
+          customToggleButton(
+            context: context,
+            isSelected: [
+              _settingscontroller.isMale.value,
+              !_settingscontroller.isMale.value
+            ],
             onPressed: (int index) {
-              _settingscontroller.updateGenderRange(index);
+              _settingscontroller.toggleGender(index);
             },
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: _settingscontroller.selectedGenderRange[0]
-                        ? Theme.of(context).primaryColor
-                        : Theme.of(context).canvasColor,
-                  ),
-                  child: Text(
-                    "Male".tr,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  'Male'.tr,
+                  style: const TextStyle(
+                    fontFamily: "Poppins",
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: _settingscontroller.selectedGenderRange[1]
-                        ? Theme.of(context).primaryColor
-                        : Theme.of(context).canvasColor,
-                  ),
-                  child: Text(
-                    "Female".tr,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  'Female'.tr,
+                  style: const TextStyle(
+                    fontFamily: "Poppins",
                   ),
                 ),
               ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

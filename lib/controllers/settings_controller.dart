@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SettingsController extends GetxController {
-  var selectedGenderRange = [true, false].obs; // cinsiyet toggle buttons
+  var isMale = true.obs; // cinsiyet seçimi varsayılan erkek
   RxBool activePremium = false.obs; // premiumEnabled
   Rx<ThemeMode> themeMode = ThemeMode.system.obs; // tema durumu
   var selectedLanguage = 'en'.obs; // Varsayılan dil
-  
+  var isKgSelected = true.obs; // ağırlık birimi seçimi varsayılan kg
+
   // Dil seçenekleri haritası
   final languageOptions = {
     'tr': 'Türkçe',
@@ -34,21 +35,19 @@ class SettingsController extends GetxController {
     selectedLanguage.value = langCode;
     Get.updateLocale(Locale(langCode));
   }
-  // *** CİNSİYET TOGGLE BUTTONLAR DEĞİŞİMİ ***
-  void updateGenderRange(int index) {
-    if (index == 0) {
-      selectedGenderRange[0] = true;
-      selectedGenderRange[1] = false;
-    } else {
-      selectedGenderRange[0] = false;
-      selectedGenderRange[1] = true;
-    }
-  }
 
-  // *** SWITCH BİLDİRİM DURUMU ***
+  // *** CİNSİYET TOGGLE BUTTONLAR DEĞİŞİMİ ***
+  void toggleGender(int index) {
+    isMale.value = !isMale.value;
+  }
 
   // *** TEMA DURUMU DEĞİŞTİRME ***
   void switchTheme(bool isDark) {
     themeMode.value = isDark ? ThemeMode.dark : ThemeMode.light;
+  }
+
+  // *** KİLO BİRİMİ TOGGLE BUTTONS ***
+  void toggleUnit() {
+    isKgSelected.value = !isKgSelected.value;
   }
 }

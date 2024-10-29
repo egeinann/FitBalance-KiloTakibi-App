@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/services/email_service.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/about_the_app_sceen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/data_management_screen.dart';
@@ -33,7 +34,7 @@ class SettingsScreen extends StatelessWidget {
                 color: Colors.grey,
               ),
         onTap: () {
-          Get.to(UpgradePremiumScreen());
+          Get.toNamed(Routes.upgradepremiumscreen);
         },
       ),
       SettingsModel(
@@ -132,7 +133,7 @@ class SettingsScreen extends StatelessWidget {
         "Protection of personal data".tr,
         null,
         onTap: () {
-          Get.to(const PrivacyPolicyScreen());
+          Get.toNamed(Routes.privacypolicyscreen);
         },
       ),
       SettingsModel(
@@ -141,7 +142,7 @@ class SettingsScreen extends StatelessWidget {
         "You have accepted these terms".tr,
         null,
         onTap: () {
-          Get.to(const TermsOfServiceScreen());
+          Get.toNamed(Routes.termsofservicescreen);
         },
       ),
       SettingsModel(
@@ -150,7 +151,7 @@ class SettingsScreen extends StatelessWidget {
         "Data backup, restore and data wipe".tr,
         null,
         onTap: () {
-          Get.to(const DataManagementScreen());
+          Get.toNamed(Routes.datamanagementscreen);
         },
       ),
       SettingsModel(
@@ -159,7 +160,7 @@ class SettingsScreen extends StatelessWidget {
         null,
         null,
         onTap: () {
-          Get.to(const AboutTheAppScreen());
+          Get.toNamed(Routes.abouttheappscreen);
         },
       ),
     ];

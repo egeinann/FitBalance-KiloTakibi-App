@@ -15,41 +15,18 @@ import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
-class AddScreen extends StatefulWidget {
-  const AddScreen({super.key});
+class AddScreen extends GetView<Controller> {
+  AddScreen({super.key});
 
-  @override
-  State<AddScreen> createState() => _AddScreenState();
-}
-
-class _AddScreenState extends State<AddScreen> {
-  double _selectedValue = 40.0; // Başlangıç değerini 40 olarak ayarlayın
-  DateTime _selectedDate = DateTime.now();
-  String? _note;
-  final Controller _controller = Get.find();
+  // State yönetimi için GetX ile kullanacağımız değişkenler
   final TextEditingController _noteController = TextEditingController();
   final FocusNode _focusNode = FocusNode(); // FocusNode KASMA SORUNU İÇİN
-
-  @override
-  // KASMA SORUNU İÇİN DİSPOSE
-  void dispose() {
-    _focusNode.dispose(); // FocusNode'u temizliyoruz
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _animateDecimalNumberPicker(); // Animasyonu başlat
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          // FocusScope.of(context).unfocus();
-          // Sadece TextField odakta olduğunda klavyeyi kapat
           Get.focusScope?.unfocus();
         },
         behavior: HitTestBehavior.opaque,
@@ -62,7 +39,7 @@ class _AddScreenState extends State<AddScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     // *** WEIGHT CONTAINER ***
-                    weightEntryContainer(),
+                    weightEntryContainer(context),
                     const Divider(
                       thickness: 2,
                       endIndent: 35,
@@ -76,14 +53,14 @@ class _AddScreenState extends State<AddScreen> {
                       indent: 35,
                     ),
                     // *** NOTE CONTAINER ***
-                    noteEntryContainer(),
+                    noteEntryContainer(context),
                     const Divider(
                       thickness: 2,
                       endIndent: 35,
                       indent: 35,
                     ),
                     // *** ADD PHOTO CONTAINER ***
-                    addPhotoContainer(),
+                    addPhotoContainer(context),
                     SizedBox(height: Get.size.height * 0.12),
                   ],
                 ),
@@ -103,25 +80,14 @@ class _AddScreenState extends State<AddScreen> {
     );
   }
 
-  // *** DECIMAL OPENNING ANIMATION ***
-  void _animateDecimalNumberPicker() {
-    Timer.periodic(const Duration(milliseconds: 20), (timer) {
-      setState(() {
-        if (_selectedValue < 70) {
-          _selectedValue += 5; // Her adımda 5 artır
-          if (_selectedValue > 70) {
-            _selectedValue = 70; // 70'ten büyük olmasın
-          }
-        } else {
-          timer.cancel(); // 70'e ulaştığında timer'ı durdur
-        }
-      });
-    });
-  }
-
   // *** FUNCTION FOR ADD BUTTON
-  void addPressed() {
-    if (_controller.isRecordExists(_selectedDate)) {
+  void addPressed(BuildContext context) {
+    final double selectedValue = controller.selectedValue.value;
+    final DateTime selectedDate = controller.selectedDate.value;
+    final String? note =
+        _noteController.text.isNotEmpty ? _noteController.text : null;
+
+    if (controller.isRecordExists(selectedDate)) {
       SnackbarHelper.showSnackbar(
         title: "There is already a record for the same date".tr,
         message: "Change the date".tr,
@@ -132,18 +98,17 @@ class _AddScreenState extends State<AddScreen> {
       return;
     }
 
-    _controller.addRecord(Record(
-      weight: _selectedValue,
-      dateTime: _selectedDate,
-      note: _note,
-      photoUrl: _controller.photoUrl.value,
+    controller.addRecord(Record(
+      weight: selectedValue,
+      dateTime: selectedDate,
+      note: note,
+      photoUrl: controller.photoUrl.value,
     ));
 
-    _controller.goToHistoryScreen();
+    controller.goToHistoryScreen();
 
     _noteController.clear();
-    _note = null;
-    _controller.photoUrl.value = null; // Fotoğraf URL'sini sıfırla
+    controller.photoUrl.value = null; // Fotoğraf URL'sini sıfırla
     Get.focusScope?.unfocus();
   }
 
@@ -157,7 +122,7 @@ class _AddScreenState extends State<AddScreen> {
         onPressed: () => Future.delayed(
           const Duration(milliseconds: 200),
           () {
-            addPressed();
+            addPressed(context);
           },
         ),
       ),
@@ -166,38 +131,40 @@ class _AddScreenState extends State<AddScreen> {
 
   // *** PICK DATE ***
   Future<void> pickDate(BuildContext context) async {
-    _selectedDate = await showDatePicker(
-            builder: (context, child) {
-              return Theme(
-                  data: ThemeClass.darkTheme, child: child ?? const Text(""));
-            },
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime.now().subtract(const Duration(days: 0)),
-            lastDate: DateTime.now().add(const Duration(days: 500))) ??
-        _selectedDate;
-    setState(() {});
+    DateTime? selectedDate = await showDatePicker(
+        builder: (context, child) {
+          return Theme(
+              data: ThemeClass.darkTheme, child: child ?? const Text(""));
+        },
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now().subtract(const Duration(days: 0)),
+        lastDate: DateTime.now().add(const Duration(days: 500)));
+
+    if (selectedDate != null) {
+      controller.selectedDate.value = selectedDate;
+    }
   }
 
   // *** ADD NOTE ***
-  Widget noteEntryContainer() {
+  Widget noteEntryContainer(BuildContext context) {
     return Padding(
       padding: context.paddingLarge,
       child: CustomTextField(
         focusNode: _focusNode,
         controller: _noteController,
         labelText: "note".tr,
-        onChanged: (value) {
-          _note = value;
-        },
         titleIcon: IconButton(
           onPressed: () {
             _noteController.clear(); // TextField'ı sıfırla
-            _note = "";
           },
           icon: const Icon(Icons.backspace),
         ),
         maxLength: 80,
+        onChanged: (value) {
+          // Kullanıcının yazdığı notu güncelle
+          controller.note.value = value; // Controller'daki notu güncelle
+        },
       ),
     );
   }
@@ -210,16 +177,19 @@ class _AddScreenState extends State<AddScreen> {
       },
       child: Padding(
         padding: context.paddingLarge,
-        child: Text(
-          DateFormat("d MMM, y", Get.locale.toString()).format(_selectedDate),
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
+        child: Obx(() {
+          return Text(
+            DateFormat("d MMM, y", Get.locale.toString())
+                .format(controller.selectedDate.value),
+            style: Theme.of(context).textTheme.bodyLarge,
+          );
+        }),
       ),
     );
   }
 
   // *** ADD WEIGHT ***
-  Widget weightEntryContainer() {
+  Widget weightEntryContainer(BuildContext context) {
     return Padding(
       padding: context.paddingLarge,
       child: Row(
@@ -232,22 +202,24 @@ class _AddScreenState extends State<AddScreen> {
               children: [
                 Text("YOUR WEIGHT".tr,
                     style: Theme.of(context).textTheme.bodyMedium),
-                Text(
-                  "$_selectedValue ${"kg".tr}",
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
+                Obx(() {
+                  return Text(
+                    "${controller.selectedValue.value} ${"kg".tr}",
+                    style: Theme.of(context).textTheme.displaySmall,
+                  );
+                }),
               ],
             ),
           ),
           Expanded(
             flex: 2,
-            child: Numbers(
-              value: _selectedValue,
-              onChanged: (value) {
-                setState(() {
-                  _selectedValue = value;
-                });
-              },
+            child: Obx(
+              () => Numbers(
+                value: controller.selectedValue.value,
+                onChanged: (value) {
+                  controller.selectedValue.value = value;
+                },
+              ),
             ),
           ), // _selectedvalue
         ],
@@ -256,19 +228,18 @@ class _AddScreenState extends State<AddScreen> {
   }
 
   // *** ADD PHOTO ***
-  Widget addPhotoContainer() {
+  Widget addPhotoContainer(BuildContext context) {
     return Obx(() {
-      if (_controller.isLoading.value) {
-        // Yükleme sırasında Lottie animasyonu göster
+      if (controller.isLoading.value) {
         return const LottieWidget();
-      } else if (_controller.photoUrl.value == null) {
+      } else if (controller.photoUrl.value == null) {
         return Padding(
           padding: context.paddingLarge,
           child: FloatingActionButton(
             splashColor: Theme.of(context).primaryColor,
             backgroundColor: Theme.of(context).cardColor,
             onPressed: () {
-              _pickImage();
+              _pickImage(context);
             },
             child: const Icon(Ionicons.camera),
           ),
@@ -285,7 +256,7 @@ class _AddScreenState extends State<AddScreen> {
                   color: Theme.of(context).canvasColor,
                 ),
                 child: Image.file(
-                  File(_controller.photoUrl.value!),
+                  File(controller.photoUrl.value!),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -295,7 +266,7 @@ class _AddScreenState extends State<AddScreen> {
                 child: IconButton(
                   icon: const Icon(Ionicons.close, color: Colors.red, size: 40),
                   onPressed: () {
-                    _controller.photoUrl.value = null; // Fotoğrafı kaldır
+                    controller.photoUrl.value = null; // Fotoğrafı kaldır
                   },
                 ),
               ),
@@ -306,7 +277,7 @@ class _AddScreenState extends State<AddScreen> {
     });
   }
 
-  Future<void> _pickImage() async {
+  Future<void> _pickImage(BuildContext context) async {
     final picker = ImagePicker();
     final source = await showModalBottomSheet<ImageSource>(
       context: context,
@@ -330,17 +301,17 @@ class _AddScreenState extends State<AddScreen> {
     );
 
     if (source != null) {
-      _controller.isLoading.value = true; // Yükleme başlıyor
+      controller.isLoading.value = true; // Yükleme başlıyor
       final pickedFile = await picker.pickImage(source: source);
 
       // Minimum gösterim süresi (örneğin, 1 saniye)
       await Future.delayed(const Duration(milliseconds: 1100));
 
       if (pickedFile != null) {
-        _controller.photoUrl.value = pickedFile.path;
+        controller.photoUrl.value = pickedFile.path;
       }
 
-      _controller.isLoading.value = false; // Yükleme tamamlandı
+      controller.isLoading.value = false; // Yükleme bitiyor
     }
   }
 }

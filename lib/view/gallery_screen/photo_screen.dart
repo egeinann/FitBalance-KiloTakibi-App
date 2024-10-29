@@ -1,25 +1,27 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 
 class PhotoScreen extends StatelessWidget {
-  final Record rec;
-  const PhotoScreen({super.key, required this.rec});
+  const PhotoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final Record rec =
+        Get.arguments as Record; // Get.arguments ile rec değerini alıyoruz
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
         padding: context.paddingLow,
-        child: Center(child: buildPhoto()),
+        child: Center(child: buildPhoto(rec)),
       ),
     );
   }
 
-  Widget buildPhoto() {
+  Widget buildPhoto(Record rec) {
     if (rec.photoUrl != null && rec.photoUrl!.isNotEmpty) {
       return (rec.photoUrl!.startsWith('file://'))
           ? const SizedBox()

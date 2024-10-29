@@ -2,7 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_screen.dart';
 import 'package:kilo_takibi_uyg/view/upgrade_premium_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -13,16 +15,11 @@ import 'package:kilo_takibi_uyg/view/profile_screen/changeName_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeTargetWeight_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class ProfileScreen extends GetView<Controller> {
+  ProfileScreen({super.key});
 
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  final OnboardingController _onboardingController = Get.find();
   final SettingsController _settingscontroller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 heroTag: "profile",
                 widget: const Icon(Ionicons.pulse),
                 onPressed: () {
-                  Get.to(InfoScreen(), transition: Transition.fadeIn);
+                  Get.toNamed(Routes.infoscreen);
                 },
               ),
             ),
@@ -79,7 +76,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 heroTag: "bmi",
                 widget: const Icon(Ionicons.accessibility),
                 onPressed: () {
-                  Get.to(BmiScreen(), transition: Transition.fadeIn);
+                  Get.toNamed(Routes.bmiscreen);
                 },
               ),
             ),
@@ -150,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget nameContainer(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(ChangeNameScreen(), transition: Transition.rightToLeftWithFade);
+        Get.toNamed(Routes.changenamescreen);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -167,7 +164,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Obx(
                     () => Text(
-                      "${_onboardingController.userName}",
+                      "${controller.userName}",
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),
@@ -186,8 +183,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget targetWeightContainer(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(ChangeTargetWeightScreen(),
-            transition: Transition.rightToLeftWithFade);
+        Get.toNamed(Routes.changetargetweightscreen);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -205,7 +201,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Obx(
                     () => Text(
-                      "${_onboardingController.targetWeight.value}",
+                      "${controller.targetWeight.value}",
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),
@@ -224,8 +220,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget premiumContainer(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(UpgradePremiumScreen(),
-            transition: Transition.rightToLeftWithFade);
+        Get.toNamed(Routes.upgradepremiumscreen);
       },
       child: Container(
         decoration: BoxDecoration(

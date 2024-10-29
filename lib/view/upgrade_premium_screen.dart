@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:lottie/lottie.dart';
@@ -9,6 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class UpgradePremiumScreen extends StatelessWidget {
   UpgradePremiumScreen({super.key});
+  final SettingsController _settingsController = Get.find();
   final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
@@ -88,8 +90,7 @@ class UpgradePremiumScreen extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Lottie.asset('assets/lottie/premiumRocket.json',
-            fit: BoxFit.cover, height: 300
-        ),
+            fit: BoxFit.cover, height: 300),
         const SizedBox(height: 10),
         AutoSizeText(
           "Why choose premium?".tr,

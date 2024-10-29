@@ -2,16 +2,15 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 
-class ChangeTargetWeightScreen extends StatelessWidget {
+class ChangeTargetWeightScreen extends GetView<Controller> {
   ChangeTargetWeightScreen({super.key});
-
-  final OnboardingController _onboardingController = Get.find();
 
   // Geçici hedef ağırlık değişkeni
   final RxDouble _temporaryTargetWeight = RxDouble(0.0);
@@ -19,7 +18,7 @@ class ChangeTargetWeightScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Ekran açıldığında geçici hedef ağırlığı mevcut değere ayarlayın
-    _temporaryTargetWeight.value = _onboardingController.targetWeight.value;
+    _temporaryTargetWeight.value = controller.targetWeight.value;
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -89,7 +88,7 @@ class ChangeTargetWeightScreen extends StatelessWidget {
           widget: const Icon(Icons.done),
           onPressed: () {
             // "Done" düğmesine basıldığında geçici hedef ağırlığı kaydet
-            _onboardingController.setTargetWeight(_temporaryTargetWeight.value);
+            controller.setTargetWeight(_temporaryTargetWeight.value);
             Get.back();
             SnackbarHelper.showSnackbar(
               title: "Your target weight has been updated".tr,

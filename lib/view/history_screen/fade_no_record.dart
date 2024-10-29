@@ -1,47 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 
-class FadeNoRecord extends StatefulWidget {
+class FadeNoRecord extends GetView<Controller> {
   const FadeNoRecord({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _FadeNoRecordState createState() => _FadeNoRecordState();
-}
-
-class _FadeNoRecordState extends State<FadeNoRecord>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-  final Controller controller = Get.find();
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 500),
-      vsync: this,
-    )..forward();
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
-  }
-
-  @override
   Widget build(BuildContext context) {
+
+
     return FadeTransition(
-      opacity: _animation,
-      child: noRecord(context),
+      opacity: _createAnimation(context),
+      child: noRecord(context, controller),
     );
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  Animation<double> _createAnimation(BuildContext context) {
+    final controller = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync:
+          _TickerProvider(), // Eğer bir TickerProvider gerekiyorsa, bunu yönetin
+    );
+
+    final animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    controller.forward();
+    return animation;
   }
 
-  Center noRecord(BuildContext context) {
+  Center noRecord(BuildContext context, Controller controller) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -79,5 +68,12 @@ class _FadeNoRecordState extends State<FadeNoRecord>
         ],
       ),
     );
+  }
+}
+
+class _TickerProvider implements TickerProvider {
+  @override
+  Ticker createTicker(TickerCallback onTick) {
+    return Ticker(onTick);
   }
 }

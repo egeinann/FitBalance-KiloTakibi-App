@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
-import 'package:kilo_takibi_uyg/controllers/graphs_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
-final Controller _controller = Get.find();
-final GraphsController _graphsController = Get.find();
+final Controller controller = Get.find();
 Obx lineGraph(BuildContext context) {
   return Obx(
     () {
@@ -19,7 +17,7 @@ Obx lineGraph(BuildContext context) {
             Padding(
               padding: const EdgeInsets.only(bottom: 5),
               child: Text(
-                _graphsController.selecedAllTimeGraph.value
+                controller.selecedAllTimeGraph.value
                     ? "All records".tr
                     : "Records of the last 30 days".tr,
                 style: Theme.of(context).textTheme.bodyMedium,
@@ -33,7 +31,7 @@ Obx lineGraph(BuildContext context) {
                 duration:
                     const Duration(milliseconds: 200), // 2. Animasyon süresi
                 child: LineChart(
-                  key: ValueKey<bool>(_graphsController
+                  key: ValueKey<bool>(controller
                       .selecedAllTimeGraph.value), // 3. ValueKey eklendi
                   curve: Curves.linearToEaseOut,
                   duration: const Duration(milliseconds: 200),
@@ -48,7 +46,7 @@ Obx lineGraph(BuildContext context) {
                         getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
                           return touchedBarSpots.map((barSpot) {
                             final record =
-                                _graphsController.filteredRecords.firstWhere(
+                                controller.filteredRecords.firstWhere(
                               (record) =>
                                   record.dateTime.millisecondsSinceEpoch
                                       .toDouble() ==
@@ -106,10 +104,10 @@ Obx lineGraph(BuildContext context) {
 
                             // İlk, son ve ortada birkaç tarih göstermek için bir koşul ekleyelim
                             int totalRecords =
-                                _graphsController.filteredRecords.length;
+                                controller.filteredRecords.length;
                             int interval = (totalRecords / 5)
                                 .ceil(); // Yaklaşık 5 tarih göstermek için aralığı hesaplayalım
-                            int index = _graphsController.filteredRecords
+                            int index = controller.filteredRecords
                                 .indexWhere((record) =>
                                     record.dateTime.millisecondsSinceEpoch ==
                                     value.toInt());
@@ -149,26 +147,29 @@ Obx lineGraph(BuildContext context) {
                       show: true,
                       border: Border.all(color: Colors.grey, width: 0.1),
                     ),
-                    minX: _graphsController.filteredRecords.isNotEmpty
-                        ? _graphsController.filteredRecords.first.dateTime
+                    minX: controller.filteredRecords.isNotEmpty
+                        ? controller.filteredRecords.first.dateTime
                             .millisecondsSinceEpoch
                             .toDouble()
                         : 0,
-                    maxX: _graphsController.filteredRecords.isNotEmpty
-                        ? _graphsController.filteredRecords.last.dateTime
+                    maxX: controller.filteredRecords.isNotEmpty
+                        ? controller.filteredRecords.last.dateTime
                             .millisecondsSinceEpoch
                             .toDouble()
                         : 0,
-                    minY: 40,
-                    maxY: _graphsController.filteredRecords.isNotEmpty
-                        ? _graphsController.filteredRecords
+                    minY: controller.records
+                            .map((record) => record.weight)
+                            .reduce((a, b) => a < b ? a : b) -
+                        10,
+                    maxY: controller.filteredRecords.isNotEmpty
+                        ? controller.filteredRecords
                                 .map((r) => r.weight)
                                 .reduce((a, b) => a > b ? a : b) +
-                            20
+                            10
                         : 60,
                     lineBarsData: [
                       LineChartBarData(
-                        spots: _graphsController.filteredRecords
+                        spots: controller.filteredRecords
                             .map(
                               (record) => FlSpot(
                                   record.dateTime.millisecondsSinceEpoch
@@ -217,11 +218,11 @@ Obx lineGraph(BuildContext context) {
                 () => customToggleButton(
                   context: context,
                   isSelected: [
-                    _graphsController.selecedAllTimeGraph.value,
-                    !_graphsController.selecedAllTimeGraph.value
+                    controller.selecedAllTimeGraph.value,
+                    !controller.selecedAllTimeGraph.value
                   ],
                   onPressed: (int index) {
-                    _graphsController.timeUnit(index);
+                    controller.timeUnit(index);
                   },
                   children: [
                     Padding(

@@ -1,19 +1,12 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import '../controller/onboarding_controller.dart';
 
-class IntroTargetWeightScreen extends StatefulWidget {
-  const IntroTargetWeightScreen({super.key});
-
-  @override
-  _IntroTargetWeightScreenState createState() =>
-      _IntroTargetWeightScreenState();
-}
-
-class _IntroTargetWeightScreenState extends State<IntroTargetWeightScreen> {
-  final OnboardingController onboardingController = Get.find();
+class IntroTargetWeightScreen extends GetView<Controller> {
+  IntroTargetWeightScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +35,9 @@ class _IntroTargetWeightScreenState extends State<IntroTargetWeightScreen> {
                   width: Get.size.width * 0.5,
                   child: Obx(
                     () => Numbers(
-                      value: onboardingController.targetWeight.value,
+                      value: controller.targetWeight.value,
                       onChanged: (value) {
-                        onboardingController.setTargetWeight(value);
+                        controller.setTargetWeight(value);
                       },
                     ),
                   ),

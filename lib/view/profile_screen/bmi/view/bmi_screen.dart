@@ -4,13 +4,13 @@ import 'package:get/get.dart';
 import 'package:gauge_indicator/gauge_indicator.dart'; // Gauge göstergesi için
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
+import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/controller/bmi_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_info.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-class BmiScreen extends StatelessWidget {
-  final BMIController bmiController = Get.find();
+class BmiScreen extends GetView<BMIController> {
 
   BmiScreen({super.key}); // Controller'ı initialize et
 
@@ -46,7 +46,7 @@ class BmiScreen extends StatelessWidget {
         heroTag: "bmi",
         widget: const Icon(Icons.question_mark_sharp),
         onPressed: () {
-          Get.to(const BmiInfoScreen(), transition: Transition.downToUp);
+          Get.toNamed(Routes.bmiinfoscreen);
         },
       ),
     );
@@ -58,7 +58,7 @@ class BmiScreen extends StatelessWidget {
       flex: 3,
       child: Obx(
         () {
-          double bmiValue = bmiController.bmiModel.value.bmi;
+          double bmiValue = controller.bmiModel.value.bmi;
           String message = ""; // Mesajı tutacak değişken
 
           // BMI değerine göre mesajı belirle
@@ -183,9 +183,9 @@ class BmiScreen extends StatelessWidget {
                     axis: Axis.horizontal,
                     minValue: 40,
                     maxValue: 200,
-                    value: bmiController.bmiModel.value.weight,
+                    value: controller.bmiModel.value.weight,
                     onChanged: (newWeight) {
-                      bmiController.updateWeight(newWeight);
+                      controller.updateWeight(newWeight);
                     },
                   );
                 },
@@ -219,9 +219,9 @@ class BmiScreen extends StatelessWidget {
                   minValue: 100, // Minimum boy
                   maxValue: 250, // Maksimum boy
                   value:
-                      bmiController.bmiModel.value.height, // Başlangıç değeri
+                      controller.bmiModel.value.height, // Başlangıç değeri
                   onChanged: (newHeight) {
-                    bmiController.updateHeight(newHeight); // Boyu güncelle
+                    controller.updateHeight(newHeight); // Boyu güncelle
                   },
                 ),
               ),

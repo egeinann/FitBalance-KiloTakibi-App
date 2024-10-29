@@ -41,9 +41,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
     );
   }
 
-int previousRecordLength =
+  int previousRecordLength =
       0; // önceki kayıt uzunluğunu tutuyor rec sayfası düzenleme-silme sonrası scroll sıfırlamaz (yapay zeka ile çözüldü)
-@override
+  @override
   void initState() {
     super.initState();
     // İlk değerleri al
@@ -53,10 +53,10 @@ int previousRecordLength =
       if (records.isNotEmpty) {
         // Yeni bir kayıt eklenmişse, listenin uzunluğu artar
         if (records.length > previousRecordLength) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             _scrollToBottom(); // Sadece kayıt eklendiğinde kaydır
-        });
-      }
+          });
+        }
         // Şimdiki liste uzunluğunu güncelle
         previousRecordLength = records.length;
       }
@@ -91,8 +91,9 @@ int previousRecordLength =
                   padding: const EdgeInsets.symmetric(vertical: 2),
                   child: GestureDetector(
                     onTap: () => Get.to(
-                        RecordScreen(rec: _controller.records[index]),
-                        transition: Transition.rightToLeftWithFade),
+                      RecordScreen(),
+                      transition: Transition.rightToLeftWithFade,
+                    ),
                     child: _controller.buildItem(
                         _controller.records[index], animation),
                   ),

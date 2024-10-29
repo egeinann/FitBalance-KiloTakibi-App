@@ -2,22 +2,19 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
-import 'package:kilo_takibi_uyg/controllers/graphs_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/widgets/bar_graph.dart';
+import 'package:kilo_takibi_uyg/widgets/bar_graph.dart'
+    as barGraph; // Önek ekledik
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
-import 'package:kilo_takibi_uyg/widgets/line_graph.dart';
+import 'package:kilo_takibi_uyg/widgets/line_graph.dart'
+    as lineGraph; // Önek ekledik
 
-class GraphViewScreen extends StatefulWidget {
-  const GraphViewScreen({super.key});
+class GraphViewScreen extends GetView<Controller> {
+  GraphViewScreen({super.key});
 
-  @override
-  State<GraphViewScreen> createState() => _GraphViewScreenState();
-}
+  final SettingsController _settingsController = Get.find();
 
-class _GraphViewScreenState extends State<GraphViewScreen> {
-  final Controller _controller = Get.find();
-  final GraphsController _graphsController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +23,7 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
         child: Obx(
           () {
             // Öncelikle ödeme durumunu kontrol edelim
-            if (!_graphsController.hasPaid.value) {
+            if (!_settingsController.hasPaid.value) {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +71,7 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      _graphsController.completePayment();
+                                      _settingsController.completePayment();
                                     },
                                   ),
                                 ),
@@ -90,15 +87,15 @@ class _GraphViewScreenState extends State<GraphViewScreen> {
             }
 
             // Ödeme yapılmışsa kayıt sayısını kontrol edelim
-            if (_controller.records.length >= 7) {
+            if (controller.records.length >= 7) {
               return PageView(
                 scrollDirection: Axis.vertical,
                 onPageChanged: (index) {
-                  _graphsController.onPageChanged(index);
+                  controller.onPageChanged(index);
                 },
                 children: [
-                  lineGraph(context),
-                  barGraph(context),
+                  lineGraph.lineGraph(context), // lineGraph ile erişim
+                  barGraph.barGraph(context), // barGraph ile erişim
                 ],
               );
             } else {

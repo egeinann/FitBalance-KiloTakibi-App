@@ -10,20 +10,19 @@ import 'package:kilo_takibi_uyg/view/profile_screen/info/view/sleep_screen.dart'
 import 'package:kilo_takibi_uyg/view/profile_screen/info/view/water_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class InfoScreen extends StatelessWidget {
+class InfoScreen extends GetView<InfoController> {
   InfoScreen({super.key});
-  final InfoController _infoController = Get.find();
   @override
   Widget build(BuildContext context) {
     return PopScope(
       onPopInvokedWithResult: (didPop, result) =>
-          _infoController.resetController(),
+          controller.resetController(),
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              _infoController.goBack();
-              _infoController.resetController();
+              controller.goBack();
+              controller.resetController();
             },
             icon: const Icon(Ionicons.chevron_back),
           ),
@@ -39,9 +38,9 @@ class InfoScreen extends StatelessWidget {
               Expanded(
                 flex: 8,
                 child: PageView(
-                  controller: _infoController.pageController,
+                  controller: controller.pageController,
                   onPageChanged: (index) {
-                    _infoController.lastPage(index);
+                    controller.lastPage(index);
                   },
                   children: const [
                     InfoNutritionScreen(),
@@ -63,14 +62,14 @@ class InfoScreen extends StatelessWidget {
                           dotColor: Theme.of(context).cardColor,
                           activeDotColor: Theme.of(context).primaryColor,
                         ),
-                        controller: _infoController.pageController,
+                        controller: controller.pageController,
                         count: 4,
                       ),
                       CustomFloatingActionButton(
                         heroTag: "profile",
                         widget: const Icon(Ionicons.arrow_forward),
                         onPressed: () {
-                          _infoController.goToNextInfo();
+                          controller.goToNextInfo();
                         },
                       )
                     ],

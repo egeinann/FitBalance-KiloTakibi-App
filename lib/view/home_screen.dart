@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/view/chat_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/settings_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/navigation_bar.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
-  final Controller _controller = Get.find();
+class HomeScreen extends GetView<Controller> {
+  const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Get.to(ChatScreen(), transition: Transition.upToDown);
+            Get.toNamed(Routes.chatscreen);
           },
           icon: const Icon(Ionicons.chatbox_ellipses),
         ),
@@ -24,26 +24,21 @@ class HomeScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: Obx(
           () => Text(
-            _controller.appBarTitle.value,
+            controller.appBarTitle.value,
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
         centerTitle: true,
         actions: [
           Obx(
-            () => Visibility(
-              visible: _controller.currentTabIndex.value == 4,
-              child: IconButton(
-                onPressed: () {
-                  // SettingsScreen'e geçiş yap ve emailService'i aktar
-                  Get.to(
-                    SettingsScreen(),
-                    transition: Transition.downToUp,
-                  );
-                },
-                icon: const Icon(Ionicons.settings),
-              ),
-            ),
+            () => controller.currentTabIndex.value == 4
+                ? IconButton(
+                    onPressed: () {
+                      Get.toNamed(Routes.settingsscreen);
+                    },
+                    icon: const Icon(Ionicons.settings),
+                  )
+                : const SizedBox(),
           ),
         ],
       ),

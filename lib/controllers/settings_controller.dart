@@ -7,6 +7,7 @@ class SettingsController extends GetxController {
   Rx<ThemeMode> themeMode = ThemeMode.system.obs; // tema durumu
   var selectedLanguage = 'en'.obs; // Varsayılan dil
   var isKgSelected = true.obs; // ağırlık birimi seçimi varsayılan kg
+  var hasPaid = false.obs; // grafik ödeme durumu
 
   // Dil seçenekleri haritası
   final languageOptions = {
@@ -49,5 +50,10 @@ class SettingsController extends GetxController {
   // *** KİLO BİRİMİ TOGGLE BUTTONS ***
   void toggleUnit() {
     isKgSelected.value = !isKgSelected.value;
+  }
+
+  // *** PREMIUM ÖDEME İŞLEMİ İŞLEMİ ***
+  void completePayment() {
+    hasPaid.value = true; // hasPaid durumunu true yapar
   }
 }

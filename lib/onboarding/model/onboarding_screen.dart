@@ -12,9 +12,8 @@ import '../view/intro_name_Screen.dart';
 import '../view/intro_targetWeight_screen.dart';
 import '../controller/onboarding_controller.dart';
 
-class OnboardingScreen extends StatelessWidget {
+class OnboardingScreen extends GetView<OnboardingController> {
   OnboardingScreen({super.key});
-  final OnboardingController onboardingController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +26,16 @@ class OnboardingScreen extends StatelessWidget {
               Expanded(
                 flex: 9,
                 child: PageView(
-                  controller: onboardingController.pageController,
+                  controller: controller.pageController,
                   onPageChanged: (index) {
                     Get.focusScope?.unfocus();
-                    onboardingController.lastPage(index);
+                    controller.lastPage(index);
                   },
-                  children: const [
-                    IntroStartScreen(),
-                    IntroGraphScreen(),
-                    IntroPhotoGalleryScreen(),
-                    IntroAiScreen(),
+                  children: [
+                    const IntroStartScreen(),
+                    const IntroGraphScreen(),
+                    const IntroPhotoGalleryScreen(),
+                    const IntroAiScreen(),
                     IntroNameScreen(),
                     IntroTargetWeightScreen(),
                   ],
@@ -52,14 +51,14 @@ class OnboardingScreen extends StatelessWidget {
                         dotColor: Theme.of(context).cardColor,
                         activeDotColor: Theme.of(context).primaryColor,
                       ),
-                      controller: onboardingController.pageController,
+                      controller: controller.pageController,
                       count: 6,
                     ),
                     CustomFloatingActionButton(
                       heroTag: "onboarding",
                       widget: const Icon(Ionicons.arrow_forward),
                       onPressed: () {
-                        onboardingController.goToNextPage();
+                        controller.goToNextPage();
                       },
                     )
                   ],

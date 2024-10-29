@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
@@ -8,12 +9,11 @@ import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
-class ChangeNameScreen extends StatelessWidget {
+class ChangeNameScreen extends GetView<OnboardingController> {
   ChangeNameScreen({super.key});
 
-  final OnboardingController _onboardingController = Get.find();
   final SettingsController _settingscontroller = Get.find();
-
+  final Controller _controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,10 +61,10 @@ class ChangeNameScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CustomTextField(
-                      controller: _onboardingController.nameController,
+                      controller: controller.nameController,
                       labelText: "Your name".tr,
                       onChanged: (value) {
-                        _onboardingController.temporaryUserName.value = value;
+                        _controller.temporaryUserName.value = value;
                       },
                       titleIcon: Icon(
                         Ionicons.person,
@@ -94,7 +94,7 @@ class ChangeNameScreen extends StatelessWidget {
 
   // *** NEW NICKNAME BUTTON SAVE ***
   void changeNameSave() {
-    if (_onboardingController.temporaryUserName.value.isEmpty) {
+    if (_controller.temporaryUserName.value.isEmpty) {
       SnackbarHelper.showSnackbar(
         title: "Name ?".tr,
         message: "Please enter your name".tr,
@@ -103,13 +103,12 @@ class ChangeNameScreen extends StatelessWidget {
         icon: const Icon(Ionicons.cloud_offline),
       );
     } else {
-      _onboardingController
-          .setUserName(_onboardingController.temporaryUserName.value);
+      _controller.setUserName(_controller.temporaryUserName.value);
       Get.focusScope?.unfocus();
       Get.back();
       SnackbarHelper.showSnackbar(
         title: "You changed your name".tr,
-        message: "${_onboardingController.userName}",
+        message: "${_controller.userName}",
         backgroundColor: Colors.green,
         duration: const Duration(milliseconds: 1500),
         icon: const Icon(Ionicons.person),

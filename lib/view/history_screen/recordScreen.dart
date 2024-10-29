@@ -13,12 +13,12 @@ import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 import 'package:lottie/lottie.dart';
 
-class RecordScreen extends StatelessWidget {
-  final Record rec;
-  RecordScreen({super.key, required this.rec});
-  final Controller _controller = Get.find();
+class RecordScreen extends GetView<Controller> {
+  RecordScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final Record rec =
+        Get.arguments as Record; // Get.arguments ile rec değerini alıyoruz
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -42,33 +42,33 @@ class RecordScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              buildWeight(context),
-              buildNote(context),
-              buildPhoto(),
+              buildWeight(context, rec),
+              buildNote(context, rec),
+              buildPhoto(rec),
             ],
           ),
         ),
       ),
-      floatingActionButton: editActionButton(context),
+      floatingActionButton: editActionButton(context, rec),
     );
   }
 
   // *** EDIT BUTTON ***
-  Widget editActionButton(BuildContext context) {
+  Widget editActionButton(BuildContext context, Record rec) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
       child: CustomFloatingActionButton(
         heroTag: "${rec.photoUrl}_editButton",
         widget: const Icon(Icons.draw),
         onPressed: () {
-          _showEditModalBottomSheet(context);
+          _showEditModalBottomSheet(context, rec);
         },
       ),
     );
   }
 
   // *** WEIGHT ***
-  Widget buildWeight(BuildContext context) {
+  Widget buildWeight(BuildContext context, Record rec) {
     return Expanded(
       flex: 2,
       child: Padding(
@@ -112,7 +112,7 @@ class RecordScreen extends StatelessWidget {
   }
 
   // *** NOTE ***
-  Widget buildNote(BuildContext context) {
+  Widget buildNote(BuildContext context, Record rec) {
     if (rec.note != null && rec.note!.isNotEmpty) {
       return Padding(
         padding: context.paddingLow,
@@ -141,7 +141,7 @@ class RecordScreen extends StatelessWidget {
   }
 
   // *** PHOTO ***
-  Widget buildPhoto() {
+  Widget buildPhoto(Record rec) {
     if (rec.photoUrl != null && rec.photoUrl!.isNotEmpty) {
       return Expanded(
         flex: 5,
@@ -188,7 +188,7 @@ class RecordScreen extends StatelessWidget {
   }
 
   // *** edit model bottom sheet  ***
-  void _showEditModalBottomSheet(BuildContext context) {
+  void _showEditModalBottomSheet(BuildContext context, Record rec) {
     double selectedValue = rec.weight;
     String? note = rec.note;
     TextEditingController noteController = TextEditingController(text: note);
@@ -263,7 +263,8 @@ class RecordScreen extends StatelessWidget {
                             ),
                             onPressed: () {
                               onPressedSave(
-                                  context, selectedValue, note, noteController);
+                                  context, selectedValue, note,
+                                  noteController, rec);
                             },
                           ),
                         ),
@@ -282,7 +283,7 @@ class RecordScreen extends StatelessWidget {
 
   // *** editActionButton save ***
   void onPressedSave(BuildContext context, double selectedValue, String? note,
-      TextEditingController noteController) {
+      TextEditingController noteController, Record rec) {
     Future.delayed(
       const Duration(milliseconds: 400),
       () {
@@ -291,7 +292,7 @@ class RecordScreen extends StatelessWidget {
       },
     );
 
-    _controller.updateRecord(
+    controller.updateRecord(
       rec,
       Record(
         weight: selectedValue,
@@ -324,8 +325,8 @@ class RecordScreen extends StatelessWidget {
           const Duration(milliseconds: 200),
           () {
             Get.back(); // dialogu kapat
-            _controller.goToHistoryScreen(); // Geçiş yap
-            _controller.deleteRecord(rec); // Kayıt silme işlemi
+            controller.goToHistoryScreen(); // Geçiş yap
+            controller.deleteRecord(rec); // Kayıt silme işlemi
           },
         );
       },
@@ -339,9 +340,9 @@ class RecordScreen extends StatelessWidget {
       content: "Are you sure you want to delete this photo ?".tr,
       onCancel: () {},
       onConfirm: () {
-        _controller.removePhoto(rec);
+        controller.removePhoto(rec);
         Get.back();
-        _controller.goToHistoryScreen();
+        controller.goToHistoryScreen();
         Future.delayed(
           const Duration(milliseconds: 300),
           () {

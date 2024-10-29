@@ -8,18 +8,18 @@ import 'package:kilo_takibi_uyg/view/graph_view_screen.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/history_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/profile_screen.dart';
 
-final Controller _controller = Get.find();
+final Controller _controller = Get.put(Controller());
 
 // *** BOTTOM BAR ICIN INDEXLI SAYFALAR ***
 IndexedStack indexedStack() {
   return IndexedStack(
     index: _controller.currentTabIndex.value,
     children: [
-      const GraphViewScreen(),
+      GraphViewScreen(),
       GalleryScreen(records: _controller.records),
-      const AddScreen(),
-      const HistoryScreen(),
-      const ProfileScreen(),
+      AddScreen(),
+      HistoryScreen(),
+      ProfileScreen(),
     ],
   );
 }

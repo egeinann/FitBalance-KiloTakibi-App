@@ -52,7 +52,7 @@ class ChatScreen extends StatelessWidget {
                       flex: 2,
                       child: Image(
                         image:
-                            AssetImage("assets/images/homeScreen/payment.png"),
+                            AssetImage("assets/images/mainScreen/payment.png"),
                         fit: BoxFit.scaleDown,
                       ),
                     ),

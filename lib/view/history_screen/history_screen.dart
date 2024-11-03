@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
@@ -19,6 +20,8 @@ class HistoryScreen extends StatefulWidget {
 class _HistoryScreenState extends State<HistoryScreen> {
   final Controller _controller = Get.find();
   ScrollController scrollController = ScrollController();
+  final GlobalKey<AnimatedListState> historyListKey =
+      GlobalKey<AnimatedListState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,10 +93,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 2),
                   child: GestureDetector(
-                    onTap: () => Get.to(
-                      RecordScreen(),
-                      transition: Transition.rightToLeftWithFade,
-                    ),
+                    onTap: () => Get.toNamed(Routes.recordscreen,
+                        arguments: _controller.records[index]),
                     child: _controller.buildItem(
                         _controller.records[index], animation),
                   ),

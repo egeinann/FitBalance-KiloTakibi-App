@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 
-class GalleryScreen extends StatelessWidget {
+class GalleryScreen extends GetView<Controller> {
   final List<Record> records; // Fotoğrafları ve tarihleri göstermek için
 
   const GalleryScreen({super.key, required this.records});
@@ -57,7 +58,8 @@ class GalleryScreen extends StatelessWidget {
                                 ? const SizedBox()
                                 : GestureDetector(
                                     onTap: () {
-                                      Get.toNamed(Routes.photoscreen);
+                                      Get.toNamed(Routes.photoscreen,
+                                          arguments: rec);
                                     },
                                     child: Hero(
                                       tag: "${rec.photoUrl!}_photo",
@@ -101,7 +103,7 @@ class GalleryScreen extends StatelessWidget {
                       Future.delayed(
                         const Duration(milliseconds: 150),
                         () {
-                          Get.toNamed(Routes.recordscreen);
+                          Get.toNamed(Routes.recordscreen, arguments: rec);
                         },
                       );
                     },
@@ -125,7 +127,7 @@ class GalleryScreen extends StatelessWidget {
           const Expanded(
             flex: 2,
             child: Image(
-              image: AssetImage("assets/images/homeScreen/null_gallery.png"),
+              image: AssetImage("assets/images/mainScreen/null_gallery.png"),
               fit: BoxFit.scaleDown,
             ),
           ),

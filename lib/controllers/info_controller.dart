@@ -14,7 +14,7 @@ class InfoController extends GetxController {
       );
     } else {
       Get.back();
-      resetController(); // HomeScreen'e geçiş yaparken sıfırlama işlemi
+      resetController(); // MainScreen'e geçiş yaparken sıfırlama işlemi
     }
   }
 

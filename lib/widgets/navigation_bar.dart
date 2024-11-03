@@ -1,8 +1,9 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
-import 'package:kilo_takibi_uyg/view/add_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/home_screen.dart';
 import 'package:kilo_takibi_uyg/view/gallery_screen/gallery_screen.dart';
 import 'package:kilo_takibi_uyg/view/graph_view_screen.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/history_screen.dart';
@@ -10,21 +11,21 @@ import 'package:kilo_takibi_uyg/view/profile_screen/profile_screen.dart';
 
 final Controller _controller = Get.put(Controller());
 
-// *** BOTTOM BAR ICIN INDEXLI SAYFALAR ***
+/// Animasyonlu IndexedStack
 IndexedStack indexedStack() {
   return IndexedStack(
     index: _controller.currentTabIndex.value,
     children: [
       GraphViewScreen(),
       GalleryScreen(records: _controller.records),
-      AddScreen(),
+      HomeScreen(),
       HistoryScreen(),
       ProfileScreen(),
     ],
   );
 }
 
-// *** BOTTOM BAR ***
+/// Bottom Navigation Bar
 Widget bottomNavigationBar(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.only(
@@ -33,7 +34,7 @@ Widget bottomNavigationBar(BuildContext context) {
       right: 25,
     ),
     child: Container(
-      height: 80, // Yükseklik ayarı yapılmış
+      height: 80,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
         boxShadow: [
@@ -41,13 +42,7 @@ Widget bottomNavigationBar(BuildContext context) {
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 1,
             blurRadius: 15,
-            offset: const Offset(-1, 1), // Gölgenin konumu
-          ),
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 1,
-            blurRadius: 15,
-            offset: const Offset(-1, 1), // Gölgenin konumu
+            offset: const Offset(-1, 1),
           ),
         ],
       ),
@@ -61,11 +56,11 @@ Widget bottomNavigationBar(BuildContext context) {
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Ionicons.image),
+              icon: Icon(Ionicons.images),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.add),
+              icon: Icon(Ionicons.home),
               label: "",
             ),
             BottomNavigationBarItem(
@@ -89,26 +84,3 @@ Widget bottomNavigationBar(BuildContext context) {
     ),
   );
 }
-
-/*
-CurvedNavigationBar curvedNavigationbar(BuildContext context) {
-  return CurvedNavigationBar(
-    maxWidth: Get.size.width,
-    backgroundColor: Colors.transparent,
-    animationDuration: const Duration(milliseconds: 200),
-    color: Theme.of(context).focusColor,
-    onTap: (index) {
-      _controller.changeTabIndex(index);
-      FocusScope.of(context).unfocus();
-    },
-    index: _controller.currentTabIndex.value,
-    items: const [
-      Icon(Icons.show_chart, color: Colors.white),
-      Icon(Ionicons.image, color: Colors.white),
-      Icon(Icons.add, color: Colors.white),
-      Icon(Ionicons.layers, color: Colors.white),
-      Icon(Ionicons.settings, color: Colors.white),
-    ],
-  );
-}
-*/

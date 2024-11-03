@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
-import '../controller/onboarding_controller.dart';
+import '../../controllers/onboarding_controller.dart';
 
 class IntroNameScreen extends GetView<OnboardingController> {
   IntroNameScreen({super.key});

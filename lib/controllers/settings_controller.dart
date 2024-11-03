@@ -29,6 +29,9 @@ class SettingsController extends GetxController {
       Get.updateLocale(Locale(deviceLocale));
     }
     super.onInit();
+    final brightness = WidgetsBinding.instance.window.platformBrightness;
+    themeMode.value =
+        brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light;
   }
 
   // *** SEÇİLİ DİL DURUMUNU DEĞİŞTİRME ***
@@ -41,6 +44,7 @@ class SettingsController extends GetxController {
   void toggleGender(int index) {
     isMale.value = !isMale.value;
   }
+
 
   // *** TEMA DURUMU DEĞİŞTİRME ***
   void switchTheme(bool isDark) {

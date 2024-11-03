@@ -6,7 +6,7 @@ import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 
 class ChangeTargetWeightScreen extends GetView<Controller> {
@@ -55,23 +55,16 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
               Expanded(
                 flex: 2,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Theme.of(context).cardColor,
-                      ),
-                      width: Get.size.width * 0.5,
-                      child: Obx(
-                        () => Numbers(
-                          value: _temporaryTargetWeight.value,
-                          onChanged: (value) {
-                            _temporaryTargetWeight.value = value;
-                          },
-                        ),
+                    Obx(
+                      () => Numbers(
+                        value: _temporaryTargetWeight.value,
+                        onChanged: (value) {
+                          _temporaryTargetWeight.value = value;
+                        },
                       ),
                     ),
                   ],

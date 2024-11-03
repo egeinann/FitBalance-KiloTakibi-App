@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
-import '../controller/onboarding_controller.dart';
+import '../../controllers/onboarding_controller.dart';
 
 class IntroTargetWeightScreen extends GetView<Controller> {
   IntroTargetWeightScreen({super.key});
@@ -19,27 +19,21 @@ class IntroTargetWeightScreen extends GetView<Controller> {
         child: Center(
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'Enter your target weight'.tr,
                   style: Theme.of(context).textTheme.titleLarge,
+                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Theme.of(context).cardColor,
-                  ),
-                  width: Get.size.width * 0.5,
-                  child: Obx(
-                    () => Numbers(
-                      value: controller.targetWeight.value,
-                      onChanged: (value) {
-                        controller.setTargetWeight(value);
-                      },
-                    ),
+                Obx(
+                  () => Numbers(
+                    value: controller.targetWeight.value,
+                    onChanged: (value) {
+                      controller.setTargetWeight(value);
+                    },
                   ),
                 ),
               ],

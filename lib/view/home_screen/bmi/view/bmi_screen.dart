@@ -5,13 +5,12 @@ import 'package:gauge_indicator/gauge_indicator.dart'; // Gauge göstergesi içi
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/bmi/controller/bmi_controller.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_info.dart';
+import 'package:kilo_takibi_uyg/controllers/bmi_controller.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_info.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class BmiScreen extends GetView<BMIController> {
-
   BmiScreen({super.key}); // Controller'ı initialize et
 
   @override
@@ -218,8 +217,7 @@ class BmiScreen extends GetView<BMIController> {
                   axis: Axis.horizontal,
                   minValue: 100, // Minimum boy
                   maxValue: 250, // Maksimum boy
-                  value:
-                      controller.bmiModel.value.height, // Başlangıç değeri
+                  value: controller.bmiModel.value.height, // Başlangıç değeri
                   onChanged: (newHeight) {
                     controller.updateHeight(newHeight); // Boyu güncelle
                   },

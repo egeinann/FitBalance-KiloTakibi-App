@@ -7,8 +7,8 @@ import 'package:kilo_takibi_uyg/view/chat_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/settings_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/navigation_bar.dart';
 
-class HomeScreen extends GetView<Controller> {
-  const HomeScreen({super.key});
+class MainScreen extends GetView<Controller> {
+  const MainScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

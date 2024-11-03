@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:kilo_takibi_uyg/binding/onboarding_binding.dart';
 import 'package:kilo_takibi_uyg/config/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
@@ -34,13 +33,13 @@ void main() async {
   // Üst alt bildirim panelleri renk şemaları transparent
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  Get.lazyPut(() => SettingsController());
+  Get.lazyPut(() => Controller());
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends GetView<SettingsController> {
   MyApp({super.key});
-  final SettingsController _settingscontroller = Get.put(SettingsController());
-  final Controller _controller = Get.put(Controller());
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -53,14 +52,14 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        initialRoute: Routes.homescreen, // app başlangıç sayfası
+        initialRoute: Routes.onboardingscreen, // app başlangıç sayfası
         getPages: AppPages.pages, // app sayfalar listesi
         supportedLocales: Languages.languageList, // Desteklenen diller
         locale: Get.deviceLocale, // Cihazın dilini al
         fallbackLocale: Languages.defa, // Varsayılan dil
         theme: ThemeClass.lightTheme,
         darkTheme: ThemeClass.darkTheme,
-        themeMode: _settingscontroller.themeMode.value,
+        themeMode: controller.themeMode.value,
       );
     });
   }

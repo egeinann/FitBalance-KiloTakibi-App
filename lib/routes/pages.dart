@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/binding/bmi_binding.dart';
-import 'package:kilo_takibi_uyg/binding/controllers_binding.dart';
 import 'package:kilo_takibi_uyg/binding/info_binding.dart';
 import 'package:kilo_takibi_uyg/binding/onboarding_binding.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
@@ -12,23 +11,24 @@ import 'package:kilo_takibi_uyg/onboarding/view/intro_photoGallery_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_start_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_targetWeight_screen.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
-import 'package:kilo_takibi_uyg/view/add_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/add_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/home_screen.dart';
 import 'package:kilo_takibi_uyg/view/chat_screen.dart';
 import 'package:kilo_takibi_uyg/view/gallery_screen/gallery_screen.dart';
 import 'package:kilo_takibi_uyg/view/gallery_screen/photo_screen.dart';
 import 'package:kilo_takibi_uyg/view/graph_view_screen.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/history_screen.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/recordScreen.dart';
-import 'package:kilo_takibi_uyg/view/home_screen.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_info.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_screen.dart';
+import 'package:kilo_takibi_uyg/view/main_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_info.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeName_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeTargetWeight_screen.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/info/model/info_screen.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/info/view/activity_screen.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/info/view/nutrition_screen.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/info/view/sleep_screen.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/info/view/water_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/info/model/info_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/info/view/activity_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/info/view/nutrition_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/info/view/sleep_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/info/view/water_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/profile_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/about_the_app_sceen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/data_management_screen.dart';
@@ -47,11 +47,11 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.introaiscreen,
-      page: () => IntroAiScreen(),
+      page: () => const IntroAiScreen(),
     ),
     GetPage(
       name: Routes.intrographscreen,
-      page: () => IntroGraphScreen(),
+      page: () => const IntroGraphScreen(),
     ),
     GetPage(
       name: Routes.intronamescreen,
@@ -59,11 +59,11 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.introphotogalleryscreen,
-      page: () => IntroPhotoGalleryScreen(),
+      page: () => const IntroPhotoGalleryScreen(),
     ),
     GetPage(
       name: Routes.introstartscreen,
-      page: () => IntroStartScreen(),
+      page: () => const IntroStartScreen(),
     ),
     GetPage(
       name: Routes.introtargetweightscreen,
@@ -72,9 +72,9 @@ abstract class AppPages {
 
     // app
     GetPage(
-      name: Routes.homescreen,
-      page: () => HomeScreen(),
-      binding: ControllerBinding(),
+      name: Routes.mainscreen,
+      page: () => const MainScreen(),
+      transition: Transition.fadeIn,
     ),
     GetPage(
       name: Routes.graphscreen,
@@ -85,17 +85,21 @@ abstract class AppPages {
       page: () => GalleryScreen(records: Get.find<Controller>().records),
     ),
     GetPage(
+      name: Routes.homescreen,
+      page: () => HomeScreen(),
+    ),
+    GetPage(
       name: Routes.addscreen,
       page: () => AddScreen(),
+        transition: Transition.fadeIn
     ),
     GetPage(
       name: Routes.historyscreen,
-      page: () => HistoryScreen(),
+      page: () => const HistoryScreen(),
     ),
     GetPage(
       name: Routes.profilescreen,
       page: () => ProfileScreen(),
-      binding: OnBoardingBinding(),
     ),
     GetPage(
       name: Routes.settingsscreen,
@@ -109,40 +113,39 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.photoscreen,
-      page: () => PhotoScreen(),
+      page: () => const PhotoScreen(),
     ),
     GetPage(
       name: Routes.recordscreen,
       page: () => RecordScreen(),
+      arguments: Record,
       transition: Transition.rightToLeftWithFade,
     ),
     GetPage(
-      name: Routes.changenamescreen,
-      page: () => ChangeNameScreen(),
-      transition: Transition.rightToLeftWithFade,
-      binding: OnBoardingBinding(),
-    ),
+        name: Routes.changenamescreen,
+        page: () => ChangeNameScreen(),
+        transition: Transition.rightToLeftWithFade,
+        binding: OnBoardingBinding()),
     GetPage(
       name: Routes.changetargetweightscreen,
       page: () => ChangeTargetWeightScreen(),
       transition: Transition.rightToLeftWithFade,
-      binding: OnBoardingBinding(),
     ),
     GetPage(
       name: Routes.abouttheappscreen,
-      page: () => AboutTheAppScreen(),
+      page: () => const AboutTheAppScreen(),
     ),
     GetPage(
       name: Routes.datamanagementscreen,
-      page: () => DataManagementScreen(),
+      page: () => const DataManagementScreen(),
     ),
     GetPage(
       name: Routes.privacypolicyscreen,
-      page: () => PrivacyPolicyScreen(),
+      page: () => const PrivacyPolicyScreen(),
     ),
     GetPage(
       name: Routes.termsofservicescreen,
-      page: () => TermsOfServiceScreen(),
+      page: () => const TermsOfServiceScreen(),
     ),
     GetPage(
       name: Routes.upgradepremiumscreen,
@@ -151,7 +154,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.bmiinfoscreen,
-      page: () => BmiInfoScreen(),
+      page: () => const BmiInfoScreen(),
       transition: Transition.downToUp,
     ),
     GetPage(
@@ -168,19 +171,19 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.activityscreen,
-      page: () => InfoActivityScreen(),
+      page: () => const InfoActivityScreen(),
     ),
     GetPage(
       name: Routes.nutritionscreen,
-      page: () => InfoNutritionScreen(),
+      page: () => const InfoNutritionScreen(),
     ),
     GetPage(
       name: Routes.sleepscreen,
-      page: () => InfoSleepScreen(),
+      page: () => const InfoSleepScreen(),
     ),
     GetPage(
       name: Routes.waterscreen,
-      page: () => InfoWaterScreen(),
+      page: () => const InfoWaterScreen(),
     ),
   ];
 }

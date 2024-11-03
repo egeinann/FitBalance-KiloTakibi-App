@@ -8,9 +8,10 @@ class Routes {
   static const String introstartscreen = "/introstartscreen";
   static const String introtargetweightscreen = "/introtargetweightscreen";
   // app
-  static const String homescreen = "/homescreen";
+  static const String mainscreen = "/mainscreen";
   static const String graphscreen = "/graphscreen";
   static const String galleryscreen = "/galleryscreen";
+  static const String homescreen = "/homescreen";
   static const String addscreen = "/addscreen";
   static const String historyscreen = "/historyscreen";
   static const String profilescreen = "/profilescreen";

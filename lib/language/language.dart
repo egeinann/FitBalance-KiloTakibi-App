@@ -67,7 +67,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "You don't have any photos yet !",
 
-          // AddScreen
+          // HomeScreen
           "There is already a record for the same date":
               "There is already a record for the same date",
           "Change the date": "Change the date",
@@ -105,8 +105,6 @@ class Languages extends Translations {
           "No record found !": "No record found !",
 
           // ProfileScreen
-          "Weight balance": "Weight balance",
-          "Calculate BMI": "Calculate BMI",
           "Male": "Male",
           "Female": "Female",
           "NAME": "NAME",
@@ -164,7 +162,7 @@ class Languages extends Translations {
           'Bar Graph': 'Bar Graph',
           'Error Graph': 'Error Graph',
           'Gallery': 'Gallery',
-          'Add': 'Add',
+          'Home': 'Home',
           'History': 'History',
           'Profile': 'Profile',
           'App': 'App',
@@ -396,7 +394,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "Henüz hiç fotoğrafın yok !",
 
-          // AddScreen
+          // HomeScreen
           "There is already a record for the same date":
               "Aynı tarih için zaten bir kayıt var.",
           "Change the date": "Tarihi değiştir.",
@@ -433,8 +431,6 @@ class Languages extends Translations {
           "No record found !": "Kayıt bulunamadı!",
 
           // ProfileScreen
-          "Weight balance": "Ağırlık dengesi",
-          "Calculate BMI": "BKI Hesapla",
           "Male": "Erkek",
           "Female": "Kadın",
           "NAME": "İSİM",
@@ -491,7 +487,7 @@ class Languages extends Translations {
           'Bar Graph': 'Çubuk Grafiği',
           'Error Graph': 'Hata Grafiği',
           'Gallery': 'Galeri',
-          'Add': 'Ekle',
+          'Home': 'Ana Sayfa',
           'History': 'Geçmiş',
           'Profile': 'Profil',
           'App': 'Uygulama',
@@ -721,7 +717,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "¡Aún no tienes fotos!",
 
-          // AddScreen
+          // HomeScreen
           "There is already a record for the same date":
               "Ya hay un registro para la misma fecha.",
           "Change the date": "Cambia la fecha.",
@@ -759,8 +755,6 @@ class Languages extends Translations {
           "No record found !": "¡Registro no encontrado!",
 
           // ProfileScreen
-          "Weight balance": "Equilibrio de peso",
-          "Calculate BMI": "Calcular IMC",
           "Male": "Masculino",
           "Female": "Femenino",
           "NAME": "NOMBRE",
@@ -817,7 +811,7 @@ class Languages extends Translations {
           'Bar Graph': 'Gráfico de barras',
           'Error Graph': 'Gráfico de error',
           'Gallery': 'Galería',
-          'Add': 'Agregar',
+          'Home': 'Inicio',
           'History': 'Historial',
           'Profile': 'Perfil',
           'App': 'Aplicación',
@@ -1052,7 +1046,7 @@ class Languages extends Translations {
           "You don't have any photos yet !":
               "Vous n'avez pas encore de photos !",
 
-          // AddScreen
+          // HomeScreen
           "There is already a record for the same date":
               "Il y a déjà un enregistrement pour la même date.",
           "Change the date": "Changer la date.",
@@ -1092,8 +1086,6 @@ class Languages extends Translations {
           "No record found !": "Aucun enregistrement trouvé !",
 
           // ProfileScreen
-          "Weight balance": "Équilibre du poids",
-          "Calculate BMI": "Calculer l'IMC",
           "Male": "Homme",
           "Female": "Femme",
           "NAME": "NOM",
@@ -1150,7 +1142,7 @@ class Languages extends Translations {
           'Bar Graph': 'Graphique en barres',
           'Error Graph': 'Graphique d\'erreur',
           'Gallery': 'Galerie',
-          'Add': 'Ajouter',
+          'Home': 'Accueil',
           'History': 'Historique',
           'Profile': 'Profil',
           'App': 'Application',
@@ -1383,7 +1375,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "Sie haben noch keine Fotos!",
 
-          // AddScreen
+          // HomeScreen
           "There is already a record for the same date":
               "Es gibt bereits einen Datensatz für dasselbe Datum.",
           "Change the date": "Datum ändern.",
@@ -1422,8 +1414,6 @@ class Languages extends Translations {
           "No record found !": "Keine Aufzeichnung gefunden!",
 
           // ProfileScreen
-          "Weight balance": "Gewichtsbalanse",
-          "Calculate BMI": "BMI berechnen",
           "Male": "Männlich",
           "Female": "Weiblich",
           "NAME": "NAME",
@@ -1480,7 +1470,7 @@ class Languages extends Translations {
           'Bar Graph': 'Balkendiagramm',
           'Error Graph': 'Fehlerdiagramm',
           'Gallery': 'Galerie',
-          'Add': 'Hinzufügen',
+          'Home': 'Startseite',
           'History': 'Verlauf',
           'Profile': 'Profil',
           'App': 'App',
@@ -1715,7 +1705,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "Você ainda não tem fotos!",
 
-          // AddScreen
+          // HomeScreen
           "There is already a record for the same date":
               "Já existe um registro para a mesma data.",
           "Change the date": "Mudar a data.",
@@ -1754,8 +1744,6 @@ class Languages extends Translations {
           "No record found !": "Registro não encontrado!",
 
           // ProfileScreen
-          "Weight balance": "Equilíbrio de peso",
-          "Calculate BMI": "Calcular IMC",
           "Male": "Masculino",
           "Female": "Feminino",
           "NAME": "NOME",
@@ -1813,7 +1801,7 @@ class Languages extends Translations {
           'Bar Graph': 'Gráfico de barras',
           'Error Graph': 'Gráfico de erro',
           'Gallery': 'Galeria',
-          'Add': 'Adicionar',
+          'Home': 'Início',
           'History': 'Histórico',
           'Profile': 'Perfil',
           'App': 'Aplicativo',
@@ -2041,7 +2029,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "您还没有照片！",
 
-          // AddScreen
+          // HomeScreen
           "There is already a record for the same date": "同一天已经有记录。",
           "Change the date": "更改日期。",
           "note": "备注",
@@ -2076,8 +2064,6 @@ class Languages extends Translations {
           "No record found !": "未找到记录！",
 
           // ProfileScreen
-          "Weight balance": "体重平衡",
-          "Calculate BMI": "计算BMI",
           "Male": "男性",
           "Female": "女性",
           "NAME": "名字",
@@ -2133,7 +2119,7 @@ class Languages extends Translations {
           'Bar Graph': '柱状图',
           'Error Graph': '错误图表',
           'Gallery': '图库',
-          'Add': '添加',
+          'Home': '主页',
           'History': '历史',
           'Profile': '个人资料',
           'App': '应用程序',

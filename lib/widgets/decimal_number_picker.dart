@@ -14,27 +14,34 @@ class Numbers extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.centerRight,
-      children: [
-        const Icon(Ionicons.chevron_back, size: 15),
-        DecimalNumberPicker(
-          decimalPlaces: 1,
-          selectedTextStyle: Theme.of(context).textTheme.displaySmall,
-          textStyle: Theme.of(context).textTheme.bodySmall,
-          itemCount: 3,
-          itemWidth: Get.size.width * 0.14,
-          itemHeight: Get.size.height * 0.06,
-          axis: Axis.horizontal,
-          minValue: 40,
-          maxValue: 200,
-          value: value,
-          onChanged: (newValue) {
-            final formattedValue = double.parse(newValue.toStringAsFixed(1));
-            onChanged(formattedValue); // Formatlanmış değeri geçirin
-          },
-        ),
-      ],
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Theme.of(context).canvasColor,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          DecimalNumberPicker(
+            decimalPlaces: 1,
+            selectedTextStyle: Theme.of(context).textTheme.displaySmall,
+            textStyle: Theme.of(context).textTheme.bodySmall,
+            itemCount: 3,
+            itemWidth: Get.size.width * 0.14,
+            itemHeight: Get.size.height * 0.06,
+            axis: Axis.horizontal,
+            minValue: 40,
+            maxValue: 200,
+            value: value,
+            onChanged: (newValue) {
+              final formattedValue = double.parse(newValue.toStringAsFixed(1));
+              onChanged(formattedValue); // Formatlanmış değeri geçirin
+            },
+          ),
+          const Icon(Ionicons.chevron_back, size: 15),
+        ],
+      ),
     );
   }
 }

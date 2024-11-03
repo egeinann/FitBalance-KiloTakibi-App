@@ -39,7 +39,7 @@ class FadeNoRecord extends GetView<Controller> {
           const Expanded(
             flex: 2,
             child: Image(
-              image: AssetImage("assets/images/homeScreen/null_records.png"),
+              image: AssetImage("assets/images/mainScreen/null_records.png"),
               fit: BoxFit.scaleDown,
             ),
           ),
@@ -58,7 +58,7 @@ class FadeNoRecord extends GetView<Controller> {
                   widget: const FittedBox(child: Icon(Ionicons.chevron_back)),
                   onPressed: () {
                     Future.delayed(const Duration(milliseconds: 200), () {
-                      controller.goToAddScreen();
+                      controller.goToHomeScreen();
                     });
                   },
                 ),

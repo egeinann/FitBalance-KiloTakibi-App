@@ -15,10 +15,9 @@ import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/settings_model.dart';
 import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends GetView<SettingsController> {
   SettingsScreen({super.key});
 
-  final SettingsController _settingscontroller = Get.find();
   final emailService = EmailService();
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class SettingsScreen extends StatelessWidget {
         const Icon(Ionicons.rocket),
         "Premium".tr,
         "Upgrade to Premium".tr,
-        _settingscontroller.activePremium.value == true
+        controller.activePremium.value == true
             ? Icon(Ionicons.rocket, color: Theme.of(context).primaryColor)
             : const Icon(
                 Ionicons.rocket,
@@ -43,7 +42,7 @@ class SettingsScreen extends StatelessWidget {
         null,
         Obx(
           () => Text(
-            _settingscontroller.selectedLanguage.toString(),
+            controller.selectedLanguage.toString(),
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
@@ -59,16 +58,16 @@ class SettingsScreen extends StatelessWidget {
           width: Get.size.width * 0.15,
           child: DayNightSwitcher(
             isDarkModeEnabled:
-                _settingscontroller.themeMode.value == ThemeMode.dark,
+                controller.themeMode.value == ThemeMode.dark,
             onStateChanged: (isDarkModeEnabled) {
-              _settingscontroller.switchTheme(isDarkModeEnabled);
+              controller.switchTheme(isDarkModeEnabled);
             },
           ),
         ),
         onTap: () {
           bool isDarkModeEnabled =
-              _settingscontroller.themeMode.value == ThemeMode.dark;
-          _settingscontroller.switchTheme(!isDarkModeEnabled);
+              controller.themeMode.value == ThemeMode.dark;
+          controller.switchTheme(!isDarkModeEnabled);
         },
       ),
       // SettingsModel(
@@ -80,9 +79,9 @@ class SettingsScreen extends StatelessWidget {
       //       inactiveThumbColor: const Color.fromARGB(255, 255, 17, 0),
       //       activeColor: const Color.fromARGB(255, 0, 255, 8),
       //       activeTrackColor: Theme.of(context).cardColor,
-      //       value: _settingscontroller.isNotificationEnabled.value,
+      //       value: controller.isNotificationEnabled.value,
       //       onChanged: (value) {
-      //         _settingscontroller.isNotificationEnabled.value = value;
+      //         controller.isNotificationEnabled.value = value;
       //       },
       //     ),
       //   ),
@@ -100,11 +99,11 @@ class SettingsScreen extends StatelessWidget {
             () => customToggleButton(
               context: context,
               isSelected: [
-                _settingscontroller.isKgSelected.value,
-                !_settingscontroller.isKgSelected.value
+                controller.isKgSelected.value,
+                !controller.isKgSelected.value
               ],
               onPressed: (int index) {
-                _settingscontroller.toggleUnit();
+                controller.toggleUnit();
               },
               children: const [
                 Text(
@@ -124,7 +123,7 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
         onTap: () {
-          _settingscontroller.toggleUnit();
+          controller.toggleUnit();
         },
       ),
       SettingsModel(
@@ -223,8 +222,6 @@ class SettingsScreen extends StatelessWidget {
 
   // *** DİL SEÇİMİ İÇİN BOTTOMSHEET ***
   void _showLanguageSelectionBottomSheet(BuildContext context) {
-    final _settingsController = Get.find<SettingsController>();
-
     Get.bottomSheet(
       Container(
         padding: const EdgeInsets.all(20),
@@ -234,14 +231,14 @@ class SettingsScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: _settingsController.languageOptions.entries.map((entry) {
+            children: controller.languageOptions.entries.map((entry) {
               final languageCode = entry.key;
               final languageName = entry.value;
 
               return Obx(() {
                 return Container(
                   decoration: BoxDecoration(
-                    color: _settingsController.selectedLanguage.value ==
+                    color: controller.selectedLanguage.value ==
                             languageCode
                         ? Theme.of(context).cardColor
                         : null,
@@ -250,7 +247,7 @@ class SettingsScreen extends StatelessWidget {
                   child: ListTile(
                     title: Text(languageName),
                     onTap: () {
-                      _settingsController.changeLanguage(languageCode);
+                      controller.changeLanguage(languageCode);
                       Future.delayed(
                         const Duration(milliseconds: 200),
                         () => Get.back(),

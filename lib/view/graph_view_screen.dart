@@ -33,7 +33,7 @@ class GraphViewScreen extends GetView<Controller> {
                       flex: 2,
                       child: Image(
                         image:
-                            AssetImage("assets/images/homeScreen/payment.png"),
+                            AssetImage("assets/images/mainScreen/payment.png"),
                         fit: BoxFit.scaleDown,
                       ),
                     ),
@@ -108,7 +108,7 @@ class GraphViewScreen extends GetView<Controller> {
                       flex: 2,
                       child: Image(
                         image: AssetImage(
-                            "assets/images/homeScreen/null_graphs.png"),
+                            "assets/images/mainScreen/null_graphs.png"),
                         fit: BoxFit.scaleDown,
                       ),
                     ),

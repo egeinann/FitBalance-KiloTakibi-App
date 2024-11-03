@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:kilo_takibi_uyg/view/home_screen.dart';
+import 'package:kilo_takibi_uyg/routes/routes.dart';
+import 'package:kilo_takibi_uyg/view/main_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 
 class OnboardingController extends GetxController {
   var currentIndex = 0.obs; // 0'ınıc indexten başla
   var onLastPage = false.obs; // son sayfada mıyız?
-  
+
   PageController pageController = PageController();
   TextEditingController nameController = TextEditingController();
 
@@ -35,11 +36,9 @@ class OnboardingController extends GetxController {
           curve: Curves.easeInOut,
         ); // Geçiş animasyonu ile NameScreen'e dön
       } else {
-        // Geçerli kullanıcı adı ile HomeScreen'e geçiş
+        // Geçerli kullanıcı adı ile MainScreen'e geçiş
         Future.delayed(const Duration(milliseconds: 300), () {
-          Get.offAll(HomeScreen(),
-              transition: Transition.fadeIn,
-              duration: const Duration(milliseconds: 1200));
+          Get.offAllNamed(Routes.mainscreen);
         });
         resetController();
       }

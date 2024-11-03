@@ -5,12 +5,12 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/bmi/view/bmi_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_screen.dart';
 import 'package:kilo_takibi_uyg/view/upgrade_premium_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/info/model/info_screen.dart';
-import 'package:kilo_takibi_uyg/onboarding/controller/onboarding_controller.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/info/model/info_screen.dart';
+import 'package:kilo_takibi_uyg/controllers/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeName_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeTargetWeight_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
@@ -35,54 +35,11 @@ class ProfileScreen extends GetView<Controller> {
               targetWeightContainer(context),
               const SizedBox(height: 5),
               premiumContainer(context),
-              const SizedBox(height: 20),
-              floatingButtons(context),
               SizedBox(height: Get.size.height * 0.1)
             ],
           ),
         ),
       ),
-    );
-  }
-
-  // *** FLOATING BUTTONS ***
-  Widget floatingButtons(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Column(
-          children: [
-            AutoSizeText("Weight balance".tr,
-                style: Theme.of(context).textTheme.bodySmall),
-            Padding(
-              padding: context.paddingLow,
-              child: CustomFloatingActionButton(
-                heroTag: "profile",
-                widget: const Icon(Ionicons.pulse),
-                onPressed: () {
-                  Get.toNamed(Routes.infoscreen);
-                },
-              ),
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            AutoSizeText("Calculate BMI".tr,
-                style: Theme.of(context).textTheme.bodySmall),
-            Padding(
-              padding: context.paddingLow,
-              child: CustomFloatingActionButton(
-                heroTag: "bmi",
-                widget: const Icon(Ionicons.accessibility),
-                onPressed: () {
-                  Get.toNamed(Routes.bmiscreen);
-                },
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 
@@ -201,7 +158,7 @@ class ProfileScreen extends GetView<Controller> {
                 children: [
                   Obx(
                     () => Text(
-                      "${controller.targetWeight.value}",
+                      "${controller.targetWeight.value} ${"kg".tr}",
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),

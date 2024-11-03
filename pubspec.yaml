@@ -54,6 +54,7 @@ dependencies:
   permission_handler: ^11.3.1
   cron: ^0.6.1
   url_launcher: ^6.3.1
+  animations: ^2.0.11
 
 dev_dependencies:
   flutter_test:
@@ -85,7 +86,7 @@ flutter:
     - assets/images/onboarding/
     - assets/images/targetWeight/
     - assets/images/weightInfo/
-    - assets/images/homeScreen/
+    - assets/images/mainScreen/
     - assets/images/name/
     - assets/images/profile/
     - assets/images/bmi/

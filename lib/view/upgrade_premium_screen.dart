@@ -89,8 +89,33 @@ class UpgradePremiumScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        Lottie.asset('assets/lottie/premiumRocket.json',
-            fit: BoxFit.cover, height: 300),
+        Obx(
+          () {
+            // Tema durumuna göre uygun Lottie dosyasını belirle
+            String lottieAsset;
+            switch (_settingsController.themeMode.value) {
+              case ThemeMode.light:
+                lottieAsset = 'assets/lottie/premiumMiddle.json';
+                break;
+              case ThemeMode.dark:
+                lottieAsset = 'assets/lottie/premiumMiddle2.json';
+                break;
+              case ThemeMode.system:
+              default:
+                // Eğer sistem temasını kullanıyorsanız, burada istediğiniz bir Lottie dosyasını kullanabilirsiniz.
+                // Örneğin, sistem temasına özel bir animasyon dosyası kullanabilirsiniz.
+                lottieAsset =
+                    'assets/lottie/premiumMiddle.json'; // Varsayılan bir animasyon dosyası
+                break;
+            }
+
+            return Lottie.asset(
+              lottieAsset,
+              fit: BoxFit.cover,
+              height: 300,
+            );
+          },
+        ),
         const SizedBox(height: 10),
         AutoSizeText(
           "Why choose premium?".tr,

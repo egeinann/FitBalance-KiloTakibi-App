@@ -10,7 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../view/intro_start_screen.dart';
 import '../view/intro_name_Screen.dart';
 import '../view/intro_targetWeight_screen.dart';
-import '../controller/onboarding_controller.dart';
+import '../../controllers/onboarding_controller.dart';
 
 class OnboardingScreen extends GetView<OnboardingController> {
   OnboardingScreen({super.key});

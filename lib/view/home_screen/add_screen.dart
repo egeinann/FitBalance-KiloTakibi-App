@@ -17,14 +17,13 @@ import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
 class AddScreen extends GetView<Controller> {
   AddScreen({super.key});
-
   // State yönetimi için GetX ile kullanacağımız değişkenler
   final TextEditingController _noteController = TextEditingController();
   final FocusNode _focusNode = FocusNode(); // FocusNode KASMA SORUNU İÇİN
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: GestureDetector(
         onTap: () {
           Get.focusScope?.unfocus();
@@ -70,7 +69,7 @@ class AddScreen extends GetView<Controller> {
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: bottomElevatedButton(context),
+                  child: bottomAddButton(context),
                 ),
               ),
             ],
@@ -82,12 +81,10 @@ class AddScreen extends GetView<Controller> {
 
   // *** FUNCTION FOR ADD BUTTON
   void addPressed(BuildContext context) {
-    final double selectedValue = controller.selectedValue.value;
-    final DateTime selectedDate = controller.selectedDate.value;
     final String? note =
         _noteController.text.isNotEmpty ? _noteController.text : null;
 
-    if (controller.isRecordExists(selectedDate)) {
+    if (controller.isRecordExists(controller.selectedDate.value)) {
       SnackbarHelper.showSnackbar(
         title: "There is already a record for the same date".tr,
         message: "Change the date".tr,
@@ -99,8 +96,8 @@ class AddScreen extends GetView<Controller> {
     }
 
     controller.addRecord(Record(
-      weight: selectedValue,
-      dateTime: selectedDate,
+      weight: controller.selectedValue.value,
+      dateTime: controller.selectedDate.value,
       note: note,
       photoUrl: controller.photoUrl.value,
     ));
@@ -113,11 +110,10 @@ class AddScreen extends GetView<Controller> {
   }
 
   // *** ADD BUTTON ***
-  Align bottomElevatedButton(BuildContext context) {
+  Align bottomAddButton(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: CustomFloatingActionButton(
-        heroTag: "onboarding",
         widget: const Icon(Icons.add),
         onPressed: () => Future.delayed(
           const Duration(milliseconds: 200),
@@ -171,7 +167,7 @@ class AddScreen extends GetView<Controller> {
 
   // *** ADD DATE ***
   Widget dateEntryContainer(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         pickDate(context);
       },
@@ -196,7 +192,6 @@ class AddScreen extends GetView<Controller> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Expanded(
-            flex: 3,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -212,7 +207,6 @@ class AddScreen extends GetView<Controller> {
             ),
           ),
           Expanded(
-            flex: 2,
             child: Obx(
               () => Numbers(
                 value: controller.selectedValue.value,
@@ -235,13 +229,11 @@ class AddScreen extends GetView<Controller> {
       } else if (controller.photoUrl.value == null) {
         return Padding(
           padding: context.paddingLarge,
-          child: FloatingActionButton(
-            splashColor: Theme.of(context).primaryColor,
-            backgroundColor: Theme.of(context).cardColor,
+          child: CustomFloatingActionButton(
             onPressed: () {
               _pickImage(context);
             },
-            child: const Icon(Ionicons.camera),
+            widget: const Icon(Ionicons.camera),
           ),
         );
       } else {

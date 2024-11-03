@@ -12,7 +12,7 @@ class Controller extends GetxController {
   final GlobalKey<AnimatedListState> listKey =
       GlobalKey<AnimatedListState>(); // liste animasyonu için
   var photoUrl = Rxn<String>(); // Reaktif bir değişken
-  var currentTabIndex = 2.obs; // homescreen sayfa index
+  var currentTabIndex = 2.obs; // MainSreen sayfa index
   var appBarTitle = 'Add'.obs; // Başlangıç başlığı
   var selecedAllTimeGraph =
       true.obs; // grafik zaman dilimi filtreleme (all & 30days)
@@ -179,7 +179,7 @@ class Controller extends GetxController {
       case 1:
         return 'Gallery'.tr;
       case 2:
-        return 'Add'.tr;
+        return 'Home'.tr;
       case 3:
         return 'History'.tr;
       case 4:
@@ -195,7 +195,7 @@ class Controller extends GetxController {
   }
 
   // *** NAVBAR GALLERYSCREEN YÖNLENDİRME ***
-  void goToAddScreen() {
+  void goToHomeScreen() {
     changeTabIndex(2);
   }
 

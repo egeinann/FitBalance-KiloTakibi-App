@@ -21,9 +21,6 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      // inputFormatters: [
-      //   FilteringTextInputFormatter.deny(RegExp(r'\s')), // Boşluk karakterlerini engeller
-      // ],
       maxLength: maxLength,
       controller: controller,
       decoration: InputDecoration(

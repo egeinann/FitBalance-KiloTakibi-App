@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/bmi/model/bmi_model.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/bmi/model/bmi_model.dart';
 
 class BMIController extends GetxController {
   // BMIModel nesnesini reaktif olarak tutan değişken

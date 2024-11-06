@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -67,7 +66,7 @@ class ChatScreen extends StatelessWidget {
                             child: AutoSizeText(
                               "You should upgrade to premium to embark on a healthy journey with the artificial intelligence model.",
                               textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyMedium,
+                              style: Get.theme.textTheme.bodyMedium,
                             ),
                           ),
                           const SizedBox(height: 10),

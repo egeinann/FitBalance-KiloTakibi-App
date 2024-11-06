@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
   final Widget widget;
@@ -20,9 +21,9 @@ class CustomFloatingActionButton extends StatelessWidget {
     return FloatingActionButton(
         mini: mini ?? false,
         heroTag: heroTag,
-        backgroundColor: Theme.of(context).primaryColor,
-        foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-        splashColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Get.theme.primaryColor,
+        foregroundColor: Get.theme.scaffoldBackgroundColor,
+        splashColor: Colors.white,
         elevation: 10,
         onPressed: onPressed,
         child: widget);

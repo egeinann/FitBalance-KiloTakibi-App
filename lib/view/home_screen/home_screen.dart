@@ -1,17 +1,19 @@
 import 'dart:ui';
 
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
-import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
+import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
+import 'package:kilo_takibi_uyg/widgets/line_graph.dart';
 import 'package:lottie/lottie.dart';
 
 class HomeScreen extends GetView<Controller> {
   HomeScreen({super.key});
+  final SettingsController _settingsController = Get.find();
   final RxDouble _1containerHeight = 80.0.obs;
   final RxDouble _1containerWidth = 120.0.obs;
   final RxBool _1isOpen = false.obs;
@@ -27,7 +29,7 @@ class HomeScreen extends GetView<Controller> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Center(
           child: Stack(
             children: [
@@ -42,99 +44,63 @@ class HomeScreen extends GetView<Controller> {
               Column(
                 children: [
                   const SizedBox(height: 30),
-                  kcalAnimatedContainer(context),
+                  kcalAnimatedContainer(),
                   const SizedBox(height: 10),
-                  balanceAnimatedContainer(context),
+                  balanceAnimatedContainer(),
                   const SizedBox(height: 10),
-                  bmiAnimatedContainer(context),
-                  const SizedBox(height: 150),
+                  bmiAnimatedContainer(),
+                  const SizedBox(height: 120),
                   Padding(
-                    padding: context.paddingLarge,
+                    padding: const EdgeInsets.all(20),
                     child: Column(
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Theme.of(context).cardColor,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    const Icon(Ionicons.flag),
-                                    const SizedBox(width: 5),
-                                    Text("Starting point",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall),
-                                  ],
-                                ),
-                                Text(
-                                  controller.records.isNotEmpty
-                                      ? "${controller.records.first.weight} ${"kg"}"
-                                      : "empty",
-                                  style: Theme.of(context).textTheme.labelSmall,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        premiumInformationContainer(),
+                        const SizedBox(height: 20),
+                        startingPointContainer(),
                         const SizedBox(height: 5),
-                        GestureDetector(
-                          onTap: () {
-                            Get.toNamed(Routes.changetargetweightscreen);
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Theme.of(context).cardColor,
+                        targetPointContainer(),
+                        const SizedBox(height: 20),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.all(20),
+                              child: Image(
+                                image: AssetImage(
+                                    "assets/images/mainScreen/home_colorfull.png"),
+                                fit: BoxFit.scaleDown,
+                                height: 200,
+                              ),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                            Container(
+                              height: 200,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Get.theme.cardColor,
+                              ),
+                              child: const Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      const Icon(Ionicons.ribbon),
-                                      const SizedBox(width: 5),
-                                      Text(
-                                        "Target point",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall,
-                                      ),
-                                    ],
+                                  Expanded(
+                                    child: Center(
+                                      child: Text("data"),
+                                    ),
                                   ),
-                                  Row(
-                                    children: [
-                                      Obx(
-                                        () => Text(
-                                          "${controller.targetWeight} ${"kg"}",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelSmall,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 5),
-                                      const Icon(Ionicons.chevron_forward),
-                                    ],
+                                  Expanded(
+                                    child: const Image(
+                                      image: AssetImage(
+                                          "assets/images/mainScreen/home_premium_ai.png"),
+                                      fit: BoxFit.scaleDown,
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
-                          ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 100,
-                  )
+                  const SizedBox(height: 100),
                 ],
               ),
             ],
@@ -143,13 +109,177 @@ class HomeScreen extends GetView<Controller> {
       ),
       floatingActionButton: CustomFloatingActionButton(
         heroTag: "onboarding",
-        widget: Icon(Icons.add),
+        widget: const Icon(Icons.add),
         onPressed: () => Get.toNamed(Routes.addscreen),
       ),
     );
   }
 
-  Align bmiAnimatedContainer(BuildContext context) {
+  // *** PREMIUM INFORMATION CONTAINER ***
+  Stack premiumInformationContainer() {
+    return Stack(
+      alignment: Alignment.bottomRight,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  // İçerik (lineGraph)
+                  Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 2,
+                        color: Get.theme.primaryColor,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                      color:
+                          Get.theme.cardColor.withOpacity(0.5), // Hafif opaklık
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: FittedBox(
+                        fit: BoxFit.cover, // İçerik sığdırma
+                        alignment: Alignment.topCenter,
+                        child: SizedBox(
+                          width: Get.size.width, // Genişlik ayarı
+                          height: 300, // lineGraph yüksekliği
+                          child: lineGraph(),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Bulanık arka plan
+                  Positioned.fill(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10), // Köşe yuvarlama
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                            sigmaX: 7, sigmaY: 7), // Bulanıklık miktarı
+                        child: Container(
+                          color: Colors.transparent, // Transparan arka plan
+                        ),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      const Icon(Ionicons.lock_closed),
+                      Text(
+                        "Charts",
+                        style: Get.theme.textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 5),
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Get.theme.cardColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.all(5),
+          child: CustomFloatingActionButton(
+            heroTag: "HOME",
+            widget: const Icon(Ionicons.rocket),
+            onPressed: () {},
+          ),
+        ),
+      ],
+    );
+  }
+
+  // *** TARGET POINT CONTAINER ***
+  GestureDetector targetPointContainer() {
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.changetargetweightscreen);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Get.theme.cardColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  const Icon(Ionicons.ribbon),
+                  const SizedBox(width: 5),
+                  Text(
+                    "Target point",
+                    style: Get.theme.textTheme.bodySmall,
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Obx(
+                    () => Text(
+                      "${controller.targetWeight} ${"kg"}",
+                      style: Get.theme.textTheme.labelSmall,
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  const Icon(Ionicons.chevron_forward),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // *** STARTING POINT ***
+  Container startingPointContainer() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Get.theme.cardColor,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                const Icon(Ionicons.flag),
+                const SizedBox(width: 5),
+                Text("Starting point", style: Get.theme.textTheme.bodySmall),
+              ],
+            ),
+            Text(
+              controller.records.isNotEmpty
+                  ? "${controller.records.first.weight} ${"kg"}"
+                  : "empty",
+              style: Get.theme.textTheme.labelSmall,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // *** ANIMATED CONTAINER BMI ***
+  Align bmiAnimatedContainer() {
     return Align(
       alignment: Alignment.centerRight,
       child: Obx(
@@ -169,8 +299,8 @@ class HomeScreen extends GetView<Controller> {
                 left: Radius.circular(20),
               ),
               color: _3isOpen.value
-                  ? Theme.of(context).cardColor.withOpacity(0.4)
-                  : Theme.of(context).primaryColor,
+                  ? Get.theme.cardColor.withOpacity(0.4)
+                  : Get.theme.primaryColor,
             ),
             child: ClipRRect(
               borderRadius:
@@ -189,7 +319,7 @@ class HomeScreen extends GetView<Controller> {
                           const SizedBox(height: 5),
                           Text(
                             "BMI",
-                            style: Theme.of(context).textTheme.bodyMedium,
+                            style: Get.theme.textTheme.bodyMedium,
                           ),
                         ],
                       ),
@@ -206,11 +336,12 @@ class HomeScreen extends GetView<Controller> {
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.all(10),
-                              child: AutoSizeText(
-                                "Calculate Body Mass Index",
-                                textAlign: TextAlign.center,
+                              child: textTyperAnimated(
+                                text: "Calculate Body Mass Index",
+                                textStyle: Get.theme.textTheme.bodyMedium!,
+                                isRepeat: false,
                               ),
                             ),
                             Flexible(
@@ -236,7 +367,8 @@ class HomeScreen extends GetView<Controller> {
     );
   }
 
-  Align balanceAnimatedContainer(BuildContext context) {
+  // *** ANIMATED CONATINER BALANCE INFORMATION ***
+  Align balanceAnimatedContainer() {
     return Align(
       alignment: Alignment.centerRight,
       child: Obx(
@@ -256,8 +388,8 @@ class HomeScreen extends GetView<Controller> {
                 left: Radius.circular(20),
               ),
               color: _2isOpen.value
-                  ? Theme.of(context).cardColor.withOpacity(0.4)
-                  : Theme.of(context).primaryColor,
+                  ? Get.theme.cardColor.withOpacity(0.4)
+                  : Get.theme.primaryColor,
             ),
             child: ClipRRect(
               borderRadius:
@@ -276,7 +408,7 @@ class HomeScreen extends GetView<Controller> {
                           const SizedBox(height: 5),
                           Text(
                             "Balance",
-                            style: Theme.of(context).textTheme.bodyMedium,
+                            style: Get.theme.textTheme.bodyMedium,
                           ),
                         ],
                       ),
@@ -293,11 +425,12 @@ class HomeScreen extends GetView<Controller> {
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.all(10),
-                              child: AutoSizeText(
-                                "How many calories should I eat per day?",
-                                textAlign: TextAlign.center,
+                              child: textTyperAnimated(
+                                text: "How can I control my weight?",
+                                textStyle: Get.theme.textTheme.bodyMedium!,
+                                isRepeat: false,
                               ),
                             ),
                             Flexible(
@@ -323,7 +456,8 @@ class HomeScreen extends GetView<Controller> {
     );
   }
 
-  Align kcalAnimatedContainer(BuildContext context) {
+  // *** ANIMATED CONTAINER KCAL ***
+  Align kcalAnimatedContainer() {
     return Align(
       alignment: Alignment.centerRight,
       child: Obx(
@@ -343,8 +477,8 @@ class HomeScreen extends GetView<Controller> {
                 left: Radius.circular(20),
               ),
               color: _1isOpen.value
-                  ? Theme.of(context).cardColor.withOpacity(0.4)
-                  : Theme.of(context).primaryColor,
+                  ? Get.theme.cardColor.withOpacity(0.4)
+                  : Get.theme.primaryColor,
             ),
             child: ClipRRect(
               borderRadius:
@@ -363,7 +497,7 @@ class HomeScreen extends GetView<Controller> {
                           const SizedBox(height: 5),
                           Text(
                             "kcal/day",
-                            style: Theme.of(context).textTheme.bodyMedium,
+                            style: Get.theme.textTheme.bodyMedium,
                           ),
                         ],
                       ),
@@ -380,11 +514,12 @@ class HomeScreen extends GetView<Controller> {
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.all(10),
-                              child: AutoSizeText(
-                                "How many calories should I eat per day?",
-                                textAlign: TextAlign.center,
+                              child: textTyperAnimated(
+                                text: "How many calories should I eat per day?",
+                                textStyle: Get.theme.textTheme.bodyMedium!,
+                                isRepeat: false,
                               ),
                             ),
                             Flexible(

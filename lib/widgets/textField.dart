@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -45,16 +46,16 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         filled: true,
-        fillColor: Theme.of(context).scaffoldBackgroundColor,
+        fillColor: Get.theme.scaffoldBackgroundColor,
         prefixIcon: titleIcon,
       ),
-      cursorColor: Theme.of(context).focusColor,
-      style: Theme.of(context).textTheme.titleLarge,
+      cursorColor: Get.theme.focusColor,
+      style: Get.theme.textTheme.titleLarge,
       onChanged: (value) {
         onChanged(value);
       },
       onSubmitted: (value) {
-        FocusScope.of(context).unfocus(); // Klavyeyi kapatma
+        Get.focusScope; // Klavyeyi kapatma
       },
     );
   }

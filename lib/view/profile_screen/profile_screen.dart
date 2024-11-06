@@ -1,18 +1,10 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
-import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_screen.dart';
-import 'package:kilo_takibi_uyg/view/upgrade_premium_screen.dart';
-import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/view/home_screen/info/model/info_screen.dart';
-import 'package:kilo_takibi_uyg/controllers/onboarding_controller.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/changeName_screen.dart';
-import 'package:kilo_takibi_uyg/view/profile_screen/changeTargetWeight_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
 class ProfileScreen extends GetView<Controller> {
@@ -28,13 +20,13 @@ class ProfileScreen extends GetView<Controller> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              genderImage(context),
+              genderImage(),
               const SizedBox(height: 20),
-              nameContainer(context),
+              nameContainer(),
               const SizedBox(height: 5),
-              targetWeightContainer(context),
+              targetWeightContainer(),
               const SizedBox(height: 5),
-              premiumContainer(context),
+              premiumContainer(),
               SizedBox(height: Get.size.height * 0.1)
             ],
           ),
@@ -44,7 +36,7 @@ class ProfileScreen extends GetView<Controller> {
   }
 
   // *** GENDER TOP IMAGE ***
-  Widget genderImage(BuildContext context) {
+  Widget genderImage() {
     return Obx(
       () => Column(
         children: [
@@ -66,7 +58,6 @@ class ProfileScreen extends GetView<Controller> {
           const SizedBox(height: 10),
           // TOGGLEBUTTONLAR
           customToggleButton(
-            context: context,
             isSelected: [
               _settingscontroller.isMale.value,
               !_settingscontroller.isMale.value
@@ -101,7 +92,7 @@ class ProfileScreen extends GetView<Controller> {
   }
 
   // *** NAME CONTAINER ***
-  Widget nameContainer(BuildContext context) {
+  Widget nameContainer() {
     return GestureDetector(
       onTap: () {
         Get.toNamed(Routes.changenamescreen);
@@ -109,20 +100,20 @@ class ProfileScreen extends GetView<Controller> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Theme.of(context).cardColor,
+          color: Get.theme.cardColor,
         ),
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("NAME".tr, style: Theme.of(context).textTheme.bodySmall),
+              Text("NAME".tr, style: Get.theme.textTheme.bodySmall),
               Row(
                 children: [
                   Obx(
                     () => Text(
                       "${controller.userName}",
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Get.theme.textTheme.labelSmall,
                     ),
                   ),
                   const SizedBox(width: 5),
@@ -137,7 +128,7 @@ class ProfileScreen extends GetView<Controller> {
   }
 
   // *** TARGETWEIGHT CONTAINER ***
-  Widget targetWeightContainer(BuildContext context) {
+  Widget targetWeightContainer() {
     return GestureDetector(
       onTap: () {
         Get.toNamed(Routes.changetargetweightscreen);
@@ -145,7 +136,7 @@ class ProfileScreen extends GetView<Controller> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Theme.of(context).cardColor,
+          color: Get.theme.cardColor,
         ),
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -153,13 +144,13 @@ class ProfileScreen extends GetView<Controller> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("TARGET WEIGHT".tr,
-                  style: Theme.of(context).textTheme.bodySmall),
+                  style: Get.theme.textTheme.bodySmall),
               Row(
                 children: [
                   Obx(
                     () => Text(
                       "${controller.targetWeight.value} ${"kg".tr}",
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Get.theme.textTheme.labelSmall,
                     ),
                   ),
                   const SizedBox(width: 5),
@@ -174,7 +165,7 @@ class ProfileScreen extends GetView<Controller> {
   }
 
   // *** PREMIUM CONTAINER ***
-  Widget premiumContainer(BuildContext context) {
+  Widget premiumContainer() {
     return GestureDetector(
       onTap: () {
         Get.toNamed(Routes.upgradepremiumscreen);
@@ -182,7 +173,7 @@ class ProfileScreen extends GetView<Controller> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Theme.of(context).cardColor,
+          color: Get.theme.cardColor,
         ),
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -190,12 +181,12 @@ class ProfileScreen extends GetView<Controller> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("PREMIUM MODE".tr,
-                  style: Theme.of(context).textTheme.bodySmall),
+                  style: Get.theme.textTheme.bodySmall),
               Row(
                 children: [
                   _settingscontroller.activePremium.value == true
                       ? Icon(Ionicons.rocket,
-                          color: Theme.of(context).primaryColor)
+                          color: Get.theme.primaryColor)
                       : const Icon(
                           Ionicons.rocket,
                           color: Colors.grey,

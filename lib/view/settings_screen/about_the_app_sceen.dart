@@ -14,7 +14,7 @@ class AboutTheAppScreen extends StatelessWidget {
         scrolledUnderElevation: 0,
         title: Text(
           'About The App'.tr,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Get.theme.textTheme.titleLarge,
         ),
         centerTitle: true,
       ),
@@ -32,24 +32,24 @@ class AboutTheAppScreen extends StatelessWidget {
                 children: [
                   AutoSizeText('FitBalance'.tr,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge),
+                      style: Get.theme.textTheme.bodyLarge),
                   const SizedBox(height: 10),
                   AutoSizeText(
                       'This app helps you track your weight and analyze your progress step by step. You can add photos, notes, and see BMI calculations for a more detailed analysis.'
                           .tr,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium),
+                      style: Get.theme.textTheme.bodyMedium),
                   const SizedBox(height: 10),
                   AutoSizeText('Version: 1.0.0'.tr,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium),
+                      style: Get.theme.textTheme.bodyMedium),
                   const SizedBox(height: 5),
                   AutoSizeText('Developed by: egedeveloper'.tr,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium),
+                      style: Get.theme.textTheme.bodyMedium),
                   AutoSizeText('Mail: fitbalance.app@gmail.com'.tr,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium),
+                      style: Get.theme.textTheme.bodyMedium),
                 ],
               ),
             ),
@@ -65,7 +65,7 @@ class AboutTheAppScreen extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text("You must be healthy !".tr,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.bodySmall)
+                        style: Get.theme.textTheme.bodySmall)
                   ],
                 ),
               ),

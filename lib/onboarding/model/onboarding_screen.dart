@@ -48,8 +48,8 @@ class OnboardingScreen extends GetView<OnboardingController> {
                   children: [
                     SmoothPageIndicator(
                       effect: WormEffect(
-                        dotColor: Theme.of(context).cardColor,
-                        activeDotColor: Theme.of(context).primaryColor,
+                        dotColor: Get.theme.cardColor,
+                        activeDotColor: Get.theme.primaryColor,
                       ),
                       controller: controller.pageController,
                       count: 6,

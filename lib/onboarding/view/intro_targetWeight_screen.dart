@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
-import '../../controllers/onboarding_controller.dart';
 
 class IntroTargetWeightScreen extends GetView<Controller> {
   IntroTargetWeightScreen({super.key});
@@ -24,7 +23,7 @@ class IntroTargetWeightScreen extends GetView<Controller> {
               children: [
                 Text(
                   'Enter your target weight'.tr,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Get.theme.textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),

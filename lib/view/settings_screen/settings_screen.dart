@@ -5,11 +5,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/services/email_service.dart';
-import 'package:kilo_takibi_uyg/view/settings_screen/about_the_app_sceen.dart';
-import 'package:kilo_takibi_uyg/view/settings_screen/data_management_screen.dart';
-import 'package:kilo_takibi_uyg/view/settings_screen/privacyPolicy_screen.dart';
-import 'package:kilo_takibi_uyg/view/settings_screen/termsOfService_screen.dart';
-import 'package:kilo_takibi_uyg/view/upgrade_premium_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/settings_model.dart';
@@ -27,7 +22,7 @@ class SettingsScreen extends GetView<SettingsController> {
         "Premium".tr,
         "Upgrade to Premium".tr,
         controller.activePremium.value == true
-            ? Icon(Ionicons.rocket, color: Theme.of(context).primaryColor)
+            ? Icon(Ionicons.rocket, color: Get.theme.primaryColor)
             : const Icon(
                 Ionicons.rocket,
                 color: Colors.grey,
@@ -43,11 +38,11 @@ class SettingsScreen extends GetView<SettingsController> {
         Obx(
           () => Text(
             controller.selectedLanguage.toString(),
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: const TextStyle(fontFamily: "Poppins", fontSize: 16),
           ),
         ),
         onTap: () {
-          _showLanguageSelectionBottomSheet(context);
+          _showLanguageSelectionBottomSheet();
         },
       ),
       SettingsModel(
@@ -55,18 +50,18 @@ class SettingsScreen extends GetView<SettingsController> {
         "Theme".tr,
         null,
         SizedBox(
-          width: Get.size.width * 0.15,
-          child: DayNightSwitcher(
-            isDarkModeEnabled:
-                controller.themeMode.value == ThemeMode.dark,
-            onStateChanged: (isDarkModeEnabled) {
-              controller.switchTheme(isDarkModeEnabled);
-            },
+          width: 65,
+          child: Obx(
+            () => DayNightSwitcher(
+              isDarkModeEnabled: controller.themeMode.value == ThemeMode.dark,
+              onStateChanged: (isDarkModeEnabled) {
+                controller.switchTheme(isDarkModeEnabled);
+              },
+            ),
           ),
         ),
         onTap: () {
-          bool isDarkModeEnabled =
-              controller.themeMode.value == ThemeMode.dark;
+          bool isDarkModeEnabled = controller.themeMode.value == ThemeMode.dark;
           controller.switchTheme(!isDarkModeEnabled);
         },
       ),
@@ -78,7 +73,7 @@ class SettingsScreen extends GetView<SettingsController> {
       //     () => Switch(
       //       inactiveThumbColor: const Color.fromARGB(255, 255, 17, 0),
       //       activeColor: const Color.fromARGB(255, 0, 255, 8),
-      //       activeTrackColor: Theme.of(context).cardColor,
+      //       activeTrackColor: Get.theme.cardColor,
       //       value: controller.isNotificationEnabled.value,
       //       onChanged: (value) {
       //         controller.isNotificationEnabled.value = value;
@@ -97,7 +92,6 @@ class SettingsScreen extends GetView<SettingsController> {
           height: 45,
           child: Obx(
             () => customToggleButton(
-              context: context,
               isSelected: [
                 controller.isKgSelected.value,
                 !controller.isKgSelected.value
@@ -165,8 +159,7 @@ class SettingsScreen extends GetView<SettingsController> {
     ];
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text('Settings'.tr, style: Theme.of(context).textTheme.titleLarge),
+        title: Text('Settings'.tr, style: Get.theme.textTheme.titleLarge),
         centerTitle: true,
       ),
       body: Padding(
@@ -183,18 +176,16 @@ class SettingsScreen extends GetView<SettingsController> {
               leading: settingsList[index].icon,
               title: Text(
                 settingsList[index].text,
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: const TextStyle(fontFamily: "Poppins"),
               ),
               subtitle: settingsList[index].subText != null
                   ? Text(
                       settingsList[index].subText!,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: Theme.of(context)
-                                .textTheme
-                                .bodySmall!
-                                .color!
-                                .withOpacity(0.6),
-                          ),
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        color: const Color.fromARGB(255, 129, 129, 129)
+                            .withOpacity(0.8),
+                      ),
                     )
                   : null, // subText null ise subtitle boş kalır
               trailing: settingsList[index].widget,
@@ -221,7 +212,7 @@ class SettingsScreen extends GetView<SettingsController> {
   }
 
   // *** DİL SEÇİMİ İÇİN BOTTOMSHEET ***
-  void _showLanguageSelectionBottomSheet(BuildContext context) {
+  void _showLanguageSelectionBottomSheet() {
     Get.bottomSheet(
       Container(
         padding: const EdgeInsets.all(20),
@@ -238,9 +229,8 @@ class SettingsScreen extends GetView<SettingsController> {
               return Obx(() {
                 return Container(
                   decoration: BoxDecoration(
-                    color: controller.selectedLanguage.value ==
-                            languageCode
-                        ? Theme.of(context).cardColor
+                    color: controller.selectedLanguage.value == languageCode
+                        ? Get.theme.cardColor
                         : null,
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -260,7 +250,7 @@ class SettingsScreen extends GetView<SettingsController> {
           ),
         ),
       ),
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Get.theme.primaryColor,
     );
   }
 }

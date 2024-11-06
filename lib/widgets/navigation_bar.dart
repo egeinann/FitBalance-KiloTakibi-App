@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -49,6 +48,7 @@ Widget bottomNavigationBar(BuildContext context) {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(40),
         child: BottomNavigationBar(
+          backgroundColor: Get.theme.scaffoldBackgroundColor,
           showSelectedLabels: false,
           items: const [
             BottomNavigationBarItem(
@@ -73,8 +73,8 @@ Widget bottomNavigationBar(BuildContext context) {
             ),
           ],
           currentIndex: _controller.currentTabIndex.value,
-          selectedItemColor: Theme.of(context).primaryColor,
-          unselectedItemColor: Theme.of(context).indicatorColor,
+          selectedItemColor: Get.theme.primaryColor,
+          unselectedItemColor: Get.theme.indicatorColor,
           onTap: (index) {
             Get.focusScope?.unfocus();
             _controller.changeTabIndex(index);

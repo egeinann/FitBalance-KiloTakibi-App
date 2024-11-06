@@ -6,7 +6,6 @@ import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/controllers/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
 
 class ChangeTargetWeightScreen extends GetView<Controller> {
@@ -21,13 +20,13 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
     _temporaryTargetWeight.value = controller.targetWeight.value;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Get.theme.scaffoldBackgroundColor,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         centerTitle: true,
         title: Text(
           "Target Weight".tr,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Get.theme.textTheme.titleLarge,
         ),
       ),
       body: Padding(
@@ -48,7 +47,7 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
                 child: AutoSizeText(
                   'A healthy life starts with the right goals. Choose your target weight and remember your belief in yourself every step of the way.'
                       .tr,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Get.theme.textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
               ),

@@ -17,17 +17,15 @@ import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
 class AddScreen extends GetView<Controller> {
   AddScreen({super.key});
-  // State yönetimi için GetX ile kullanacağımız değişkenler
   final TextEditingController _noteController = TextEditingController();
-  final FocusNode _focusNode = FocusNode(); // FocusNode KASMA SORUNU İÇİN
+  final FocusNode _focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: GestureDetector(
-        onTap: () {
-          Get.focusScope?.unfocus();
-        },
+        onTap: () => Get.focusScope?.unfocus(),
         behavior: HitTestBehavior.opaque,
         child: Padding(
           padding: context.paddingMedium,
@@ -37,39 +35,22 @@ class AddScreen extends GetView<Controller> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // *** WEIGHT CONTAINER ***
-                    weightEntryContainer(context),
-                    const Divider(
-                      thickness: 2,
-                      endIndent: 35,
-                      indent: 35,
-                    ),
-                    // *** DATE CONTAINER ***
-                    dateEntryContainer(context),
-                    const Divider(
-                      thickness: 2,
-                      endIndent: 35,
-                      indent: 35,
-                    ),
-                    // *** NOTE CONTAINER ***
-                    noteEntryContainer(context),
-                    const Divider(
-                      thickness: 2,
-                      endIndent: 35,
-                      indent: 35,
-                    ),
-                    // *** ADD PHOTO CONTAINER ***
-                    addPhotoContainer(context),
+                    weightEntryContainer(),
+                    const Divider(thickness: 2, endIndent: 35, indent: 35),
+                    dateEntryContainer(),
+                    const Divider(thickness: 2, endIndent: 35, indent: 35),
+                    noteEntryContainer(),
+                    const Divider(thickness: 2, endIndent: 35, indent: 35),
+                    addPhotoContainer(),
                     SizedBox(height: Get.size.height * 0.12),
                   ],
                 ),
               ),
-              // *** BOTTOM ELEVATED BUTTON ***
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: bottomAddButton(context),
+                  child: bottomAddButton(),
                 ),
               ),
             ],
@@ -79,8 +60,8 @@ class AddScreen extends GetView<Controller> {
     );
   }
 
-  // *** FUNCTION FOR ADD BUTTON
-  void addPressed(BuildContext context) {
+  // *** ADD BUTTON PRESSED ***
+  void addPressed() {
     final String? note =
         _noteController.text.isNotEmpty ? _noteController.text : null;
 
@@ -107,87 +88,81 @@ class AddScreen extends GetView<Controller> {
     _noteController.clear();
     controller.photoUrl.value = null; // Fotoğraf URL'sini sıfırla
     Get.focusScope?.unfocus();
+    Get.back();
   }
 
   // *** ADD BUTTON ***
-  Align bottomAddButton(BuildContext context) {
+  Align bottomAddButton() {
     return Align(
       alignment: Alignment.bottomCenter,
       child: CustomFloatingActionButton(
         widget: const Icon(Icons.add),
-        onPressed: () => Future.delayed(
-          const Duration(milliseconds: 200),
-          () {
-            addPressed(context);
-          },
-        ),
+        onPressed: addPressed, // Doğrudan fonksiyonu çağır
       ),
     );
   }
 
-  // *** PICK DATE ***
-  Future<void> pickDate(BuildContext context) async {
+  // *** SELECT DATE ***
+  Future<void> pickDate() async {
     DateTime? selectedDate = await showDatePicker(
-        builder: (context, child) {
-          return Theme(
-              data: ThemeClass.darkTheme, child: child ?? const Text(""));
-        },
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime.now().subtract(const Duration(days: 0)),
-        lastDate: DateTime.now().add(const Duration(days: 500)));
+      builder: (context, child) {
+        return Theme(
+          data: ThemeClass.darkTheme,
+          child: child ?? const SizedBox(),
+        );
+      },
+      context: Get.context!, // Use Get.context here
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now().subtract(const Duration(days: 0)),
+      lastDate: DateTime.now().add(const Duration(days: 500)),
+    );
 
     if (selectedDate != null) {
       controller.selectedDate.value = selectedDate;
     }
   }
 
-  // *** ADD NOTE ***
-  Widget noteEntryContainer(BuildContext context) {
+  // *** ENTRY NOTE ***
+  Widget noteEntryContainer() {
     return Padding(
-      padding: context.paddingLarge,
+      padding: const EdgeInsets.all(20),
       child: CustomTextField(
         focusNode: _focusNode,
         controller: _noteController,
         labelText: "note".tr,
         titleIcon: IconButton(
-          onPressed: () {
-            _noteController.clear(); // TextField'ı sıfırla
-          },
+          onPressed: () => _noteController.clear(),
           icon: const Icon(Icons.backspace),
         ),
         maxLength: 80,
         onChanged: (value) {
-          // Kullanıcının yazdığı notu güncelle
           controller.note.value = value; // Controller'daki notu güncelle
         },
       ),
     );
   }
 
-  // *** ADD DATE ***
-  Widget dateEntryContainer(BuildContext context) {
+  // *** ENTRY DATE ***
+  Widget dateEntryContainer() {
     return GestureDetector(
-      onTap: () {
-        pickDate(context);
-      },
+      onTap: pickDate, // Fonksiyonu doğrudan çağır
       child: Padding(
-        padding: context.paddingLarge,
+        padding: const EdgeInsets.all(20),
         child: Obx(() {
           return Text(
             DateFormat("d MMM, y", Get.locale.toString())
                 .format(controller.selectedDate.value),
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Get.theme.textTheme.bodyLarge,
           );
         }),
       ),
     );
   }
 
-  // *** ADD WEIGHT ***
-  Widget weightEntryContainer(BuildContext context) {
+  // *** ENTRY WEIGHT ***
+  Widget weightEntryContainer() {
     return Padding(
-      padding: context.paddingLarge,
+      padding: const EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -195,12 +170,11 @@ class AddScreen extends GetView<Controller> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("YOUR WEIGHT".tr,
-                    style: Theme.of(context).textTheme.bodyMedium),
+                Text("YOUR WEIGHT".tr, style: Get.theme.textTheme.bodyMedium),
                 Obx(() {
                   return Text(
                     "${controller.selectedValue.value} ${"kg".tr}",
-                    style: Theme.of(context).textTheme.displaySmall,
+                    style: Get.theme.textTheme.displaySmall,
                   );
                 }),
               ],
@@ -215,37 +189,35 @@ class AddScreen extends GetView<Controller> {
                 },
               ),
             ),
-          ), // _selectedvalue
+          ),
         ],
       ),
     );
   }
 
-  // *** ADD PHOTO ***
-  Widget addPhotoContainer(BuildContext context) {
+  // *** ENTRY PHOTO ***
+  Widget addPhotoContainer() {
     return Obx(() {
       if (controller.isLoading.value) {
         return const LottieWidget();
       } else if (controller.photoUrl.value == null) {
         return Padding(
-          padding: context.paddingLarge,
+          padding: const EdgeInsets.all(20),
           child: CustomFloatingActionButton(
-            onPressed: () {
-              _pickImage(context);
-            },
+            onPressed: () => _pickImage(), // Doğrudan fonksiyonu çağır
             widget: const Icon(Ionicons.camera),
           ),
         );
       } else {
         return Padding(
-          padding: context.paddingLarge,
+          padding: const EdgeInsets.all(20),
           child: Stack(
             children: [
               Container(
                 padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).canvasColor,
+                  color: Get.theme.canvasColor,
                 ),
                 child: Image.file(
                   File(controller.photoUrl.value!),
@@ -269,10 +241,11 @@ class AddScreen extends GetView<Controller> {
     });
   }
 
-  Future<void> _pickImage(BuildContext context) async {
+  // *** SELECT PHOTO ***
+  Future<void> _pickImage() async {
     final picker = ImagePicker();
     final source = await showModalBottomSheet<ImageSource>(
-      context: context,
+      context: Get.context!,
       builder: (BuildContext context) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -280,12 +253,12 @@ class AddScreen extends GetView<Controller> {
             ListTile(
               leading: const Icon(Icons.camera),
               title: Text('Take a photo'.tr),
-              onTap: () => Navigator.of(context).pop(ImageSource.camera),
+              onTap: () => Get.back(result: ImageSource.camera),
             ),
             ListTile(
               leading: const Icon(Icons.photo_library),
               title: Text('Pick from gallery'.tr),
-              onTap: () => Navigator.of(context).pop(ImageSource.gallery),
+              onTap: () => Get.back(result: ImageSource.gallery),
             ),
           ],
         );
@@ -296,8 +269,8 @@ class AddScreen extends GetView<Controller> {
       controller.isLoading.value = true; // Yükleme başlıyor
       final pickedFile = await picker.pickImage(source: source);
 
-      // Minimum gösterim süresi (örneğin, 1 saniye)
-      await Future.delayed(const Duration(milliseconds: 1100));
+      await Future.delayed(
+          const Duration(milliseconds: 1100)); // Minimum gösterim süresi
 
       if (pickedFile != null) {
         controller.photoUrl.value = pickedFile.path;

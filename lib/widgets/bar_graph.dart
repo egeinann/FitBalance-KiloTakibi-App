@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 
 final Controller controller = Get.find();
-Obx barGraph(BuildContext context) {
+Obx barGraph() {
   return Obx(() {
     final monthlyData = controller.calculateMonthlyAverages();
     return Padding(
@@ -14,7 +14,7 @@ Obx barGraph(BuildContext context) {
         children: [
           // *** BAR CHART ***
           Text("Averages of the last 1 year".tr,
-              style: Theme.of(context).textTheme.bodyMedium),
+              style: Get.theme.textTheme.bodyMedium),
           Expanded(
             child: BarChart(
               BarChartData(
@@ -28,7 +28,7 @@ Obx barGraph(BuildContext context) {
                       interval: 20,
                       getTitlesWidget: (value, meta) {
                         return Text(value.toInt().toString(),
-                            style: Theme.of(context).textTheme.bodySmall);
+                            style: Get.theme.textTheme.bodySmall);
                       },
                       reservedSize: Get.size.width * 0.08,
                     ),
@@ -58,7 +58,7 @@ Obx barGraph(BuildContext context) {
                         return SideTitleWidget(
                           axisSide: meta.axisSide,
                           child: Text(month,
-                              style: Theme.of(context).textTheme.bodySmall),
+                              style: Get.theme.textTheme.bodySmall),
                         );
                       },
                     ),
@@ -67,14 +67,14 @@ Obx barGraph(BuildContext context) {
                 borderData: FlBorderData(
                   show: true,
                   border: Border.all(
-                      color: Theme.of(context).cardColor, width: 0.5),
+                      color: Get.theme.cardColor, width: 0.5),
                 ),
                 gridData: FlGridData(
                   show: true,
                   horizontalInterval: 20,
                   drawVerticalLine: false,
                   getDrawingHorizontalLine: (value) => FlLine(
-                    color: Theme.of(context).cardColor.withOpacity(0.3),
+                    color: Get.theme.cardColor.withOpacity(0.3),
                     strokeWidth: 1,
                   ),
                 ),
@@ -82,7 +82,7 @@ Obx barGraph(BuildContext context) {
                   touchTooltipData: BarTouchTooltipData(
                     fitInsideHorizontally: true,
                     fitInsideVertically: true,
-                    getTooltipColor: (group) => Theme.of(context)
+                    getTooltipColor: (group) => Get.theme
                         .primaryColor, // Tooltip arka plan rengini burada belirleyin
                     getTooltipItem: (group, groupIndex, rod, rodIndex) {
                       return BarTooltipItem(

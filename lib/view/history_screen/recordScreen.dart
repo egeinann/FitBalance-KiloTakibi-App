@@ -25,7 +25,7 @@ class RecordScreen extends GetView<Controller> {
         centerTitle: true,
         title: Text(
           DateFormat("d MMMM, y", Get.locale.toString()).format(rec.dateTime),
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Get.theme.textTheme.bodyLarge,
         ),
         actions: [
           IconButton(
@@ -88,7 +88,7 @@ class RecordScreen extends GetView<Controller> {
                   // Kenarlık (dış) metin
                   Text(
                     '${rec.weight} ${"kg".tr}',
-                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                    style: Get.theme.textTheme.labelSmall!.copyWith(
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 4
@@ -98,7 +98,7 @@ class RecordScreen extends GetView<Controller> {
                   // İç metin
                   Text(
                     '${rec.weight} ${"kg".tr}',
-                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                    style: Get.theme.textTheme.labelSmall!.copyWith(
                           color: Colors.white, // Metin içi beyaz renk
                         ),
                   ),
@@ -126,11 +126,11 @@ class RecordScreen extends GetView<Controller> {
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(5),
             ),
-            color: Theme.of(context).canvasColor,
+            color: Get.theme.canvasColor,
           ),
           child: Text(
             rec.note!,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Get.theme.textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),
         ),
@@ -213,14 +213,14 @@ class RecordScreen extends GetView<Controller> {
                     Text(
                       DateFormat("d MMM, y", Get.locale.toString())
                           .format(rec.dateTime),
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: Get.theme.textTheme.bodySmall,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
                           "Edit Record".tr,
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: Get.theme.textTheme.titleLarge,
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: Get.size.height * 0.01),

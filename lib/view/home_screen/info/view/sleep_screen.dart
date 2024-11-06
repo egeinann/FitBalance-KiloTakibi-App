@@ -22,7 +22,7 @@ class InfoSleepScreen extends StatelessWidget {
                   RotatedBox(
                     quarterTurns: 3,
                     child: Text("S L E E P".tr,
-                        style: Theme.of(context).textTheme.displaySmall),
+                        style: Get.theme.textTheme.displaySmall),
                   ),
                   const Image(
                     image: AssetImage("assets/images/weightInfo/sleep.png"),
@@ -40,7 +40,7 @@ class InfoSleepScreen extends StatelessWidget {
                     'Sufficient and quality sleep is necessary for the body to rest and renew. Make sure to sleep 7-9 hours a day. Insufficient sleep can increase appetite and lead to weight gain. Maintaining your sleep pattern supports weight control.'
                         .tr,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Get.theme.textTheme.bodySmall,
                   ),
                   const Icon(
                     Ionicons.moon_outline,

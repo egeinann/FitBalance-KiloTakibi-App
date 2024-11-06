@@ -11,8 +11,16 @@ class SnackbarHelper {
       required Duration duration, // Snackbar süresi
       required Icon icon}) {
     Get.snackbar(
-        title, // Başlık
-        message, // Mesaj
+        '', // Burada title doğrudan verilmiyor, titleText ile özelleştirildiği için boş bırakıldı
+        '',
+        titleText: Text(
+          title,
+          style: Get.theme.textTheme.bodyMedium, // Başlık stili
+        ),
+        messageText: Text(
+          message,
+          style: Get.theme.textTheme.bodySmall, // Mesaj stili
+        ),
         snackPosition: SnackPosition.TOP, // Snackbar pozisyonu
         backgroundColor:
             backgroundColor.withOpacity(0.5), // Şeffaf arka plan rengi

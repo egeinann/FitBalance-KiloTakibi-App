@@ -21,7 +21,7 @@ class InfoNutritionScreen extends StatelessWidget {
                   RotatedBox(
                     quarterTurns: 3,
                     child: Text("N U T R I T I O N".tr,
-                        style: Theme.of(context).textTheme.displaySmall),
+                        style: Get.theme.textTheme.displaySmall),
                   ),
                   const Image(
                     image: AssetImage("assets/images/weightInfo/foods.png"),
@@ -39,7 +39,7 @@ class InfoNutritionScreen extends StatelessWidget {
                     'The basis of healthy weight control is a balanced and regular diet. At every meal, be sure to consume a balance of protein, carbohydrates and healthy fats. Avoid fast food and processed foods, prefer fresh fruits, vegetables and whole grain products.'
                         .tr,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Get.theme.textTheme.bodySmall,
                   ),
                   const Icon(
                     Icons.local_dining_sharp,

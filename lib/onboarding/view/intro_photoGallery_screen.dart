@@ -27,12 +27,12 @@ class IntroPhotoGalleryScreen extends StatelessWidget {
                 children: [
                   AutoSizeText('Photo & Gallery'.tr,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.titleLarge),
+                      style: Get.theme.textTheme.titleLarge),
                   SizedBox(height: Get.size.height * 0.02),
                   AutoSizeText(
                     'Document your changes with photos!'.tr,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: Get.theme.textTheme.bodyLarge,
                   ),
                 ],
               ),

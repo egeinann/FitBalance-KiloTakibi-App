@@ -10,19 +10,17 @@ class FadeNoRecord extends GetView<Controller> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return FadeTransition(
-      opacity: _createAnimation(context),
-      child: noRecord(context, controller),
+      opacity: _createAnimation(),
+      child: noRecord(controller, context),
     );
   }
 
-  Animation<double> _createAnimation(BuildContext context) {
+  // Animasyonun doğru şekilde çalışabilmesi için AnimationController'ı burada oluşturuyoruz
+  Animation<double> _createAnimation() {
     final controller = AnimationController(
       duration: const Duration(milliseconds: 500),
-      vsync:
-          _TickerProvider(), // Eğer bir TickerProvider gerekiyorsa, bunu yönetin
+      vsync: _TickerProvider(),
     );
 
     final animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
@@ -30,12 +28,13 @@ class FadeNoRecord extends GetView<Controller> {
     return animation;
   }
 
-  Center noRecord(BuildContext context, Controller controller) {
+  // Kayıt bulunamadığında gösterilen widget
+  Center noRecord(Controller controller, BuildContext context) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          SizedBox(height: Get.height * 0.05), // GetX ile yükseklik alma
           const Expanded(
             flex: 2,
             child: Image(
@@ -43,23 +42,23 @@ class FadeNoRecord extends GetView<Controller> {
               fit: BoxFit.scaleDown,
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          SizedBox(height: Get.height * 0.05), // GetX ile yükseklik alma
           Expanded(
             flex: 3,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "No record found !".tr,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  "No record found !".tr, // Dil desteği
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium, // GetX ile tema erişimi
                 ),
                 const SizedBox(height: 10),
                 CustomFloatingActionButton(
                   widget: const FittedBox(child: Icon(Ionicons.chevron_back)),
                   onPressed: () {
-                    Future.delayed(const Duration(milliseconds: 200), () {
-                      controller.goToHomeScreen();
-                    });
+                    controller.goToHomeScreen(); // Ana ekrana git
                   },
                 ),
               ],

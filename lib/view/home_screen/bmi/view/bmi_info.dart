@@ -13,7 +13,7 @@ class BmiInfoScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "What is this BMI ?".tr,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Get.theme.textTheme.titleLarge,
         ),
         centerTitle: true,
       ),
@@ -38,20 +38,20 @@ class BmiInfoScreen extends StatelessWidget {
                       "BMI (Body Mass Index) is a measure that estimates body fat based on a person's weight and height. It is used to assess whether an individual is in a healthy weight range."
                           .tr,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Get.theme.textTheme.bodyLarge,
                     ),
                     AutoSizeText(
                       "Below 18.5:  Underweight.\n18.5 - 24.9:  Normal weight\n25 - 29.9:  Overweight\n30 and above:  Obese"
                           .tr,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Get.theme.textTheme.labelSmall,
                     ),
                     Column(
                       children: [
                         const Icon(Ionicons.fitness),
                         const SizedBox(height: 5),
                         Text("You must be healthy !".tr,
-                            style: Theme.of(context).textTheme.bodySmall)
+                            style: Get.theme.textTheme.bodySmall)
                       ],
                     )
                   ],

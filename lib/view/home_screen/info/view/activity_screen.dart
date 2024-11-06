@@ -22,7 +22,7 @@ class InfoActivityScreen extends StatelessWidget {
                   RotatedBox(
                     quarterTurns: 3,
                     child: Text("A C T I V I T Y".tr,
-                        style: Theme.of(context).textTheme.displaySmall),
+                        style: Get.theme.textTheme.displaySmall),
                   ),
                   const Image(
                     image: AssetImage("assets/images/weightInfo/run.png"),
@@ -40,7 +40,7 @@ class InfoActivityScreen extends StatelessWidget {
                     'Regular exercise plays a big role in weight control. Try to do at least 150 minutes of moderate aerobic activity per week. Activities such as walking, running, swimming or cycling will help you lose weight and maintain your overall health.'
                         .tr,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Get.theme.textTheme.bodySmall,
                   ),
                   const Icon(
                     Ionicons.bicycle,

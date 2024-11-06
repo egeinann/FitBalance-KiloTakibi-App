@@ -32,60 +32,60 @@ class UpgradePremiumScreen extends StatelessWidget {
                 padding: context.paddingLow,
                 child: Column(
                   children: [
-                    pageIndicator(context),
+                    pageIndicator(),
                     const SizedBox(height: 50),
-                    middlePanelScroll(context),
+                    middlePanelScroll(),
                   ],
                 ),
               ),
             ),
           ),
-          bottomPanel(context),
+          bottomPanel(),
         ],
       ),
     );
   }
 
   // *** MIDDLE SCROLL PANEL ***
-  Column middlePanelScroll(BuildContext context) {
+  Column middlePanelScroll() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         AutoSizeText(
           "Rise for a Healthy Future!".tr,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.labelSmall,
+          style: Get.theme.textTheme.labelSmall,
         ),
         ListTile(
           leading: CircleAvatar(
-            backgroundColor: Theme.of(context).cardColor,
+            backgroundColor: Get.theme.cardColor,
             child: const Icon(Ionicons.megaphone_outline),
           ),
           title: AutoSizeText(
             "Reach your goal with ad-free, uninterrupted tracking!".tr,
-            style: Theme.of(context).textTheme.bodySmall,
+            style: Get.theme.textTheme.bodySmall,
           ),
         ),
         ListTile(
           leading: CircleAvatar(
-            backgroundColor: Theme.of(context).cardColor,
+            backgroundColor: Get.theme.cardColor,
             child: const Icon(Ionicons.analytics),
           ),
           title: AutoSizeText(
             "Easily track your progress with graphs and boost your motivation!"
                 .tr,
-            style: Theme.of(context).textTheme.bodySmall,
+            style: Get.theme.textTheme.bodySmall,
           ),
         ),
         ListTile(
           leading: CircleAvatar(
-            backgroundColor: Theme.of(context).cardColor,
+            backgroundColor: Get.theme.cardColor,
             child: const Icon(Ionicons.hardware_chip_outline),
           ),
           title: AutoSizeText(
             "Embark on a healthy journey with artificial intelligence suggestions!"
                 .tr,
-            style: Theme.of(context).textTheme.bodySmall,
+            style: Get.theme.textTheme.bodySmall,
           ),
         ),
         const SizedBox(height: 10),
@@ -120,14 +120,14 @@ class UpgradePremiumScreen extends StatelessWidget {
         AutoSizeText(
           "Why choose premium?".tr,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.labelSmall,
+          style: Get.theme.textTheme.labelSmall,
         ),
         const SizedBox(height: 10),
         AutoSizeText(
           "With Premium membership, you will have an ad-free experience. In addition, you can easily track your progress thanks to advanced graphic tracking and receive the most appropriate recommendations for your personal goals with the artificial intelligence model. Take advantage of Premium on your healthy life journey!"
               .tr,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodySmall,
+          style: Get.theme.textTheme.bodySmall,
         ),
         const SizedBox(height: 10),
         AutoSizeText(
@@ -146,12 +146,12 @@ class UpgradePremiumScreen extends StatelessWidget {
   }
 
   // *** BOTTOM BUTTON UPGRADE PREMIUM ***
-  Expanded bottomPanel(BuildContext context) {
+  Expanded bottomPanel() {
     return Expanded(
       flex: 2,
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
+          color: Get.theme.scaffoldBackgroundColor,
           boxShadow: [
             BoxShadow(
               color: const Color.fromARGB(255, 130, 130, 130)
@@ -164,7 +164,7 @@ class UpgradePremiumScreen extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: context.paddingLow,
+          padding: const EdgeInsets.all(5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -185,7 +185,7 @@ class UpgradePremiumScreen extends StatelessWidget {
               AutoSizeText(
                 "It is a one-time purchase".tr,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodySmall,
+                style: Get.theme.textTheme.bodySmall,
               ),
             ],
           ),
@@ -195,7 +195,7 @@ class UpgradePremiumScreen extends StatelessWidget {
   }
 
   // *** TOP PREMIUM PAGE INDICATOR ***
-  Column pageIndicator(BuildContext context) {
+  Column pageIndicator() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -223,12 +223,12 @@ class UpgradePremiumScreen extends StatelessWidget {
                         AutoSizeText(
                           "No more ads!".tr,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.labelSmall,
+                          style: Get.theme.textTheme.labelSmall,
                         ),
                         AutoSizeText(
                           "Clean and simple interface without ads".tr,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: Get.theme.textTheme.bodyMedium,
                         ),
                       ],
                     ),
@@ -254,12 +254,12 @@ class UpgradePremiumScreen extends StatelessWidget {
                         AutoSizeText(
                           "Graphics!".tr,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.labelSmall,
+                          style: Get.theme.textTheme.labelSmall,
                         ),
                         AutoSizeText(
                           "Weight tracking step by step with graphics".tr,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: Get.theme.textTheme.bodyMedium,
                         ),
                       ],
                     ),
@@ -286,13 +286,13 @@ class UpgradePremiumScreen extends StatelessWidget {
                         AutoSizeText(
                           "Artificial Intelligence!".tr,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.labelSmall,
+                          style: Get.theme.textTheme.labelSmall,
                         ),
                         AutoSizeText(
                           "Healthier suggestions with artificial intelligence chatbot"
                               .tr,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: Get.theme.textTheme.bodyMedium,
                         ),
                       ],
                     ),
@@ -306,8 +306,8 @@ class UpgradePremiumScreen extends StatelessWidget {
           controller: _pageController,
           count: 3,
           effect: WormEffect(
-            dotColor: Theme.of(context).cardColor,
-            activeDotColor: Theme.of(context).primaryColor,
+            dotColor: Get.theme.cardColor,
+            activeDotColor: Get.theme.primaryColor,
           ),
         ),
       ],

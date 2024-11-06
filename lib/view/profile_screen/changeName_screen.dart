@@ -17,7 +17,7 @@ class ChangeNameScreen extends GetView<OnboardingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Get.theme.scaffoldBackgroundColor,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -28,7 +28,7 @@ class ChangeNameScreen extends GetView<OnboardingController> {
         centerTitle: true,
         title: Text(
           "Name".tr,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Get.theme.textTheme.titleLarge,
         ),
       ),
       body: Padding(

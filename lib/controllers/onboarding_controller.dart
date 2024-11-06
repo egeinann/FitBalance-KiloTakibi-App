@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
-import 'package:kilo_takibi_uyg/view/main_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 
 class OnboardingController extends GetxController {

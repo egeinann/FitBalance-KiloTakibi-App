@@ -95,7 +95,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.historyscreen,
-      page: () => const HistoryScreen(),
+      page: () => HistoryScreen(),
     ),
     GetPage(
       name: Routes.profilescreen,

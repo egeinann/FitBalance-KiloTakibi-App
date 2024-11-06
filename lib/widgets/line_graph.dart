@@ -6,7 +6,7 @@ import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
 final Controller controller = Get.find();
-Obx lineGraph(BuildContext context) {
+Obx lineGraph() {
   return Obx(
     () {
       return Padding(
@@ -20,7 +20,7 @@ Obx lineGraph(BuildContext context) {
                 controller.selecedAllTimeGraph.value
                     ? "All records".tr
                     : "Records of the last 30 days".tr,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Get.theme.textTheme.bodyMedium,
               ),
             ),
             // *** LINE CHART EXPANDED ***
@@ -81,7 +81,7 @@ Obx lineGraph(BuildContext context) {
                           reservedSize: Get.size.width * 0.07,
                           getTitlesWidget: (value, meta) => Text(
                               value.toInt().toString(),
-                              style: Theme.of(context).textTheme.bodySmall),
+                              style: Get.theme.textTheme.bodySmall),
                         ),
                       ),
                       rightTitles: const AxisTitles(
@@ -107,8 +107,8 @@ Obx lineGraph(BuildContext context) {
                                 controller.filteredRecords.length;
                             int interval = (totalRecords / 5)
                                 .ceil(); // Yaklaşık 5 tarih göstermek için aralığı hesaplayalım
-                            int index = controller.filteredRecords
-                                .indexWhere((record) =>
+                            int index = controller.filteredRecords.indexWhere(
+                                (record) =>
                                     record.dateTime.millisecondsSinceEpoch ==
                                     value.toInt());
 
@@ -125,11 +125,11 @@ Obx lineGraph(BuildContext context) {
                                         DateFormat(
                                                 'd MMM', Get.locale.toString())
                                             .format(date),
-                                        style: Theme.of(context)
+                                        style: Get.theme
                                             .textTheme
                                             .bodySmall),
                                     Text(DateFormat('y').format(date),
-                                        style: Theme.of(context)
+                                        style: Get.theme
                                             .textTheme
                                             .bodySmall)
                                   ],
@@ -157,10 +157,12 @@ Obx lineGraph(BuildContext context) {
                             .millisecondsSinceEpoch
                             .toDouble()
                         : 0,
-                    minY: controller.records
-                            .map((record) => record.weight)
-                            .reduce((a, b) => a < b ? a : b) -
-                        10,
+                    minY: controller.records.isNotEmpty
+                        ? controller.records
+                                .map((record) => record.weight)
+                                .reduce((a, b) => a < b ? a : b) -
+                            10
+                        : 0, // Liste boşken kullanılacak varsayılan değer
                     maxY: controller.filteredRecords.isNotEmpty
                         ? controller.filteredRecords
                                 .map((r) => r.weight)
@@ -180,13 +182,13 @@ Obx lineGraph(BuildContext context) {
                         isCurved: false,
                         gradient: LinearGradient(
                           colors: [
-                            Theme.of(context).primaryColor.withOpacity(0.5),
-                            Theme.of(context).primaryColor.withOpacity(1)
+                            Get.theme.primaryColor.withOpacity(0.5),
+                            Get.theme.primaryColor.withOpacity(1)
                           ],
                         ),
                         preventCurveOverShooting: true,
                         isStepLineChart: false,
-                        color: Theme.of(context).cardColor,
+                        color: Get.theme.cardColor,
                         barWidth: 2,
                         isStrokeCapRound: true,
                         dotData: const FlDotData(
@@ -197,13 +199,13 @@ Obx lineGraph(BuildContext context) {
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [
-                              Theme.of(context).primaryColor.withOpacity(0.3),
+                              Get.theme.primaryColor.withOpacity(0.3),
                               Colors.transparent
                             ],
                           ),
                           show: true,
                           color:
-                              Theme.of(context).primaryColor.withOpacity(0.5),
+                              Get.theme.primaryColor.withOpacity(0.5),
                         ),
                       ),
                     ],
@@ -216,7 +218,6 @@ Obx lineGraph(BuildContext context) {
               height: 40,
               child: Obx(
                 () => customToggleButton(
-                  context: context,
                   isSelected: [
                     controller.selecedAllTimeGraph.value,
                     !controller.selecedAllTimeGraph.value

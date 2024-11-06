@@ -6,7 +6,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/controllers/bmi_controller.dart';
-import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_info.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -19,26 +18,26 @@ class BmiScreen extends GetView<BMIController> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         title: Text("Calculate BMI".tr,
-            style: Theme.of(context).textTheme.titleLarge),
+            style: Get.theme.textTheme.titleLarge),
         centerTitle: true,
       ),
       body: Padding(
         padding: context.paddingLarge,
         child: Column(
           children: [
-            inputHeight(context),
+            inputHeight(),
             const Divider(),
-            inputWeight(context),
-            outputRadialgauge(context),
+            inputWeight(),
+            outputRadialgauge(),
           ],
         ),
       ),
-      floatingActionButton: floatingButtonBmi(context),
+      floatingActionButton: floatingButtonBmi(),
     );
   }
 
   // *** BMI INFO FLOATING BUTTON ***
-  Padding floatingButtonBmi(BuildContext context) {
+  Padding floatingButtonBmi() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
       child: CustomFloatingActionButton(
@@ -52,7 +51,7 @@ class BmiScreen extends GetView<BMIController> {
   }
 
   // *** ÖLÇÜM BARI ***
-  Widget outputRadialgauge(BuildContext context) {
+  Widget outputRadialgauge() {
     return Expanded(
       flex: 3,
       child: Obx(
@@ -131,21 +130,21 @@ class BmiScreen extends GetView<BMIController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('${"BMI: ".tr} ${bmiValue.toStringAsFixed(1)}',
-                        style: Theme.of(context).textTheme.bodyLarge),
+                        style: Get.theme.textTheme.bodyLarge),
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 5),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Theme.of(context).canvasColor,
+                        color: Get.theme.canvasColor,
                       ),
                       child: AnimatedSwitcher(
                         duration: const Duration(milliseconds: 500),
                         child: AutoSizeText(
                           message,
                           key: UniqueKey(),
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: Get.theme.textTheme.bodyMedium,
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -162,7 +161,7 @@ class BmiScreen extends GetView<BMIController> {
   }
 
   // *** KİLO GİRİŞİ ***
-  Widget inputWeight(BuildContext context) {
+  Widget inputWeight() {
     return Expanded(
       child: Stack(
         alignment: Alignment.centerLeft,
@@ -174,8 +173,8 @@ class BmiScreen extends GetView<BMIController> {
               Obx(
                 () {
                   return DecimalNumberPicker(
-                    selectedTextStyle: Theme.of(context).textTheme.displaySmall,
-                    textStyle: Theme.of(context).textTheme.bodySmall,
+                    selectedTextStyle: Get.theme.textTheme.displaySmall,
+                    textStyle: Get.theme.textTheme.bodySmall,
                     itemCount: 3,
                     itemWidth: Get.size.width * 0.14,
                     itemHeight: Get.size.height * 0.05,
@@ -189,7 +188,7 @@ class BmiScreen extends GetView<BMIController> {
                   );
                 },
               ),
-              Text("kg".tr, style: Theme.of(context).textTheme.labelSmall),
+              Text("kg".tr, style: Get.theme.textTheme.labelSmall),
             ],
           ),
         ],
@@ -198,7 +197,7 @@ class BmiScreen extends GetView<BMIController> {
   }
 
   // *** BOY GİRİŞİ ***
-  Widget inputHeight(BuildContext context) {
+  Widget inputHeight() {
     return Expanded(
       child: Stack(
         alignment: Alignment.centerLeft,
@@ -209,8 +208,8 @@ class BmiScreen extends GetView<BMIController> {
             children: [
               Obx(
                 () => DecimalNumberPicker(
-                  selectedTextStyle: Theme.of(context).textTheme.displaySmall,
-                  textStyle: Theme.of(context).textTheme.bodySmall,
+                  selectedTextStyle: Get.theme.textTheme.displaySmall,
+                  textStyle: Get.theme.textTheme.bodySmall,
                   itemCount: 3,
                   itemWidth: Get.size.width * 0.14,
                   itemHeight: Get.size.height * 0.05,
@@ -223,7 +222,7 @@ class BmiScreen extends GetView<BMIController> {
                   },
                 ),
               ),
-              Text("cm".tr, style: Theme.of(context).textTheme.labelSmall),
+              Text("cm".tr, style: Get.theme.textTheme.labelSmall),
             ],
           ),
         ],

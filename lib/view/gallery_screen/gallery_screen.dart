@@ -88,7 +88,7 @@ class GalleryScreen extends GetView<Controller> {
                           Text(
                             DateFormat("d MMMM, y", Get.locale.toString())
                                 .format(rec.dateTime),
-                            style: Theme.of(context).textTheme.bodySmall,
+                            style: Get.theme.textTheme.bodySmall,
                             textAlign: TextAlign.center,
                           ),
                         ],
@@ -139,7 +139,7 @@ class GalleryScreen extends GetView<Controller> {
               children: [
                 Text(
                   "You don't have any photos yet !".tr,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Get.theme.textTheme.bodyMedium,
                 ),
               ],
             ),

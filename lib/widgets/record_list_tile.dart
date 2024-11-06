@@ -22,16 +22,16 @@ class RecordListTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             gradient: LinearGradient(
               colors: [
-                Theme.of(context).canvasColor.withOpacity(0.1),
-                Theme.of(context).cardColor.withOpacity(0.9),
+                Get.theme.canvasColor.withOpacity(0.1),
+                Get.theme.cardColor.withOpacity(0.9),
               ],
             ),
           ),
           child: Center(
             child: ListTile(
               contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-              leading: customLeading(context),
-              trailing: customTrailing(context),
+              leading: customLeading(),
+              trailing: customTrailing(),
             ),
           ),
         ),
@@ -65,7 +65,7 @@ class RecordListTile extends StatelessWidget {
   }
 
   // *** LEDAING ***
-  Widget customLeading(BuildContext context) {
+  Widget customLeading() {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -77,14 +77,14 @@ class RecordListTile extends StatelessWidget {
         const SizedBox(width: 5),
         Text(
           DateFormat("d MMM, yy", Get.locale.toString()).format(rec.dateTime),
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Get.theme.textTheme.bodyMedium,
         ),
       ],
     );
   }
 
   // *** TRAILING ***
-  Widget customTrailing(BuildContext context) {
+  Widget customTrailing() {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -93,7 +93,7 @@ class RecordListTile extends StatelessWidget {
               "${rec.weight}_${rec.dateTime.toIso8601String()}_weight", // Tarih ve kilo kombinasyonu
           child: Text(
             "${rec.weight} ${"kg".tr}",
-            style: Theme.of(context).textTheme.labelSmall,
+            style: Get.theme.textTheme.labelSmall,
           ),
         ),
         const SizedBox(width: 10),

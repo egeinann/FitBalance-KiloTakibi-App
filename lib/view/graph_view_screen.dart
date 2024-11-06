@@ -49,7 +49,7 @@ class GraphViewScreen extends GetView<Controller> {
                               "You must pay to see graphs and track your progress in more detail."
                                   .tr,
                               textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyMedium,
+                              style: Get.theme.textTheme.bodyMedium,
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -94,8 +94,8 @@ class GraphViewScreen extends GetView<Controller> {
                   controller.onPageChanged(index);
                 },
                 children: [
-                  lineGraph.lineGraph(context), // lineGraph ile erişim
-                  barGraph.barGraph(context), // barGraph ile erişim
+                  lineGraph.lineGraph(), // lineGraph ile erişim
+                  barGraph.barGraph(), // barGraph ile erişim
                 ],
               );
             } else {
@@ -120,7 +120,7 @@ class GraphViewScreen extends GetView<Controller> {
                         children: [
                           Text(
                             "After 1 week of analysis, the graphs appear!".tr,
-                            style: Theme.of(context).textTheme.bodyMedium,
+                            style: Get.theme.textTheme.bodyMedium,
                           ),
                         ],
                       ),

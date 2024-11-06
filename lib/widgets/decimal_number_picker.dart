@@ -17,7 +17,7 @@ class Numbers extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Theme.of(context).canvasColor,
+        color: Get.theme.canvasColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -25,8 +25,8 @@ class Numbers extends StatelessWidget {
         children: [
           DecimalNumberPicker(
             decimalPlaces: 1,
-            selectedTextStyle: Theme.of(context).textTheme.displaySmall,
-            textStyle: Theme.of(context).textTheme.bodySmall,
+            selectedTextStyle: Get.theme.textTheme.displaySmall,
+            textStyle: Get.theme.textTheme.bodySmall,
             itemCount: 3,
             itemWidth: Get.size.width * 0.14,
             itemHeight: Get.size.height * 0.06,
@@ -52,7 +52,7 @@ class Numbers extends StatelessWidget {
 //             borderRadius: BorderRadius.circular(10),
 //             border: Border.all(
 //               width: 3,
-//               color: Theme.of(context).primaryColor.withOpacity(0.3),
+//               color: Get.theme.primaryColor.withOpacity(0.3),
 //             ),
 //           ),
 //         ),

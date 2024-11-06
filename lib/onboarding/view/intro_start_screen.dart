@@ -27,13 +27,13 @@ class IntroStartScreen extends StatelessWidget {
                   AutoSizeText(
                     "Welcome".tr,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Get.theme.textTheme.titleLarge,
                   ),
                   SizedBox(height: Get.size.height * 0.02),
                   AutoSizeText(
                     'Easily record your weight and achieve your goals!'.tr,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: Get.theme.textTheme.bodyLarge,
                   ),
                 ],
               ),

@@ -22,7 +22,7 @@ class IntroNameScreen extends GetView<OnboardingController> {
                 children: [
                   Text(
                     'Enter your name'.tr,
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Get.theme.textTheme.titleLarge,
                   ),
                   const SizedBox(height: 20),
                   Padding(

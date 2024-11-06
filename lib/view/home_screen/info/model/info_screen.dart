@@ -28,7 +28,7 @@ class InfoScreen extends GetView<InfoController> {
           centerTitle: true,
           title: Text(
             "Healthy Weight Control".tr,
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Get.theme.textTheme.bodyLarge,
           ),
         ),
         body: Center(
@@ -58,8 +58,8 @@ class InfoScreen extends GetView<InfoController> {
                     children: [
                       SmoothPageIndicator(
                         effect: WormEffect(
-                          dotColor: Theme.of(context).cardColor,
-                          activeDotColor: Theme.of(context).primaryColor,
+                          dotColor: Get.theme.cardColor,
+                          activeDotColor: Get.theme.primaryColor,
                         ),
                         controller: controller.pageController,
                         count: 4,

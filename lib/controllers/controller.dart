@@ -24,7 +24,8 @@ class Controller extends GetxController {
   var targetWeight = 70.0.obs; // hedef kilo
   final RxString temporaryUserName =
       ''.obs; // profil ekranı için name değiştirme
-
+  final ScrollController scrollController =
+      ScrollController(); // HİSTORY SCROLL CONTROLLER
   // *** NAME değişkenini TUTAN FONK ***
   void setUserName(String name) {
     userName.value = name;
@@ -62,8 +63,25 @@ class Controller extends GetxController {
       records.add(record);
       listKey.currentState?.insertItem(records.length - 1);
     }
+
     // İşlem sonrası grafikleri güncelle
     updateFilteredRecords();
+
+    // Yeni eklenen kayıttan sonra en alta kaydırma işlemi
+    scrollToBottom();
+  }
+
+  // ***YENİ KAYIT EKLENDİĞİND EN ALTA KAYDIR ***
+  void scrollToBottom() {
+    Future.delayed(const Duration(milliseconds: 100), () {
+      if (scrollController.hasClients) {
+        scrollController.animateTo(
+          scrollController.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeOut,
+        );
+      }
+    });
   }
 
 // *** RECORD SİLME İŞLEMİ ***

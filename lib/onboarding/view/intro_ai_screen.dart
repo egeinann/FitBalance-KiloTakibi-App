@@ -27,14 +27,14 @@ class IntroAiScreen extends StatelessWidget {
                   AutoSizeText(
                     'Artificial Intelligence Model'.tr,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Get.theme.textTheme.titleLarge,
                   ),
                   SizedBox(height: Get.size.height * 0.02),
                   AutoSizeText(
                     'Embark on a healthy journey with an AI powered chatbot, try premium!'
                         .tr,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: Get.theme.textTheme.bodyLarge,
                   ),
                 ],
               ),

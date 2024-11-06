@@ -12,7 +12,7 @@ class DataManagementScreen extends StatelessWidget {
         scrolledUnderElevation: 0,
         title: Text(
           'Data Management'.tr,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Get.theme.textTheme.titleLarge,
         ),
         centerTitle: true,
       ),
@@ -24,13 +24,13 @@ class DataManagementScreen extends StatelessWidget {
             children: [
               FloatingActionButton.extended(
                 heroTag: "datamanagement1",
-                backgroundColor: Theme.of(context).primaryColor,
-                foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-                splashColor: Theme.of(context).scaffoldBackgroundColor,
+                backgroundColor: Get.theme.primaryColor,
+                foregroundColor: Get.theme.scaffoldBackgroundColor,
+                splashColor: Get.theme.scaffoldBackgroundColor,
                 elevation: 10,
                 onPressed: () async {
                   // await backupData();
-                  // ScaffoldMessenger.of(context).showSnackBar(
+                  // ScaffoldMessenger.of.showSnackBar(
                   //   SnackBar(content: Text("Data backed up successfully!")),
                   // );
                 },
@@ -47,13 +47,13 @@ class DataManagementScreen extends StatelessWidget {
               const SizedBox(height: 15),
               FloatingActionButton.extended(
                 heroTag: "datamanagement2",
-                backgroundColor: Theme.of(context).primaryColor,
-                foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-                splashColor: Theme.of(context).scaffoldBackgroundColor,
+                backgroundColor: Get.theme.primaryColor,
+                foregroundColor: Get.theme.scaffoldBackgroundColor,
+                splashColor: Get.theme.scaffoldBackgroundColor,
                 elevation: 10,
                 onPressed: () async {
                   // await restoreData();
-                  // ScaffoldMessenger.of(context).showSnackBar(
+                  // ScaffoldMessenger.of.showSnackBar(
                   //   SnackBar(content: Text("Data restored successfully!")),
                   // );
                 },
@@ -70,12 +70,12 @@ class DataManagementScreen extends StatelessWidget {
               const SizedBox(height: 15),
               FloatingActionButton.extended(
                 heroTag: "datamanagement3",
-                backgroundColor: Theme.of(context).primaryColor,
-                foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-                splashColor: Theme.of(context).scaffoldBackgroundColor,
+                backgroundColor: Get.theme.primaryColor,
+                foregroundColor: Get.theme.scaffoldBackgroundColor,
+                splashColor: Get.theme.scaffoldBackgroundColor,
                 elevation: 10,
                 onPressed: () {
-                  // _showWipeDataDialog(context);
+                  // _showWipeDataDialog;
                 },
                 label: Text(
                   "Wipe Data".tr,
@@ -136,17 +136,17 @@ class DataManagementScreen extends StatelessWidget {
   //           TextButton(
   //             child: Text("Cancel"),
   //             onPressed: () {
-  //               Navigator.of(context).pop();
+  //               Navigator.of.pop();
   //             },
   //           ),
   //           TextButton(
   //             child: Text("Delete"),
   //             onPressed: () async {
   //               await wipeData();
-  //               ScaffoldMessenger.of(context).showSnackBar(
+  //               ScaffoldMessenger.of.showSnackBar(
   //                 SnackBar(content: Text("All data wiped!")),
   //               );
-  //               Navigator.of(context).pop();
+  //               Navigator.of.pop();
   //             },
   //           ),
   //         ],

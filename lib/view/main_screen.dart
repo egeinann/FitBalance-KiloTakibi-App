@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
-import 'package:kilo_takibi_uyg/view/chat_screen.dart';
-import 'package:kilo_takibi_uyg/view/settings_screen/settings_screen.dart';
 import 'package:kilo_takibi_uyg/widgets/navigation_bar.dart';
 
 class MainScreen extends GetView<Controller> {

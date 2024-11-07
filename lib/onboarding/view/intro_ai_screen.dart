@@ -1,6 +1,6 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:lottie/lottie.dart';
 
 class IntroAiScreen extends StatelessWidget {
@@ -24,17 +24,18 @@ class IntroAiScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  AutoSizeText(
-                    'Artificial Intelligence Model'.tr,
-                    textAlign: TextAlign.center,
-                    style: Get.theme.textTheme.titleLarge,
+                  textColorizeAnimated(
+                    text: 'Artificial Intelligence Model'.tr,
+                    textStyle: Get.theme.textTheme.titleLarge!,
+                    isRepeat: false,
                   ),
                   SizedBox(height: Get.size.height * 0.02),
-                  AutoSizeText(
-                    'Embark on a healthy journey with an AI powered chatbot, try premium!'
-                        .tr,
-                    textAlign: TextAlign.center,
-                    style: Get.theme.textTheme.bodyLarge,
+                  textTyperAnimated(
+                    text:
+                        'Embark on a healthy journey with an AI powered chatbot, try premium!'
+                            .tr,
+                    textStyle: Get.theme.textTheme.bodyLarge!,
+                    isRepeat: false,
                   ),
                 ],
               ),

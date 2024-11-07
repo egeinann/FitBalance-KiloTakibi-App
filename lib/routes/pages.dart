@@ -124,8 +124,8 @@ abstract class AppPages {
     GetPage(
         name: Routes.changenamescreen,
         page: () => ChangeNameScreen(),
-        transition: Transition.rightToLeftWithFade,
-        binding: OnBoardingBinding()),
+      transition: Transition.rightToLeftWithFade,
+    ),
     GetPage(
       name: Routes.changetargetweightscreen,
       page: () => ChangeTargetWeightScreen(),

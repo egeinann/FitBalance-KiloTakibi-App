@@ -9,9 +9,7 @@ import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
 class ProfileScreen extends GetView<Controller> {
   ProfileScreen({super.key});
-
-  final SettingsController _settingscontroller = Get.find();
-
+  final SettingsController _settingsController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +20,112 @@ class ProfileScreen extends GetView<Controller> {
             children: [
               genderImage(),
               const SizedBox(height: 20),
-              nameContainer(),
-              const SizedBox(height: 5),
-              targetWeightContainer(),
-              const SizedBox(height: 5),
-              premiumContainer(),
+              Column(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routes.changenamescreen);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Get.theme.cardColor,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("NAME".tr,
+                                style: Get.theme.textTheme.bodySmall),
+                            Row(
+                              children: [
+                                Obx(
+                                  () => Text(
+                                    controller.userName.value,
+                                    style: Get.theme.textTheme.labelSmall,
+                                  ),
+                                ),
+                                const SizedBox(width: 5),
+                                const Icon(Ionicons.chevron_forward),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routes.changetargetweightscreen);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Get.theme.cardColor,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("TARGET WEIGHT".tr,
+                                style: Get.theme.textTheme.bodySmall),
+                            Row(
+                              children: [
+                                Obx(
+                                  () => Text(
+                                    "${controller.targetWeight.value} ${"kg".tr}",
+                                    style: Get.theme.textTheme.labelSmall,
+                                  ),
+                                ),
+                                const SizedBox(width: 5),
+                                const Icon(Ionicons.chevron_forward),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routes.upgradepremiumscreen);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Get.theme.cardColor,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("PREMIUM MODE".tr,
+                                style: Get.theme.textTheme.bodySmall),
+                            Row(
+                              children: [
+                                _settingsController.activePremium.value == true
+                                    ? Icon(Ionicons.rocket,
+                                        color: Get.theme.primaryColor)
+                                    : const Icon(
+                                        Ionicons.rocket,
+                                        color: Colors.grey,
+                                      ),
+                                const SizedBox(width: 5),
+                                const Icon(Ionicons.chevron_forward),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               SizedBox(height: Get.size.height * 0.1)
             ],
           ),
@@ -44,10 +143,10 @@ class ProfileScreen extends GetView<Controller> {
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 300), // Animasyon süresi
             child: Image(
-              key: ValueKey<bool>(_settingscontroller
+              key: ValueKey<bool>(_settingsController
                   .isMale.value), // Animasyonu tetiklemek için bir anahtar
               image: AssetImage(
-                _settingscontroller.isMale.value
+                _settingsController.isMale.value
                     ? "assets/images/profile/male.png"
                     : "assets/images/profile/female.png",
               ),
@@ -59,11 +158,11 @@ class ProfileScreen extends GetView<Controller> {
           // TOGGLEBUTTONLAR
           customToggleButton(
             isSelected: [
-              _settingscontroller.isMale.value,
-              !_settingscontroller.isMale.value
+              _settingsController.isMale.value,
+              !_settingsController.isMale.value
             ],
             onPressed: (int index) {
-              _settingscontroller.toggleGender(index);
+              _settingsController.toggleGender(index);
             },
             children: [
               Padding(
@@ -87,117 +186,6 @@ class ProfileScreen extends GetView<Controller> {
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  // *** NAME CONTAINER ***
-  Widget nameContainer() {
-    return GestureDetector(
-      onTap: () {
-        Get.toNamed(Routes.changenamescreen);
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Get.theme.cardColor,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("NAME".tr, style: Get.theme.textTheme.bodySmall),
-              Row(
-                children: [
-                  Obx(
-                    () => Text(
-                      "${controller.userName}",
-                      style: Get.theme.textTheme.labelSmall,
-                    ),
-                  ),
-                  const SizedBox(width: 5),
-                  const Icon(Ionicons.chevron_forward),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  // *** TARGETWEIGHT CONTAINER ***
-  Widget targetWeightContainer() {
-    return GestureDetector(
-      onTap: () {
-        Get.toNamed(Routes.changetargetweightscreen);
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Get.theme.cardColor,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("TARGET WEIGHT".tr,
-                  style: Get.theme.textTheme.bodySmall),
-              Row(
-                children: [
-                  Obx(
-                    () => Text(
-                      "${controller.targetWeight.value} ${"kg".tr}",
-                      style: Get.theme.textTheme.labelSmall,
-                    ),
-                  ),
-                  const SizedBox(width: 5),
-                  const Icon(Ionicons.chevron_forward),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  // *** PREMIUM CONTAINER ***
-  Widget premiumContainer() {
-    return GestureDetector(
-      onTap: () {
-        Get.toNamed(Routes.upgradepremiumscreen);
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Get.theme.cardColor,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("PREMIUM MODE".tr,
-                  style: Get.theme.textTheme.bodySmall),
-              Row(
-                children: [
-                  _settingscontroller.activePremium.value == true
-                      ? Icon(Ionicons.rocket,
-                          color: Get.theme.primaryColor)
-                      : const Icon(
-                          Ionicons.rocket,
-                          color: Colors.grey,
-                        ),
-                  const SizedBox(width: 5),
-                  const Icon(Ionicons.chevron_forward),
-                ],
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

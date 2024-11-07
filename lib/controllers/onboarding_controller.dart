@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 
 class OnboardingController extends GetxController {
-  var currentIndex = 0.obs; // 0'ınıc indexten başla
-  var onLastPage = false.obs; // son sayfada mıyız?
+  final PageController pageController = PageController();
+  final Controller _controller = Get.find();
+  
+  var currentIndex = 0.obs;
+  var onLastPage = false.obs;
+  var isOnTargetWeightPage =
+      false.obs; // TargetWeight sayfasına geldiğinde animasyonu tetiklemek için
 
-  PageController pageController = PageController();
-  TextEditingController nameController = TextEditingController();
-
-  // *** son sayfa mı ***
+  // Son sayfa kontrolü
   void lastPage(int index) {
     onLastPage.value = (index == 5);
+    isOnTargetWeightPage.value =
+        (index == 5); // TargetWeight sayfasında olup olmadığını kontrol et
   }
 
-  // *** SONRAKİ SAYFAYA ADIMA GEÇİŞ ***
+  // Sonraki sayfaya geçiş
   void goToNextPage() {
     Get.focusScope?.unfocus();
+    
     if (onLastPage.value) {
-      // Son sayfadaysanız
-      if (nameController.text.isEmpty) {
+      // Son sayfadaysak, ismi kontrol et
+      if (_controller.nameController.text.isEmpty) {
         SnackbarHelper.showSnackbar(
           title: "Enter your name !".tr,
           message: "This section cannot be left blank".tr,
@@ -29,20 +35,20 @@ class OnboardingController extends GetxController {
           duration: const Duration(seconds: 2),
           icon: const Icon(Ionicons.person),
         );
+
+        // İsim ekranına geri dön
         pageController.animateToPage(
           4,
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
-        ); // Geçiş animasyonu ile NameScreen'e dön
+        );
       } else {
-        // Geçerli kullanıcı adı ile MainScreen'e geçiş
-        Future.delayed(const Duration(milliseconds: 300), () {
-          Get.offAllNamed(Routes.mainscreen);
-        });
+        // Geçerli kullanıcı adı ile ana ekrana geçiş
+        Get.offAllNamed(Routes.mainscreen);
         resetController();
       }
     } else {
-      // Son sayfada değilse bir sonraki sayfaya geçiş
+      // Son sayfa değilse bir sonraki sayfaya geçiş
       pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
@@ -50,10 +56,16 @@ class OnboardingController extends GetxController {
     }
   }
 
-  // *** CONTROLLER SIFIRLAMA ***
+  // Controller sıfırlama
   void resetController() {
-    pageController.dispose();
-    pageController = PageController();
     onLastPage.value = false;
+    currentIndex.value = 0;
+    isOnTargetWeightPage.value = false;
+  }
+
+  @override
+  void onClose() {
+    pageController.dispose();
+    super.onClose();
   }
 }

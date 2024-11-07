@@ -1,6 +1,6 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:lottie/lottie.dart';
 
 class IntroPhotoGalleryScreen extends StatelessWidget {
@@ -25,14 +25,16 @@ class IntroPhotoGalleryScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  AutoSizeText('Photo & Gallery'.tr,
-                      textAlign: TextAlign.center,
-                      style: Get.theme.textTheme.titleLarge),
+                  textColorizeAnimated(
+                    text: 'Photo & Gallery'.tr,
+                    textStyle: Get.theme.textTheme.titleLarge!,
+                    isRepeat: false,
+                  ),
                   SizedBox(height: Get.size.height * 0.02),
-                  AutoSizeText(
-                    'Document your changes with photos!'.tr,
-                    textAlign: TextAlign.center,
-                    style: Get.theme.textTheme.bodyLarge,
+                  textTyperAnimated(
+                    text: 'Document your changes with photos!'.tr,
+                    textStyle: Get.theme.textTheme.bodyLarge!,
+                    isRepeat: false,
                   ),
                 ],
               ),

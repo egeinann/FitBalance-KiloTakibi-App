@@ -6,7 +6,7 @@ class LightColors {
   static const Color colorMedium = Color(0xFFF6F5F2);
   static const Color colorPrimary = Color(0xFFEB5B00);
   static const Color colorText = Color.fromARGB(255, 51, 51, 51);
-  static const Color colorBottomBar = Color(0xFF7F8487);
+  static const Color colorPrimary2 = Color.fromARGB(255, 220, 165, 55);
   static const Color colorBottomBarIcons = Color.fromARGB(255, 49, 19, 0);
 }
 
@@ -16,6 +16,6 @@ class DarkColors {
   static const Color colorMedium = Color(0xFF4F4A45);
   static const Color colorPrimary = Color.fromARGB(255, 255, 113, 24);
   static const Color colorText = Color.fromARGB(255, 255, 245, 241);
-  static const Color colorBottomBar = Color(0xFF2D3250);
+  static const Color colorPrimary2 = Color(0xFFFABC3F);
   static const Color colorBottomBarIcons = Color.fromARGB(255, 255, 245, 223);
 }

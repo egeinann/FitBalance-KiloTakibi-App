@@ -34,8 +34,8 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   Get.lazyPut(() => SettingsController());
-  Get.lazyPut(() => Controller());
-  runApp(MyApp());
+  Get.put(Controller());
+  runApp(const MyApp());
 }
 
 class MyApp extends GetView<SettingsController> {
@@ -52,7 +52,7 @@ class MyApp extends GetView<SettingsController> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        initialRoute: Routes.mainscreen, // app başlangıç sayfası
+        initialRoute: Routes.onboardingscreen, // app başlangıç sayfası
         getPages: AppPages.pages, // app sayfalar listesi
         supportedLocales: Languages.languageList, // Desteklenen diller
         locale: Get.deviceLocale, // Cihazın dilini al

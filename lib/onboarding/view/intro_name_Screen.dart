@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
-import '../../controllers/onboarding_controller.dart';
 
-class IntroNameScreen extends GetView<OnboardingController> {
+class IntroNameScreen extends GetView<Controller> {
   IntroNameScreen({super.key});
-  final Controller _controller = Get.find();
   @override
   Widget build(BuildContext context) {
     final FocusNode _focusNode = FocusNode(); // FocusNode KASMA SORUNU İÇİN
@@ -20,9 +19,10 @@ class IntroNameScreen extends GetView<OnboardingController> {
             children: [
               Column(
                 children: [
-                  Text(
-                    'Enter your name'.tr,
-                    style: Get.theme.textTheme.titleLarge,
+                  textColorizeAnimated(
+                    text: 'Enter your name'.tr,
+                    textStyle: Get.theme.textTheme.titleLarge!,
+                    isRepeat: false,
                   ),
                   const SizedBox(height: 20),
                   Padding(
@@ -33,7 +33,7 @@ class IntroNameScreen extends GetView<OnboardingController> {
                       labelText: "Your name".tr,
                       focusNode: _focusNode, // FocusNode kullanılıyor
                       onChanged: (value) {
-                        _controller.setUserName(value);
+                        controller.setUserName(value);
                       },
                       titleIcon: Icon(
                         Ionicons.person,

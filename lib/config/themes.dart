@@ -50,7 +50,7 @@ class ThemeClass {
       ),
     ),
     primaryColor: LightColors.colorPrimary,
-    focusColor: LightColors.colorBottomBar,
+    focusColor: LightColors.colorPrimary2,
     indicatorColor: LightColors.colorBottomBarIcons,
   );
 
@@ -102,7 +102,7 @@ class ThemeClass {
       ),
     ),
     primaryColor: DarkColors.colorPrimary,
-    focusColor: DarkColors.colorBottomBar,
+    focusColor: DarkColors.colorPrimary2,
     indicatorColor: DarkColors.colorBottomBarIcons,
   );
 }

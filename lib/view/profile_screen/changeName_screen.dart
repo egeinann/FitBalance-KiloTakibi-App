@@ -9,13 +9,14 @@ import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/controllers/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
-class ChangeNameScreen extends GetView<OnboardingController> {
+class ChangeNameScreen extends GetView<Controller> {
   ChangeNameScreen({super.key});
 
-  final SettingsController _settingscontroller = Get.find();
-  final Controller _controller = Get.find();
+  final SettingsController _settingsController = Get.find();
+
   @override
   Widget build(BuildContext context) {
+    controller.temporaryUserName.value = controller.userName.value;
     return Scaffold(
       backgroundColor: Get.theme.scaffoldBackgroundColor,
       appBar: AppBar(
@@ -42,7 +43,7 @@ class ChangeNameScreen extends GetView<OnboardingController> {
                 child: Obx(
                   () => Image(
                     image: AssetImage(
-                      _settingscontroller.isMale
+                      _settingsController.isMale
                               .value // Cinsiyet durumu burada kontrol ediliyor
                           ? "assets/images/name/name_male.png"
                           : "assets/images/name/name_female.png",
@@ -61,10 +62,13 @@ class ChangeNameScreen extends GetView<OnboardingController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CustomTextField(
-                      controller: controller.nameController,
+                      controller: TextEditingController(
+                          text: controller.temporaryUserName
+                              .value), // TextEditingController'ı burada kullanıyoruz
                       labelText: "Your name".tr,
                       onChanged: (value) {
-                        _controller.temporaryUserName.value = value;
+                        // nameController'dan gelen değeri güncelliyoruz
+                        controller.temporaryUserName.value = value;
                       },
                       titleIcon: Icon(
                         Ionicons.person,
@@ -94,7 +98,7 @@ class ChangeNameScreen extends GetView<OnboardingController> {
 
   // *** NEW NICKNAME BUTTON SAVE ***
   void changeNameSave() {
-    if (_controller.temporaryUserName.value.isEmpty) {
+    if (controller.temporaryUserName.value.isEmpty) {
       SnackbarHelper.showSnackbar(
         title: "Name ?".tr,
         message: "Please enter your name".tr,
@@ -103,12 +107,12 @@ class ChangeNameScreen extends GetView<OnboardingController> {
         icon: const Icon(Ionicons.cloud_offline),
       );
     } else {
-      _controller.setUserName(_controller.temporaryUserName.value);
+      controller.setUserName(controller.temporaryUserName.value);
       Get.focusScope?.unfocus();
       Get.back();
       SnackbarHelper.showSnackbar(
         title: "You changed your name".tr,
-        message: "${_controller.userName}",
+        message: "${controller.userName}",
         backgroundColor: Colors.green,
         duration: const Duration(milliseconds: 1500),
         icon: const Icon(Ionicons.person),

@@ -167,20 +167,26 @@ class AddScreen extends GetView<Controller> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("YOUR WEIGHT".tr, style: Get.theme.textTheme.bodyMedium),
-                Obx(() {
-                  return Text(
-                    "${controller.selectedValue.value} ${"kg".tr}",
-                    style: Get.theme.textTheme.displaySmall,
-                  );
-                }),
-              ],
+            flex: 2,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("YOUR WEIGHT".tr, style: Get.theme.textTheme.bodyMedium),
+                  Obx(
+                    () {
+                      return Text(
+                        "${controller.selectedValue.value} ${"kg".tr}",
+                        style: Get.theme.textTheme.displaySmall,
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
+            flex: 3,
             child: Obx(
               () => Numbers(
                 value: controller.selectedValue.value,

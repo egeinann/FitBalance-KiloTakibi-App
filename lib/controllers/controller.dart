@@ -8,7 +8,8 @@ class Controller extends GetxController {
   RxBool isLoading = false.obs; // loading lottie için
   RxList<Record> filteredRecords = <Record>[]
       .obs; // filtrelenmiş grafik zaman dilimi kayıtlarını tutan liste
-
+  final ScrollController scrollController =
+      ScrollController(); // HİSTORY SCROLL CONTROLLER
   final GlobalKey<AnimatedListState> listKey =
       GlobalKey<AnimatedListState>(); // liste animasyonu için
   var photoUrl = Rxn<String>(); // Reaktif bir değişken
@@ -20,13 +21,14 @@ class Controller extends GetxController {
   var selectedValue = 40.0.obs; // Seçilen ağırlık
   var selectedDate = DateTime.now().obs; // Seçilen tarih
   var note = ''.obs; // Not
-  var userName = ''.obs; // kullanıcı adı
-  var targetWeight = 70.0.obs; // hedef kilo
-  final RxString temporaryUserName =
-      ''.obs; // profil ekranı için name değiştirme
-  final ScrollController scrollController =
-      ScrollController(); // HİSTORY SCROLL CONTROLLER
-  // *** NAME değişkenini TUTAN FONK ***
+  
+  final TextEditingController nameController = TextEditingController();
+  var userName = ''.obs;
+  var targetWeight = 70.0.obs;
+  final RxString temporaryUserName = ''.obs;
+  final RxDouble temporaryTargetWeight = 70.0.obs;
+
+  // NAME TUTAN FONK ***
   void setUserName(String name) {
     userName.value = name;
   }
@@ -260,7 +262,6 @@ class Controller extends GetxController {
     }
   }
 
-  // *** LINEGRAPH ZAMANDİLİMİ TOGGLE BUTTONLARIN DEĞİŞİMİ ***
   // *** LINEGRAPH ZAMANDİLİMİ TOGGLE BUTTONLARIN DEĞİŞİMİ ***
   void timeUnit(int index) {
     selecedAllTimeGraph.value = !selecedAllTimeGraph.value;

@@ -44,6 +44,9 @@ class HomeScreen extends GetView<Controller> {
               Column(
                 children: [
                   const SizedBox(height: 30),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   kcalAnimatedContainer(),
                   const SizedBox(height: 10),
                   balanceAnimatedContainer(),
@@ -86,7 +89,7 @@ class HomeScreen extends GetView<Controller> {
                                     ),
                                   ),
                                   Expanded(
-                                    child: const Image(
+                                    child: Image(
                                       image: AssetImage(
                                           "assets/images/mainScreen/home_premium_ai.png"),
                                       fit: BoxFit.scaleDown,
@@ -107,10 +110,13 @@ class HomeScreen extends GetView<Controller> {
           ),
         ),
       ),
-      floatingActionButton: CustomFloatingActionButton(
-        heroTag: "onboarding",
-        widget: const Icon(Icons.add),
-        onPressed: () => Get.toNamed(Routes.addscreen),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomCenter,
+        child: CustomFloatingActionButton(
+          heroTag: "onboarding",
+          widget: const Icon(Icons.add),
+          onPressed: () => Get.toNamed(Routes.addscreen),
+        ),
       ),
     );
   }
@@ -133,7 +139,7 @@ class HomeScreen extends GetView<Controller> {
                     decoration: BoxDecoration(
                       border: Border.all(
                         width: 2,
-                        color: Get.theme.primaryColor,
+                        color: Get.theme.focusColor,
                       ),
                       borderRadius: BorderRadius.circular(10),
                       color:
@@ -192,10 +198,31 @@ class HomeScreen extends GetView<Controller> {
         ),
         Padding(
           padding: const EdgeInsets.all(5),
-          child: CustomFloatingActionButton(
+          child: FloatingActionButton.extended(
+            extendedPadding: const EdgeInsets.symmetric(horizontal: 20),
+            backgroundColor: Get.theme.focusColor,
+            foregroundColor: Get.theme.scaffoldBackgroundColor,
+            splashColor: Get.theme.scaffoldBackgroundColor,
+            elevation: 10,
+            label: Row(
+              children: [
+                const Icon(Ionicons.rocket),
+                const SizedBox(width: 5),
+                Text(
+                  "Try premium",
+                  style: TextStyle(
+                    color: Get.theme.scaffoldBackgroundColor,
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
             heroTag: "HOME",
-            widget: const Icon(Ionicons.rocket),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.upgradepremiumscreen);
+            },
           ),
         ),
       ],

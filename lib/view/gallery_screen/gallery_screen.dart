@@ -95,7 +95,7 @@ class GalleryScreen extends GetView<Controller> {
                       ),
                     ],
                   ),
-                  CustomFloatingActionButton(
+                  customFloatingActionButton(
                     mini: true,
                     heroTag: "${rec.photoUrl}_goRecordScreenButton",
                     widget: const Icon(Ionicons.arrow_forward),

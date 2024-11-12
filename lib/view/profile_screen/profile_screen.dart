@@ -22,111 +22,143 @@ class ProfileScreen extends GetView<Controller> {
               const SizedBox(height: 20),
               Column(
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.changenamescreen);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Get.theme.cardColor,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("NAME".tr,
-                                style: Get.theme.textTheme.bodySmall),
-                            Row(
-                              children: [
-                                Obx(
-                                  () => Text(
-                                    controller.userName.value,
-                                    style: Get.theme.textTheme.labelSmall,
-                                  ),
-                                ),
-                                const SizedBox(width: 5),
-                                const Icon(Ionicons.chevron_forward),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  nameContainer(),
                   const SizedBox(height: 5),
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.changetargetweightscreen);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Get.theme.cardColor,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("TARGET WEIGHT".tr,
-                                style: Get.theme.textTheme.bodySmall),
-                            Row(
-                              children: [
-                                Obx(
-                                  () => Text(
-                                    "${controller.targetWeight.value} ${"kg".tr}",
-                                    style: Get.theme.textTheme.labelSmall,
-                                  ),
-                                ),
-                                const SizedBox(width: 5),
-                                const Icon(Ionicons.chevron_forward),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  targetContainer(),
                   const SizedBox(height: 5),
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.upgradepremiumscreen);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Get.theme.cardColor,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("PREMIUM MODE".tr,
-                                style: Get.theme.textTheme.bodySmall),
-                            Row(
-                              children: [
-                                _settingsController.activePremium.value == true
-                                    ? Icon(Ionicons.rocket,
-                                        color: Get.theme.primaryColor)
-                                    : const Icon(
-                                        Ionicons.rocket,
-                                        color: Colors.grey,
-                                      ),
-                                const SizedBox(width: 5),
-                                const Icon(Ionicons.chevron_forward),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  premiumContainer(),
                 ],
               ),
               SizedBox(height: Get.size.height * 0.1)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // *** PREMIUM CONTAINER ***
+  GestureDetector premiumContainer() {
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.upgradepremiumscreen);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Get.theme.cardColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  const Icon(Ionicons.ribbon),
+                  const SizedBox(width: 5),
+                  Text("PREMIUM MODE".tr, style: Get.theme.textTheme.bodySmall),
+                ],
+              ),
+              Row(
+                children: [
+                  Obx(
+                    () => Icon(
+                      Ionicons.rocket,
+                      color: _settingsController.hasPaid.value
+                          ? Get.theme.focusColor
+                          : Colors.grey,
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  const Icon(Ionicons.chevron_forward),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // *** TARGET WEIGHT CONTAINER ***
+  GestureDetector targetContainer() {
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.changetargetweightscreen);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Get.theme.cardColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  const Icon(Ionicons.golf),
+                  const SizedBox(width: 5),
+                  Text("TARGET WEIGHT".tr,
+                      style: Get.theme.textTheme.bodySmall),
+                ],
+              ),
+              Row(
+                children: [
+                  Obx(
+                    () => Text(
+                      "${controller.targetWeight.value} ${"kg".tr}",
+                      style: Get.theme.textTheme.labelSmall,
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  const Icon(Ionicons.chevron_forward),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // *** NAME CONTAINER ***
+  GestureDetector nameContainer() {
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.changenamescreen);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Get.theme.cardColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  const Icon(Ionicons.person),
+                  const SizedBox(width: 5),
+                  Text("NAME".tr, style: Get.theme.textTheme.bodySmall),
+                ],
+              ),
+              Row(
+                children: [
+                  Obx(
+                    () => Text(
+                      controller.userName.value,
+                      style: Get.theme.textTheme.labelSmall,
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  const Icon(Ionicons.chevron_forward),
+                ],
+              ),
             ],
           ),
         ),

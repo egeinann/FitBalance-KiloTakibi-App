@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 class SettingsController extends GetxController {
   var isMale = true.obs; // cinsiyet seçimi varsayılan erkek
-  RxBool activePremium = false.obs; // premiumEnabled
   Rx<ThemeMode> themeMode = ThemeMode.system.obs; // tema durumu
   var selectedLanguage = 'en'.obs; // Varsayılan dil
   var isKgSelected = true.obs; // ağırlık birimi seçimi varsayılan kg

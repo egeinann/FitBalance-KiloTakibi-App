@@ -23,7 +23,9 @@ class AddScreen extends GetView<Controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        scrolledUnderElevation: 0,
+      ),
       body: GestureDetector(
         onTap: () => Get.focusScope?.unfocus(),
         behavior: HitTestBehavior.opaque,
@@ -47,9 +49,9 @@ class AddScreen extends GetView<Controller> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 20, right: 5),
                 child: Align(
-                  alignment: Alignment.bottomCenter,
+                  alignment: Alignment.bottomRight,
                   child: bottomAddButton(),
                 ),
               ),
@@ -92,13 +94,10 @@ class AddScreen extends GetView<Controller> {
   }
 
   // *** ADD BUTTON ***
-  Align bottomAddButton() {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: CustomFloatingActionButton(
-        widget: const Icon(Icons.add),
-        onPressed: addPressed, // Doğrudan fonksiyonu çağır
-      ),
+  Widget bottomAddButton() {
+    return customFloatingActionButtonYellow(
+      widget: const Icon(Icons.add),
+      onPressed: addPressed, // Doğrudan fonksiyonu çağır
     );
   }
 
@@ -209,7 +208,7 @@ class AddScreen extends GetView<Controller> {
       } else if (controller.photoUrl.value == null) {
         return Padding(
           padding: const EdgeInsets.all(20),
-          child: CustomFloatingActionButton(
+          child: customFloatingActionButton(
             onPressed: () => _pickImage(), // Doğrudan fonksiyonu çağır
             widget: const Icon(Ionicons.camera),
           ),

@@ -66,7 +66,7 @@ Obx lineGraph() {
                       drawVerticalLine: true,
                       getDrawingHorizontalLine: (value) => FlLine(
                         color: Colors.grey.withOpacity(0.3),
-                        strokeWidth: 0.5,
+                        strokeWidth: 1,
                       ),
                       getDrawingVerticalLine: (value) => const FlLine(
                         color: Colors.transparent,
@@ -78,7 +78,6 @@ Obx lineGraph() {
                         sideTitles: SideTitles(
                           showTitles: true,
                           interval: 10,
-                          reservedSize: Get.size.width * 0.07,
                           getTitlesWidget: (value, meta) => Text(
                               value.toInt().toString(),
                               style: Get.theme.textTheme.bodySmall),
@@ -122,16 +121,24 @@ Obx lineGraph() {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                        DateFormat(
-                                                'd MMM', Get.locale.toString())
-                                            .format(date),
-                                        style: Get.theme
-                                            .textTheme
-                                            .bodySmall),
-                                    Text(DateFormat('y').format(date),
-                                        style: Get.theme
-                                            .textTheme
-                                            .bodySmall)
+                                      DateFormat('d MMM', Get.locale.toString())
+                                          .format(date),
+                                      style: const TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontSize: 10,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      DateFormat('y').format(date),
+                                      style: const TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontSize: 10,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               );
@@ -145,7 +152,8 @@ Obx lineGraph() {
                     ),
                     borderData: FlBorderData(
                       show: true,
-                      border: Border.all(color: Colors.grey, width: 0.1),
+                      border: Border.all(
+                          color: Colors.grey.withOpacity(0.3), width: 1),
                     ),
                     minX: controller.filteredRecords.isNotEmpty
                         ? controller.filteredRecords.first.dateTime
@@ -179,11 +187,11 @@ Obx lineGraph() {
                                   record.weight),
                             )
                             .toList(),
-                        isCurved: false,
+                        isCurved: true,
                         gradient: LinearGradient(
                           colors: [
-                            Get.theme.primaryColor.withOpacity(0.5),
-                            Get.theme.primaryColor.withOpacity(1)
+                            Get.theme.focusColor.withOpacity(0.5),
+                            Get.theme.focusColor.withOpacity(1)
                           ],
                         ),
                         preventCurveOverShooting: true,
@@ -191,21 +199,20 @@ Obx lineGraph() {
                         color: Get.theme.cardColor,
                         barWidth: 2,
                         isStrokeCapRound: true,
-                        dotData: const FlDotData(
-                          show: false,
+                        dotData: FlDotData(
+                          show: controller.showDotData.value,
                         ),
                         belowBarData: BarAreaData(
                           gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [
-                              Get.theme.primaryColor.withOpacity(0.3),
+                              Get.theme.focusColor.withOpacity(0.2),
                               Colors.transparent
                             ],
                           ),
                           show: true,
-                          color:
-                              Get.theme.primaryColor.withOpacity(0.5),
+                          color: Get.theme.focusColor.withOpacity(0.5),
                         ),
                       ),
                     ],

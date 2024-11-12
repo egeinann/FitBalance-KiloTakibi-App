@@ -4,6 +4,8 @@ import 'package:kilo_takibi_uyg/models/record.dart';
 import 'package:kilo_takibi_uyg/widgets/record_list_tile.dart';
 
 class Controller extends GetxController {
+  final PageController pageController =
+      PageController(); // grafik aşağı yukarı page controller
   RxList<Record> records = <Record>[].obs; // record objeleri tutan liste
   RxBool isLoading = false.obs; // loading lottie için
   RxList<Record> filteredRecords = <Record>[]
@@ -17,11 +19,12 @@ class Controller extends GetxController {
   var appBarTitle = 'Add'.obs; // Başlangıç başlığı
   var selecedAllTimeGraph =
       true.obs; // grafik zaman dilimi filtreleme (all & 30days)
+  var showDotData = false.obs; // grafik, basılı tutunca data noktalarını göster
   var graphPageIndex = 0.obs; // ödeme sonrası graphscreen'e geçiş
   var selectedValue = 40.0.obs; // Seçilen ağırlık
   var selectedDate = DateTime.now().obs; // Seçilen tarih
   var note = ''.obs; // Not
-  
+
   final TextEditingController nameController = TextEditingController();
   var userName = ''.obs;
   var targetWeight = 70.0.obs;
@@ -266,5 +269,10 @@ class Controller extends GetxController {
   void timeUnit(int index) {
     selecedAllTimeGraph.value = !selecedAllTimeGraph.value;
     updateFilteredRecords();
+  }
+
+  // *** ÇİZGİ GRAFİĞİ DATA NOKTALARINI GÖSTERİR ***
+  void dotData(bool value) {
+    showDotData.value = value;
   }
 }

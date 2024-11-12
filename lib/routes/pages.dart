@@ -12,6 +12,7 @@ import 'package:kilo_takibi_uyg/onboarding/view/intro_start_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_targetWeight_screen.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/add_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/chatbot_info_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/home_screen.dart';
 import 'package:kilo_takibi_uyg/view/chat_screen.dart';
 import 'package:kilo_takibi_uyg/view/gallery_screen/gallery_screen.dart';
@@ -22,6 +23,7 @@ import 'package:kilo_takibi_uyg/view/history_screen/recordScreen.dart';
 import 'package:kilo_takibi_uyg/view/main_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_info.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_screen.dart';
+import 'package:kilo_takibi_uyg/view/premium_screens/opened_premium_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeName_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeTargetWeight_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/info/model/info_screen.dart';
@@ -35,7 +37,7 @@ import 'package:kilo_takibi_uyg/view/settings_screen/data_management_screen.dart
 import 'package:kilo_takibi_uyg/view/settings_screen/privacyPolicy_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/settings_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/termsOfService_screen.dart';
-import 'package:kilo_takibi_uyg/view/upgrade_premium_screen.dart';
+import 'package:kilo_takibi_uyg/view/premium_screens/upgrade_premium_screen.dart';
 
 abstract class AppPages {
   static final pages = [
@@ -91,7 +93,12 @@ abstract class AppPages {
     GetPage(
       name: Routes.addscreen,
       page: () => AddScreen(),
-        transition: Transition.fadeIn
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: Routes.chatbotinfoscreen,
+      page: () => const ChatBotInfoScreen(),
+      transition: Transition.fadeIn,
     ),
     GetPage(
       name: Routes.historyscreen,
@@ -122,8 +129,8 @@ abstract class AppPages {
       transition: Transition.rightToLeftWithFade,
     ),
     GetPage(
-        name: Routes.changenamescreen,
-        page: () => ChangeNameScreen(),
+      name: Routes.changenamescreen,
+      page: () => ChangeNameScreen(),
       transition: Transition.rightToLeftWithFade,
     ),
     GetPage(
@@ -151,6 +158,11 @@ abstract class AppPages {
       name: Routes.upgradepremiumscreen,
       page: () => UpgradePremiumScreen(),
       transition: Transition.rightToLeftWithFade,
+    ),
+    GetPage(
+      name: Routes.openedpremiumscreen,
+      page: () => const OpenedPremiumScreen(),
+      transition: Transition.fade,
     ),
     GetPage(
       name: Routes.bmiinfoscreen,

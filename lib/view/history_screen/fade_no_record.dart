@@ -55,7 +55,7 @@ class FadeNoRecord extends GetView<Controller> {
                       .bodyMedium, // GetX ile tema erişimi
                 ),
                 const SizedBox(height: 10),
-                CustomFloatingActionButton(
+                customFloatingActionButton(
                   widget: const FittedBox(child: Icon(Ionicons.chevron_back)),
                   onPressed: () {
                     controller.goToHomeScreen(); // Ana ekrana git

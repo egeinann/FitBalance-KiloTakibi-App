@@ -60,7 +60,7 @@ class GraphViewScreen extends GetView<Controller> {
                                   padding: EdgeInsets.symmetric(
                                     horizontal: Get.size.width * 0.2,
                                   ),
-                                  child: CustomFloatingActionButton(
+                                  child: customFloatingActionButton(
                                     widget: AutoSizeText(
                                       "Upgrade premium".tr,
                                       textAlign: TextAlign.center,
@@ -89,10 +89,10 @@ class GraphViewScreen extends GetView<Controller> {
             // Ödeme yapılmışsa kayıt sayısını kontrol edelim
             if (controller.records.length >= 7) {
               return PageView(
+                controller: controller
+                    .pageController, // PageController'ı buraya ekleyin
                 scrollDirection: Axis.vertical,
-                onPageChanged: (index) {
-                  controller.onPageChanged(index);
-                },
+                onPageChanged: controller.onPageChanged,
                 children: [
                   lineGraph.lineGraph(), // lineGraph ile erişim
                   barGraph.barGraph(), // barGraph ile erişim

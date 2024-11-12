@@ -67,14 +67,14 @@ Obx barGraph() {
                 borderData: FlBorderData(
                   show: true,
                   border: Border.all(
-                      color: Get.theme.cardColor, width: 0.5),
+                      color: Colors.grey.withOpacity(0.3), width: 1),
                 ),
                 gridData: FlGridData(
                   show: true,
                   horizontalInterval: 20,
                   drawVerticalLine: false,
                   getDrawingHorizontalLine: (value) => FlLine(
-                    color: Get.theme.cardColor.withOpacity(0.3),
+                    color: Colors.grey.withOpacity(0.3),
                     strokeWidth: 1,
                   ),
                 ),

@@ -21,12 +21,10 @@ class SettingsScreen extends GetView<SettingsController> {
         const Icon(Ionicons.rocket),
         "Premium".tr,
         "Upgrade to Premium".tr,
-        controller.activePremium.value == true
-            ? Icon(Ionicons.rocket, color: Get.theme.primaryColor)
-            : const Icon(
-                Ionicons.rocket,
-                color: Colors.grey,
-              ),
+        Icon(
+          Ionicons.rocket,
+          color: controller.hasPaid.value ? Get.theme.focusColor : Colors.grey,
+        ),
         onTap: () {
           Get.toNamed(Routes.upgradepremiumscreen);
         },
@@ -159,6 +157,7 @@ class SettingsScreen extends GetView<SettingsController> {
     ];
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: Text('Settings'.tr, style: Get.theme.textTheme.titleLarge),
         centerTitle: true,
       ),
@@ -196,7 +195,7 @@ class SettingsScreen extends GetView<SettingsController> {
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        child: CustomFloatingActionButton(
+        child: customFloatingActionButton(
           heroTag: "profile",
           widget: const Icon(Ionicons.mail),
           onPressed: () {

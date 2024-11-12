@@ -11,11 +11,31 @@ class MainScreen extends GetView<Controller> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Get.toNamed(Routes.chatscreen);
+        leading: Obx(
+          () {
+            switch (controller.currentTabIndex.value) {
+              case 0:
+                return controller.graphPageIndex.value != 1 &&
+                        controller.records.length >= 7
+                    ? Listener(
+                        onPointerDown: (_) {
+                          controller.dotData(true);
+                        },
+                        onPointerUp: (_) {
+                          controller.dotData(false);
+                        },
+                        child: const Icon(Ionicons.analytics),
+                      )
+                    : const SizedBox();
+              default:
+                return IconButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.chatscreen);
+                  },
+                  icon: const Icon(Ionicons.chatbox_ellipses),
+                );
+            }
           },
-          icon: const Icon(Ionicons.chatbox_ellipses),
         ),
         scrolledUnderElevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -29,14 +49,51 @@ class MainScreen extends GetView<Controller> {
         centerTitle: true,
         actions: [
           Obx(
-            () => controller.currentTabIndex.value == 4
-                ? IconButton(
+            () {
+              switch (controller.currentTabIndex.value) {
+                case 0:
+                  return controller.records.length >= 7
+                      ? SizedBox(
+                          child: controller.graphPageIndex.value == 0
+                              ? IconButton(
+                                  onPressed: () {
+                                    controller.pageController.animateToPage(
+                                      1,
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      curve: Curves.easeInOut,
+                                    );
+                                    controller.onPageChanged(
+                                        1); // Sayfa indeksini güncelle
+                                  },
+                                  icon: const Icon(Ionicons.arrow_down),
+                                )
+                              : IconButton(
+                                  onPressed: () {
+                                    controller.pageController.animateToPage(
+                                      0,
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      curve: Curves.easeInOut,
+                                    );
+                                    controller.onPageChanged(
+                                        0); // Sayfa indeksini güncelle
+                                  },
+                                  icon: const Icon(Ionicons.arrow_up),
+                                ),
+                        )
+                      : const SizedBox();
+                case 4:
+                  return IconButton(
                     onPressed: () {
                       Get.toNamed(Routes.settingsscreen);
                     },
                     icon: const Icon(Ionicons.settings),
-                  )
-                : const SizedBox(),
+                  );
+                default:
+                  return const SizedBox();
+              }
+            },
           ),
         ],
       ),

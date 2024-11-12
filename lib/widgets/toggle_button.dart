@@ -11,7 +11,7 @@ Widget customToggleButton({
     child: ToggleButtons(
       borderWidth: 0,
       splashColor: Get.theme.scaffoldBackgroundColor,
-      fillColor: Get.theme.primaryColor,
+      fillColor: Get.theme.focusColor,
       color: const Color.fromARGB(
           255, 146, 146, 146), // Seçili olmayan butonların metin rengi
       selectedBorderColor: Colors.orange, // Seçili butonun sınır rengi

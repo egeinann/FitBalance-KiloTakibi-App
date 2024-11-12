@@ -54,7 +54,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
                       controller: controller.pageController,
                       count: 6,
                     ),
-                    CustomFloatingActionButton(
+                    customFloatingActionButton(
                       heroTag: "onboarding",
                       widget: const Icon(Ionicons.arrow_forward),
                       onPressed: () {

@@ -4,13 +4,13 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
+import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class UpgradePremiumScreen extends StatelessWidget {
+class UpgradePremiumScreen extends GetView<SettingsController> {
   UpgradePremiumScreen({super.key});
-  final SettingsController _settingsController = Get.find();
   final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
@@ -93,7 +93,7 @@ class UpgradePremiumScreen extends StatelessWidget {
           () {
             // Tema durumuna göre uygun Lottie dosyasını belirle
             String lottieAsset;
-            switch (_settingsController.themeMode.value) {
+            switch (controller.themeMode.value) {
               case ThemeMode.light:
                 lottieAsset = 'assets/lottie/premiumMiddle.json';
                 break;
@@ -169,18 +169,29 @@ class UpgradePremiumScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              CustomFloatingActionButton(
-                heroTag: "profile",
-                widget: AutoSizeText(
-                  "Upgrade premium".tr,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+              Obx(
+                () => customFloatingActionButton(
+                  heroTag: "profile",
+                  widget: !controller.hasPaid.value
+                      ? AutoSizeText(
+                          "Upgrade premium".tr,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      : const Icon(Icons.done),
+                  onPressed: () {
+                    if (!controller.hasPaid.value) {
+                      controller.completePayment();
+                      Get.toNamed(Routes.openedpremiumscreen);
+                    } else {
+                      Get.back();
+                    }
+                  },
                 ),
-                onPressed: () {},
               ),
               AutoSizeText(
                 "It is a one-time purchase".tr,

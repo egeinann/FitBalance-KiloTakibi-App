@@ -70,7 +70,7 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
       ),
       floatingActionButton: Padding(
         padding: context.paddingLarge,
-        child: CustomFloatingActionButton(
+        child: customFloatingActionButton(
           heroTag: "profile",
           widget: const Icon(Icons.done),
           onPressed: () {

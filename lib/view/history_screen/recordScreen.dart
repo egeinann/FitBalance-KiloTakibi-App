@@ -57,7 +57,7 @@ class RecordScreen extends GetView<Controller> {
   Widget editActionButton(BuildContext context, Record rec) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-      child: CustomFloatingActionButton(
+      child: customFloatingActionButton(
         heroTag: "${rec.photoUrl}_editButton",
         widget: const Icon(Icons.draw),
         onPressed: () {
@@ -251,7 +251,7 @@ class RecordScreen extends GetView<Controller> {
                         SizedBox(height: Get.size.height * 0.01),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: CustomFloatingActionButton(
+                          child: customFloatingActionButton(
                             heroTag: "_savebutton",
                             widget: Text(
                               "Save".tr,

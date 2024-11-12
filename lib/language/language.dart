@@ -67,7 +67,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "You don't have any photos yet !",
 
-          // HomeScreen
+          // AddScreen
           "There is already a record for the same date":
               "There is already a record for the same date",
           "Change the date": "Change the date",
@@ -76,6 +76,15 @@ class Languages extends Translations {
           "kg": "kg",
           "Take a photo": "Take a photo",
           "Pick from gallery": "Pick from gallery",
+
+          // ChatBotInfoScreen
+          'Leverage the power of AI to reach your goals faster! With Fit-Balance Premium...':
+              'Leverage the power of AI to reach your goals faster! With Fit-Balance Premium...',
+          'Receive personalized advice.!': 'Receive personalized advice.!',
+          'Benefit from insights that support your progress!':
+              'Benefit from insights that support your progress!',
+          'Gain daily tips to boost your motivation!':
+              'Gain daily tips to boost your motivation!',
 
           // HistoryScreen
           "Record": "Record",
@@ -342,6 +351,11 @@ class Languages extends Translations {
           "Artificial Intelligence!": "Artificial Intelligence!",
           "Healthier suggestions with artificial intelligence chatbot":
               "Healthier suggestions with artificial intelligence chatbot",
+          // OpenedPremiumScreen
+          'You Have Successfully Purchased Your Premium Membership!':
+              'You Have Successfully Purchased Your Premium Membership!',
+          'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
+              'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.',
         },
         'tr_TR': {
           // NotificationService
@@ -394,7 +408,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "Henüz hiç fotoğrafın yok !",
 
-          // HomeScreen
+          // AddScreen
           "There is already a record for the same date":
               "Aynı tarih için zaten bir kayıt var.",
           "Change the date": "Tarihi değiştir.",
@@ -403,6 +417,15 @@ class Languages extends Translations {
           "kg": "kg",
           "Take a photo": "Fotoğraf çek.",
           "Pick from gallery": "Galeriden seç.",
+
+          // ChatBotInfoScreen
+          'Leverage the power of AI to reach your goals faster! With Fit-Balance Premium...':
+              'Hedeflerinize daha hızlı ulaşmak için yapay zeka gücünden yararlanın! Fit-Balance Premium ile...',
+          'Receive personalized advice.!': 'Kişisel öneriler alın!',
+          'Benefit from insights that support your progress!':
+              'İlerlemenizi destekleyen bilgilerden yararlanın!',
+          'Gain daily tips to boost your motivation!':
+              'Motivasyonunuzu artırmak için günlük ipuçları edinin!',
 
           // HistoryScreen
           "Record": "Kayıt",
@@ -665,6 +688,11 @@ class Languages extends Translations {
           "Artificial Intelligence!": "Yapay Zeka!",
           "Healthier suggestions with artificial intelligence chatbot":
               "Yapay zeka sohbet botuyla daha sağlıklı öneriler",
+          // OpenedPremiumScreen
+          'You Have Successfully Purchased Your Premium Membership!':
+              'Premium Üyeliğinizi Başarıyla Satın Aldınız!',
+          'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
+              'Artık kilo hedeflerinize ulaşmaya hazırsınız! Bu yolculuğa çıktığınız için tebrikler.',
         },
         'es_ES': {
           // NotificationService
@@ -717,7 +745,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "¡Aún no tienes fotos!",
 
-          // HomeScreen
+          // AddScreen
           "There is already a record for the same date":
               "Ya hay un registro para la misma fecha.",
           "Change the date": "Cambia la fecha.",
@@ -726,6 +754,15 @@ class Languages extends Translations {
           "kg": "kg",
           "Take a photo": "Tomar una foto.",
           "Pick from gallery": "Elegir de la galería.",
+
+          // ChatBotInfoScreen
+          'Leverage the power of AI to reach your goals faster! With Fit-Balance Premium...':
+              '¡Aprovecha el poder de la IA para alcanzar tus objetivos más rápido! Con Fit-Balance Premium...',
+          'Receive personalized advice.!': 'Recibe consejos personalizados.',
+          'Benefit from insights that support your progress!':
+              '¡Benefíciate de información que apoya tu progreso!',
+          'Gain daily tips to boost your motivation!':
+              '¡Recibe consejos diarios para aumentar tu motivación!',
 
           // HistoryScreen
           "Record": "Registro",
@@ -991,6 +1028,11 @@ class Languages extends Translations {
           "Artificial Intelligence!": "¡Inteligencia Artificial!",
           "Healthier suggestions with artificial intelligence chatbot":
               "Sugerencias más saludables con el chatbot de inteligencia artificial",
+          // OpenedPremiumScreen
+          'You Have Successfully Purchased Your Premium Membership!':
+              '¡Has comprado con éxito tu membresía Premium!',
+          'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
+              '¡Ahora estás listo para alcanzar tus objetivos de peso! Felicitaciones por embarcarte en este viaje.',
         },
         'fr_FR': {
           // NotificationService
@@ -1046,7 +1088,7 @@ class Languages extends Translations {
           "You don't have any photos yet !":
               "Vous n'avez pas encore de photos !",
 
-          // HomeScreen
+          // AddScreen
           "There is already a record for the same date":
               "Il y a déjà un enregistrement pour la même date.",
           "Change the date": "Changer la date.",
@@ -1055,6 +1097,16 @@ class Languages extends Translations {
           "kg": "kg",
           "Take a photo": "Prendre une photo.",
           "Pick from gallery": "Choisir dans la galerie.",
+
+          // ChatBotInfoScreen
+          'Leverage the power of AI to reach your goals faster! With Fit-Balance Premium...':
+              'Profitez de la puissance de l\'IA pour atteindre vos objectifs plus rapidement ! Avec Fit-Balance Premium...',
+          'Receive personalized advice.!':
+              'Recevez des conseils personnalisés.',
+          'Benefit from insights that support your progress!':
+              'Bénéficiez de conseils qui soutiennent vos progrès !',
+          'Gain daily tips to boost your motivation!':
+              'Recevez des astuces quotidiennes pour booster votre motivation !',
 
           // HistoryScreen
           "Record": "Enregistrement",
@@ -1322,6 +1374,11 @@ class Languages extends Translations {
           "Artificial Intelligence!": "Intelligence Artificielle !",
           "Healthier suggestions with artificial intelligence chatbot":
               "Des suggestions plus saines avec le chatbot d'intelligence artificielle",
+          // OpenedPremiumScreen
+          'You Have Successfully Purchased Your Premium Membership!':
+              'Vous avez réussi à acheter votre abonnement Premium !',
+          'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
+              'Vous êtes maintenant prêt à atteindre vos objectifs de poids ! Félicitations pour avoir entamé ce voyage.',
         },
         'de_DE': {
           // NotificationService
@@ -1375,7 +1432,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "Sie haben noch keine Fotos!",
 
-          // HomeScreen
+          // AddScreen
           "There is already a record for the same date":
               "Es gibt bereits einen Datensatz für dasselbe Datum.",
           "Change the date": "Datum ändern.",
@@ -1384,6 +1441,16 @@ class Languages extends Translations {
           "kg": "kg",
           "Take a photo": "Ein Foto machen.",
           "Pick from gallery": "Aus der Galerie auswählen.",
+
+          // ChatBotInfoScreen
+          'Leverage the power of AI to reach your goals faster! With Fit-Balance Premium...':
+              'Nutzen Sie die Kraft der KI, um Ihre Ziele schneller zu erreichen! Mit Fit-Balance Premium...',
+          'Receive personalized advice.!':
+              'Erhalten Sie persönliche Ratschläge!',
+          'Benefit from insights that support your progress!':
+              'Profitieren Sie von Einblicken, die Ihren Fortschritt unterstützen!',
+          'Gain daily tips to boost your motivation!':
+              'Erhalten Sie tägliche Tipps zur Steigerung Ihrer Motivation!',
 
           // HistoryScreen
           "Record": "Aufzeichnung",
@@ -1652,6 +1719,11 @@ class Languages extends Translations {
           "Artificial Intelligence!": "Künstliche Intelligenz!",
           "Healthier suggestions with artificial intelligence chatbot":
               "Gesündere Vorschläge mit dem KI-Chatbot",
+          // OpenedPremiumScreen
+          'You Have Successfully Purchased Your Premium Membership!':
+              'Sie haben Ihr Premium-Abonnement erfolgreich gekauft!',
+          'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
+              'Jetzt sind Sie bereit, Ihre Gewichtsziele zu erreichen! Herzlichen Glückwunsch zu diesem Schritt.',
         },
         'pt_PT': {
           // NotificationService
@@ -1705,7 +1777,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "Você ainda não tem fotos!",
 
-          // HomeScreen
+          // AddScreen
           "There is already a record for the same date":
               "Já existe um registro para a mesma data.",
           "Change the date": "Mudar a data.",
@@ -1714,6 +1786,15 @@ class Languages extends Translations {
           "kg": "kg",
           "Take a photo": "Tirar uma foto.",
           "Pick from gallery": "Escolher da galeria.",
+
+          // ChatBotInfoScreen
+          'Leverage the power of AI to reach your goals faster! With Fit-Balance Premium...':
+              'Aproveite o poder da IA para alcançar seus objetivos mais rápido! Com o Fit-Balance Premium...',
+          'Receive personalized advice.!': 'Receba conselhos personalizados.',
+          'Benefit from insights that support your progress!':
+              'Beneficie-se de insights que apoiam o seu progresso!',
+          'Gain daily tips to boost your motivation!':
+              'Receba dicas diárias para aumentar sua motivação!',
 
           // HistoryScreen
           "Record": "Registro",
@@ -1980,6 +2061,11 @@ class Languages extends Translations {
           "Artificial Intelligence!": "Inteligência Artificial!",
           "Healthier suggestions with artificial intelligence chatbot":
               "Sugestões mais saudáveis com o chatbot de inteligência artificial",
+          // OpenedPremiumScreen
+          'You Have Successfully Purchased Your Premium Membership!':
+              'Você comprou com sucesso sua assinatura Premium!',
+          'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
+              'Agora você está pronto para alcançar seus objetivos de peso! Parabéns por embarcar nesta jornada.',
         },
         'zh_CN': {
           // NotificationService
@@ -2029,7 +2115,7 @@ class Languages extends Translations {
           // GalleryScreen
           "You don't have any photos yet !": "您还没有照片！",
 
-          // HomeScreen
+          // AddScreen
           "There is already a record for the same date": "同一天已经有记录。",
           "Change the date": "更改日期。",
           "note": "备注",
@@ -2037,6 +2123,13 @@ class Languages extends Translations {
           "kg": "千克",
           "Take a photo": "拍照。",
           "Pick from gallery": "从相册中选择。",
+
+          // ChatBotInfoScreen
+          'Leverage the power of AI to reach your goals faster! With Fit-Balance Premium...':
+              '利用人工智能的力量更快实现目标！使用 Fit-Balance 高级版...',
+          'Receive personalized advice.!': '接收个性化建议。',
+          'Benefit from insights that support your progress!': '利用支持您进步的见解！',
+          'Gain daily tips to boost your motivation!': '获取每日提示，增强您的动力！',
 
           // HistoryScreen
           "Record": "记录",
@@ -2291,6 +2384,11 @@ class Languages extends Translations {
           "Artificial Intelligence!": "人工智能！",
           "Healthier suggestions with artificial intelligence chatbot":
               "通过人工智能聊天机器人获得更健康的建议",
+          // OpenedPremiumScreen
+          'You Have Successfully Purchased Your Premium Membership!':
+              '您已成功购买了您的高级会员！',
+          'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
+              '现在您已准备好实现您的体重目标！恭喜您踏上这段旅程。',
         },
       };
 }

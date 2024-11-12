@@ -40,7 +40,7 @@ class BmiScreen extends GetView<BMIController> {
   Padding floatingButtonBmi() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
-      child: CustomFloatingActionButton(
+      child: customFloatingActionButton(
         heroTag: "bmi",
         widget: const Icon(Icons.question_mark_sharp),
         onPressed: () {

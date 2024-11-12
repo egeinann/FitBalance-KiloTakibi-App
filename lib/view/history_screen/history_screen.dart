@@ -86,12 +86,12 @@ class HistoryScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    CustomFloatingActionButton(
+                    customFloatingActionButton(
                       widget: const Icon(Ionicons.search),
                       onPressed: _showMonthSelector,
                     ),
                     const SizedBox(width: 10),
-                    CustomFloatingActionButton(
+                    customFloatingActionButton(
                       widget: const Icon(Icons.delete),
                       onPressed: deleteAllShowDialog,
                     ),

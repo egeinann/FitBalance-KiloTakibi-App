@@ -29,8 +29,8 @@ Widget bottomNavigationBar(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.only(
       bottom: 30,
-      left: 25,
-      right: 25,
+      left: 20,
+      right: 20,
     ),
     child: Container(
       height: 80,
@@ -56,7 +56,7 @@ Widget bottomNavigationBar(BuildContext context) {
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Ionicons.images),
+              icon: Icon(Ionicons.image),
               label: "",
             ),
             BottomNavigationBarItem(
@@ -64,7 +64,7 @@ Widget bottomNavigationBar(BuildContext context) {
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Ionicons.layers),
+              icon: Icon(Ionicons.time),
               label: "",
             ),
             BottomNavigationBarItem(

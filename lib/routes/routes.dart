@@ -13,6 +13,7 @@ class Routes {
   static const String galleryscreen = "/galleryscreen";
   static const String homescreen = "/homescreen";
   static const String addscreen = "/addscreen";
+  static const String chatbotinfoscreen = "/chatbotinfoscreen";
   static const String historyscreen = "/historyscreen";
   static const String profilescreen = "/profilescreen";
   static const String settingsscreen = "/settingsscreen";
@@ -26,6 +27,7 @@ class Routes {
   static const String privacypolicyscreen = "/privacypolicyscreen";
   static const String termsofservicescreen = "/termsofservicescreen";
   static const String upgradepremiumscreen = "/upgradepremiumscreen";
+  static const String openedpremiumscreen = "/openedpremiumscreen";
   static const String bmiinfoscreen = "/bmiinfoscreen";
   static const String bmiscreen = "/bmiscreen";
   static const String infoscreen = "/infoscreen";

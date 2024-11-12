@@ -77,7 +77,7 @@ class ChatScreen extends StatelessWidget {
                                   padding: EdgeInsets.symmetric(
                                     horizontal: Get.size.width * 0.2,
                                   ),
-                                  child: CustomFloatingActionButton(
+                                  child: customFloatingActionButton(
                                     widget: AutoSizeText(
                                       "Upgrade premium",
                                       textAlign: TextAlign.center,
@@ -130,7 +130,7 @@ class ChatScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(10),
-                        child: CustomFloatingActionButton(
+                        child: customFloatingActionButton(
                           widget: const Icon(Ionicons.send),
                           onPressed: () {},
                         ),

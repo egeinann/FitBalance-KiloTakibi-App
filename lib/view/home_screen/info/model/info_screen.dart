@@ -11,7 +11,7 @@ import 'package:kilo_takibi_uyg/view/home_screen/info/view/water_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class InfoScreen extends GetView<InfoController> {
-  InfoScreen({super.key});
+  const InfoScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -64,7 +64,7 @@ class InfoScreen extends GetView<InfoController> {
                         controller: controller.pageController,
                         count: 4,
                       ),
-                      CustomFloatingActionButton(
+                      customFloatingActionButton(
                         heroTag: "balance",
                         widget: const Icon(Ionicons.arrow_forward),
                         onPressed: () {

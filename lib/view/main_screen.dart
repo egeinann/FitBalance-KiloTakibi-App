@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/navigation_bar.dart';
 
 class MainScreen extends GetView<Controller> {
-  const MainScreen({super.key});
+  MainScreen({super.key});
+  final SettingsController _settingsController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +18,8 @@ class MainScreen extends GetView<Controller> {
             switch (controller.currentTabIndex.value) {
               case 0:
                 return controller.graphPageIndex.value != 1 &&
-                        controller.records.length >= 7
+                        controller.records.length >= 7 &&
+                        _settingsController.hasPaid.value
                     ? Listener(
                         onPointerDown: (_) {
                           controller.dotData(true);
@@ -52,7 +55,8 @@ class MainScreen extends GetView<Controller> {
             () {
               switch (controller.currentTabIndex.value) {
                 case 0:
-                  return controller.records.length >= 7
+                  return controller.records.length >= 7 &&
+                          _settingsController.hasPaid.value
                       ? SizedBox(
                           child: controller.graphPageIndex.value == 0
                               ? IconButton(

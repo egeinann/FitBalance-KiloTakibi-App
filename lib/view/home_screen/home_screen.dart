@@ -8,11 +8,13 @@ import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/line_graph.dart';
 import 'package:lottie/lottie.dart';
+import 'package:rive/rive.dart' as rive;
 
 class HomeScreen extends GetView<Controller> {
   HomeScreen({super.key});
@@ -60,60 +62,26 @@ class HomeScreen extends GetView<Controller> {
                       bmiAnimatedContainer(),
                       const SizedBox(height: 120),
                       Padding(
-                        padding: const EdgeInsets.all(20),
+                        padding: context.paddingLarge,
                         child: Column(
                           children: [
                             premiumInformationContainer(),
+                            const SizedBox(height: 20),
+                            const Divider(
+                                thickness: 2, endIndent: 35, indent: 35),
                             const SizedBox(height: 20),
                             startingPointContainer(),
                             const SizedBox(height: 5),
                             targetPointContainer(),
                             const SizedBox(height: 20),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.all(20),
-                                  child: Image(
-                                    image: AssetImage(
-                                      "assets/images/mainScreen/home_colorfull.png",
-                                    ),
-                                    fit: BoxFit.scaleDown,
-                                    height: 200,
-                                  ),
-                                ),
-                                Container(
-                                  height: 200,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Get.theme.cardColor,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        flex: 3,
-                                        child: Center(
-                                          child: AutoSizeText(
-                                            "Healthier suggestions with artificial intelligence!",
-                                            style:
-                                                Get.theme.textTheme.bodyLarge,
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ),
-                                      const Expanded(
-                                        flex: 2,
-                                        child: Image(
-                                          image: AssetImage(
-                                              "assets/images/mainScreen/home_ai.png"),
-                                          fit: BoxFit.scaleDown,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                            imageColorfull(),
+                            const SizedBox(height: 20),
+                            aiContainer(),
+                            const SizedBox(height: 20),
+                            const Divider(
+                                thickness: 2, endIndent: 35, indent: 35),
+                            const SizedBox(height: 20),
+                            imagePhotoText(),
                           ],
                         ),
                       ),
@@ -137,6 +105,117 @@ class HomeScreen extends GetView<Controller> {
           ),
         ],
       ),
+    );
+  }
+
+  // *** PHOTO IMAGE AND TEXT SIZEDBOX ***
+  SizedBox imagePhotoText() {
+    return SizedBox(
+      height: 250,
+      child: Row(
+        children: [
+          const Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Image(
+                image: AssetImage(
+                  "assets/images/mainScreen/home_photo.png",
+                ),
+                fit: BoxFit.scaleDown,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                AutoSizeText(
+                  "Better Tracking with Memories! Have You Tried Adding Photos?",
+                  style: Get.theme.textTheme.bodyLarge,
+                  textAlign: TextAlign.right,
+                ),
+                const Column(
+                  children: [
+                    Icon(Ionicons.camera),
+                    Divider(endIndent: 50, indent: 50),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // *** AI CONTAINER ***
+  Container aiContainer() {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      height: 200,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Get.theme.cardColor,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 3,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AutoSizeText(
+                  "Healthier suggestions with artificial intelligence!",
+                  style: Get.theme.textTheme.bodyLarge,
+                  textAlign: TextAlign.left,
+                ),
+                customFloatingActionButtonYellow(
+                  widget: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Ionicons.rocket),
+                      SizedBox(width: 5),
+                      AutoSizeText(
+                        "Try Premium",
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    Get.toNamed(Routes.upgradepremiumscreen);
+                  },
+                ),
+              ],
+            ),
+          ),
+          const Expanded(
+            flex: 2,
+            child: Image(
+              image: AssetImage("assets/images/mainScreen/home_ai.png"),
+              fit: BoxFit.scaleDown,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // *** IMAGE COLORFULL ***
+  Widget imageColorfull() {
+    return const Image(
+      image: AssetImage(
+        "assets/images/mainScreen/home_colorfull.png",
+      ),
+      fit: BoxFit.scaleDown,
+      height: 200,
     );
   }
 
@@ -172,20 +251,26 @@ class HomeScreen extends GetView<Controller> {
                         padding: const EdgeInsets.all(15),
                         child: controller.records.length >= 7
                             ? homeLineChart()
-                            : Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.show_chart,
-                                      size: 40,
-                                    ),
-                                    AutoSizeText(
-                                      "There must be 7 or more data",
-                                      style: Get.theme.textTheme.bodyLarge,
-                                    ),
-                                  ],
-                                ),
+                            : Obx(
+                                () => _settingsController.hasPaid.value
+                                    ? Center(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Icon(
+                                              Icons.show_chart,
+                                              size: 40,
+                                            ),
+                                            AutoSizeText(
+                                              "There must be 7 or more data",
+                                              style:
+                                                  Get.theme.textTheme.bodyLarge,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    : const SizedBox(),
                               ),
                       ),
                     ),
@@ -449,7 +534,13 @@ class HomeScreen extends GetView<Controller> {
                   style: Get.theme.textTheme.labelSmall,
                 ),
                 const SizedBox(width: 5),
-                const Icon(Icons.data_array),
+                Obx(
+                  () => Icon(
+                    controller.records.isEmpty
+                        ? Icons.data_array
+                        : Ionicons.chevron_forward,
+                  ),
+                ),
               ],
             ),
           ],
@@ -495,11 +586,16 @@ class HomeScreen extends GetView<Controller> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Ionicons.speedometer),
+                          Icon(Ionicons.speedometer,
+                              color: Get.theme.dialogBackgroundColor),
                           const SizedBox(height: 5),
                           Text(
                             "BMI",
-                            style: Get.theme.textTheme.bodyMedium,
+                            style: TextStyle(
+                              color: Get.theme.scaffoldBackgroundColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
                           ),
                         ],
                       ),
@@ -584,11 +680,16 @@ class HomeScreen extends GetView<Controller> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Ionicons.pulse),
+                          Icon(Ionicons.pulse,
+                              color: Get.theme.scaffoldBackgroundColor),
                           const SizedBox(height: 5),
                           Text(
                             "Balance",
-                            style: Get.theme.textTheme.bodyMedium,
+                            style: TextStyle(
+                              color: Get.theme.scaffoldBackgroundColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
                           ),
                         ],
                       ),
@@ -673,11 +774,16 @@ class HomeScreen extends GetView<Controller> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Ionicons.fast_food),
+                          Icon(Ionicons.fast_food,
+                              color: Get.theme.scaffoldBackgroundColor),
                           const SizedBox(height: 5),
                           Text(
                             "kcal/day",
-                            style: Get.theme.textTheme.bodyMedium,
+                            style: TextStyle(
+                              color: Get.theme.scaffoldBackgroundColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
                           ),
                         ],
                       ),

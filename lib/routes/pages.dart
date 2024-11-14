@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/binding/bmi_binding.dart';
 import 'package:kilo_takibi_uyg/binding/info_binding.dart';
 import 'package:kilo_takibi_uyg/binding/onboarding_binding.dart';
+import 'package:kilo_takibi_uyg/binding/rive_binding.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_ai_screen.dart';
@@ -11,6 +12,7 @@ import 'package:kilo_takibi_uyg/onboarding/view/intro_photoGallery_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_start_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_targetWeight_screen.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
+import 'package:kilo_takibi_uyg/view/animation_background.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/add_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/chatbot_info_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/home_screen.dart';
@@ -75,7 +77,7 @@ abstract class AppPages {
     // app
     GetPage(
       name: Routes.mainscreen,
-      page: () => const MainScreen(),
+      page: () => MainScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -117,6 +119,12 @@ abstract class AppPages {
       name: Routes.chatscreen,
       page: () => ChatScreen(),
       transition: Transition.upToDown,
+    ),
+    GetPage(
+      name: Routes.animationbackgroundscreen,
+      page: () => AnimationBackgroundScreen(),
+      transition: Transition.leftToRight,
+      binding: RiveBinding(),
     ),
     GetPage(
       name: Routes.photoscreen,

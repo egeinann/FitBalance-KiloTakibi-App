@@ -37,19 +37,17 @@ class ChatBotInfoScreen extends StatelessWidget {
                 fit: BoxFit.scaleDown,
               ),
             ),
-            Expanded(
-              child: textTyperAnimated(
-                text:
-                    "Leverage the power of AI to reach your goals faster! With AI Premium..."
-                        .tr,
-                textStyle: const TextStyle(
-                  color: Colors.black,
-                  fontFamily: "Poppins",
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-                isRepeat: false,
+            textTyperAnimated(
+              text:
+                  "Leverage the power of AI to reach your goals faster! With Fit-Balance Premium..."
+                      .tr,
+              textStyle: const TextStyle(
+                color: Colors.black,
+                fontFamily: "Poppins",
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
               ),
+              isRepeat: false,
             ),
             Expanded(
               flex: 2,

@@ -89,6 +89,7 @@ class GraphViewScreen extends GetView<Controller> {
             // Ödeme yapılmışsa kayıt sayısını kontrol edelim
             if (controller.records.length >= 7) {
               return PageView(
+                physics: const BouncingScrollPhysics(),
                 controller: controller
                     .pageController, // PageController'ı buraya ekleyin
                 scrollDirection: Axis.vertical,

@@ -21,7 +21,7 @@ class Controller extends GetxController {
       true.obs; // grafik zaman dilimi filtreleme (all & 30days)
   var showDotData = false.obs; // grafik, basılı tutunca data noktalarını göster
   var graphPageIndex = 0.obs; // ödeme sonrası graphscreen'e geçiş
-  var selectedValue = 40.0.obs; // Seçilen ağırlık
+  var selectedValue = 70.0.obs; // Seçilen ağırlık
   var selectedDate = DateTime.now().obs; // Seçilen tarih
   var note = ''.obs; // Not
 

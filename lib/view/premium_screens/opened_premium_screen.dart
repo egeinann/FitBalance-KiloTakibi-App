@@ -12,13 +12,17 @@ class OpenedPremiumScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF9691ef),
+      backgroundColor: const Color(0xFF865DFF),
       body: Column(
         children: [
           Expanded(
-            child: Image.asset(
-              "assets/images/upgradePremium/isOpenedPremium.jpg",
-              fit: BoxFit.cover,
+            flex: 2,
+            child: Center(
+              child: Lottie.asset(
+                'assets/lottie/isOpenedPremium.json',
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.center,
+              ),
             ),
           ),
           Padding(
@@ -50,23 +54,18 @@ class OpenedPremiumScreen extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
+          Flexible(
             flex: 1,
-            child: Lottie.asset(
-              'assets/lottie/openedPremiumRocket.json',
-              fit: BoxFit.scaleDown,
+            child: Center(
+              child: customFloatingActionButton(
+                widget: const Icon(Icons.done),
+                onPressed: () {
+                  Get.back();
+                },
+              ),
             ),
           ),
         ],
-      ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(right: 5, bottom: 30),
-        child: customFloatingActionButton(
-          widget: const Icon(Icons.done),
-          onPressed: () {
-            Get.back();
-          },
-        ),
       ),
     );
   }

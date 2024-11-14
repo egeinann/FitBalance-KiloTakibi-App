@@ -9,12 +9,15 @@ Obx barGraph() {
   return Obx(() {
     final monthlyData = controller.calculateMonthlyAverages();
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: Column(
         children: [
           // *** BAR CHART ***
-          Text("Averages of the last 1 year".tr,
-              style: Get.theme.textTheme.bodyMedium),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 5),
+            child: Text("Averages of the last 1 year".tr,
+                style: Get.theme.textTheme.bodyMedium),
+          ),
           Expanded(
             child: BarChart(
               BarChartData(
@@ -27,10 +30,19 @@ Obx barGraph() {
                       showTitles: true,
                       interval: 20,
                       getTitlesWidget: (value, meta) {
-                        return Text(value.toInt().toString(),
-                            style: Get.theme.textTheme.bodySmall);
+                        return Text(
+                          value.toInt().toString(),
+                          maxLines: 1,
+                          overflow: TextOverflow.fade,
+                          style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontSize: 11,
+                            color: Get.theme.indicatorColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
                       },
-                      reservedSize: Get.size.width * 0.08,
+                      reservedSize: Get.size.width * 0.06,
                     ),
                   ),
                   rightTitles: const AxisTitles(
@@ -41,7 +53,7 @@ Obx barGraph() {
                   bottomTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: Get.size.height * 0.07,
+                      reservedSize: Get.size.height * 0.05,
                       getTitlesWidget: (value, meta) {
                         final monthIndex = value.toInt();
                         final monthYear = monthlyData.keys.firstWhere(
@@ -52,13 +64,19 @@ Obx barGraph() {
                               monthIndex,
                         );
                         final year = int.parse(monthYear.split('-')[0]);
-                        final month =
-                            DateFormat('MMM\n yy', Get.locale.toString())
-                                .format(DateTime(year, monthIndex));
+                        final month = DateFormat('MMM', Get.locale.toString())
+                            .format(DateTime(year, monthIndex));
                         return SideTitleWidget(
                           axisSide: meta.axisSide,
-                          child: Text(month,
-                              style: Get.theme.textTheme.bodySmall),
+                          child: Text(
+                            month,
+                            style: const TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 10,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         );
                       },
                     ),
@@ -66,8 +84,8 @@ Obx barGraph() {
                 ),
                 borderData: FlBorderData(
                   show: true,
-                  border: Border.all(
-                      color: Colors.grey.withOpacity(0.3), width: 1),
+                  border:
+                      Border.all(color: Colors.grey.withOpacity(0.3), width: 1),
                 ),
                 gridData: FlGridData(
                   show: true,

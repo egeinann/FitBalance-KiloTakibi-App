@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/lottie_loading.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
@@ -49,7 +50,7 @@ class AddScreen extends GetView<Controller> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 20, right: 5),
+                padding: const EdgeInsets.only(bottom: 30, right: 5),
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: bottomAddButton(),
@@ -86,16 +87,18 @@ class AddScreen extends GetView<Controller> {
     ));
 
     controller.goToHistoryScreen();
-
     _noteController.clear();
     controller.photoUrl.value = null; // Fotoğraf URL'sini sıfırla
     Get.focusScope?.unfocus();
     Get.back();
+    Future.delayed(const Duration(milliseconds: 800), () {
+      Get.toNamed(Routes.animationbackgroundscreen);
+    });
   }
 
   // *** ADD BUTTON ***
   Widget bottomAddButton() {
-    return customFloatingActionButtonYellow(
+    return customFloatingActionButton(
       widget: const Icon(Icons.add),
       onPressed: addPressed, // Doğrudan fonksiyonu çağır
     );
@@ -208,7 +211,7 @@ class AddScreen extends GetView<Controller> {
       } else if (controller.photoUrl.value == null) {
         return Padding(
           padding: const EdgeInsets.all(20),
-          child: customFloatingActionButton(
+          child: customFloatingActionButtonYellow(
             onPressed: () => _pickImage(), // Doğrudan fonksiyonu çağır
             widget: const Icon(Ionicons.camera),
           ),

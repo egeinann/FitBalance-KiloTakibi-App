@@ -18,6 +18,7 @@ class Routes {
   static const String profilescreen = "/profilescreen";
   static const String settingsscreen = "/settingsscreen";
   static const String chatscreen = "/chatscreen";
+  static const String animationbackgroundscreen = "/animationbackgroundscreen";
   static const String photoscreen = "/photoscreen";
   static const String recordscreen = "/recordscreen";
   static const String changenamescreen = "/changenamescreen";

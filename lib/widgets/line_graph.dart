@@ -10,7 +10,7 @@ Obx lineGraph() {
   return Obx(
     () {
       return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+        padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 20),
         child: Column(
           children: [
             // *** TEXTS TIME RANGE ***
@@ -42,7 +42,7 @@ Obx lineGraph() {
                         fitInsideHorizontally: true,
                         fitInsideVertically: true,
                         tooltipRoundedRadius: 8,
-                        tooltipPadding: const EdgeInsets.all(8),
+                        tooltipPadding: const EdgeInsets.all(5),
                         getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
                           return touchedBarSpots.map((barSpot) {
                             final record =
@@ -79,8 +79,16 @@ Obx lineGraph() {
                           showTitles: true,
                           interval: 10,
                           getTitlesWidget: (value, meta) => Text(
-                              value.toInt().toString(),
-                              style: Get.theme.textTheme.bodySmall),
+                            value.toInt().toString(),
+                            maxLines: 1,
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 11,
+                              color: Get.theme.indicatorColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
                       rightTitles: const AxisTitles(
@@ -96,25 +104,22 @@ Obx lineGraph() {
                       bottomTitles: AxisTitles(
                         sideTitles: SideTitles(
                           showTitles: true,
-                          reservedSize: Get.size.height * 0.07,
+                          reservedSize: Get.size.height * 0.06,
                           getTitlesWidget: (value, meta) {
                             final date = DateTime.fromMillisecondsSinceEpoch(
                                 value.toInt());
 
-                            // İlk, son ve ortada birkaç tarih göstermek için bir koşul ekleyelim
+                            // İlk ve son tarihleri göster
                             int totalRecords =
                                 controller.filteredRecords.length;
-                            int interval = (totalRecords / 5)
-                                .ceil(); // Yaklaşık 5 tarih göstermek için aralığı hesaplayalım
                             int index = controller.filteredRecords.indexWhere(
-                                (record) =>
-                                    record.dateTime.millisecondsSinceEpoch ==
-                                    value.toInt());
+                              (record) =>
+                                  record.dateTime.millisecondsSinceEpoch ==
+                                  value.toInt(),
+                            );
 
-                            // İlk, son ve belirli aralıklarla tarihleri göster
-                            if (index == 0 ||
-                                index == totalRecords - 1 ||
-                                index % interval == 0) {
+                            // Sadece ilk ve son indekslerde tarih göster
+                            if (index == 0 || index == totalRecords - 1) {
                               return SideTitleWidget(
                                 axisSide: meta.axisSide,
                                 child: Column(
@@ -144,7 +149,7 @@ Obx lineGraph() {
                               );
                             } else {
                               return const SizedBox
-                                  .shrink(); // Diğer durumlarda boş widget döndür
+                                  .shrink(); // Aradaki tarihlerde boş widget döndür
                             }
                           },
                         ),
@@ -255,7 +260,7 @@ Obx lineGraph() {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
           ],
         ),
       );

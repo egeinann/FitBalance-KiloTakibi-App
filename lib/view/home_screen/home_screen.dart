@@ -11,6 +11,7 @@ import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
+import 'package:kilo_takibi_uyg/widgets/divider.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/line_graph.dart';
 import 'package:lottie/lottie.dart';
@@ -67,8 +68,7 @@ class HomeScreen extends GetView<Controller> {
                           children: [
                             premiumInformationContainer(),
                             const SizedBox(height: 20),
-                            const Divider(
-                                thickness: 2, endIndent: 35, indent: 35),
+                            const CustomDivider(),
                             const SizedBox(height: 20),
                             startingPointContainer(),
                             const SizedBox(height: 5),
@@ -78,8 +78,7 @@ class HomeScreen extends GetView<Controller> {
                             const SizedBox(height: 20),
                             aiContainer(),
                             const SizedBox(height: 20),
-                            const Divider(
-                                thickness: 2, endIndent: 35, indent: 35),
+                            const CustomDivider(),
                             const SizedBox(height: 20),
                             imagePhotoText(),
                           ],
@@ -491,7 +490,7 @@ class HomeScreen extends GetView<Controller> {
                 children: [
                   Obx(
                     () => Text(
-                      "${controller.targetWeight} ${"kg"}",
+                      "${controller.targetWeight} ${_settingsController.weightUnit}",
                       style: Get.theme.textTheme.labelSmall,
                     ),
                   ),
@@ -507,43 +506,51 @@ class HomeScreen extends GetView<Controller> {
   }
 
   // *** STARTING POINT ***
-  Container startingPointContainer() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Get.theme.cardColor,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                const Icon(Ionicons.flag),
-                const SizedBox(width: 5),
-                Text("Starting point", style: Get.theme.textTheme.bodySmall),
-              ],
-            ),
-            Row(
-              children: [
-                Text(
-                  controller.records.isNotEmpty
-                      ? "${controller.records.first.weight} ${"kg"}"
-                      : "empty",
-                  style: Get.theme.textTheme.labelSmall,
-                ),
-                const SizedBox(width: 5),
-                Obx(
-                  () => Icon(
-                    controller.records.isEmpty
-                        ? Icons.data_array
-                        : Ionicons.chevron_forward,
+  GestureDetector startingPointContainer() {
+    return GestureDetector(
+      onTap: () {
+        controller.records.isNotEmpty
+            ? Get.toNamed(Routes.recordscreen,
+                arguments: controller.records.first)
+            : null;
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Get.theme.cardColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  const Icon(Ionicons.flag),
+                  const SizedBox(width: 5),
+                  Text("Starting point", style: Get.theme.textTheme.bodySmall),
+                ],
+              ),
+              Row(
+                children: [
+                  Text(
+                    controller.records.isNotEmpty
+                        ? "${controller.records.first.weight} ${_settingsController.weightUnit}"
+                        : "empty",
+                    style: Get.theme.textTheme.labelSmall,
                   ),
-                ),
-              ],
-            ),
-          ],
+                  const SizedBox(width: 5),
+                  Obx(
+                    () => Icon(
+                      controller.records.isEmpty
+                          ? Icons.data_array
+                          : Ionicons.chevron_forward,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

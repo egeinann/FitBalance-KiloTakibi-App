@@ -6,7 +6,6 @@ import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/controllers/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
 class ChangeNameScreen extends GetView<Controller> {
@@ -84,7 +83,7 @@ class ChangeNameScreen extends GetView<Controller> {
         ),
       ),
       floatingActionButton: Padding(
-        padding: context.paddingLarge,
+        padding: const EdgeInsets.only(bottom: 30, right: 5),
         child: customFloatingActionButton(
           heroTag: "profile",
           widget: const Icon(Icons.done),

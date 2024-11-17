@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
-import 'package:kilo_takibi_uyg/controllers/onboarding_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
+import 'package:kilo_takibi_uyg/widgets/number_picker_weight.dart';
 
 class ChangeTargetWeightScreen extends GetView<Controller> {
+  final SettingsController _settingsController = Get.find();
   ChangeTargetWeightScreen({super.key});
   @override
   Widget build(BuildContext context) {
@@ -49,18 +50,28 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
               Expanded(
                 flex: 2,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Obx(
-                      () => Numbers(
-                        value: controller.temporaryTargetWeight.value,
-                        onChanged: (value) {
-                          controller.temporaryTargetWeight.value = value;
-                        },
-                      ),
-                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Obx(
+                          () => NumberPickerWeight(
+                            isKgSelected: _settingsController.isKgSelected,
+                            value: controller.temporaryTargetWeight.value,
+                            onChanged: (value) {
+                              controller.temporaryTargetWeight.value = value;
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        Text(
+                          _settingsController.weightUnit,
+                          style: Get.theme.textTheme.labelSmall,
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -69,7 +80,7 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
         ),
       ),
       floatingActionButton: Padding(
-        padding: context.paddingLarge,
+        padding: const EdgeInsets.only(bottom: 30, right: 5),
         child: customFloatingActionButton(
           heroTag: "profile",
           widget: const Icon(Icons.done),

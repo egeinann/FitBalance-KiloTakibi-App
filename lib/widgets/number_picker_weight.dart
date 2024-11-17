@@ -3,21 +3,30 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-class Numbers extends StatelessWidget {
+class NumberPickerWeight extends StatelessWidget {
   final double value;
   final Function(double) onChanged;
+  final RxBool isKgSelected; // KG/LBS seçim durumu
 
-  const Numbers({
+  const NumberPickerWeight({
     super.key,
     required this.value,
     required this.onChanged,
+    required this.isKgSelected,
   });
+
   @override
   Widget build(BuildContext context) {
+    // isKgSelected'e göre min ve max değerleri belirle
+    final minValue = isKgSelected.value ? 40 : 88;
+    final maxValue = isKgSelected.value ? 200 : 440;
+
+    // value'nun geçerli sınırlar içinde olduğundan emin olun
+    final adjustedValue = value.clamp(minValue, maxValue).toDouble();
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Get.theme.canvasColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -31,9 +40,10 @@ class Numbers extends StatelessWidget {
             itemWidth: Get.size.width * 0.14,
             itemHeight: Get.size.height * 0.06,
             axis: Axis.horizontal,
-            minValue: 40,
-            maxValue: 200,
-            value: value,
+            minValue: minValue,
+            maxValue: maxValue,
+            value:
+                adjustedValue, // value'nun sınırlandırılmış versiyonunu kullanın
             onChanged: (newValue) {
               final formattedValue = double.parse(newValue.toStringAsFixed(1));
               onChanged(formattedValue); // Formatlanmış değeri geçirin
@@ -45,14 +55,3 @@ class Numbers extends StatelessWidget {
     );
   }
 }
-
-// Container(
-//           height: 50,
-//           decoration: BoxDecoration(
-//             borderRadius: BorderRadius.circular(10),
-//             border: Border.all(
-//               width: 3,
-//               color: Get.theme.primaryColor.withOpacity(0.3),
-//             ),
-//           ),
-//         ),

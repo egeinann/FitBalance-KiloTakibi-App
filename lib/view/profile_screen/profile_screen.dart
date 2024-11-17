@@ -109,7 +109,7 @@ class ProfileScreen extends GetView<Controller> {
                 children: [
                   Obx(
                     () => Text(
-                      "${controller.targetWeight.value} ${"kg".tr}",
+                      "${controller.targetWeight.value} ${_settingsController.weightUnit}",
                       style: Get.theme.textTheme.labelSmall,
                     ),
                   ),

@@ -7,16 +7,17 @@ class Controller extends GetxController {
   final PageController pageController =
       PageController(); // grafik aşağı yukarı page controller
   RxList<Record> records = <Record>[].obs; // record objeleri tutan liste
+  RxList<Record> filteredRecords =
+      <Record>[].obs; // filtrelenmiş grafik kayıtlarını tutan liste
   RxBool isLoading = false.obs; // loading lottie için
-  RxList<Record> filteredRecords = <Record>[]
-      .obs; // filtrelenmiş grafik zaman dilimi kayıtlarını tutan liste
+
   final ScrollController scrollController =
       ScrollController(); // HİSTORY SCROLL CONTROLLER
   final GlobalKey<AnimatedListState> listKey =
       GlobalKey<AnimatedListState>(); // liste animasyonu için
   var photoUrl = Rxn<String>(); // Reaktif bir değişken
   var currentTabIndex = 2.obs; // MainSreen sayfa index
-  var appBarTitle = 'Add'.obs; // Başlangıç başlığı
+  var appBarTitle = 'Home'.obs; // Başlangıç başlığı
   var selecedAllTimeGraph =
       true.obs; // grafik zaman dilimi filtreleme (all & 30days)
   var showDotData = false.obs; // grafik, basılı tutunca data noktalarını göster

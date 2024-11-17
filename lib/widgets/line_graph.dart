@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
 final Controller controller = Get.find();
+final SettingsController _settingsController = Get.find();
 Obx lineGraph() {
   return Obx(
     () {
@@ -53,7 +55,7 @@ Obx lineGraph() {
                                   barSpot.x,
                             );
                             return LineTooltipItem(
-                              '${DateFormat('d MMM, y', Get.locale.toString()).format(record.dateTime)}\n${record.weight} ${"kg".tr}',
+                              '${DateFormat('d MMM, y', Get.locale.toString()).format(record.dateTime)}\n${record.weight} ${_settingsController.weightUnit}',
                               const TextStyle(color: Colors.white),
                             );
                           }).toList();

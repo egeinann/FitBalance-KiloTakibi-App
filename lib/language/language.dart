@@ -73,7 +73,7 @@ class Languages extends Translations {
           "Change the date": "Change the date",
           "note": "note",
           "YOUR WEIGHT": "YOUR WEIGHT",
-          "kg": "kg",
+
           "Take a photo": "Take a photo",
           "Pick from gallery": "Pick from gallery",
 
@@ -138,8 +138,8 @@ class Languages extends Translations {
           "You look quite overweight, you should lose weight.":
               "You look quite overweight, you should lose weight.",
           'BMI: ': "BMI: ",
-          "kg": "kg",
-          "cm": "cm",
+
+
           'bmi': "BMI",
 
           // InfoScreen
@@ -188,7 +188,7 @@ class Languages extends Translations {
           'Language': 'Language',
           'Theme': 'Theme',
           'Unit of weight': 'Unit of weight',
-          //'Notifications': 'Notifications',
+          'Unit of height': 'Unit of height',
           'Reminder for process tracking': 'Reminder for process tracking',
           'Privacy Policy': 'Privacy Policy',
           'Protection of personal data': 'Protection of personal data',
@@ -277,25 +277,23 @@ class Languages extends Translations {
 
           // BarGraph
           'Averages of the last 1 year': 'Averages of the last 1 year',
-          'kg': 'kg',
 
           // LineGraph
           "all records": "All records",
           "last 30 days": "last 30 days",
-          "kg": "kg",
+
           "All records": "All records",
           "Records of the last 30 days": "Records of the last 30 days",
 
           // RecordListTile
           'note': 'note',
-          'kg': 'kg',
 
           // DeleteShowDialog
           'Delete': 'Delete',
           'Cancel': 'Cancel',
 
           // RecordScreen
-          "kg": "kg",
+
           "note": "Note",
           "Edit Record": "Edit Record",
           "Save": "Save",
@@ -414,7 +412,7 @@ class Languages extends Translations {
           "Change the date": "Tarihi değiştir.",
           "note": "not",
           "YOUR WEIGHT": "KİLOM",
-          "kg": "kg",
+
           "Take a photo": "Fotoğraf çek.",
           "Pick from gallery": "Galeriden seç.",
 
@@ -477,8 +475,8 @@ class Languages extends Translations {
           "You look quite overweight, you should lose weight.":
               "Oldukça kilolu görünüyorsunuz, Kilo vermelisiniz.",
           'BMI: ': "BMI: ",
-          "kg": "kg",
-          "cm": "cm",
+
+
           'bmi': "VKI",
 
           // InfoScreen
@@ -527,7 +525,7 @@ class Languages extends Translations {
           'Language': 'Dil',
           'Theme': 'Tema',
           'Unit of weight': 'Ağırlık birimi',
-          // 'Notifications': 'Bildirimler',
+          'Unit of height': 'Uzunluk birimi',
           'Reminder for process tracking': 'Süreç takibi için hatırlatıcı',
           'Privacy Policy': 'Gizlilik Politikası',
           'Protection of personal data': 'Kişisel verilerin korunması',
@@ -616,25 +614,23 @@ class Languages extends Translations {
 
           // BarGraph
           'Averages of the last 1 year': 'Son 1 yılın ortalamaları',
-          'kg': 'kg',
 
           // LineGraph
           "all records": "Tüm kayıtlar",
           "last 30 days": "son 30 gün",
-          "kg": "kg",
+
           "All records": "Tüm kayıtlar",
           "Records of the last 30 days": "Son 30 gün kayıtları",
 
           // RecordListTile
           'note': 'not',
-          'kg': 'kg',
 
           // DeleteShowDialog
           'Delete': 'Sil',
           'Cancel': 'İptal',
 
           // RecordScreen
-          "kg": "kg",
+
           "note": "Not",
           "Edit Record": "Kaydı Düzenle",
           "Save": "Kaydet",
@@ -751,7 +747,6 @@ class Languages extends Translations {
           "Change the date": "Cambia la fecha.",
           "note": "nota",
           "YOUR WEIGHT": "TU PESO",
-          "kg": "kg",
           "Take a photo": "Tomar una foto.",
           "Pick from gallery": "Elegir de la galería.",
 
@@ -815,8 +810,7 @@ class Languages extends Translations {
           "You look quite overweight, you should lose weight.":
               "Te ves bastante con sobrepeso, deberías perder peso.",
           'BMI: ': "IMC: ",
-          "kg": "kg",
-          "cm": "cm",
+
           'bmi': "IMC",
 
           // InfoScreen
@@ -865,7 +859,7 @@ class Languages extends Translations {
           'Language': 'Idioma',
           'Theme': 'Tema',
           'Unit of weight': 'Unidad de peso',
-          // 'Notifications': 'Notificaciones',
+          'Unit of height': 'Unidad de altura',
           'Reminder for process tracking':
               'Recordatorio para el seguimiento de procesos',
           'Privacy Policy': 'Política de privacidad',
@@ -955,25 +949,22 @@ class Languages extends Translations {
 
           // BarGraph
           'Averages of the last 1 year': 'Promedios del último año',
-          'kg': 'kg',
 
           // LineGraph
           "all records": "Todos los registros",
           "last 30 days": "últimos 30 días",
-          "kg": "kg",
+
           "All records": "Todos los registros",
           "Records of the last 30 days": "Registros de los últimos 30 días",
 
           // RecordListTile
           'note': 'nota',
-          'kg': 'kg',
-
           // DeleteShowDialog
           'Delete': 'Eliminar',
           'Cancel': 'Cancelar',
 
           // RecordScreen
-          "kg": "kg",
+
           "note": "Nota",
           "Edit Record": "Editar Registro",
           "Save": "Guardar",
@@ -1094,7 +1085,7 @@ class Languages extends Translations {
           "Change the date": "Changer la date.",
           "note": "note",
           "YOUR WEIGHT": "VOTRE POIDS",
-          "kg": "kg",
+
           "Take a photo": "Prendre une photo.",
           "Pick from gallery": "Choisir dans la galerie.",
 
@@ -1161,8 +1152,8 @@ class Languages extends Translations {
           "You look quite overweight, you should lose weight.":
               "Vous semblez en surpoids, vous devriez perdre du poids.",
           'BMI: ': "IMC: ",
-          "kg": "kg",
-          "cm": "cm",
+
+
           'bmi': "IMC",
 
           // InfoScreen
@@ -1211,7 +1202,7 @@ class Languages extends Translations {
           'Language': 'Langue',
           'Theme': 'Thème',
           'Unit of weight': 'Unité de poids',
-          // 'Notifications': 'Notifications',
+          'Unit of height': 'Unité de hauteur',
           'Reminder for process tracking': 'Rappel pour le suivi des processus',
           'Privacy Policy': 'Politique de confidentialité',
           'Protection of personal data': 'Protection des données personnelles',
@@ -1300,26 +1291,24 @@ class Languages extends Translations {
 
           // BarGraph
           'Averages of the last 1 year': 'Moyennes de la dernière année',
-          'kg': 'kg',
 
           // LineGraph
           "all records": "Tous les enregistrements",
           "last 30 days": "derniers 30 jours",
-          "kg": "kg",
+
           "All records": "Tous les enregistrements",
           "Records of the last 30 days":
               "Enregistrements des 30 derniers jours",
 
           // RecordListTile
           'note': 'note',
-          'kg': 'kg',
 
           // DeleteShowDialog
           'Delete': 'Supprimer',
           'Cancel': 'Annuler',
 
           // RecordScreen
-          "kg": "kg",
+
           "note": "Remarque",
           "Edit Record": "Modifier l'enregistrement",
           "Save": "Enregistrer",
@@ -1438,7 +1427,7 @@ class Languages extends Translations {
           "Change the date": "Datum ändern.",
           "note": "Notiz",
           "YOUR WEIGHT": "DEIN GEWICHT",
-          "kg": "kg",
+
           "Take a photo": "Ein Foto machen.",
           "Pick from gallery": "Aus der Galerie auswählen.",
 
@@ -1504,8 +1493,8 @@ class Languages extends Translations {
           "You look quite overweight, you should lose weight.":
               "Sie sehen ziemlich übergewichtig aus, Sie sollten abnehmen.",
           'BMI: ': "BMI: ",
-          "kg": "kg",
-          "cm": "cm",
+
+
           'bmi': "BMI",
 
           // InfoScreen
@@ -1554,7 +1543,7 @@ class Languages extends Translations {
           'Language': 'Sprache',
           'Theme': 'Thema',
           'Unit of weight': 'Gewichtseinheit',
-          // 'Notifications': 'Benachrichtigungen',
+          'Unit of height': 'Höheneinheit',
           'Reminder for process tracking': 'Erinnerung zur Prozessverfolgung',
           'Privacy Policy': 'Datenschutzrichtlinie',
           'Protection of personal data': 'Schutz personenbezogener Daten',
@@ -1645,25 +1634,23 @@ class Languages extends Translations {
           // BarGraph
           'Averages of the last 1 year':
               'Durchschnittswerte des letzten Jahres',
-          'kg': 'kg',
 
           // LineGraph
           "all records": "Alle Aufzeichnungen",
           "last 30 days": "letzte 30 Tage",
-          "kg": "kg",
+
           "All records": "Alle Aufzeichnungen",
           "Records of the last 30 days": "Aufzeichnungen der letzten 30 Tage",
 
           // RecordListTile
           'note': 'Notiz',
-          'kg': 'kg',
 
           // DeleteShowDialog
           'Delete': 'Löschen',
           'Cancel': 'Abbrechen',
 
           // RecordScreen
-          "kg": "kg",
+
           "note": "Notiz",
           "Edit Record": "Aufzeichnung bearbeiten",
           "Save": "Speichern",
@@ -1783,7 +1770,7 @@ class Languages extends Translations {
           "Change the date": "Mudar a data.",
           "note": "nota",
           "YOUR WEIGHT": "O SEU PESO",
-          "kg": "kg",
+
           "Take a photo": "Tirar uma foto.",
           "Pick from gallery": "Escolher da galeria.",
 
@@ -1849,8 +1836,8 @@ class Languages extends Translations {
           "You look quite overweight, you should lose weight.":
               "Você parece bem acima do peso, deve perder peso.",
           'BMI: ': "IMC: ",
-          "kg": "kg",
-          "cm": "cm",
+
+
           'bmi': "IMC",
 
           // InfoScreen
@@ -1899,7 +1886,7 @@ class Languages extends Translations {
           'Language': 'Idioma',
           'Theme': 'Tema',
           'Unit of weight': 'Unidade de peso',
-          // 'Notifications': 'Notificações',
+          'Unit of height': 'Unidade de altura',
           'Reminder for process tracking':
               'Lembrete para acompanhamento de processos',
           'Privacy Policy': 'Política de privacidade',
@@ -1989,25 +1976,23 @@ class Languages extends Translations {
 
           // BarGraph
           'Averages of the last 1 year': 'Médias do último ano',
-          'kg': 'kg',
 
           // LineGraph
           "all records": "Todos os registros",
           "last 30 days": "últimos 30 dias",
-          "kg": "kg",
+
           "All records": "Todos os registros",
           "Records of the last 30 days": "Registros dos últimos 30 dias",
 
           // RecordListTile
           'note': 'nota',
-          'kg': 'kg',
 
           // DeleteShowDialog
           'Delete': 'Excluir',
           'Cancel': 'Cancelar',
 
           // RecordScreen
-          "kg": "kg",
+
           "note": "Nota",
           "Edit Record": "Editar Registro",
           "Save": "Salvar",
@@ -2120,7 +2105,7 @@ class Languages extends Translations {
           "Change the date": "更改日期。",
           "note": "备注",
           "YOUR WEIGHT": "您的体重",
-          "kg": "千克",
+
           "Take a photo": "拍照。",
           "Pick from gallery": "从相册中选择。",
 
@@ -2179,8 +2164,7 @@ class Languages extends Translations {
           "You look quite overweight, you should lose weight.":
               "你看起来非常超重，应该减肥。",
           'BMI: ': "BMI: ",
-          "kg": "公斤",
-          "cm": "厘米",
+
           'bmi': "BMI",
 
           // InfoScreen
@@ -2222,6 +2206,10 @@ class Languages extends Translations {
           'You need to grant permission to enable notifications.':
               '您需要授权才能启用通知。',
           'OK': '好的',
+          'kg': '千克',
+          'lbs': '磅',
+          'cm': '厘米',
+          'ft': '英尺',
 
           // SettingsScreen
           "Premium": "高级",
@@ -2229,7 +2217,7 @@ class Languages extends Translations {
           'Language': '语言',
           'Theme': '主题',
           'Unit of weight': '重量单位',
-          // 'Notifications': '通知',
+          'Unit of height': '高度单位',
           'Reminder for process tracking': '进程跟踪提醒',
           'Privacy Policy': '隐私政策',
           'Protection of personal data': '个人数据保护',
@@ -2316,25 +2304,21 @@ class Languages extends Translations {
 
           // BarGraph
           'Averages of the last 1 year': '过去一年的平均值',
-          'kg': '千克',
 
           // LineGraph
           "all records": "所有记录",
           "last 30 days": "过去30天",
-          "kg": "千克",
           "All records": "所有记录",
           "Records of the last 30 days": "最近30天的记录",
 
           // RecordListTile
           'note': '备注',
-          'kg': '千克',
 
           // DeleteShowDialog
           'Delete': '删除',
           'Cancel': '取消',
 
           // RecordScreen
-          "kg": "千克",
           "note": "备注",
           "Edit Record": "编辑记录",
           "Save": "保存",

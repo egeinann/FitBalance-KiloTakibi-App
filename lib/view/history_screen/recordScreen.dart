@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
-import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
+import 'package:kilo_takibi_uyg/widgets/number_picker_weight.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 import 'package:lottie/lottie.dart';
 
 class RecordScreen extends GetView<Controller> {
+  final SettingsController _settingsController = Get.find();
   RecordScreen({super.key});
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,7 @@ class RecordScreen extends GetView<Controller> {
   // *** EDIT BUTTON ***
   Widget editActionButton(BuildContext context, Record rec) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+      padding: const EdgeInsets.only(bottom: 30, right: 5),
       child: customFloatingActionButton(
         heroTag: "${rec.photoUrl}_editButton",
         widget: const Icon(Icons.draw),
@@ -87,20 +89,20 @@ class RecordScreen extends GetView<Controller> {
                 children: [
                   // Kenarlık (dış) metin
                   Text(
-                    '${rec.weight} ${"kg".tr}',
+                    '${rec.weight} ${_settingsController.weightUnit}',
                     style: Get.theme.textTheme.labelSmall!.copyWith(
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 4
-                            ..color = Colors.black, // Kenarlık rengi
-                        ),
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 4
+                        ..color = Colors.black, // Kenarlık rengi
+                    ),
                   ),
                   // İç metin
                   Text(
-                    '${rec.weight} ${"kg".tr}',
+                    '${rec.weight} ${_settingsController.weightUnit}',
                     style: Get.theme.textTheme.labelSmall!.copyWith(
-                          color: Colors.white, // Metin içi beyaz renk
-                        ),
+                      color: Colors.white, // Metin içi beyaz renk
+                    ),
                   ),
                 ],
               ),
@@ -213,7 +215,12 @@ class RecordScreen extends GetView<Controller> {
                     Text(
                       DateFormat("d MMM, y", Get.locale.toString())
                           .format(rec.dateTime),
-                      style: Get.theme.textTheme.bodySmall,
+                      style: const TextStyle(
+                        fontFamily: "Poppins",
+                        color: Colors.grey,
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -223,8 +230,9 @@ class RecordScreen extends GetView<Controller> {
                           style: Get.theme.textTheme.titleLarge,
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: Get.size.height * 0.01),
-                        Numbers(
+                        const SizedBox(height: 5),
+                        NumberPickerWeight(
+                          isKgSelected: _settingsController.isKgSelected,
                           value: selectedValue,
                           onChanged: (value) {
                             setState(() {
@@ -232,7 +240,7 @@ class RecordScreen extends GetView<Controller> {
                             });
                           },
                         ),
-                        SizedBox(height: Get.size.height * 0.01),
+                        const SizedBox(height: 5),
                         CustomTextField(
                           controller: noteController,
                           labelText: "note".tr,
@@ -248,7 +256,7 @@ class RecordScreen extends GetView<Controller> {
                           ),
                           maxLength: 80,
                         ),
-                        SizedBox(height: Get.size.height * 0.01),
+                        const SizedBox(height: 5),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: customFloatingActionButton(
@@ -262,13 +270,12 @@ class RecordScreen extends GetView<Controller> {
                               ),
                             ),
                             onPressed: () {
-                              onPressedSave(
-                                  context, selectedValue, note,
+                              onPressedSave(context, selectedValue, note,
                                   noteController, rec);
                             },
                           ),
                         ),
-                        SizedBox(height: Get.size.height * 0.01)
+                        const SizedBox(height: 5),
                       ],
                     ),
                   ],

@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/onboarding_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
-import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
+import 'package:kilo_takibi_uyg/widgets/number_picker_weight.dart';
 
 class IntroTargetWeightScreen extends GetView<Controller> {
   final onboardingController = Get.find<OnboardingController>();
-
+  final SettingsController _settingsController = Get.find();
   IntroTargetWeightScreen({super.key}) {
     // Animasyonu yalnızca TargetWeight sayfasında başlat
     onboardingController.isOnTargetWeightPage.listen((isActive) {
@@ -43,13 +44,24 @@ class IntroTargetWeightScreen extends GetView<Controller> {
               isRepeat: false,
             ),
             const SizedBox(height: 20),
-            Obx(
-              () => Numbers(
-                value: controller.targetWeight.value,
-                onChanged: (value) {
-                  controller.setTargetWeight(value);
-                },
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Obx(
+                  () => NumberPickerWeight(
+                    isKgSelected: _settingsController.isKgSelected,
+                    value: controller.targetWeight.value,
+                    onChanged: (value) {
+                      controller.setTargetWeight(value);
+                    },
+                  ),
+                ),
+                const SizedBox(width: 5),
+                Text(
+                  _settingsController.weightUnit,
+                  style: Get.theme.textTheme.labelSmall,
+                ),
+              ],
             ),
           ],
         ),

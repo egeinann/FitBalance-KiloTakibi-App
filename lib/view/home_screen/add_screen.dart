@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
+import 'package:kilo_takibi_uyg/widgets/divider.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/lottie_loading.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
@@ -12,7 +14,7 @@ import 'package:kilo_takibi_uyg/config/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
-import 'package:kilo_takibi_uyg/widgets/decimal_number_picker.dart';
+import 'package:kilo_takibi_uyg/widgets/number_picker_weight.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
@@ -20,7 +22,7 @@ class AddScreen extends GetView<Controller> {
   AddScreen({super.key});
   final TextEditingController _noteController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
-
+  final SettingsController _settingsController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,11 +41,11 @@ class AddScreen extends GetView<Controller> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     weightEntryContainer(),
-                    const Divider(thickness: 2, endIndent: 35, indent: 35),
+                    const CustomDivider(),
                     dateEntryContainer(),
-                    const Divider(thickness: 2, endIndent: 35, indent: 35),
+                    const CustomDivider(),
                     noteEntryContainer(),
-                    const Divider(thickness: 2, endIndent: 35, indent: 35),
+                    const CustomDivider(),
                     addPhotoContainer(),
                     SizedBox(height: Get.size.height * 0.12),
                   ],
@@ -91,7 +93,7 @@ class AddScreen extends GetView<Controller> {
     controller.photoUrl.value = null; // Fotoğraf URL'sini sıfırla
     Get.focusScope?.unfocus();
     Get.back();
-    Future.delayed(const Duration(milliseconds: 800), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       Get.toNamed(Routes.animationbackgroundscreen);
     });
   }
@@ -178,7 +180,7 @@ class AddScreen extends GetView<Controller> {
                   Obx(
                     () {
                       return Text(
-                        "${controller.selectedValue.value} ${"kg".tr}",
+                        "${controller.selectedValue.value} ${_settingsController.weightUnit}",
                         style: Get.theme.textTheme.displaySmall,
                       );
                     },
@@ -190,7 +192,8 @@ class AddScreen extends GetView<Controller> {
           Expanded(
             flex: 3,
             child: Obx(
-              () => Numbers(
+              () => NumberPickerWeight(
+                isKgSelected: _settingsController.isKgSelected,
                 value: controller.selectedValue.value,
                 onChanged: (value) {
                   controller.selectedValue.value = value;

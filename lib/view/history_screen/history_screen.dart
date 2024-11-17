@@ -4,6 +4,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
+import 'package:kilo_takibi_uyg/widgets/divider.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
@@ -65,7 +66,7 @@ class HistoryScreen extends StatelessWidget {
           children: [
             SizedBox(
               width: Get.size.width * 0.8,
-              child: const Divider(),
+              child: const CustomDivider(),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

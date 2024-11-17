@@ -5,6 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/services/email_service.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/bmi/model/bmi_model.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/settings_model.dart';
@@ -79,7 +80,6 @@ class SettingsScreen extends GetView<SettingsController> {
       //     ),
       //   ),
       //   onTap: () {
-
       //   },
       // ),
       SettingsModel(
@@ -95,18 +95,18 @@ class SettingsScreen extends GetView<SettingsController> {
                 !controller.isKgSelected.value
               ],
               onPressed: (int index) {
-                controller.toggleUnit();
+                controller.toggleWeightUnit();
               },
-              children: const [
+              children: [
                 Text(
-                  'Kg',
-                  style: TextStyle(
+                  'kg'.tr,
+                  style: const TextStyle(
                     fontFamily: "Poppins",
                   ),
                 ),
                 Text(
-                  'Lb',
-                  style: TextStyle(
+                  'lbs'.tr,
+                  style: const TextStyle(
                     fontFamily: "Poppins",
                   ),
                 ),
@@ -115,7 +115,46 @@ class SettingsScreen extends GetView<SettingsController> {
           ),
         ),
         onTap: () {
-          controller.toggleUnit();
+          controller.toggleWeightUnit();
+        },
+      ),
+      SettingsModel(
+        const Icon(Ionicons.man),
+        "Unit of height".tr,
+        null,
+        SizedBox(
+          height: 45,
+          child: Obx(
+            () => customToggleButton(
+              isSelected: [
+                controller.isCmSelected.value, // Eğer cm seçiliyse true
+                !controller
+                    .isCmSelected.value, // Eğer cm seçili değilse ft seçili
+              ],
+              onPressed: (_) {
+                controller.toggleHeightUnit(
+                    170); // Butona tıklanınca toggleHeightUnit'i çağır
+              },
+              children: [
+                Text(
+                  'cm'.tr,
+                  style: const TextStyle(
+                    fontFamily: "Poppins",
+                  ),
+                ),
+                Text(
+                  'ft'.tr,
+                  style: const TextStyle(
+                    fontFamily: "Poppins",
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        onTap: () {
+          controller
+              .toggleHeightUnit(1.75); // Burada da aynı fonksiyonu çağırıyoruz
         },
       ),
       SettingsModel(
@@ -194,7 +233,7 @@ class SettingsScreen extends GetView<SettingsController> {
         ),
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        padding: const EdgeInsets.only(bottom: 30, right: 5),
         child: customFloatingActionButton(
           heroTag: "profile",
           widget: const Icon(Ionicons.mail),

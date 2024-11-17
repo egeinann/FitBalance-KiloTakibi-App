@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/models/record.dart';
 
 class RecordListTile extends StatelessWidget {
   final Record rec;
 
-  const RecordListTile({super.key, required this.rec});
-
+  RecordListTile({super.key, required this.rec});
+  final SettingsController _settingsController = Get.find();
   @override
   Widget build(BuildContext context) {
     Get.focusScope?.unfocus();
@@ -92,7 +93,7 @@ class RecordListTile extends StatelessWidget {
           tag:
               "${rec.weight}_${rec.dateTime.toIso8601String()}_weight", // Tarih ve kilo kombinasyonu
           child: Text(
-            "${rec.weight} ${"kg".tr}",
+            "${rec.weight} ${_settingsController.weightUnit}",
             style: Get.theme.textTheme.labelSmall,
           ),
         ),

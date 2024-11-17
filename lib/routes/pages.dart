@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/binding/bmi_binding.dart';
+import 'package:kilo_takibi_uyg/binding/controller_binding.dart';
 import 'package:kilo_takibi_uyg/binding/info_binding.dart';
 import 'package:kilo_takibi_uyg/binding/onboarding_binding.dart';
 import 'package:kilo_takibi_uyg/binding/rive_binding.dart';
@@ -14,6 +15,7 @@ import 'package:kilo_takibi_uyg/onboarding/view/intro_targetWeight_screen.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/view/animation_background.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/add_screen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/chatbot_info_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/home_screen.dart';
 import 'package:kilo_takibi_uyg/view/chat_screen.dart';
@@ -24,7 +26,7 @@ import 'package:kilo_takibi_uyg/view/history_screen/history_screen.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/recordScreen.dart';
 import 'package:kilo_takibi_uyg/view/main_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_info.dart';
-import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_screen.dart';
+
 import 'package:kilo_takibi_uyg/view/premium_screens/opened_premium_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeName_screen.dart';
 import 'package:kilo_takibi_uyg/view/profile_screen/changeTargetWeight_screen.dart';
@@ -185,7 +187,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.infoscreen,
-      page: () => InfoScreen(),
+      page: () => const InfoScreen(),
       transition: Transition.fadeIn,
       binding: InfoBinding(),
     ),

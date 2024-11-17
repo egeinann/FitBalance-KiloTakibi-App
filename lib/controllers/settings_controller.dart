@@ -41,6 +41,9 @@ class SettingsController extends GetxController {
   void changeLanguage(String langCode) {
     selectedLanguage.value = langCode;
     Get.updateLocale(Locale(langCode));
+    controller.appBarTitle.value = controller
+        .getTitleForIndex(controller.currentTabIndex.value)
+        .tr; // controlerdaki appbartitle günceler
   }
 
   // *** CİNSİYET TOGGLE BUTTONLAR DEĞİŞİMİ ***

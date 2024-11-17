@@ -170,18 +170,18 @@ class Controller extends GetxController {
     );
   }
 
-  // *** APPBAR BAŞLIK GÜNCELEME ***
-  void changeTabIndex(int index) {
-    currentTabIndex.value = index;
-    appBarTitle.value = getTitleForIndex(index); // AppBar başlığını güncelle
-  }
-
-  // *** ÖDEME SONRASI GRAPHSCREEN GEÇİŞ KONTROLU ***
+// *** ÖDEME SONRASI GRAPHSCREEN GEÇİŞ KONTROLU ***
   void onPageChanged(int index) {
     graphPageIndex.value = index;
     if (currentTabIndex.value == 0) {
       appBarTitle.value = getTitleForIndex(0);
     }
+  }
+
+  // *** APPBAR BAŞLIK GÜNCELEME ***
+  void changeTabIndex(int index) {
+    currentTabIndex.value = index;
+    appBarTitle.value = getTitleForIndex(index); // AppBar başlığını güncelle
   }
 
   // *** GRAFİKLER ARASI BAŞLIK DEĞİŞİMLERİ ***

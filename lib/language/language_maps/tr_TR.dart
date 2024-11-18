@@ -1,6 +1,12 @@
 // en_us.dart
 
 const Map<String, String> trTR = {
+  // InstagramService
+  "Error": "Hata",
+  "Instagram app or suitable browser not found!":
+      "Instagram uygulaması veya uygun bir tarayıcı bulunamadı!",
+  "Close": "Kapat",
+
   // NotificationService
   'Log your weight today!': 'Bugün kilonu kaydet!',
   'Track your progress!': 'İlerlemeni takip et!',
@@ -331,4 +337,36 @@ const Map<String, String> trTR = {
       'Premium Üyeliğinizi Başarıyla Satın Aldınız!',
   'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
       'Artık kilo hedeflerinize ulaşmaya hazırsınız! Bu yolculuğa çıktığınız için tebrikler.',
+
+  // AnimationBackgroundScreen
+  "Great job! You've added a new weight record! You're progressing healthily!":
+      "Harika! Yeni bir kilo kaydı eklediniz! Sağlıklı bir şekilde ilerliyorsunuz!",
+  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
+      "Tebrikler! Kilonuzu başarıyla kaydettiniz! Hedeflerinize adım adım ilerliyorsunuz!",
+  "Excellent! You've added a new weight record! Keep up your healthy habits!":
+      "Mükemmel! Yeni bir kilo kaydı eklediniz! Sağlıklı alışkanlıklarınıza devam edin!",
+  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
+      "Aferin! Yeni bir kilo kaydı eklediniz! Sağlıklı bir şekilde ilerlemeye devam edin!",
+
+  // HomeScreen
+  "kcal/day": "kcal/gün",
+  "How many calories should I eat per day?": "Günlük kaç kalori almalıyım?",
+  "Balance": "Denge",
+  "How can I control my weight?": "Kilomu nasıl kontrol edebilirim?",
+  "BMI": "BMI",
+  "Calculate Body Mass Index": "Vücut Kitle İndeksi Hesapla",
+  "Starting point": "Başlangıç noktası",
+  "empty": "boş",
+  "Target point": "Hedef nokta",
+  "There must be 7 or more data": "7 veya daha fazla veri olmalıdır",
+  "Charts": "Grafikler",
+  "ChatBot": "ChatBot",
+  "Healthier suggestions with artificial intelligence!":
+      "Yapay zeka ile daha sağlıklı öneriler!",
+  "Try Premium": "Premium'u Deneyin",
+  "Better Tracking with Memories! Have You Tried Adding Photos?":
+      "Hatırlatıcılarla Daha İyi Takip! Fotoğraf Eklemeyi Denediniz mi?",
+  "Follow us on Instagram for healthy living tips!":
+      "Sağlıklı yaşam ipuçları için Instagram'dan bizi takip edin!",
+  "Visit": "Ziyaret Et",
 };

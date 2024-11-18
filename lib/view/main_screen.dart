@@ -41,12 +41,12 @@ class MainScreen extends GetView<Controller> {
           },
         ),
         scrolledUnderElevation: 0,
-        backgroundColor: Get.theme.scaffoldBackgroundColor,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         automaticallyImplyLeading: false,
         title: Obx(
           () => Text(
             controller.appBarTitle.value,
-            style: Get.theme.textTheme.titleLarge,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
         centerTitle: true,

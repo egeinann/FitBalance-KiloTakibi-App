@@ -12,10 +12,14 @@ class AnimationBackgroundScreen extends GetView<RiveController> {
   AnimationBackgroundScreen({super.key});
   // Rastgele tebrik motivasyon geri bildirimleri
   final List<String> messages = [
-    "Great job! You've added a new weight record! You're progressing healthily!",
-    "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!",
-    "Excellent! You've added a new weight record! Keep up your healthy habits!",
+    "Great job! You've added a new weight record! You're progressing healthily!"
+        .tr,
+    "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!"
+        .tr,
+    "Excellent! You've added a new weight record! Keep up your healthy habits!"
+        .tr,
     "Well done! You've added a new weight record! Keep moving forward in a healthy way!"
+        .tr,
   ];
   @override
   Widget build(BuildContext context) {

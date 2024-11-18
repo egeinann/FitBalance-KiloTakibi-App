@@ -1,5 +1,11 @@
 // AMERİKAN İNGİLİZCESİ
 const Map<String, String> enUS = {
+  // InstagramService
+  "Error": "Error",
+  "Instagram app or suitable browser not found!":
+      "Instagram app or suitable browser not found!",
+  "Close": "Close",
+
   // NotificationService
   'Log your weight today!': 'Log your weight today!',
   'Track your progress!': 'Track your progress!',
@@ -327,4 +333,37 @@ const Map<String, String> enUS = {
       'You Have Successfully Purchased Your Premium Membership!',
   'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
       'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.',
+
+  // AnimationBackgroundScreen
+  "Great job! You've added a new weight record! You're progressing healthily!":
+      "Great job! You've added a new weight record! You're progressing healthily!",
+  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
+      "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!",
+  "Excellent! You've added a new weight record! Keep up your healthy habits!":
+      "Excellent! You've added a new weight record! Keep up your healthy habits!",
+  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
+      "Well done! You've added a new weight record! Keep moving forward in a healthy way!",
+
+  // HomeScreen
+  "kcal/day": "kcal/day",
+  "How many calories should I eat per day?":
+      "How many calories should I eat per day?",
+  "Balance": "Balance",
+  "How can I control my weight?": "How can I control my weight?",
+  "BMI": "BMI",
+  "Calculate Body Mass Index": "Calculate Body Mass Index",
+  "Starting point": "Starting point",
+  "empty": "empty",
+  "Target point": "Target point",
+  "There must be 7 or more data": "There must be 7 or more data",
+  "Charts": "Charts",
+  "ChatBot": "ChatBot",
+  "Healthier suggestions with artificial intelligence!":
+      "Healthier suggestions with artificial intelligence!",
+  "Try Premium": "Try Premium",
+  "Better Tracking with Memories! Have You Tried Adding Photos?":
+      "Better Tracking with Memories! Have You Tried Adding Photos?",
+  "Follow us on Instagram for healthy living tips!":
+      "Follow us on Instagram for healthy living tips!",
+  "Visit": "Visit",
 };

@@ -1,6 +1,12 @@
 // en_us.dart
 
 const Map<String, String> deDE = {
+  // InstagramService
+  "Error": "Fehler",
+  "Instagram app or suitable browser not found!":
+      "Instagram-App oder geeigneter Browser nicht gefunden!",
+  "Close": "Schließen",
+
   // NotificationService
   'Log your weight today!': 'Trage heute dein Gewicht ein!',
   'Track your progress!': 'Verfolge deinen Fortschritt!',
@@ -334,4 +340,37 @@ const Map<String, String> deDE = {
       'Sie haben Ihr Premium-Abonnement erfolgreich gekauft!',
   'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
       'Jetzt sind Sie bereit, Ihre Gewichtsziele zu erreichen! Herzlichen Glückwunsch zu diesem Schritt.',
+
+  // AnimationBackgroundScreen
+  "Great job! You've added a new weight record! You're progressing healthily!":
+      "Großartige Arbeit! Du hast einen neuen Gewichtseintrag hinzugefügt! Du machst gesunde Fortschritte!",
+  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
+      "Herzlichen Glückwunsch! Du hast dein Gewicht erfolgreich aufgezeichnet! Du machst Schritt für Schritt Fortschritte auf deinem Weg zu deinen Zielen!",
+  "Excellent! You've added a new weight record! Keep up your healthy habits!":
+      "Exzellent! Du hast einen neuen Gewichtseintrag hinzugefügt! Setze deine gesunden Gewohnheiten fort!",
+  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
+      "Gut gemacht! Du hast einen neuen Gewichtseintrag hinzugefügt! Mach weiter in gesunder Weise!",
+
+  // HomeScreen
+  "kcal/day": "kcal/Tag",
+  "How many calories should I eat per day?":
+      "Wie viele Kalorien sollte ich pro Tag essen?",
+  "Balance": "Balance",
+  "How can I control my weight?": "Wie kann ich mein Gewicht kontrollieren?",
+  "BMI": "BMI",
+  "Calculate Body Mass Index": "Body-Mass-Index berechnen",
+  "Starting point": "Ausgangspunkt",
+  "empty": "leer",
+  "Target point": "Zielpunkt",
+  "There must be 7 or more data": "Es müssen 7 oder mehr Daten vorhanden sein",
+  "Charts": "Diagramme",
+  "ChatBot": "ChatBot",
+  "Healthier suggestions with artificial intelligence!":
+      "Gesündere Vorschläge mit künstlicher Intelligenz!",
+  "Try Premium": "Versuche Premium",
+  "Better Tracking with Memories! Have You Tried Adding Photos?":
+      "Besseres Tracking mit Erinnerungen! Hast du schon Fotos hinzugefügt?",
+  "Follow us on Instagram for healthy living tips!":
+      "Folge uns auf Instagram für gesunde Lebens-Tipps!",
+  "Visit": "Besuchen",
 };

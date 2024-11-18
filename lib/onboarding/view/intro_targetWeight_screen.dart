@@ -24,7 +24,7 @@ class IntroTargetWeightScreen extends GetView<Controller> {
     controller.targetWeight.value = 70.0; // Başlangıç değeri
     Timer.periodic(const Duration(milliseconds: 20), (timer) {
       controller.targetWeight.value -= 1;
-      if (controller.targetWeight.value <= 60) {
+      if (controller.targetWeight.value <= 64) {
         timer.cancel(); // 50'ye ulaştığında animasyonu durdur
       }
     });

@@ -1,6 +1,12 @@
 // en_us.dart
 
 const Map<String, String> frFR = {
+  // InstagramService
+  "Error": "Erreur",
+  "Instagram app or suitable browser not found!":
+      "L'application Instagram ou un navigateur approprié n'a pas été trouvé !",
+  "Close": "Fermer",
+
   // NotificationService
   'Log your weight today!': 'Enregistre ton poids aujourd\'hui!',
   'Track your progress!': 'Suis tes progrès!',
@@ -334,4 +340,37 @@ const Map<String, String> frFR = {
       'Vous avez réussi à acheter votre abonnement Premium !',
   'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
       'Vous êtes maintenant prêt à atteindre vos objectifs de poids ! Félicitations pour avoir entamé ce voyage.',
+
+  // AnimationBackgroundScreen
+  "Great job! You've added a new weight record! You're progressing healthily!":
+      "Bravo! Vous avez ajouté un nouveau record de poids! Vous progressez de manière saine!",
+  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
+      "Félicitations! Vous avez enregistré votre poids avec succès! Vous progressez pas à pas vers vos objectifs!",
+  "Excellent! You've added a new weight record! Keep up your healthy habits!":
+      "Excellent! Vous avez ajouté un nouveau record de poids! Continuez vos habitudes saines!",
+  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
+      "Bien joué! Vous avez ajouté un nouveau record de poids! Continuez à avancer de manière saine!",
+
+  // HomeScreen
+  "kcal/day": "kcal/jour",
+  "How many calories should I eat per day?":
+      "Combien de calories devrais-je manger par jour ?",
+  "Balance": "Équilibre",
+  "How can I control my weight?": "Comment puis-je contrôler mon poids ?",
+  "BMI": "IMC",
+  "Calculate Body Mass Index": "Calculer l'indice de masse corporelle",
+  "Starting point": "Point de départ",
+  "empty": "vide",
+  "Target point": "Point cible",
+  "There must be 7 or more data": "Il doit y avoir 7 ou plus de données",
+  "Charts": "Graphiques",
+  "ChatBot": "ChatBot",
+  "Healthier suggestions with artificial intelligence!":
+      "Des suggestions plus saines avec l'intelligence artificielle !",
+  "Try Premium": "Essayez Premium",
+  "Better Tracking with Memories! Have You Tried Adding Photos?":
+      "Suivi amélioré avec des souvenirs ! Avez-vous essayé d'ajouter des photos ?",
+  "Follow us on Instagram for healthy living tips!":
+      "Suivez-nous sur Instagram pour des conseils de vie saine !",
+  "Visit": "Visiter",
 };

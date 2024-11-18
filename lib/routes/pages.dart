@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/binding/bmi_binding.dart';
-import 'package:kilo_takibi_uyg/binding/controller_binding.dart';
 import 'package:kilo_takibi_uyg/binding/info_binding.dart';
 import 'package:kilo_takibi_uyg/binding/onboarding_binding.dart';
 import 'package:kilo_takibi_uyg/binding/rive_binding.dart';

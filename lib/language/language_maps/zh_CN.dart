@@ -1,6 +1,11 @@
 // en_us.dart
 
 const Map<String, String> zhCN = {
+  // InstagramService
+  "Error": "错误",
+  "Instagram app or suitable browser not found!": "未找到Instagram应用或适当的浏览器！",
+  "Close": "关闭",
+
   // NotificationService
   'Log your weight today!': '今天记录你的体重!',
   'Track your progress!': '跟踪你的进度!',
@@ -314,4 +319,35 @@ const Map<String, String> zhCN = {
   'You Have Successfully Purchased Your Premium Membership!': '您已成功购买了您的高级会员！',
   'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
       '现在您已准备好实现您的体重目标！恭喜您踏上这段旅程。',
+
+  // AnimationBackgroundScreen
+  "Great job! You've added a new weight record! You're progressing healthily!":
+      "干得好！你已经添加了新的体重记录！你正在健康地进步！",
+  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
+      "恭喜！你成功地记录了体重！你正在一步步朝着目标前进！",
+  "Excellent! You've added a new weight record! Keep up your healthy habits!":
+      "太棒了！你添加了新的体重记录！继续保持你的健康习惯！",
+  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
+      "做得好！你添加了新的体重记录！继续以健康的方式前进！",
+
+  // HomeScreen
+  "kcal/day": "千卡/天",
+  "How many calories should I eat per day?": "我每天应该摄入多少卡路里？",
+  "Balance": "平衡",
+  "How can I control my weight?": "我如何控制我的体重？",
+  "BMI": "BMI",
+  "Calculate Body Mass Index": "计算身体质量指数",
+  "Starting point": "起点",
+  "empty": "空",
+  "Target point": "目标点",
+  "There must be 7 or more data": "必须有7个或更多的数据",
+  "Charts": "图表",
+  "ChatBot": "聊天机器人",
+  "Healthier suggestions with artificial intelligence!": "通过人工智能提供更健康的建议！",
+  "Try Premium": "试试Premium",
+  "Better Tracking with Memories! Have You Tried Adding Photos?":
+      "通过记忆进行更好的跟踪！您尝试过添加照片吗？",
+  "Follow us on Instagram for healthy living tips!":
+      "在Instagram上关注我们，获取健康生活小贴士！",
+  "Visit": "访问",
 };

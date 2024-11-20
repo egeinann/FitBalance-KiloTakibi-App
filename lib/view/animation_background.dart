@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/rive_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -10,23 +11,13 @@ import 'package:rive/rive.dart';
 
 class AnimationBackgroundScreen extends GetView<RiveController> {
   AnimationBackgroundScreen({super.key});
-  // Rastgele tebrik motivasyon geri bildirimleri
-  final List<String> messages = [
-    "Great job! You've added a new weight record! You're progressing healthily!"
-        .tr,
-    "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!"
-        .tr,
-    "Excellent! You've added a new weight record! Keep up your healthy habits!"
-        .tr,
-    "Well done! You've added a new weight record! Keep moving forward in a healthy way!"
-        .tr,
-  ];
+  final Controller _controller = Get.find();
   @override
   Widget build(BuildContext context) {
     final Rx<double> animationValue = 0.0
         .obs; // floating action button Animasyonu yönetecek Rx<double> değişkeni
-    String randomMessage =
-        messages[Random().nextInt(messages.length)]; // listeden random text seç
+    String randomMessage = controller.newRecordMessages[Random().nextInt(
+        controller.newRecordMessages.length)]; // listeden random text seç
     return Scaffold(
       backgroundColor: Get.theme.scaffoldBackgroundColor,
       appBar: AppBar(
@@ -59,7 +50,9 @@ class AnimationBackgroundScreen extends GetView<RiveController> {
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: textTyperAnimated(
-                      text: randomMessage,
+                      text: _controller.targetAchieved.value
+                          ? controller.weightAchievedMessage
+                          : randomMessage,
                       textStyle: const TextStyle(
                         color: Colors.white,
                         fontFamily: "Poppins",

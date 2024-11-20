@@ -10,7 +10,6 @@ class Controller extends GetxController {
   RxList<Record> filteredRecords =
       <Record>[].obs; // filtrelenmiş grafik kayıtlarını tutan liste
   RxBool isLoading = false.obs; // loading lottie için
-
   final ScrollController scrollController =
       ScrollController(); // HİSTORY SCROLL CONTROLLER
   final GlobalKey<AnimatedListState> listKey =
@@ -22,15 +21,16 @@ class Controller extends GetxController {
       true.obs; // grafik zaman dilimi filtreleme (all & 30days)
   var showDotData = false.obs; // grafik, basılı tutunca data noktalarını göster
   var graphPageIndex = 0.obs; // ödeme sonrası graphscreen'e geçiş
-  var selectedValue = 70.0.obs; // Seçilen ağırlık
+  var currentWeight = 70.0.obs; // Seçilen ağırlık
   var selectedDate = DateTime.now().obs; // Seçilen tarih
   var note = ''.obs; // Not
 
   final TextEditingController nameController = TextEditingController();
-  var userName = ''.obs;
-  var targetWeight = 70.0.obs;
-  final RxString temporaryUserName = ''.obs;
-  final RxDouble temporaryTargetWeight = 70.0.obs;
+  var userName = ''.obs; // username
+  var targetWeight = 70.0.obs; // hedef kilo
+  var targetAchieved = false.obs; // hedef kiloya ulaşıldı mı
+  final RxString temporaryUserName = ''.obs; // username kopya
+  final RxDouble temporaryTargetWeight = 70.0.obs; // hedefkilo kopya
 
   // NAME TUTAN FONK ***
   void setUserName(String name) {
@@ -40,6 +40,13 @@ class Controller extends GetxController {
   // HEDEF KILO TUTAN FONK ***
   void setTargetWeight(double weight) {
     targetWeight.value = weight;
+  }
+
+  // Hedefe ulaşılıp ulaşılmadığını kontrol eden fonksiyon
+  void checkTargetAchieved() {
+    const double tolerance = 1.0; // 1 kilogramlık tolerans
+    targetAchieved.value =
+        (currentWeight.value - targetWeight.value).abs() <= tolerance;
   }
 
   // *** RECORD EKLEME İŞLEMİ ***

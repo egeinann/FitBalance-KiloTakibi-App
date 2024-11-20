@@ -165,6 +165,18 @@ const Map<String, String> enUS = {
       'You need to grant permission to enable notifications.',
   'OK': 'OK',
 
+// RiveController
+  "Congratulations! You've reached your goal.":
+      "Congratulations! You've reached your goal.",
+  "Great job! You've added a new weight record! You're progressing healthily!":
+      "Great job! You've added a new weight record! You're progressing healthily!",
+  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
+      "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!",
+  "Excellent! You've added a new weight record! Keep up your healthy habits!":
+      "Excellent! You've added a new weight record! Keep up your healthy habits!",
+  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
+      "Well done! You've added a new weight record! Keep moving forward in a healthy way!",
+
   // SettingsScreen
   "Premium": "Premium",
   "Upgrade to Premium": "Upgrade to Premium",
@@ -333,16 +345,6 @@ const Map<String, String> enUS = {
       'You Have Successfully Purchased Your Premium Membership!',
   'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
       'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.',
-
-  // AnimationBackgroundScreen
-  "Great job! You've added a new weight record! You're progressing healthily!":
-      "Great job! You've added a new weight record! You're progressing healthily!",
-  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
-      "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!",
-  "Excellent! You've added a new weight record! Keep up your healthy habits!":
-      "Excellent! You've added a new weight record! Keep up your healthy habits!",
-  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
-      "Well done! You've added a new weight record! Keep moving forward in a healthy way!",
 
   // HomeScreen
   "kcal/day": "kcal/day",

@@ -291,7 +291,7 @@ class HomeScreen extends GetView<Controller> {
                 height: 200,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    width: 1.5,
+                    width: 1,
                     color: Get.theme.focusColor,
                   ),
                   borderRadius: BorderRadius.circular(10),
@@ -419,102 +419,139 @@ class HomeScreen extends GetView<Controller> {
   // *** PREMIUM LINE CHART ***
   Widget homeLineChart() {
     return Obx(
-      () => LineChart(
-        key: ValueKey<bool>(
-            controller.selecedAllTimeGraph.value), // 3. ValueKey eklendi
-        curve: Curves.linearToEaseOut,
-        duration: const Duration(milliseconds: 200),
-        LineChartData(
-          lineTouchData: const LineTouchData(
-            handleBuiltInTouches: false,
-          ),
-          gridData: FlGridData(
-            show: true,
-            horizontalInterval: 10,
-            drawVerticalLine: true,
-            getDrawingHorizontalLine: (value) => FlLine(
-              color: Colors.grey.withOpacity(0.3),
-              strokeWidth: 1,
+      () => Padding(
+        padding: const EdgeInsets.all(10),
+        child: LineChart(
+          key: ValueKey<bool>(
+              controller.selecedAllTimeGraph.value), // 3. ValueKey eklendi
+          curve: Curves.linearToEaseOut,
+          duration: const Duration(milliseconds: 200),
+          LineChartData(
+            lineTouchData: const LineTouchData(
+              handleBuiltInTouches: false,
             ),
-            getDrawingVerticalLine: (value) => const FlLine(
-              color: Colors.transparent,
-              strokeWidth: 0,
-            ),
-          ),
-          titlesData: const FlTitlesData(
-            topTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: false,
+            gridData: FlGridData(
+              show: true,
+              horizontalInterval: 10,
+              drawVerticalLine: true,
+              getDrawingHorizontalLine: (value) => FlLine(
+                color: Colors.grey.withOpacity(0.3),
+                strokeWidth: 1,
+              ),
+              getDrawingVerticalLine: (value) => const FlLine(
+                color: Colors.transparent,
+                strokeWidth: 0,
               ),
             ),
-            bottomTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: false,
+            titlesData: FlTitlesData(
+              topTitles: const AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: false,
+                ),
+              ),
+              leftTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  getTitlesWidget: (value, meta) => Text(
+                    value.toInt().toString(),
+                    maxLines: 1,
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 11,
+                      color: Get.theme.indicatorColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              rightTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  getTitlesWidget: (value, meta) => Text(
+                    value.toInt().toString(),
+                    maxLines: 1,
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 10,
+                      color: Get.theme.indicatorColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              bottomTitles: const AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: false,
+                ),
               ),
             ),
-          ),
-          borderData: FlBorderData(
-            show: true,
-            border: Border.all(color: Colors.grey.withOpacity(0.3), width: 1),
-          ),
-          minX: controller.filteredRecords.isNotEmpty
-              ? controller.filteredRecords.first.dateTime.millisecondsSinceEpoch
-                  .toDouble()
-              : 0,
-          maxX: controller.filteredRecords.isNotEmpty
-              ? controller.filteredRecords.last.dateTime.millisecondsSinceEpoch
-                  .toDouble()
-              : 0,
-          minY: controller.records.isNotEmpty
-              ? controller.records
-                      .map((record) => record.weight)
-                      .reduce((a, b) => a < b ? a : b) -
-                  10
-              : 0, // Liste boşken kullanılacak varsayılan değer
-          maxY: controller.filteredRecords.isNotEmpty
-              ? controller.filteredRecords
-                      .map((r) => r.weight)
-                      .reduce((a, b) => a > b ? a : b) +
-                  10
-              : 60,
-          lineBarsData: [
-            LineChartBarData(
-              spots: controller.filteredRecords
-                  .map(
-                    (record) => FlSpot(
-                        record.dateTime.millisecondsSinceEpoch.toDouble(),
-                        record.weight),
-                  )
-                  .toList(),
-              isCurved: true,
-              gradient: LinearGradient(
-                colors: [
-                  Get.theme.focusColor.withOpacity(0.5),
-                  Get.theme.focusColor.withOpacity(1)
-                ],
-              ),
-              preventCurveOverShooting: true,
-              isStepLineChart: false,
-              color: Get.theme.cardColor,
-              barWidth: 2,
-              isStrokeCapRound: true,
-              dotData: const FlDotData(
-                show: false,
-              ),
-              belowBarData: BarAreaData(
+            borderData: FlBorderData(
+              show: true,
+              border: Border.all(color: Colors.grey.withOpacity(0.3), width: 1),
+            ),
+            minX: controller.filteredRecords.isNotEmpty
+                ? controller
+                    .filteredRecords.first.dateTime.millisecondsSinceEpoch
+                    .toDouble()
+                : 0,
+            maxX: controller.filteredRecords.isNotEmpty
+                ? controller
+                    .filteredRecords.last.dateTime.millisecondsSinceEpoch
+                    .toDouble()
+                : 0,
+            minY: controller.records.isNotEmpty
+                ? controller.records
+                        .map((record) => record.weight)
+                        .reduce((a, b) => a < b ? a : b) -
+                    10
+                : 0, // Liste boşken kullanılacak varsayılan değer
+            maxY: controller.filteredRecords.isNotEmpty
+                ? controller.filteredRecords
+                        .map((r) => r.weight)
+                        .reduce((a, b) => a > b ? a : b) +
+                    10
+                : 60,
+            lineBarsData: [
+              LineChartBarData(
+                spots: controller.filteredRecords
+                    .map(
+                      (record) => FlSpot(
+                          record.dateTime.millisecondsSinceEpoch.toDouble(),
+                          record.weight),
+                    )
+                    .toList(),
+                isCurved: true,
                 gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
                   colors: [
-                    Get.theme.focusColor.withOpacity(0.3),
-                    Colors.transparent
+                    Get.theme.focusColor.withOpacity(0.5),
+                    Get.theme.focusColor.withOpacity(1)
                   ],
                 ),
-                show: true,
-                color: Get.theme.focusColor.withOpacity(0.5),
+                preventCurveOverShooting: true,
+                isStepLineChart: false,
+                color: Get.theme.cardColor,
+                barWidth: 2,
+                isStrokeCapRound: true,
+                dotData: const FlDotData(
+                  show: false,
+                ),
+                belowBarData: BarAreaData(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Get.theme.focusColor.withOpacity(0.3),
+                      Colors.transparent
+                    ],
+                  ),
+                  show: true,
+                  color: Get.theme.focusColor.withOpacity(0.5),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

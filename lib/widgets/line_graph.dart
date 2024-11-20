@@ -44,6 +44,7 @@ Obx lineGraph() {
                         fitInsideHorizontally: true,
                         fitInsideVertically: true,
                         tooltipRoundedRadius: 8,
+                        getTooltipColor: (group) => Get.theme.focusColor,
                         tooltipPadding: const EdgeInsets.all(5),
                         getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
                           return touchedBarSpots.map((barSpot) {
@@ -56,7 +57,11 @@ Obx lineGraph() {
                             );
                             return LineTooltipItem(
                               '${DateFormat('d MMM, y', Get.locale.toString()).format(record.dateTime)}\n${record.weight} ${_settingsController.weightUnit}',
-                              const TextStyle(color: Colors.white),
+                              const TextStyle(
+                                color: Colors.white, // Tooltip metin rengi
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
                             );
                           }).toList();
                         },
@@ -78,8 +83,8 @@ Obx lineGraph() {
                     titlesData: FlTitlesData(
                       leftTitles: AxisTitles(
                         sideTitles: SideTitles(
+                          reservedSize: 30,
                           showTitles: true,
-                          interval: 10,
                           getTitlesWidget: (value, meta) => Text(
                             value.toInt().toString(),
                             maxLines: 1,
@@ -207,6 +212,7 @@ Obx lineGraph() {
                         barWidth: 2,
                         isStrokeCapRound: true,
                         dotData: FlDotData(
+
                           show: controller.showDotData.value,
                         ),
                         belowBarData: BarAreaData(
@@ -228,38 +234,29 @@ Obx lineGraph() {
               ),
             ),
             // *** SELECTED TIME RANGE EXPANDED ***
-            SizedBox(
-              height: 40,
-              child: Obx(
-                () => customToggleButton(
-                  isSelected: [
-                    controller.selecedAllTimeGraph.value,
-                    !controller.selecedAllTimeGraph.value
-                  ],
-                  onPressed: (int index) {
-                    controller.timeUnit(index);
-                  },
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        'all records'.tr,
-                        style: const TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
+            Obx(
+              () => customToggleButton(
+                isSelected: [
+                  controller.selecedAllTimeGraph.value,
+                  !controller.selecedAllTimeGraph.value
+                ],
+                onPressed: (int index) {
+                  controller.timeUnit(index);
+                },
+                children: [
+                  Text(
+                    'all records'.tr,
+                    style: const TextStyle(
+                      fontFamily: "Poppins",
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        'last 30 days'.tr,
-                        style: const TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
+                  ),
+                  Text(
+                    'last 30 days'.tr,
+                    style: const TextStyle(
+                      fontFamily: "Poppins",
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 10),

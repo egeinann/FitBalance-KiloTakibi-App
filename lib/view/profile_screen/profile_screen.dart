@@ -197,22 +197,16 @@ class ProfileScreen extends GetView<Controller> {
               _settingsController.toggleGender(index);
             },
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  'Male'.tr,
-                  style: const TextStyle(
-                    fontFamily: "Poppins",
-                  ),
+              Text(
+                'Male'.tr,
+                style: const TextStyle(
+                  fontFamily: "Poppins",
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  'Female'.tr,
-                  style: const TextStyle(
-                    fontFamily: "Poppins",
-                  ),
+              Text(
+                'Female'.tr,
+                style: const TextStyle(
+                  fontFamily: "Poppins",
                 ),
               ),
             ],

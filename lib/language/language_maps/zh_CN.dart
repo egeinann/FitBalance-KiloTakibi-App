@@ -161,6 +161,17 @@ const Map<String, String> zhCN = {
   'cm': '厘米',
   'ft': '英尺',
 
+  // RiveController
+  "Congratulations! You've reached your goal.": "恭喜你！你已经达到了目标。",
+  "Great job! You've added a new weight record! You're progressing healthily!":
+      "干得好！你已经添加了新的体重记录！你正在健康地进步！",
+  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
+      "恭喜！你成功地记录了体重！你正在一步步朝着目标前进！",
+  "Excellent! You've added a new weight record! Keep up your healthy habits!":
+      "太棒了！你添加了新的体重记录！继续保持你的健康习惯！",
+  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
+      "做得好！你添加了新的体重记录！继续以健康的方式前进！",
+
   // SettingsScreen
   "Premium": "高级",
   "Upgrade to Premium": "升级到高级版",
@@ -319,16 +330,6 @@ const Map<String, String> zhCN = {
   'You Have Successfully Purchased Your Premium Membership!': '您已成功购买了您的高级会员！',
   'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
       '现在您已准备好实现您的体重目标！恭喜您踏上这段旅程。',
-
-  // AnimationBackgroundScreen
-  "Great job! You've added a new weight record! You're progressing healthily!":
-      "干得好！你已经添加了新的体重记录！你正在健康地进步！",
-  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
-      "恭喜！你成功地记录了体重！你正在一步步朝着目标前进！",
-  "Excellent! You've added a new weight record! Keep up your healthy habits!":
-      "太棒了！你添加了新的体重记录！继续保持你的健康习惯！",
-  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
-      "做得好！你添加了新的体重记录！继续以健康的方式前进！",
 
   // HomeScreen
   "kcal/day": "千卡/天",

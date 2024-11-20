@@ -60,7 +60,7 @@ class RecordScreen extends GetView<Controller> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 30, right: 5),
       child: customFloatingActionButton(
-        heroTag: "${rec.photoUrl}_editButton",
+        heroTag: "_editButton",
         widget: const Icon(Icons.draw),
         onPressed: () {
           _showEditModalBottomSheet(context, rec);
@@ -122,17 +122,12 @@ class RecordScreen extends GetView<Controller> {
           margin: const EdgeInsets.all(5),
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(5),
-              topRight: Radius.circular(20),
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(5),
-            ),
-            color: Get.theme.canvasColor,
+            borderRadius: BorderRadius.circular(10),
+            color: Get.theme.canvasColor.withOpacity(0.5),
           ),
           child: Text(
             rec.note!,
-            style: Get.theme.textTheme.bodyMedium,
+            style: Get.theme.textTheme.bodySmall,
             textAlign: TextAlign.center,
           ),
         ),
@@ -174,7 +169,7 @@ class RecordScreen extends GetView<Controller> {
                       top: 0,
                       child: IconButton(
                         icon: const Icon(Ionicons.close,
-                            color: Colors.red, size: 40),
+                            color: Colors.white),
                         onPressed: () {
                           showDeletePhoto(rec);
                         },
@@ -194,97 +189,109 @@ class RecordScreen extends GetView<Controller> {
     double selectedValue = rec.weight;
     String? note = rec.note;
     TextEditingController noteController = TextEditingController(text: note);
-    showModalBottomSheet(
-      isScrollControlled: true,
-      context: context,
-      builder: (BuildContext context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            return SingleChildScrollView(
-              reverse: true,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom,
-                  top: 10,
-                  right: 10,
-                  left: 10,
+
+    Get.bottomSheet(
+      StatefulBuilder(
+        builder: (BuildContext context, StateSetter setState) {
+          return SingleChildScrollView(
+            reverse: false,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Get.theme.cardColor,
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(25),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 10,
+                      offset: const Offset(0, -5),
+                    ),
+                  ],
                 ),
-                child: Stack(
-                  alignment: Alignment.topLeft,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        width: 50,
+                        height: 5,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
                     Text(
                       DateFormat("d MMM, y", Get.locale.toString())
                           .format(rec.dateTime),
                       style: const TextStyle(
                         fontFamily: "Poppins",
                         color: Colors.grey,
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          "Edit Record".tr,
-                          style: Get.theme.textTheme.titleLarge,
-                          textAlign: TextAlign.center,
+                    const SizedBox(height: 10),
+                    NumberPickerWeight(
+                      isKgSelected: _settingsController.isKgSelected,
+                      value: selectedValue,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedValue = value;
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                    CustomTextField(
+                      controller: noteController,
+                      labelText: "note".tr,
+                      onChanged: (value) {
+                        note = value;
+                      },
+                      titleIcon: IconButton(
+                        onPressed: () {
+                          noteController.clear(); // TextField'ı sıfırla
+                          note = ""; // note değişkenini de sıfırla
+                        },
+                        icon: const Icon(Icons.backspace),
+                      ),
+                      maxLength: 80,
+                    ),
+                    const SizedBox(height: 10),
+                    customFloatingActionButton(
+                      heroTag: "_editButton",
+                      widget: Text(
+                        "Save".tr,
+                        style: const TextStyle(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
-                        const SizedBox(height: 5),
-                        NumberPickerWeight(
-                          isKgSelected: _settingsController.isKgSelected,
-                          value: selectedValue,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedValue = value;
-                            });
-                          },
-                        ),
-                        const SizedBox(height: 5),
-                        CustomTextField(
-                          controller: noteController,
-                          labelText: "note".tr,
-                          onChanged: (value) {
-                            note = value;
-                          },
-                          titleIcon: IconButton(
-                            onPressed: () {
-                              noteController.clear(); // TextField'ı sıfırla
-                              note = ""; // note değişkenini de sıfırla
-                            },
-                            icon: const Icon(Icons.backspace),
-                          ),
-                          maxLength: 80,
-                        ),
-                        const SizedBox(height: 5),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: customFloatingActionButton(
-                            heroTag: "_savebutton",
-                            widget: Text(
-                              "Save".tr,
-                              style: const TextStyle(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            onPressed: () {
-                              onPressedSave(context, selectedValue, note,
-                                  noteController, rec);
-                            },
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                      ],
+                      ),
+                      onPressed: () {
+                        onPressedSave(
+                            context, selectedValue, note, noteController, rec);
+                      },
                     ),
                   ],
                 ),
               ),
-            );
-          },
-        );
-      },
+            ),
+          );
+        },
+      ),
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.black.withOpacity(0.5),
     );
   }
 

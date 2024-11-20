@@ -13,7 +13,7 @@ import 'package:kilo_takibi_uyg/view/history_screen/fade_no_record.dart';
 class HistoryScreen extends StatelessWidget {
   final Controller _controller = Get.find();
 
-  HistoryScreen({Key? key}) : super(key: key);
+  HistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class HistoryScreen extends StatelessWidget {
     );
   }
 
+  // *** RECORDS LIST ***
   Column buildRecords() {
     return Column(
       children: [
@@ -88,11 +89,13 @@ class HistoryScreen extends StatelessWidget {
                 Row(
                   children: [
                     customFloatingActionButton(
+                      mini: true,
                       widget: const Icon(Ionicons.search),
                       onPressed: _showMonthSelector,
                     ),
                     const SizedBox(width: 10),
                     customFloatingActionButton(
+                      mini: true,
                       widget: const Icon(Icons.delete),
                       onPressed: deleteAllShowDialog,
                     ),
@@ -109,11 +112,22 @@ class HistoryScreen extends StatelessWidget {
   // *** AY SEÇİMİ BOTTOMSHEET ***
   void _showMonthSelector() {
     Get.bottomSheet(
-      backgroundColor: Get.theme.scaffoldBackgroundColor,
-      Container(
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+            color: Get.theme.cardColor,
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(25),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 10,
+                offset: const Offset(0, -5),
+              ),
+            ],
         ),
         height: 300,
         child: Column(
@@ -125,14 +139,14 @@ class HistoryScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: ListView(
-                children: List.generate(
-                  12,
-                  (index) {
+                child: ListView.builder(
+                  itemCount: 12,
+                  itemBuilder: (context, index) {
                     return ListTile(
                       title: Center(
                         child: Text(
                           _getMonthName(index),
+                          style: Get.textTheme.bodyMedium,
                         ),
                       ),
                       onTap: () {
@@ -141,12 +155,15 @@ class HistoryScreen extends StatelessWidget {
                       },
                     );
                   },
-                ),
               ),
             ),
           ],
         ),
       ),
+      ),
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.black.withOpacity(0.5),
     );
   }
 

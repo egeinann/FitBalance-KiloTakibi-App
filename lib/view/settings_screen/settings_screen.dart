@@ -83,32 +83,29 @@ class SettingsScreen extends GetView<SettingsController> {
         const Icon(Ionicons.speedometer),
         "Unit of weight".tr,
         null,
-        SizedBox(
-          height: 45,
-          child: Obx(
-            () => customToggleButton(
-              isSelected: [
-                controller.isKgSelected.value,
-                !controller.isKgSelected.value
-              ],
-              onPressed: (int index) {
-                controller.toggleWeightUnit();
-              },
-              children: [
-                Text(
-                  'kg'.tr,
-                  style: const TextStyle(
-                    fontFamily: "Poppins",
-                  ),
+        Obx(
+          () => customToggleButton(
+            isSelected: [
+              controller.isKgSelected.value,
+              !controller.isKgSelected.value
+            ],
+            onPressed: (int index) {
+              controller.toggleWeightUnit();
+            },
+            children: [
+              Text(
+                'kg'.tr,
+                style: const TextStyle(
+                  fontFamily: "Poppins",
                 ),
-                Text(
-                  'lbs'.tr,
-                  style: const TextStyle(
-                    fontFamily: "Poppins",
-                  ),
+              ),
+              Text(
+                'lbs'.tr,
+                style: const TextStyle(
+                  fontFamily: "Poppins",
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         onTap: () {
@@ -248,10 +245,23 @@ class SettingsScreen extends GetView<SettingsController> {
   // *** DİL SEÇİMİ İÇİN BOTTOMSHEET ***
   void _showLanguageSelectionBottomSheet() {
     Get.bottomSheet(
-      Container(
-        padding: const EdgeInsets.all(20),
+      Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: 20), // Yanlardan boşluk ekliyoruz
+        child: Container(
+          padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+            color: Get.theme.primaryColor, // Arka plan rengi aynı kalır
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(25),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 10,
+                offset: const Offset(0, -5),
+              ),
+            ],
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -264,8 +274,8 @@ class SettingsScreen extends GetView<SettingsController> {
                 return Container(
                   decoration: BoxDecoration(
                     color: controller.selectedLanguage.value == languageCode
-                        ? Get.theme.cardColor
-                        : null,
+                          ? Get.theme.cardColor // Seçili dilin rengi
+                          : Colors.transparent,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: ListTile(
@@ -284,7 +294,11 @@ class SettingsScreen extends GetView<SettingsController> {
           ),
         ),
       ),
-      backgroundColor: Get.theme.primaryColor,
+      ),
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.black.withOpacity(0.5),
     );
   }
+
 }

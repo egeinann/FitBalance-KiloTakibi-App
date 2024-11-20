@@ -171,6 +171,18 @@ const Map<String, String> deDE = {
       'Sie müssen die Berechtigung erteilen, um Benachrichtigungen zu aktivieren.',
   'OK': 'OK',
 
+// RiveController
+  "Congratulations! You've reached your goal.":
+      "Herzlichen Glückwunsch! Du hast dein Ziel erreicht.",
+  "Great job! You've added a new weight record! You're progressing healthily!":
+      "Großartige Arbeit! Du hast einen neuen Gewichtseintrag hinzugefügt! Du machst gesunde Fortschritte!",
+  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
+      "Herzlichen Glückwunsch! Du hast dein Gewicht erfolgreich aufgezeichnet! Du machst Schritt für Schritt Fortschritte auf deinem Weg zu deinen Zielen!",
+  "Excellent! You've added a new weight record! Keep up your healthy habits!":
+      "Exzellent! Du hast einen neuen Gewichtseintrag hinzugefügt! Setze deine gesunden Gewohnheiten fort!",
+  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
+      "Gut gemacht! Du hast einen neuen Gewichtseintrag hinzugefügt! Mach weiter in gesunder Weise!",
+
   // SettingsScreen
   "Premium": "Premium",
   "Upgrade to Premium": "Auf Premium upgraden",
@@ -340,16 +352,6 @@ const Map<String, String> deDE = {
       'Sie haben Ihr Premium-Abonnement erfolgreich gekauft!',
   'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
       'Jetzt sind Sie bereit, Ihre Gewichtsziele zu erreichen! Herzlichen Glückwunsch zu diesem Schritt.',
-
-  // AnimationBackgroundScreen
-  "Great job! You've added a new weight record! You're progressing healthily!":
-      "Großartige Arbeit! Du hast einen neuen Gewichtseintrag hinzugefügt! Du machst gesunde Fortschritte!",
-  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
-      "Herzlichen Glückwunsch! Du hast dein Gewicht erfolgreich aufgezeichnet! Du machst Schritt für Schritt Fortschritte auf deinem Weg zu deinen Zielen!",
-  "Excellent! You've added a new weight record! Keep up your healthy habits!":
-      "Exzellent! Du hast einen neuen Gewichtseintrag hinzugefügt! Setze deine gesunden Gewohnheiten fort!",
-  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
-      "Gut gemacht! Du hast einen neuen Gewichtseintrag hinzugefügt! Mach weiter in gesunder Weise!",
 
   // HomeScreen
   "kcal/day": "kcal/Tag",

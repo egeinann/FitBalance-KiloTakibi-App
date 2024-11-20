@@ -168,6 +168,18 @@ const Map<String, String> trTR = {
       'Bildirimleri etkinleştirmek için izin vermeniz gerekiyor.',
   'OK': 'Tamam',
 
+  // RiveController
+  "Congratulations! You've reached your goal.":
+      "Tebrikler! Hedefinize ulaştınız.",
+  "Great job! You've added a new weight record! You're progressing healthily!":
+      "Harika! Yeni bir kilo kaydı eklediniz! Sağlıklı bir şekilde ilerliyorsunuz!",
+  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
+      "Tebrikler! Kilonuzu başarıyla kaydettiniz! Hedeflerinize adım adım ilerliyorsunuz!",
+  "Excellent! You've added a new weight record! Keep up your healthy habits!":
+      "Mükemmel! Yeni bir kilo kaydı eklediniz! Sağlıklı alışkanlıklarınıza devam edin!",
+  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
+      "Aferin! Yeni bir kilo kaydı eklediniz! Sağlıklı bir şekilde ilerlemeye devam edin!",
+
   // SettingsScreen
   "Premium": "Premium",
   "Upgrade to Premium": "Premium'a yükseltin",
@@ -337,16 +349,6 @@ const Map<String, String> trTR = {
       'Premium Üyeliğinizi Başarıyla Satın Aldınız!',
   'Now you are all set to achieve your weight goals! Congratulations on embarking on this journey.':
       'Artık kilo hedeflerinize ulaşmaya hazırsınız! Bu yolculuğa çıktığınız için tebrikler.',
-
-  // AnimationBackgroundScreen
-  "Great job! You've added a new weight record! You're progressing healthily!":
-      "Harika! Yeni bir kilo kaydı eklediniz! Sağlıklı bir şekilde ilerliyorsunuz!",
-  "Congratulations! You've successfully recorded your weight! You're progressing step by step towards your goals!":
-      "Tebrikler! Kilonuzu başarıyla kaydettiniz! Hedeflerinize adım adım ilerliyorsunuz!",
-  "Excellent! You've added a new weight record! Keep up your healthy habits!":
-      "Mükemmel! Yeni bir kilo kaydı eklediniz! Sağlıklı alışkanlıklarınıza devam edin!",
-  "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
-      "Aferin! Yeni bir kilo kaydı eklediniz! Sağlıklı bir şekilde ilerlemeye devam edin!",
 
   // HomeScreen
   "kcal/day": "kcal/gün",

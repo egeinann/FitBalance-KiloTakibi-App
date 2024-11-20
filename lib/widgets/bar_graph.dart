@@ -29,6 +29,7 @@ Obx barGraph() {
                     sideTitles: SideTitles(
                       showTitles: true,
                       interval: 20,
+                      reservedSize: 30,
                       getTitlesWidget: (value, meta) {
                         return Text(
                           value.toInt().toString(),
@@ -42,7 +43,6 @@ Obx barGraph() {
                           ),
                         );
                       },
-                      reservedSize: Get.size.width * 0.06,
                     ),
                   ),
                   rightTitles: const AxisTitles(
@@ -101,7 +101,7 @@ Obx barGraph() {
                     fitInsideHorizontally: true,
                     fitInsideVertically: true,
                     getTooltipColor: (group) => Get.theme
-                        .primaryColor, // Tooltip arka plan rengini burada belirleyin
+                        .primaryColor,
                     getTooltipItem: (group, groupIndex, rod, rodIndex) {
                       return BarTooltipItem(
                         "${rod.toY} ${'kg'.tr}", // Tooltip'te gösterilecek ağırlık değeri

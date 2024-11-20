@@ -75,10 +75,10 @@ class SettingsController extends GetxController {
     }
 
     // weight kısmı için convert
-    controller.selectedValue.value = isKgSelected.value
-        ? (controller.selectedValue.value / 2.20462)
+    controller.currentWeight.value = isKgSelected.value
+        ? (controller.currentWeight.value / 2.20462)
             .toPrecision(1) // Convert to Kg
-        : (controller.selectedValue.value * 2.20462)
+        : (controller.currentWeight.value * 2.20462)
             .toPrecision(1); // Convert to Lbs
 
     // targetWeight kısmı için convert

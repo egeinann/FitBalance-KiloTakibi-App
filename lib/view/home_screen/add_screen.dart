@@ -82,7 +82,7 @@ class AddScreen extends GetView<Controller> {
     }
 
     controller.addRecord(Record(
-      weight: controller.selectedValue.value,
+      weight: controller.currentWeight.value,
       dateTime: controller.selectedDate.value,
       note: note,
       photoUrl: controller.photoUrl.value,
@@ -171,7 +171,7 @@ class AddScreen extends GetView<Controller> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -180,7 +180,7 @@ class AddScreen extends GetView<Controller> {
                   Obx(
                     () {
                       return Text(
-                        "${controller.selectedValue.value} ${_settingsController.weightUnit}",
+                        "${controller.currentWeight.value} ${_settingsController.weightUnit}",
                         style: Get.theme.textTheme.displaySmall,
                       );
                     },
@@ -190,13 +190,13 @@ class AddScreen extends GetView<Controller> {
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 1,
             child: Obx(
               () => NumberPickerWeight(
                 isKgSelected: _settingsController.isKgSelected,
-                value: controller.selectedValue.value,
+                value: controller.currentWeight.value,
                 onChanged: (value) {
-                  controller.selectedValue.value = value;
+                  controller.currentWeight.value = value;
                 },
               ),
             ),
@@ -224,12 +224,8 @@ class AddScreen extends GetView<Controller> {
           padding: const EdgeInsets.all(20),
           child: Stack(
             children: [
-              Container(
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Get.theme.canvasColor,
-                ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
                 child: Image.file(
                   File(controller.photoUrl.value!),
                   fit: BoxFit.cover,
@@ -239,7 +235,7 @@ class AddScreen extends GetView<Controller> {
                 right: 0,
                 top: 0,
                 child: IconButton(
-                  icon: const Icon(Ionicons.close, color: Colors.red, size: 40),
+                  icon: const Icon(Ionicons.close, color: Colors.white),
                   onPressed: () {
                     controller.photoUrl.value = null; // Fotoğrafı kaldır
                   },
@@ -253,12 +249,24 @@ class AddScreen extends GetView<Controller> {
   }
 
   // *** SELECT PHOTO ***
-  Future<void> _pickImage() async {
+Future<void> _pickImage() async {
     final picker = ImagePicker();
-    final source = await showModalBottomSheet<ImageSource>(
-      context: Get.context!,
-      builder: (BuildContext context) {
-        return Column(
+    final source = await Get.bottomSheet<ImageSource>(
+      Container(
+        decoration: BoxDecoration(
+          color: Get.theme.cardColor,
+          borderRadius: const BorderRadius.vertical(
+            top: Radius.circular(25),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 10,
+              offset: const Offset(0, -5),
+            ),
+          ],
+        ),
+        child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
@@ -272,8 +280,11 @@ class AddScreen extends GetView<Controller> {
               onTap: () => Get.back(result: ImageSource.gallery),
             ),
           ],
-        );
-      },
+        ),
+      ),
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.black.withOpacity(0.5),
     );
 
     if (source != null) {

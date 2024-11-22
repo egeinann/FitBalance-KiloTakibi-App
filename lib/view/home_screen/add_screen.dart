@@ -13,7 +13,7 @@ import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/config/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/models/record.dart';
+import 'package:kilo_takibi_uyg/models/record_model/record.dart';
 import 'package:kilo_takibi_uyg/widgets/number_picker_weight.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';

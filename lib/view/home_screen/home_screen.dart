@@ -906,7 +906,7 @@ class HomeScreen extends GetView<Controller> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: textTyperAnimated(
                                 text: "How many calories should I eat per day?"
                                     .tr,
@@ -916,8 +916,11 @@ class HomeScreen extends GetView<Controller> {
                             ),
                             Flexible(
                               child: customFloatingActionButton(
+                                heroTag: "kcal",
                                 widget: const Icon(Ionicons.fast_food),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.toNamed(Routes.kcalscreen);
+                                },
                               ),
                             ),
                           ],

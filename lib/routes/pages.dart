@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/binding/bmi_binding.dart';
 import 'package:kilo_takibi_uyg/binding/info_binding.dart';
+import 'package:kilo_takibi_uyg/binding/kcal_binding.dart';
 import 'package:kilo_takibi_uyg/binding/onboarding_binding.dart';
 import 'package:kilo_takibi_uyg/binding/rive_binding.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
@@ -23,6 +24,7 @@ import 'package:kilo_takibi_uyg/view/gallery_screen/photo_screen.dart';
 import 'package:kilo_takibi_uyg/view/graph_view_screen.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/history_screen.dart';
 import 'package:kilo_takibi_uyg/view/history_screen/recordScreen.dart';
+import 'package:kilo_takibi_uyg/view/home_screen/kcal/view/kcalScreen.dart';
 import 'package:kilo_takibi_uyg/view/main_screen.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/bmi/view/bmi_info.dart';
 
@@ -172,6 +174,11 @@ abstract class AppPages {
       name: Routes.openedpremiumscreen,
       page: () => const OpenedPremiumScreen(),
       transition: Transition.fade,
+    ),
+    GetPage(
+      name: Routes.kcalscreen,
+      page: () => const KcalScreen(),
+      binding: KcalBinding(),
     ),
     GetPage(
       name: Routes.bmiinfoscreen,

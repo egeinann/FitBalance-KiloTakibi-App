@@ -29,6 +29,7 @@ class Routes {
   static const String termsofservicescreen = "/termsofservicescreen";
   static const String upgradepremiumscreen = "/upgradepremiumscreen";
   static const String openedpremiumscreen = "/openedpremiumscreen";
+  static const String kcalscreen = "/kcalscreen";
   static const String bmiinfoscreen = "/bmiinfoscreen";
   static const String bmiscreen = "/bmiscreen";
   static const String infoscreen = "/infoscreen";

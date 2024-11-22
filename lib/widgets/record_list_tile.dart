@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
-import 'package:kilo_takibi_uyg/models/record.dart';
+import 'package:kilo_takibi_uyg/models/record_model/record.dart';
 
 class RecordListTile extends StatelessWidget {
   final Record rec;

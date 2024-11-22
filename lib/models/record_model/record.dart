@@ -14,5 +14,5 @@ class Record with _$Record {
       String? note,
       String? photoUrl}) = _Record;
 
-      factory Record.fromJson(Map<String, dynamic> json) => _$RecordFromJson(json);
+  factory Record.fromJson(Map<String, dynamic> json) => _$RecordFromJson(json);
 }

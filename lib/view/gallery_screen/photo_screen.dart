@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/models/record.dart';
+import 'package:kilo_takibi_uyg/models/record_model/record.dart';
 
 class PhotoScreen extends StatelessWidget {
   const PhotoScreen({super.key});

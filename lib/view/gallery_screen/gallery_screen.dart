@@ -8,7 +8,7 @@ import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
-import 'package:kilo_takibi_uyg/models/record.dart';
+import 'package:kilo_takibi_uyg/models/record_model/record.dart';
 
 class GalleryScreen extends GetView<Controller> {
   final List<Record> records; // Fotoğrafları ve tarihleri göstermek için

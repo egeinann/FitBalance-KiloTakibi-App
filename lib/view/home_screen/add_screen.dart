@@ -37,6 +37,7 @@ class AddScreen extends GetView<Controller> {
           child: Stack(
             children: [
               SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

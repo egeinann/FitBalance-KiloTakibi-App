@@ -16,6 +16,7 @@ class ProfileScreen extends GetView<Controller> {
       body: Padding(
         padding: context.paddingLarge,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               genderImage(),

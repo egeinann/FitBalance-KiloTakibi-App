@@ -375,4 +375,20 @@ const Map<String, String> deDE = {
   "Follow us on Instagram for healthy living tips!":
       "Folge uns auf Instagram für gesunde Lebens-Tipps!",
   "Visit": "Besuchen",
+
+  // KcalScreen
+  "Daily calories": "Tägliche Kalorien",
+  "male": "männlich",
+  "female": "weiblich",
+  "Sedentary": "Sitzend",
+  "Light Activity": "Leichte Aktivität",
+  "Moderate Activity": "Mäßige Aktivität",
+  "Intense Activity": "Intensive Aktivität",
+  "Very Intense Activity": "Sehr intensive Aktivität",
+  "Not Selected": "Nicht ausgewählt",
+  "Regular Weight Gain": "Regelmäßige Gewichtszunahme",
+  "Maintain Weight": "Gewicht Halten",
+  "Regular Weight Loss": "Regelmäßiger Gewichtsverlust",
+  "Rapid Weight Loss": "Schneller Gewichtsverlust",
+  "kcal": "kcal",
 };

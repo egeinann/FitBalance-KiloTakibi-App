@@ -368,4 +368,20 @@ const Map<String, String> enUS = {
   "Follow us on Instagram for healthy living tips!":
       "Follow us on Instagram for healthy living tips!",
   "Visit": "Visit",
+
+  // KcalScreen
+  "Daily calories": "Daily calories",
+  "male": "male",
+  "female": "female",
+  "Sedentary": "Sedentary",
+  "Light Activity": "Light Activity",
+  "Moderate Activity": "Moderate Activity",
+  "Intense Activity": "Intense Activity",
+  "Very Intense Activity": "Very Intense Activity",
+  "Not Selected": "Not Selected",
+  "Regular Weight Gain": "Regular Weight Gain",
+  "Maintain Weight": "Maintain Weight",
+  "Regular Weight Loss": "Regular Weight Loss",
+  "Rapid Weight Loss": "Rapid Weight Loss",
+  "kcal": "kcal",
 };

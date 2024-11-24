@@ -13,7 +13,7 @@ class BmiInfoScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "What is this BMI ?".tr,
-          style: Get.theme.textTheme.titleLarge,
+          style: Get.theme.textTheme.bodyLarge,
         ),
         centerTitle: true,
       ),

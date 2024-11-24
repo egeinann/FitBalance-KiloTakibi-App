@@ -20,7 +20,10 @@ class BmiScreen extends GetView<BMIController> {
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        title: Text("Calculate BMI".tr, style: Get.theme.textTheme.titleLarge),
+        title: Text(
+          "Calculate BMI".tr,
+          style: Get.theme.textTheme.bodyLarge,
+        ),
         centerTitle: true,
       ),
       body: Padding(

@@ -1,7 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/kcal_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/kcal/model/kcal_model.dart';
@@ -13,54 +13,64 @@ class KcalScreen extends GetView<KcalController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        scrolledUnderElevation: 0,
+        title: Text(
+          "Daily calories".tr,
+          style: Get.theme.textTheme.bodyLarge,
+        ),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: context.paddingLow,
-        child: Column(
-          children: [
-            titleText(),
-            Expanded(
-              flex: 1,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  selectGender(),
-                  const SizedBox(height: 5),
-                  const CustomDivider(),
-                  const SizedBox(height: 5),
-                  selectActivityLevel(),
-                  const SizedBox(height: 5),
-                  const CustomDivider(),
-                  const SizedBox(height: 5),
-                  selectGoal()
-                ],
-              ),
-            ),
-            calculatedCalories(),
-            const SizedBox(height: 100),
-          ],
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              selectGender(),
+              const SizedBox(height: 5),
+              const CustomDivider(),
+              const SizedBox(height: 5),
+              selectActivityLevel(),
+              const SizedBox(height: 5),
+              const CustomDivider(),
+              const SizedBox(height: 5),
+              selectGoal(),
+              const SizedBox(height: 5),
+              calculatedCalories(),
+            ],
+          ),
         ),
       ),
       floatingActionButton: saveButton(),
     );
   }
 
-  // *** TITLE ***
-  AutoSizeText titleText() {
-    return AutoSizeText(
-      "Average daily calorie intake according to your physical life",
-      textAlign: TextAlign.center,
-      style: Get.theme.textTheme.labelSmall,
-    );
-  }
-
   // *** KCAL ***
-  Obx calculatedCalories() {
-    return Obx(
-      () => Text(
-        NumberFormat('#,###').format(controller.dailyCalories.value),
-        textAlign: TextAlign.center,
-        style: Get.theme.textTheme.labelSmall,
+  Widget calculatedCalories() {
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 150),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Get.theme.canvasColor.withOpacity(0.9),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Obx(
+            () => Text(
+              NumberFormat('#,###').format(controller.dailyCalories.value),
+              textAlign: TextAlign.center,
+              style: Get.theme.textTheme.labelSmall,
+            ),
+          ),
+          const SizedBox(width: 5),
+          Text(
+            "kcal".tr,
+            style: Get.theme.textTheme.bodyMedium,
+          ),
+        ],
       ),
     );
   }
@@ -82,7 +92,7 @@ class KcalScreen extends GetView<KcalController> {
     return Column(
       children: [
         ListTile(
-          title: const Text("Regular Weight Gain"),
+          title: Text("Regular Weight Gain".tr),
           titleTextStyle: Get.theme.textTheme.bodyMedium,
           leading: Obx(
             () => Radio<Goal>(
@@ -101,7 +111,7 @@ class KcalScreen extends GetView<KcalController> {
           },
         ),
         ListTile(
-          title: const Text("Maintain Weight"),
+          title: Text("Maintain Weight".tr),
           titleTextStyle: Get.theme.textTheme.bodyMedium,
           leading: Obx(
             () => Radio<Goal>(
@@ -120,7 +130,7 @@ class KcalScreen extends GetView<KcalController> {
           },
         ),
         ListTile(
-          title: const Text("Regular Weight Loss"),
+          title: Text("Regular Weight Loss".tr),
           titleTextStyle: Get.theme.textTheme.bodyMedium,
           leading: Obx(
             () => Radio<Goal>(
@@ -139,7 +149,7 @@ class KcalScreen extends GetView<KcalController> {
           },
         ),
         ListTile(
-          title: const Text("Rapid Weight Loss"),
+          title: Text("Rapid Weight Loss".tr),
           titleTextStyle: Get.theme.textTheme.bodyMedium,
           leading: Obx(
             () => Radio<Goal>(
@@ -167,29 +177,25 @@ class KcalScreen extends GetView<KcalController> {
       children: [
         Obx(
           () {
-            // Get the current selected activity level
-            final activityLevel = controller.activityLevel.value;
-
-            // Determine the text to display based on the selected level
             String selectedLevelText;
-            switch (activityLevel) {
+            switch (controller.activityLevel.value) {
               case ActivityLevel.Sedentary:
-                selectedLevelText = "Sedentary";
+                selectedLevelText = "Sedentary".tr;
                 break;
               case ActivityLevel.Light:
-                selectedLevelText = "Light Activity";
+                selectedLevelText = "Light Activity".tr;
                 break;
               case ActivityLevel.Moderate:
-                selectedLevelText = "Moderate Activity";
+                selectedLevelText = "Moderate Activity".tr;
                 break;
               case ActivityLevel.Intense:
-                selectedLevelText = "Intense Activity";
+                selectedLevelText = "Intense Activity".tr;
                 break;
               case ActivityLevel.VeryIntense:
-                selectedLevelText = "Very Intense Activity";
+                selectedLevelText = "Very Intense Activity".tr;
                 break;
               default:
-                selectedLevelText = "Not Selected";
+                selectedLevelText = "Not Selected".tr;
             }
 
             // Display the selected text
@@ -209,7 +215,7 @@ class KcalScreen extends GetView<KcalController> {
               child: Obx(
                 () => Icon(
                   Icons.hotel,
-                  size: 40,
+                  size: 50,
                   color:
                       controller.activityLevel.value == ActivityLevel.Sedentary
                           ? Colors.blue
@@ -222,7 +228,7 @@ class KcalScreen extends GetView<KcalController> {
               child: Obx(
                 () => Icon(
                   Icons.directions_walk,
-                  size: 40,
+                  size: 50,
                   color: controller.activityLevel.value == ActivityLevel.Light
                       ? Colors.green
                       : Colors.grey,
@@ -235,7 +241,7 @@ class KcalScreen extends GetView<KcalController> {
               child: Obx(
                 () => Icon(
                   Icons.directions_run,
-                  size: 40,
+                  size: 50,
                   color:
                       controller.activityLevel.value == ActivityLevel.Moderate
                           ? Colors.orange
@@ -249,7 +255,7 @@ class KcalScreen extends GetView<KcalController> {
               child: Obx(
                 () => Icon(
                   Icons.fitness_center,
-                  size: 40,
+                  size: 50,
                   color: controller.activityLevel.value == ActivityLevel.Intense
                       ? Colors.red
                       : Colors.grey,
@@ -262,7 +268,7 @@ class KcalScreen extends GetView<KcalController> {
               child: Obx(
                 () => Icon(
                   Icons.flash_on,
-                  size: 40,
+                  size: 50,
                   color: controller.activityLevel.value ==
                           ActivityLevel.VeryIntense
                       ? Colors.purple
@@ -287,8 +293,8 @@ class KcalScreen extends GetView<KcalController> {
               onTap: () => controller.updateGender(Gender.Male),
               child: Obx(
                 () => Icon(
-                  Icons.male,
-                  size: 80,
+                  Ionicons.man,
+                  size: 60,
                   color: controller.gender.value == Gender.Male
                       ? Colors.blue
                       : Colors.grey,
@@ -299,8 +305,8 @@ class KcalScreen extends GetView<KcalController> {
               onTap: () => controller.updateGender(Gender.Female),
               child: Obx(
                 () => Icon(
-                  Icons.female,
-                  size: 80,
+                  Ionicons.woman,
+                  size: 60,
                   color: controller.gender.value == Gender.Female
                       ? Colors.pink
                       : Colors.grey,
@@ -312,7 +318,7 @@ class KcalScreen extends GetView<KcalController> {
         const SizedBox(height: 5),
         Obx(
           () => Text(
-            controller.gender.value == Gender.Male ? "male" : "female",
+            controller.gender.value == Gender.Male ? "male".tr : "female".tr,
             textAlign: TextAlign.center,
             style: Get.theme.textTheme.bodyLarge,
           ),

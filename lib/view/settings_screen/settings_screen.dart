@@ -197,6 +197,7 @@ class SettingsScreen extends GetView<SettingsController> {
       body: Padding(
         padding: context.paddingLow,
         child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
           itemCount:
               settingsList.length + 1, // Liste uzunluğunu bir artırıyoruz
           itemBuilder: (context, index) {
@@ -264,6 +265,7 @@ class SettingsScreen extends GetView<SettingsController> {
             ],
         ),
         child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: controller.languageOptions.entries.map((entry) {

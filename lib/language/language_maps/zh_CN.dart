@@ -351,4 +351,20 @@ const Map<String, String> zhCN = {
   "Follow us on Instagram for healthy living tips!":
       "在Instagram上关注我们，获取健康生活小贴士！",
   "Visit": "访问",
+
+  // KcalScreen
+  "Daily calories": "每日卡路里",
+  "male": "男",
+  "female": "女",
+  "Sedentary": "久坐",
+  "Light Activity": "轻度活动",
+  "Moderate Activity": "中度活动",
+  "Intense Activity": "高强度活动",
+  "Very Intense Activity": "非常高强度活动",
+  "Not Selected": "未选择",
+  "Regular Weight Gain": "定期增重",
+  "Maintain Weight": "保持体重",
+  "Regular Weight Loss": "定期减重",
+  "Rapid Weight Loss": "快速减重",
+  "kcal": "千卡",
 };

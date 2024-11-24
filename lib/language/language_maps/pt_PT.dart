@@ -373,4 +373,20 @@ const Map<String, String> ptPT = {
   "Follow us on Instagram for healthy living tips!":
       "Siga-nos no Instagram para dicas de vida saudável!",
   "Visit": "Visitar",
+
+  // KcalScreen
+  "Daily calories": "Calorias diárias",
+  "male": "masculino",
+  "female": "feminino",
+  "Sedentary": "Sedentário",
+  "Light Activity": "Atividade Leve",
+  "Moderate Activity": "Atividade Moderada",
+  "Intense Activity": "Atividade Intensa",
+  "Very Intense Activity": "Atividade Muito Intensa",
+  "Not Selected": "Não Selecionado",
+  "Regular Weight Gain": "Ganho de Peso Regular",
+  "Maintain Weight": "Manter Peso",
+  "Regular Weight Loss": "Perda de Peso Regular",
+  "Rapid Weight Loss": "Perda de Peso Rápida",
+  "kcal": "kcal",
 };

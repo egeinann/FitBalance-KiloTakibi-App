@@ -194,6 +194,7 @@ class RecordScreen extends GetView<Controller> {
       StatefulBuilder(
         builder: (BuildContext context, StateSetter setState) {
           return SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             reverse: false,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),

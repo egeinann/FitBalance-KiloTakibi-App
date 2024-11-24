@@ -177,7 +177,7 @@ const Map<String, String> esES = {
       "¡Excelente! ¡Has agregado un nuevo registro de peso! ¡Continúa con tus hábitos saludables!",
   "Well done! You've added a new weight record! Keep moving forward in a healthy way!":
       "¡Bien hecho! ¡Has agregado un nuevo registro de peso! ¡Sigue adelante de manera saludable!",
-      
+
   // SettingsScreen
   "Premium": "Premium",
   "Upgrade to Premium": "Actualizar a Premium",
@@ -370,4 +370,20 @@ const Map<String, String> esES = {
   "Follow us on Instagram for healthy living tips!":
       "¡Síguenos en Instagram para consejos sobre vida saludable!",
   "Visit": "Visitar",
+
+  // KcalScreen
+  "Daily calories": "Calorías diarias",
+  "male": "hombre",
+  "female": "mujer",
+  "Sedentary": "Sedentario",
+  "Light Activity": "Actividad Ligera",
+  "Moderate Activity": "Actividad Moderada",
+  "Intense Activity": "Actividad Intensa",
+  "Very Intense Activity": "Actividad Muy Intensa",
+  "Not Selected": "No Seleccionado",
+  "Regular Weight Gain": "Aumento de Peso Regular",
+  "Maintain Weight": "Mantener Peso",
+  "Regular Weight Loss": "Pérdida de Peso Regular",
+  "Rapid Weight Loss": "Pérdida de Peso Rápida",
+  "kcal": "kcal",
 };

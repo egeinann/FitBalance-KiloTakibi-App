@@ -371,4 +371,20 @@ const Map<String, String> trTR = {
   "Follow us on Instagram for healthy living tips!":
       "Sağlıklı yaşam ipuçları için Instagram'dan bizi takip edin!",
   "Visit": "Ziyaret Et",
+
+  // KcalScreen
+  "Daily calories": "Günlük kalori",
+  "male": "erkek",
+  "female": "kadın",
+  "Sedentary": "Hareketsiz",
+  "Light Activity": "Hafif Aktivite",
+  "Moderate Activity": "Orta Derecede Aktivite",
+  "Intense Activity": "Yoğun Aktivite",
+  "Very Intense Activity": "Çok Yoğun Aktivite",
+  "Not Selected": "Seçilmedi",
+  "Regular Weight Gain": "Düzenli Kilo Alma",
+  "Maintain Weight": "Kiloyu Koruma",
+  "Regular Weight Loss": "Düzenli Kilo Verme",
+  "Rapid Weight Loss": "Hızlı Kilo Verme",
+  "kcal": "kcal",
 };

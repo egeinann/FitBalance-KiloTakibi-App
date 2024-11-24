@@ -6,14 +6,15 @@ import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
 class IntroNameScreen extends GetView<Controller> {
-  IntroNameScreen({super.key});
+  const IntroNameScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    final FocusNode _focusNode = FocusNode(); // FocusNode KASMA SORUNU İÇİN
+    final FocusNode focusNode = FocusNode(); // FocusNode KASMA SORUNU İÇİN
 
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -31,7 +32,7 @@ class IntroNameScreen extends GetView<Controller> {
                     child: CustomTextField(
                       controller: controller.nameController,
                       labelText: "Your name".tr,
-                      focusNode: _focusNode, // FocusNode kullanılıyor
+                      focusNode: focusNode, // FocusNode kullanılıyor
                       onChanged: (value) {
                         controller.setUserName(value);
                       },

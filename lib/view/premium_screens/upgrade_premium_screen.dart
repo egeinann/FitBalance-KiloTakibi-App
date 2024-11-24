@@ -28,6 +28,7 @@ class UpgradePremiumScreen extends GetView<SettingsController> {
           Expanded(
             flex: 8,
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Padding(
                 padding: context.paddingLow,
                 child: Column(

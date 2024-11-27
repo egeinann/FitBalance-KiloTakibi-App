@@ -93,8 +93,8 @@ class AddScreen extends GetView<Controller> {
       },
       context: Get.context!, // Use Get.context here
       initialDate: DateTime.now(),
-      firstDate: DateTime.now().subtract(const Duration(days: 0)),
-      lastDate: DateTime.now().add(const Duration(days: 500)),
+      firstDate: DateTime.now().subtract(const Duration(days: 150)),
+      lastDate: DateTime.now().add(const Duration(days: 30)),
     );
 
     if (selectedDate != null) {

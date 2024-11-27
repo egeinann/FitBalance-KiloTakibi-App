@@ -10,7 +10,7 @@ class Controller extends GetxController {
   final PageController pageController =
       PageController(); // grafik aşağı yukarı page controller
   RxList<Record> records = <Record>[].obs; // record objeleri tutan liste
-  RxList<Record> filteredRecords =
+  var filteredRecords =
       <Record>[].obs; // filtrelenmiş grafik kayıtlarını tutan liste
   RxBool isLoading = false.obs; // loading lottie için
   final ScrollController scrollController =
@@ -276,24 +276,23 @@ class Controller extends GetxController {
 
   // *** GRAFİK İÇİN FİLTRELENMİŞ KAYITLAR (ALL & LAST 30 DAYS) ***
   void updateFilteredRecords() {
-    if (!selecedAllTimeGraph.value) {
-      // Son 30 günü kontrol et
-      DateTime thirtyDaysAgo =
-          DateTime.now().subtract(const Duration(days: 30));
-
-      // Son 30 gün içindeki kayıtları filtrele
-      filteredRecords.assignAll(records.where((record) {
-        return record.dateTime.isAfter(thirtyDaysAgo);
-      }).toList());
+    final thirtyDaysAgo = DateTime.now().subtract(const Duration(days: 26));
+    if (selecedAllTimeGraph.value) {
+      filteredRecords.assignAll(records); // Tüm kayıtları yükle
     } else {
-      // Tüm kayıtları göster
-      filteredRecords.assignAll(records);
+      final filtered = records.where((record) {
+        final isRecent = record.dateTime.isAfter(thirtyDaysAgo);
+        return isRecent;
+      }).toList();
+      filteredRecords.assignAll(filtered); // Filtrelenen kayıtları yükle
     }
   }
 
-  // *** LINEGRAPH ZAMANDİLİMİ TOGGLE BUTTONLARIN DEĞİŞİMİ ***
+// *** LINEGRAPH ZAMANDİLİMİ TOGGLE BUTTONLARIN DEĞİŞİMİ ***
   void timeUnit(int index) {
-    selecedAllTimeGraph.value = !selecedAllTimeGraph.value;
+    // Burada, index 0 ise tüm kayıtlar gösterilecek, 1 ise son 30 gün gösterilecek
+    selecedAllTimeGraph.value = index ==
+        0; // Eğer index 0 ise, tüm kayıtlar gösterilir, değilse son 30 gün
     updateFilteredRecords();
   }
 

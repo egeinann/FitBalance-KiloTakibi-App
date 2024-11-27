@@ -20,11 +20,21 @@ Obx lineGraph() {
             // Zaman Aralığı Metni
             Padding(
               padding: const EdgeInsets.only(bottom: 5),
-              child: Text(
-                controller.selecedAllTimeGraph.value
-                    ? "All records".tr
-                    : "Records of the last 30 days".tr,
-                style: Get.theme.textTheme.bodyMedium,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    controller.selecedAllTimeGraph.value
+                        ? "All records".tr
+                        : "Records of the last 30 days".tr,
+                    style: Get.theme.textTheme.bodyMedium,
+                  ),
+                  const SizedBox(width: 5),
+                  Text(
+                    "(${filteredRecords.length.toString()})",
+                    style: Get.theme.textTheme.bodySmall,
+                  ),
+                ],
               ),
             ),
             // Çizgi Grafik
@@ -226,7 +236,7 @@ Obx lineGraph() {
                         : 10,
                     lineBarsData: [
                       LineChartBarData(
-                        spots: filteredRecords
+                        spots: controller.filteredRecords
                             .asMap()
                             .entries
                             .map(

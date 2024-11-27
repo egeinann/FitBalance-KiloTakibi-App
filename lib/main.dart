@@ -53,7 +53,7 @@ class MyApp extends GetView<SettingsController> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        initialRoute: Routes.onboardingscreen, // app başlangıç sayfası
+        initialRoute: Routes.mainscreen, // app başlangıç sayfası
         getPages: AppPages.pages, // app sayfalar listesi
         supportedLocales: Languages.languageList, // Desteklenen diller
         locale: Get.deviceLocale, // Cihazın dilini al

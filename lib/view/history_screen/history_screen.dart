@@ -37,7 +37,6 @@ class HistoryScreen extends StatelessWidget {
     );
   }
 
-  // *** RECORDS LIST ***
   Column buildRecords() {
     return Column(
       children: [
@@ -48,7 +47,8 @@ class HistoryScreen extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               controller: _controller.scrollController,
               key: _controller.listKey,
-              initialItemCount: _controller.records.length,
+              initialItemCount:
+                  _controller.records.length, // Initial item count doğru
               itemBuilder: (context, index, animation) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 2),
@@ -115,8 +115,8 @@ class HistoryScreen extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
             color: Get.theme.cardColor,
             borderRadius: const BorderRadius.vertical(
               top: Radius.circular(25),
@@ -128,17 +128,17 @@ class HistoryScreen extends StatelessWidget {
                 offset: const Offset(0, -5),
               ),
             ],
-        ),
-        height: 300,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'Select Month'.tr,
-              style: Get.textTheme.labelSmall,
-            ),
-            const SizedBox(height: 20),
-            Expanded(
+          ),
+          height: 300,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Select Month'.tr,
+                style: Get.textTheme.labelSmall,
+              ),
+              const SizedBox(height: 20),
+              Expanded(
                 child: ListView.builder(
                   itemCount: 12,
                   itemBuilder: (context, index) {
@@ -155,11 +155,11 @@ class HistoryScreen extends StatelessWidget {
                       },
                     );
                   },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
       ),
       isScrollControlled: true,
       backgroundColor: Colors.transparent,

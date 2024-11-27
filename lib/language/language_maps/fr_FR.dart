@@ -1,5 +1,4 @@
-// en_us.dart
-
+// FRANSIZCA
 const Map<String, String> frFR = {
   // InstagramService
   "Error": "Erreur",
@@ -51,19 +50,15 @@ const Map<String, String> frFR = {
   'You must pay to see graphs and track your progress in more detail.':
       'Vous devez payer pour voir des graphiques et suivre vos progrès plus en détail.',
   "Upgrade premium": "Passer à premium",
-  'After 1 week of analysis, the graphs appear!':
-      'Après une semaine d’analyse, les graphiques apparaissent !',
+  "No records available yet!":
+      "Aucun enregistrement disponible pour le moment !",
 
   // GalleryScreen
   "You don't have any photos yet !": "Vous n'avez pas encore de photos !",
 
   // AddScreen
-  "There is already a record for the same date":
-      "Il y a déjà un enregistrement pour la même date.",
-  "Change the date": "Changer la date.",
   "note": "note",
   "YOUR WEIGHT": "VOTRE POIDS",
-
   "Take a photo": "Prendre une photo.",
   "Pick from gallery": "Choisir dans la galerie.",
 
@@ -163,6 +158,9 @@ const Map<String, String> frFR = {
   'History': 'Historique',
   'Profile': 'Profil',
   'App': 'Application',
+  "There is already a record for the same date":
+      "Il y a déjà un enregistrement pour la même date.",
+  "Change the date": "Changer la date.",
 
   // SettingsController
   'Permission Required': 'Permission Requise',

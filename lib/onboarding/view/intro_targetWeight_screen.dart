@@ -7,6 +7,7 @@ import 'package:kilo_takibi_uyg/controllers/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:kilo_takibi_uyg/widgets/number_picker_weight.dart';
+import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
 class IntroTargetWeightScreen extends GetView<Controller> {
   final onboardingController = Get.find<OnboardingController>();
@@ -24,7 +25,7 @@ class IntroTargetWeightScreen extends GetView<Controller> {
     controller.targetWeight.value = 70.0; // Başlangıç değeri
     Timer.periodic(const Duration(milliseconds: 20), (timer) {
       controller.targetWeight.value -= 1;
-      if (controller.targetWeight.value <= 64) {
+      if (controller.targetWeight.value <= 60) {
         timer.cancel(); // 50'ye ulaştığında animasyonu durdur
       }
     });
@@ -43,7 +44,7 @@ class IntroTargetWeightScreen extends GetView<Controller> {
               textStyle: Get.theme.textTheme.titleLarge!,
               isRepeat: false,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -57,11 +58,41 @@ class IntroTargetWeightScreen extends GetView<Controller> {
                   ),
                 ),
                 const SizedBox(width: 5),
-                Text(
-                  _settingsController.weightUnit,
-                  style: Get.theme.textTheme.labelSmall,
+                Obx(
+                  () => Text(
+                    _settingsController.weightUnit,
+                    style: Get.theme.textTheme.bodyLarge,
+                  ),
                 ),
               ],
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: Obx(
+                () => customToggleButton(
+                  isSelected: [
+                    _settingsController.isKgSelected.value,
+                    !_settingsController.isKgSelected.value
+                  ],
+                  onPressed: (int index) {
+                    _settingsController.toggleWeightUnit();
+                  },
+                  children: [
+                    Text(
+                      'kg'.tr,
+                      style: const TextStyle(
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                    Text(
+                      'lbs'.tr,
+                      style: const TextStyle(
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

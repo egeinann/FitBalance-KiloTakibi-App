@@ -307,7 +307,7 @@ class HomeScreen extends GetView<Controller> {
                       height: 300, // lineGraph yüksekliği
                       child: Padding(
                         padding: const EdgeInsets.all(15),
-                        child: controller.records.length >= 7
+                        child: controller.records.isNotEmpty
                             ? homeLineChart()
                             : Obx(
                                 () => _settingsController.hasPaid.value
@@ -321,7 +321,7 @@ class HomeScreen extends GetView<Controller> {
                                               size: 40,
                                             ),
                                             AutoSizeText(
-                                              "There must be 7 or more data".tr,
+                                              "No records available yet!".tr,
                                               textAlign: TextAlign.center,
                                               style:
                                                   Get.theme.textTheme.bodyLarge,
@@ -432,7 +432,6 @@ class HomeScreen extends GetView<Controller> {
             ),
             gridData: FlGridData(
               show: true,
-              horizontalInterval: 10,
               drawVerticalLine: true,
               getDrawingHorizontalLine: (value) => FlLine(
                 color: Colors.grey.withOpacity(0.3),
@@ -491,63 +490,46 @@ class HomeScreen extends GetView<Controller> {
               show: true,
               border: Border.all(color: Colors.grey.withOpacity(0.3), width: 1),
             ),
-            minX: controller.filteredRecords.isNotEmpty
-                ? controller
-                    .filteredRecords.first.dateTime.millisecondsSinceEpoch
-                    .toDouble()
-                : 0,
+            minX: 0,
             maxX: controller.filteredRecords.isNotEmpty
-                ? controller
-                    .filteredRecords.last.dateTime.millisecondsSinceEpoch
-                    .toDouble()
-                : 0,
-            minY: controller.records.isNotEmpty
-                ? controller.records
-                        .map((record) => record.weight)
+                ? (controller.filteredRecords.length - 1).toDouble()
+                : 1,
+            minY: controller.filteredRecords.isNotEmpty
+                ? controller.filteredRecords
+                        .map((e) => e.weight)
                         .reduce((a, b) => a < b ? a : b) -
-                    10
-                : 0, // Liste boşken kullanılacak varsayılan değer
+                    5
+                : 0,
             maxY: controller.filteredRecords.isNotEmpty
                 ? controller.filteredRecords
-                        .map((r) => r.weight)
+                        .map((e) => e.weight)
                         .reduce((a, b) => a > b ? a : b) +
-                    10
-                : 60,
+                    5
+                : 10,
             lineBarsData: [
               LineChartBarData(
                 spots: controller.filteredRecords
+                    .asMap()
+                    .entries
                     .map(
-                      (record) => FlSpot(
-                          record.dateTime.millisecondsSinceEpoch.toDouble(),
-                          record.weight),
+                      (entry) => FlSpot(
+                        entry.key.toDouble(),
+                        entry.value.weight,
+                      ),
                     )
                     .toList(),
-                isCurved: true,
-                gradient: LinearGradient(
-                  colors: [
-                    Get.theme.focusColor.withOpacity(0.5),
-                    Get.theme.focusColor.withOpacity(1)
-                  ],
-                ),
                 preventCurveOverShooting: true,
                 isStepLineChart: false,
-                color: Get.theme.cardColor,
+                color: Get.theme.focusColor,
+                isCurved: false,
                 barWidth: 2,
                 isStrokeCapRound: true,
-                dotData: const FlDotData(
-                  show: false,
+                dotData: FlDotData(
+                  show: controller.showDotData.value,
                 ),
                 belowBarData: BarAreaData(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Get.theme.focusColor.withOpacity(0.3),
-                      Colors.transparent
-                    ],
-                  ),
                   show: true,
-                  color: Get.theme.focusColor.withOpacity(0.5),
+                  color: Get.theme.focusColor.withOpacity(0.1),
                 ),
               ),
             ],

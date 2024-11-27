@@ -87,6 +87,7 @@ flutter:
     - assets/images/targetWeight/
     - assets/images/weightInfo/
     - assets/images/mainScreen/
+    - assets/images/splash/
     - assets/images/name/
     - assets/images/profile/
     - assets/images/bmi/

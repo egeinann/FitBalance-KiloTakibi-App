@@ -1,5 +1,4 @@
-// en_us.dart
-
+// PORTEKIZCE
 const Map<String, String> ptPT = {
   // InstagramService
   "Error": "Erro",
@@ -49,16 +48,12 @@ const Map<String, String> ptPT = {
   'You must pay to see graphs and track your progress in more detail.':
       'Você deve pagar para ver gráficos e acompanhar seu progresso em mais detalhes.',
   "Upgrade premium": "Atualizar para premium",
-  'After 1 week of analysis, the graphs appear!':
-      'Após uma semana de análise, os gráficos aparecem!',
+  "No records available yet!": "Ainda não há registros disponíveis!",
 
   // GalleryScreen
   "You don't have any photos yet !": "Você ainda não tem fotos!",
 
   // AddScreen
-  "There is already a record for the same date":
-      "Já existe um registro para a mesma data.",
-  "Change the date": "Mudar a data.",
   "note": "nota",
   "YOUR WEIGHT": "O SEU PESO",
 
@@ -161,6 +156,9 @@ const Map<String, String> ptPT = {
   'History': 'Histórico',
   'Profile': 'Perfil',
   'App': 'Aplicativo',
+  "There is already a record for the same date":
+      "Já existe um registro para a mesma data.",
+  "Change the date": "Mudar a data.",
 
   // SettingsController
   'Permission Required': 'Permissão Necessária',

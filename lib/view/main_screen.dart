@@ -18,7 +18,7 @@ class MainScreen extends GetView<Controller> {
             switch (controller.currentTabIndex.value) {
               case 0:
                 return controller.graphPageIndex.value != 1 &&
-                        controller.records.length >= 7 &&
+                        controller.records.isNotEmpty &&
                         _settingsController.hasPaid.value
                     ? Listener(
                         onPointerDown: (_) {
@@ -55,7 +55,7 @@ class MainScreen extends GetView<Controller> {
             () {
               switch (controller.currentTabIndex.value) {
                 case 0:
-                  return controller.records.length >= 7 &&
+                  return controller.records.isNotEmpty &&
                           _settingsController.hasPaid.value
                       ? SizedBox(
                           child: controller.graphPageIndex.value == 0

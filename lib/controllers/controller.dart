@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/models/record_model/record.dart';
+import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/record_list_tile.dart';
+import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 
 class Controller extends GetxController {
   final PageController pageController =
@@ -24,7 +27,7 @@ class Controller extends GetxController {
   var currentWeight = 70.0.obs; // Seçilen ağırlık
   var selectedDate = DateTime.now().obs; // Seçilen tarih
   var note = ''.obs; // Not
-
+  final TextEditingController noteController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   var userName = ''.obs; // username
   var targetWeight = 70.0.obs; // hedef kilo
@@ -49,42 +52,61 @@ class Controller extends GetxController {
         (currentWeight.value - targetWeight.value).abs() <= tolerance;
   }
 
-  // *** RECORD EKLEME İŞLEMİ ***
-  void addRecord(Record record) {
-    if (records.isEmpty || record.dateTime.isBefore(records.last.dateTime)) {
-      // Yeni öğe ekleme
-      records.add(record);
-      listKey.currentState?.insertItem(records.length - 1);
-    } else {
-      double lastWeight = records.last.weight;
-      DateTime lastDate = records.last.dateTime;
+  // *** RECORD EKLE ***
+  void addRecord(Record newRecord) {
+    // Aynı tarihli kayıt var mı kontrol et
+    final existingIndex = records.indexWhere(
+      (r) => r.dateTime.isAtSameMomentAs(newRecord.dateTime),
+    );
 
-      // Eksik tarihleri ekleme
-      while (lastDate
-          .isBefore(record.dateTime.subtract(const Duration(days: 1)))) {
-        lastDate = lastDate.add(const Duration(days: 1));
-        var newRecord = Record(
-          weight: lastWeight,
-          dateTime: lastDate,
-          note: null,
-        );
-        records.add(newRecord);
-        listKey.currentState?.insertItem(records.length - 1);
-      }
-
-      // Yeni kayıt ekleme
-      records.add(record);
-      listKey.currentState?.insertItem(records.length - 1);
+    if (existingIndex != -1) {
+      // Aynı tarihli kayıt varsa kullanıcıya bilgi ver
+      SnackbarHelper.showSnackbar(
+        title: "There is already a record for the same date".tr,
+        message: "Change the date".tr,
+        backgroundColor: Colors.red,
+        duration: const Duration(milliseconds: 1500),
+        icon: const Icon(Ionicons.calendar_outline),
+      );
+      return;
     }
 
-    // İşlem sonrası grafikleri güncelle
-    updateFilteredRecords();
+    // Yeni kaydı eklemek için doğru yeri bul
+    final insertIndex = records.indexWhere(
+      (r) => r.dateTime.isAfter(newRecord.dateTime),
+    );
 
-    // Yeni eklenen kayıttan sonra en alta kaydırma işlemi
-    scrollToBottom();
+    if (insertIndex == -1) {
+      // Eğer daha sonraki bir tarih bulunamazsa listenin sonuna ekle
+      records.add(newRecord);
+      listKey.currentState?.insertItem(records.length - 1);
+    } else {
+      // Eğer araya eklenmesi gerekiyorsa belirtilen indekse ekle
+      records.insert(insertIndex, newRecord);
+      listKey.currentState?.insertItem(insertIndex);
+    }
+
+    // Listeyi tarihe göre sırala ve yenile (RxList)
+    records.sort((a, b) => a.dateTime.compareTo(b.dateTime));
+    records.refresh();
+
+    updateFilteredRecords(); // Grafik ve listeyi güncelleme
+
+    // UI temizleme ve geri gitme işlemleri
+    noteController.clear(); // Not alanını temizle
+    photoUrl.value = null; // Fotoğraf URL'sini sıfırla
+    Get.focusScope?.unfocus();
+    Get.back();
+
+    // Geçiş sonrası animasyonlu geçiş ekranına yönlendir
+    Future.delayed(const Duration(milliseconds: 500), () {
+      Get.toNamed(Routes.animationbackgroundscreen);
+    });
+    goToHistoryScreen(); // Tarihli kayıtları göster (HistoryScreen'e git)
+    scrollToBottom(); // scrollu aşağı kaydır
   }
 
-  // ***YENİ KAYIT EKLENDİĞİND EN ALTA KAYDIR ***
+  // ***YENİ KAYIT EKLENDİĞİNDE EN ALTA KAYDIR ***
   void scrollToBottom() {
     Future.delayed(const Duration(milliseconds: 100), () {
       if (scrollController.hasClients) {
@@ -220,11 +242,6 @@ class Controller extends GetxController {
     }
   }
 
-  // *** AYNI TARİHTE RECORD VAR MI KONTROLÜ ***
-  bool isRecordExists(DateTime date) {
-    return records.any((record) => record.dateTime == date);
-  }
-
   // *** NAVBAR GALLERYSCREEN YÖNLENDİRME ***
   void goToHomeScreen() {
     changeTabIndex(2);
@@ -257,16 +274,17 @@ class Controller extends GetxController {
     return monthlyAverages;
   }
 
-  // *** GRAFİK İÇİN FİLTRELENMİŞ KAYITLAR (ALL & 30DAYS) ***
+  // *** GRAFİK İÇİN FİLTRELENMİŞ KAYITLAR (ALL & LAST 30 DAYS) ***
   void updateFilteredRecords() {
     if (!selecedAllTimeGraph.value) {
-      // Son 30 kaydı al ve tarihe göre doğru sırala
-      List<Record> recordsList = records.toList(); // Convert RxList to List
-      recordsList.sort((a, b) =>
-          a.dateTime.compareTo(b.dateTime)); // Sort by dateTime ascending
-      int itemCount = recordsList.length < 30 ? recordsList.length : 30;
-      filteredRecords.assignAll(recordsList
-          .sublist(recordsList.length - itemCount)); // Update filteredRecords
+      // Son 30 günü kontrol et
+      DateTime thirtyDaysAgo =
+          DateTime.now().subtract(const Duration(days: 30));
+
+      // Son 30 gün içindeki kayıtları filtrele
+      filteredRecords.assignAll(records.where((record) {
+        return record.dateTime.isAfter(thirtyDaysAgo);
+      }).toList());
     } else {
       // Tüm kayıtları göster
       filteredRecords.assignAll(records);

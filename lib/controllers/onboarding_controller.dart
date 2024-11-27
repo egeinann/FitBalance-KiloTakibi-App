@@ -44,7 +44,7 @@ class OnboardingController extends GetxController {
         );
       } else {
         // Geçerli kullanıcı adı ile ana ekrana geçiş
-        Get.offAllNamed(Routes.mainscreen);
+        Get.offAllNamed(Routes.splashscreen);
         resetController();
       }
     } else {

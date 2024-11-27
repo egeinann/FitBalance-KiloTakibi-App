@@ -43,6 +43,7 @@ import 'package:kilo_takibi_uyg/view/settings_screen/privacyPolicy_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/settings_screen.dart';
 import 'package:kilo_takibi_uyg/view/settings_screen/termsOfService_screen.dart';
 import 'package:kilo_takibi_uyg/view/premium_screens/upgrade_premium_screen.dart';
+import 'package:kilo_takibi_uyg/view/splash_screen.dart';
 
 abstract class AppPages {
   static final pages = [
@@ -51,6 +52,8 @@ abstract class AppPages {
       name: Routes.onboardingscreen,
       page: () => OnboardingScreen(),
       binding: OnBoardingBinding(),
+      transition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
     GetPage(
       name: Routes.introaiscreen,
@@ -62,7 +65,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.intronamescreen,
-      page: () => IntroNameScreen(),
+      page: () => const IntroNameScreen(),
     ),
     GetPage(
       name: Routes.introphotogalleryscreen,
@@ -79,9 +82,16 @@ abstract class AppPages {
 
     // app
     GetPage(
+      name: Routes.splashscreen,
+      page: () => const SplashScreen(),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(seconds: 1),
+    ),
+    GetPage(
       name: Routes.mainscreen,
       page: () => MainScreen(),
       transition: Transition.fadeIn,
+      transitionDuration: const Duration(seconds: 1),
     ),
     GetPage(
       name: Routes.graphscreen,
@@ -115,7 +125,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.settingsscreen,
-      page: () => SettingsScreen(),
+      page: () => const SettingsScreen(),
       transition: Transition.downToUp,
     ),
     GetPage(

@@ -13,40 +13,39 @@ class IntroNameScreen extends GetView<Controller> {
 
     return Scaffold(
       body: Center(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                children: [
-                  textColorizeAnimated(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: textColorizeAnimated(
                     text: 'Enter your name'.tr,
                     textStyle: Get.theme.textTheme.titleLarge!,
                     isRepeat: false,
                   ),
-                  const SizedBox(height: 20),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: Get.size.width * 0.05),
-                    child: CustomTextField(
-                      controller: controller.nameController,
-                      labelText: "Your name".tr,
-                      focusNode: focusNode, // FocusNode kullanılıyor
-                      onChanged: (value) {
-                        controller.setUserName(value);
-                      },
-                      titleIcon: Icon(
-                        Ionicons.person,
-                        color: Colors.grey.shade700,
-                      ),
-                      maxLength: 12,
-                    ),
-                  ),
-                ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: CustomTextField(
+                controller: controller.nameController,
+                labelText: "Your name".tr,
+                focusNode: focusNode, // FocusNode kullanılıyor
+                onChanged: (value) {
+                  controller.setUserName(value);
+                },
+                titleIcon: Icon(
+                  Ionicons.person,
+                  color: Colors.grey.shade700,
+                ),
+                maxLength: 12,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

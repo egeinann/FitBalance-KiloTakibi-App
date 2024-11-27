@@ -1,5 +1,4 @@
-// en_us.dart
-
+// ISPANYOLCA
 const Map<String, String> esES = {
   // InstagramService
   "Error": "Error",
@@ -48,16 +47,12 @@ const Map<String, String> esES = {
   'You must pay to see graphs and track your progress in more detail.':
       'Debes pagar para ver gráficos y seguir tu progreso en más detalle.',
   "Upgrade premium": "Mejora a premium",
-  'After 1 week of analysis, the graphs appear!':
-      '¡Después de una semana de análisis, aparecen los gráficos!',
+  "No records available yet!": "¡No hay registros disponibles aún!",
 
   // GalleryScreen
   "You don't have any photos yet !": "¡Aún no tienes fotos!",
 
   // AddScreen
-  "There is already a record for the same date":
-      "Ya hay un registro para la misma fecha.",
-  "Change the date": "Cambia la fecha.",
   "note": "nota",
   "YOUR WEIGHT": "TU PESO",
   "Take a photo": "Tomar una foto.",
@@ -159,6 +154,9 @@ const Map<String, String> esES = {
   'History': 'Historial',
   'Profile': 'Perfil',
   'App': 'Aplicación',
+  "There is already a record for the same date":
+      "Ya hay un registro para la misma fecha.",
+  "Change the date": "Cambia la fecha.",
 
   // SettingsController
   'Permission Required': 'Permiso Requerido',

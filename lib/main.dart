@@ -12,6 +12,7 @@ import 'package:kilo_takibi_uyg/services/notification_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Flutter motorunu başlat
+  // Uygulama açılırken splash ekranı için gerekli komut
   final NotificationService notificationService =
       NotificationService(); // Servis sınıfını tanıtılıyor
   bool permissionGranted = await notificationService
@@ -52,7 +53,7 @@ class MyApp extends GetView<SettingsController> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        initialRoute: Routes.mainscreen, // app başlangıç sayfası
+        initialRoute: Routes.onboardingscreen, // app başlangıç sayfası
         getPages: AppPages.pages, // app sayfalar listesi
         supportedLocales: Languages.languageList, // Desteklenen diller
         locale: Get.deviceLocale, // Cihazın dilini al

@@ -47,19 +47,14 @@ const Map<String, String> enUS = {
   'You must pay to see graphs and track your progress in more detail.':
       'You must pay to see graphs and track your progress in more detail.',
   "Upgrade premium": "Upgrade premium",
-  'After 1 week of analysis, the graphs appear!':
-      'After 1 week of analysis, the graphs appear!',
+  "No records available yet!": "No records available yet!",
 
   // GalleryScreen
   "You don't have any photos yet !": "You don't have any photos yet !",
 
   // AddScreen
-  "There is already a record for the same date":
-      "There is already a record for the same date",
-  "Change the date": "Change the date",
   "note": "note",
   "YOUR WEIGHT": "YOUR WEIGHT",
-
   "Take a photo": "Take a photo",
   "Pick from gallery": "Pick from gallery",
 
@@ -158,6 +153,9 @@ const Map<String, String> enUS = {
   'History': 'History',
   'Profile': 'Profile',
   'App': 'App',
+  "There is already a record for the same date":
+      "There is already a record for the same date",
+  "Change the date": "Change the date",
 
   // SettingsController
   'Permission Required': 'Permission Required',

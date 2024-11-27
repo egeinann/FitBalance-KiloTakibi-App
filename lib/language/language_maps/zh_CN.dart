@@ -1,5 +1,4 @@
-// en_us.dart
-
+// INGILIZCE
 const Map<String, String> zhCN = {
   // InstagramService
   "Error": "错误",
@@ -47,17 +46,14 @@ const Map<String, String> zhCN = {
   'You must pay to see graphs and track your progress in more detail.':
       '您必须付费才能查看图表并更详细地跟踪您的进度。',
   "Upgrade premium": "升级到高级版",
-  'After 1 week of analysis, the graphs appear!': '经过一周的分析，图表出现！',
+  "No records available yet!": "暂无记录可用！",
 
   // GalleryScreen
   "You don't have any photos yet !": "您还没有照片！",
 
   // AddScreen
-  "There is already a record for the same date": "同一天已经有记录。",
-  "Change the date": "更改日期。",
   "note": "备注",
   "YOUR WEIGHT": "您的体重",
-
   "Take a photo": "拍照。",
   "Pick from gallery": "从相册中选择。",
 
@@ -151,6 +147,8 @@ const Map<String, String> zhCN = {
   'History': '历史',
   'Profile': '个人资料',
   'App': '应用程序',
+  "There is already a record for the same date": "同一天已经有记录。",
+  "Change the date": "更改日期。",
 
   // SettingsController
   'Permission Required': '权限要求',

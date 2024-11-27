@@ -87,7 +87,7 @@ class GraphViewScreen extends GetView<Controller> {
             }
 
             // Ödeme yapılmışsa kayıt sayısını kontrol edelim
-            if (controller.records.length >= 7) {
+            if (controller.records.isNotEmpty) {
               return PageView(
                 physics: const BouncingScrollPhysics(),
                 controller: controller
@@ -120,7 +120,7 @@ class GraphViewScreen extends GetView<Controller> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "After 1 week of analysis, the graphs appear!".tr,
+                            "No records available yet!".tr,
                             style: Get.theme.textTheme.bodyMedium,
                           ),
                         ],

@@ -8,14 +8,16 @@ import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
 final Controller controller = Get.find();
 final SettingsController _settingsController = Get.find();
+
 Obx lineGraph() {
   return Obx(
     () {
+      final filteredRecords = controller.filteredRecords; // Güncel listeyi al
       return Padding(
-        padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         child: Column(
           children: [
-            // *** TEXTS TIME RANGE ***
+            // Zaman Aralığı Metni
             Padding(
               padding: const EdgeInsets.only(bottom: 5),
               child: Text(
@@ -25,42 +27,54 @@ Obx lineGraph() {
                 style: Get.theme.textTheme.bodyMedium,
               ),
             ),
-            // *** LINE CHART EXPANDED ***
+            // Çizgi Grafik
             Expanded(
-              flex: 14,
               child: AnimatedSwitcher(
-                // 1. AnimatedSwitcher eklendi
-                duration:
-                    const Duration(milliseconds: 200), // 2. Animasyon süresi
+                duration: const Duration(milliseconds: 300),
                 child: LineChart(
-                  key: ValueKey<bool>(controller
-                      .selecedAllTimeGraph.value), // 3. ValueKey eklendi
-                  curve: Curves.linearToEaseOut,
-                  duration: const Duration(milliseconds: 200),
+                  key: ValueKey<bool>(controller.selecedAllTimeGraph.value),
                   LineChartData(
+                    extraLinesData: ExtraLinesData(
+                      horizontalLines: [
+                        HorizontalLine(
+                          label: HorizontalLineLabel(
+                            show: true,
+                            style: const TextStyle(
+                              color: Colors.green, // Etiket rengi
+                              fontSize: 10, // Etiket font boyutu
+                              fontWeight:
+                                  FontWeight.bold, // Etiket font kalınlığı
+                              fontFamily: "Poppins",
+                            ),
+                            alignment: Alignment
+                                .topRight, // Etiketin konumu (başka seçenekler de var)
+                          ),
+                          y: controller.targetWeight
+                              .toDouble(), // Hedef kiloyu burada kullanıyoruz
+                          color: Colors.green, // Çizginin rengi
+                          strokeWidth: 2, // Çizginin kalınlığı
+                          dashArray: [
+                            5,
+                            5
+                          ], // Çizgi noktalı olmasını istiyorsanız
+                        ),
+                      ],
+                    ),
                     lineTouchData: LineTouchData(
-                      handleBuiltInTouches: true,
                       touchTooltipData: LineTouchTooltipData(
+                        tooltipRoundedRadius: 8,
                         fitInsideHorizontally: true,
                         fitInsideVertically: true,
-                        tooltipRoundedRadius: 8,
-                        getTooltipColor: (group) => Get.theme.focusColor,
+                        getTooltipColor: (group) => Get.theme.primaryColor,
                         tooltipPadding: const EdgeInsets.all(5),
                         getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
                           return touchedBarSpots.map((barSpot) {
-                            final record =
-                                controller.filteredRecords.firstWhere(
-                              (record) =>
-                                  record.dateTime.millisecondsSinceEpoch
-                                      .toDouble() ==
-                                  barSpot.x,
-                            );
+                            final record = filteredRecords[barSpot.x.toInt()];
                             return LineTooltipItem(
-                              '${DateFormat('d MMM, y', Get.locale.toString()).format(record.dateTime)}\n${record.weight} ${_settingsController.weightUnit}',
+                              '${DateFormat('d MMM, y', Get.locale?.languageCode ?? 'en').format(record.dateTime)}\n${record.weight} ${_settingsController.weightUnit}',
                               const TextStyle(
-                                color: Colors.white, // Tooltip metin rengi
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14,
                               ),
                             );
                           }).toList();
@@ -69,7 +83,6 @@ Obx lineGraph() {
                     ),
                     gridData: FlGridData(
                       show: true,
-                      horizontalInterval: 10,
                       drawVerticalLine: true,
                       getDrawingHorizontalLine: (value) => FlLine(
                         color: Colors.grey.withOpacity(0.3),
@@ -110,43 +123,71 @@ Obx lineGraph() {
                       ),
                       bottomTitles: AxisTitles(
                         sideTitles: SideTitles(
-                          showTitles: true,
                           reservedSize: Get.size.height * 0.06,
-                          getTitlesWidget: (value, meta) {
-                            final date = DateTime.fromMillisecondsSinceEpoch(
-                                value.toInt());
+                          showTitles: true,
+                          getTitlesWidget: (double value, TitleMeta meta) {
+                            // Tarih formatlarını ayır
+                            DateTime firstDate = filteredRecords.first.dateTime;
+                            DateTime lastDate = filteredRecords.last.dateTime;
 
-                            // İlk ve son tarihleri göster
-                            int totalRecords =
-                                controller.filteredRecords.length;
-                            int index = controller.filteredRecords.indexWhere(
-                              (record) =>
-                                  record.dateTime.millisecondsSinceEpoch ==
-                                  value.toInt(),
-                            );
+                            String firstDayMonth = DateFormat(
+                                    'd MMM', Get.locale?.languageCode ?? 'en')
+                                .format(firstDate);
+                            String firstYear =
+                                DateFormat('y').format(firstDate);
 
-                            // Sadece ilk ve son indekslerde tarih göster
-                            if (index == 0 || index == totalRecords - 1) {
-                              return SideTitleWidget(
-                                axisSide: meta.axisSide,
+                            String lastDayMonth = DateFormat(
+                                    'd MMM', Get.locale?.languageCode ?? 'en')
+                                .format(lastDate);
+                            String lastYear = DateFormat('y').format(lastDate);
+                            if (value == 0) {
+                              return Padding(
+                                padding: const EdgeInsets.only(top: 3),
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
-                                      DateFormat('d MMM', Get.locale.toString())
-                                          .format(date),
+                                      firstDayMonth,
                                       style: const TextStyle(
                                         fontFamily: "Poppins",
-                                        fontSize: 10,
+                                        fontSize: 9,
                                         color: Colors.grey,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     Text(
-                                      DateFormat('y').format(date),
+                                      firstYear,
                                       style: const TextStyle(
                                         fontFamily: "Poppins",
-                                        fontSize: 10,
+                                        fontSize: 9,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            } else if (value == filteredRecords.length - 1) {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 25, top: 3),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      lastDayMonth,
+                                      style: const TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontSize: 9,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      lastYear,
+                                      style: const TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontSize: 9,
                                         color: Colors.grey,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -155,77 +196,63 @@ Obx lineGraph() {
                                 ),
                               );
                             } else {
-                              return const SizedBox
-                                  .shrink(); // Aradaki tarihlerde boş widget döndür
+                              // Diğer değerler için boş bırak (gerekirse ayarla)
+                              return const SizedBox.shrink();
                             }
                           },
                         ),
                       ),
                     ),
                     borderData: FlBorderData(
-                      show: true,
                       border: Border.all(
-                          color: Colors.grey.withOpacity(0.3), width: 1),
+                        color: Colors.grey.withOpacity(0.3),
+                      ),
                     ),
-                    minX: controller.filteredRecords.isNotEmpty
-                        ? controller.filteredRecords.first.dateTime
-                            .millisecondsSinceEpoch
-                            .toDouble()
-                        : 0,
-                    maxX: controller.filteredRecords.isNotEmpty
-                        ? controller.filteredRecords.last.dateTime
-                            .millisecondsSinceEpoch
-                            .toDouble()
-                        : 0,
-                    minY: controller.records.isNotEmpty
-                        ? controller.records
-                                .map((record) => record.weight)
+                    minX: 0,
+                    maxX: filteredRecords.isNotEmpty
+                        ? (filteredRecords.length - 1).toDouble()
+                        : 1,
+                    minY: filteredRecords.isNotEmpty
+                        ? filteredRecords
+                                .map((e) => e.weight)
                                 .reduce((a, b) => a < b ? a : b) -
-                            10
-                        : 0, // Liste boşken kullanılacak varsayılan değer
-                    maxY: controller.filteredRecords.isNotEmpty
-                        ? controller.filteredRecords
-                                .map((r) => r.weight)
+                            5
+                        : 0,
+                    maxY: filteredRecords.isNotEmpty
+                        ? filteredRecords
+                                .map((e) => e.weight)
                                 .reduce((a, b) => a > b ? a : b) +
-                            10
-                        : 60,
+                            5
+                        : 10,
                     lineBarsData: [
                       LineChartBarData(
-                        spots: controller.filteredRecords
+                        spots: filteredRecords
+                            .asMap()
+                            .entries
                             .map(
-                              (record) => FlSpot(
-                                  record.dateTime.millisecondsSinceEpoch
-                                      .toDouble(),
-                                  record.weight),
+                              (entry) => FlSpot(
+                                entry.key.toDouble(),
+                                entry.value.weight,
+                              ),
                             )
                             .toList(),
-                        isCurved: true,
-                        gradient: LinearGradient(
-                          colors: [
-                            Get.theme.focusColor.withOpacity(0.5),
-                            Get.theme.focusColor.withOpacity(1)
-                          ],
-                        ),
                         preventCurveOverShooting: true,
                         isStepLineChart: false,
-                        color: Get.theme.cardColor,
+                        color: Get.theme.primaryColor,
+                        isCurved: false,
                         barWidth: 2,
                         isStrokeCapRound: true,
                         dotData: FlDotData(
-
                           show: controller.showDotData.value,
                         ),
                         belowBarData: BarAreaData(
+                          show: true,
                           gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
                             colors: [
-                              Get.theme.focusColor.withOpacity(0.2),
-                              Colors.transparent
+                              Colors.transparent,
+                              Get.theme.primaryColor.withOpacity(0.3),
                             ],
                           ),
-                          show: true,
-                          color: Get.theme.focusColor.withOpacity(0.5),
                         ),
                       ),
                     ],
@@ -233,29 +260,19 @@ Obx lineGraph() {
                 ),
               ),
             ),
-            // *** SELECTED TIME RANGE EXPANDED ***
+            // Zaman Aralığı Butonları
             Obx(
               () => customToggleButton(
                 isSelected: [
                   controller.selecedAllTimeGraph.value,
-                  !controller.selecedAllTimeGraph.value
+                  !controller.selecedAllTimeGraph.value,
                 ],
-                onPressed: (int index) {
+                onPressed: (index) {
                   controller.timeUnit(index);
                 },
                 children: [
-                  Text(
-                    'all records'.tr,
-                    style: const TextStyle(
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  Text(
-                    'last 30 days'.tr,
-                    style: const TextStyle(
-                      fontFamily: "Poppins",
-                    ),
-                  ),
+                  Text('All records'.tr),
+                  Text('Last 30 days'.tr),
                 ],
               ),
             ),

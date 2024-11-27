@@ -1,5 +1,4 @@
-// en_us.dart
-
+// ALMANCA
 const Map<String, String> deDE = {
   // InstagramService
   "Error": "Fehler",
@@ -52,19 +51,14 @@ const Map<String, String> deDE = {
   'You must pay to see graphs and track your progress in more detail.':
       'Sie müssen bezahlen, um Diagramme zu sehen und Ihren Fortschritt detaillierter zu verfolgen.',
   "Upgrade premium": "Premium upgraden",
-  'After 1 week of analysis, the graphs appear!':
-      'Nach einer Woche der Analyse erscheinen die Diagramme!',
+  "No records available yet!": "Noch keine Aufzeichnungen verfügbar!",
 
   // GalleryScreen
   "You don't have any photos yet !": "Sie haben noch keine Fotos!",
 
   // AddScreen
-  "There is already a record for the same date":
-      "Es gibt bereits einen Datensatz für dasselbe Datum.",
-  "Change the date": "Datum ändern.",
   "note": "Notiz",
   "YOUR WEIGHT": "DEIN GEWICHT",
-
   "Take a photo": "Ein Foto machen.",
   "Pick from gallery": "Aus der Galerie auswählen.",
 
@@ -164,6 +158,9 @@ const Map<String, String> deDE = {
   'History': 'Verlauf',
   'Profile': 'Profil',
   'App': 'App',
+  "There is already a record for the same date":
+      "Es gibt bereits einen Datensatz für dasselbe Datum.",
+  "Change the date": "Datum ändern.",
 
   // SettingsController
   'Permission Required': 'Berechtigung Erforderlich',

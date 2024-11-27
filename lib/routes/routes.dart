@@ -8,6 +8,7 @@ class Routes {
   static const String introstartscreen = "/introstartscreen";
   static const String introtargetweightscreen = "/introtargetweightscreen";
   // app
+  static const String splashscreen = "/splashscreen";
   static const String mainscreen = "/mainscreen";
   static const String graphscreen = "/graphscreen";
   static const String galleryscreen = "/galleryscreen";

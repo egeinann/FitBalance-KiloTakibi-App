@@ -5,11 +5,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
-import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/divider.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/lottie_loading.dart';
-import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/config/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
@@ -20,7 +18,6 @@ import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
 class AddScreen extends GetView<Controller> {
   AddScreen({super.key});
-  final TextEditingController _noteController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   final SettingsController _settingsController = Get.find();
   @override
@@ -66,44 +63,22 @@ class AddScreen extends GetView<Controller> {
     );
   }
 
-  // *** ADD BUTTON PRESSED ***
-  void addPressed() {
-    final String? note =
-        _noteController.text.isNotEmpty ? _noteController.text : null;
-
-    if (controller.isRecordExists(controller.selectedDate.value)) {
-      SnackbarHelper.showSnackbar(
-        title: "There is already a record for the same date".tr,
-        message: "Change the date".tr,
-        backgroundColor: Colors.red,
-        duration: const Duration(milliseconds: 1100),
-        icon: const Icon(Ionicons.calendar_outline),
-      );
-      return;
-    }
-
-    controller.addRecord(Record(
-      weight: controller.currentWeight.value,
-      dateTime: controller.selectedDate.value,
-      note: note,
-      photoUrl: controller.photoUrl.value,
-    ));
-
-    controller.goToHistoryScreen();
-    _noteController.clear();
-    controller.photoUrl.value = null; // Fotoğraf URL'sini sıfırla
-    Get.focusScope?.unfocus();
-    Get.back();
-    Future.delayed(const Duration(milliseconds: 500), () {
-      Get.toNamed(Routes.animationbackgroundscreen);
-    });
-  }
-
   // *** ADD BUTTON ***
   Widget bottomAddButton() {
     return customFloatingActionButton(
       widget: const Icon(Icons.add),
-      onPressed: addPressed, // Doğrudan fonksiyonu çağır
+      onPressed: () {
+        final String? note = controller.noteController.text.isNotEmpty
+            ? controller.noteController.text
+            : null;
+        final newRecord = Record(
+          weight: controller.currentWeight.value,
+          dateTime: controller.selectedDate.value,
+          note: note,
+          photoUrl: controller.photoUrl.value,
+        );
+        controller.addRecord(newRecord);
+      },
     );
   }
 
@@ -133,10 +108,10 @@ class AddScreen extends GetView<Controller> {
       padding: const EdgeInsets.all(20),
       child: CustomTextField(
         focusNode: _focusNode,
-        controller: _noteController,
+        controller: controller.noteController,
         labelText: "note".tr,
         titleIcon: IconButton(
-          onPressed: () => _noteController.clear(),
+          onPressed: () => controller.noteController.clear(),
           icon: const Icon(Icons.backspace),
         ),
         maxLength: 80,
@@ -250,7 +225,7 @@ class AddScreen extends GetView<Controller> {
   }
 
   // *** SELECT PHOTO ***
-Future<void> _pickImage() async {
+  Future<void> _pickImage() async {
     final picker = ImagePicker();
     final source = await Get.bottomSheet<ImageSource>(
       Container(

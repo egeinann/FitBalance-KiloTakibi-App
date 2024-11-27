@@ -1,5 +1,4 @@
-// en_us.dart
-
+// TURKCE
 const Map<String, String> trTR = {
   // InstagramService
   "Error": "Hata",
@@ -50,19 +49,14 @@ const Map<String, String> trTR = {
   'You must pay to see graphs and track your progress in more detail.':
       'Grafikleri görmek ve ilerlemeni daha ayrıntılı takip etmek için ödeme yapmalısın.',
   "Upgrade premium": "Premium’a yükselt",
-  'After 1 week of analysis, the graphs appear!':
-      '1 haftalık analizden sonra grafikler görünüyor!',
+  "No records available yet!": "Henüz kayıt yok!",
 
   // GalleryScreen
   "You don't have any photos yet !": "Henüz hiç fotoğrafın yok !",
 
   // AddScreen
-  "There is already a record for the same date":
-      "Aynı tarih için zaten bir kayıt var.",
-  "Change the date": "Tarihi değiştir.",
   "note": "not",
   "YOUR WEIGHT": "KİLOM",
-
   "Take a photo": "Fotoğraf çek.",
   "Pick from gallery": "Galeriden seç.",
 
@@ -161,6 +155,9 @@ const Map<String, String> trTR = {
   'History': 'Geçmiş',
   'Profile': 'Profil',
   'App': 'Uygulama',
+  "There is already a record for the same date":
+      "Aynı tarih için zaten bir kayıt var.",
+  "Change the date": "Tarihi değiştir.",
 
   // SettingsController
   'Permission Required': 'İzin Gerekli',

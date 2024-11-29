@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/divider.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/lottie_loading.dart';
-import 'package:kilo_takibi_uyg/config/themes.dart';
+import 'package:kilo_takibi_uyg/constants/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/record_model/record.dart';
@@ -66,7 +66,7 @@ class AddScreen extends GetView<Controller> {
   // *** ADD BUTTON ***
   Widget bottomAddButton() {
     return customFloatingActionButton(
-      widget: const Icon(Icons.add),
+      widget: const Icon(AppIcons.add),
       onPressed: () {
         final String? note = controller.noteController.text.isNotEmpty
             ? controller.noteController.text
@@ -94,7 +94,7 @@ class AddScreen extends GetView<Controller> {
       context: Get.context!, // Use Get.context here
       initialDate: DateTime.now(),
       firstDate: DateTime.now().subtract(const Duration(days: 150)),
-      lastDate: DateTime.now().add(const Duration(days: 30)),
+      lastDate: DateTime.now().add(const Duration(days: 0)),
     );
 
     if (selectedDate != null) {
@@ -112,7 +112,7 @@ class AddScreen extends GetView<Controller> {
         labelText: "note".tr,
         titleIcon: IconButton(
           onPressed: () => controller.noteController.clear(),
-          icon: const Icon(Icons.backspace),
+          icon: const Icon(AppIcons.chevronBack),
         ),
         maxLength: 80,
         onChanged: (value) {
@@ -192,7 +192,7 @@ class AddScreen extends GetView<Controller> {
           padding: const EdgeInsets.all(20),
           child: customFloatingActionButtonYellow(
             onPressed: () => _pickImage(), // Doğrudan fonksiyonu çağır
-            widget: const Icon(Ionicons.camera),
+            widget: const Icon(AppIcons.camera),
           ),
         );
       } else {
@@ -211,7 +211,7 @@ class AddScreen extends GetView<Controller> {
                 right: 0,
                 top: 0,
                 child: IconButton(
-                  icon: const Icon(Ionicons.close, color: Colors.white),
+                  icon: const Icon(AppIcons.close, color: Colors.white),
                   onPressed: () {
                     controller.photoUrl.value = null; // Fotoğrafı kaldır
                   },
@@ -246,12 +246,12 @@ class AddScreen extends GetView<Controller> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              leading: const Icon(Icons.camera),
+              leading: const Icon(AppIcons.camera),
               title: Text('Take a photo'.tr),
               onTap: () => Get.back(result: ImageSource.camera),
             ),
             ListTile(
-              leading: const Icon(Icons.photo_library),
+              leading: const Icon(AppIcons.image),
               title: Text('Pick from gallery'.tr),
               onTap: () => Get.back(result: ImageSource.gallery),
             ),

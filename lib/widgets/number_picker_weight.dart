@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class NumberPickerWeight extends StatelessWidget {
@@ -49,7 +49,7 @@ class NumberPickerWeight extends StatelessWidget {
               onChanged(formattedValue); // Formatlanmış değeri geçirin
             },
           ),
-          const Icon(Ionicons.chevron_back, size: 15),
+          const Icon(AppIcons.chevronBack, size: 15),
         ],
       ),
     );

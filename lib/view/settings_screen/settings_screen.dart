@@ -1,7 +1,8 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
+
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/services/email_service.dart';
@@ -16,11 +17,11 @@ class SettingsScreen extends GetView<SettingsController> {
   Widget build(BuildContext context) {
     final settingsList = [
       SettingsModel(
-        const Icon(Ionicons.rocket),
+        const Icon(AppIcons.rocket),
         "Premium".tr,
         "Upgrade to Premium".tr,
         Icon(
-          Ionicons.rocket,
+          AppIcons.rocket,
           color: controller.hasPaid.value ? Get.theme.focusColor : Colors.grey,
         ),
         onTap: () {
@@ -28,7 +29,7 @@ class SettingsScreen extends GetView<SettingsController> {
         },
       ),
       SettingsModel(
-        const Icon(Ionicons.earth),
+        const Icon(AppIcons.language),
         "Language".tr,
         null,
         Obx(
@@ -42,7 +43,7 @@ class SettingsScreen extends GetView<SettingsController> {
         },
       ),
       SettingsModel(
-        const Icon(Icons.format_color_fill_rounded),
+        const Icon(AppIcons.theme),
         "Theme".tr,
         null,
         SizedBox(
@@ -80,7 +81,7 @@ class SettingsScreen extends GetView<SettingsController> {
       //   },
       // ),
       SettingsModel(
-        const Icon(Ionicons.speedometer),
+        const Icon(AppIcons.indicator),
         "Unit of weight".tr,
         null,
         Obx(
@@ -113,7 +114,7 @@ class SettingsScreen extends GetView<SettingsController> {
         },
       ),
       SettingsModel(
-        const Icon(Ionicons.man),
+        const Icon(AppIcons.man),
         "Unit of height".tr,
         null,
         SizedBox(
@@ -152,7 +153,7 @@ class SettingsScreen extends GetView<SettingsController> {
         },
       ),
       SettingsModel(
-        const Icon(Ionicons.lock_closed),
+        const Icon(AppIcons.lock),
         "Privacy Policy".tr,
         "Protection of personal data".tr,
         null,
@@ -161,7 +162,7 @@ class SettingsScreen extends GetView<SettingsController> {
         },
       ),
       SettingsModel(
-        const Icon(Ionicons.document_text),
+        const Icon(AppIcons.documents),
         "Terms of service".tr,
         "You have accepted these terms".tr,
         null,
@@ -170,7 +171,7 @@ class SettingsScreen extends GetView<SettingsController> {
         },
       ),
       SettingsModel(
-        const Icon(Ionicons.cloud),
+        const Icon(AppIcons.cloud),
         "Data management".tr,
         "Data backup, restore and data wipe".tr,
         null,
@@ -179,7 +180,7 @@ class SettingsScreen extends GetView<SettingsController> {
         },
       ),
       SettingsModel(
-        const Icon(Ionicons.information_circle),
+        const Icon(AppIcons.information),
         "About the app".tr,
         null,
         null,
@@ -231,7 +232,7 @@ class SettingsScreen extends GetView<SettingsController> {
         padding: const EdgeInsets.only(bottom: 30, right: 5),
         child: customFloatingActionButton(
           heroTag: "profile",
-          widget: const Icon(Ionicons.mail),
+          widget: const Icon(AppIcons.mail),
           onPressed: () {
             final emailService = EmailService();
             emailService.sendEmail(

@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
@@ -18,10 +18,11 @@ class UpgradePremiumScreen extends GetView<SettingsController> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: const Icon(Icons.close)),
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(AppIcons.close),
+        ),
       ),
       body: Column(
         children: [
@@ -60,7 +61,7 @@ class UpgradePremiumScreen extends GetView<SettingsController> {
         ListTile(
           leading: CircleAvatar(
             backgroundColor: Get.theme.cardColor,
-            child: const Icon(Ionicons.megaphone_outline),
+            child: const Icon(AppIcons.megaphone),
           ),
           title: AutoSizeText(
             "Reach your goal with ad-free, uninterrupted tracking!".tr,
@@ -70,7 +71,7 @@ class UpgradePremiumScreen extends GetView<SettingsController> {
         ListTile(
           leading: CircleAvatar(
             backgroundColor: Get.theme.cardColor,
-            child: const Icon(Ionicons.analytics),
+            child: const Icon(AppIcons.analytics),
           ),
           title: AutoSizeText(
             "Easily track your progress with graphs and boost your motivation!"
@@ -81,7 +82,7 @@ class UpgradePremiumScreen extends GetView<SettingsController> {
         ListTile(
           leading: CircleAvatar(
             backgroundColor: Get.theme.cardColor,
-            child: const Icon(Ionicons.hardware_chip_outline),
+            child: const Icon(AppIcons.ai),
           ),
           title: AutoSizeText(
             "Embark on a healthy journey with artificial intelligence suggestions!"
@@ -183,7 +184,7 @@ class UpgradePremiumScreen extends GetView<SettingsController> {
                             fontWeight: FontWeight.bold,
                           ),
                         )
-                      : const Icon(Icons.done),
+                      : const Icon(AppIcons.done),
                   onPressed: () {
                     if (!controller.hasPaid.value) {
                       controller.completePayment();

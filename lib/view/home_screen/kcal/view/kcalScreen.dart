@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/kcal_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/kcal/model/kcal_model.dart';
@@ -81,7 +82,7 @@ class KcalScreen extends GetView<KcalController> {
       padding: const EdgeInsets.only(bottom: 30, right: 5),
       child: customFloatingActionButton(
         heroTag: "kcal",
-        widget: const Icon(Icons.done),
+        widget: const Icon(AppIcons.done),
         onPressed: controller.saveData,
       ),
     );
@@ -214,7 +215,7 @@ class KcalScreen extends GetView<KcalController> {
                   controller.updateActivityLevel(ActivityLevel.Sedentary),
               child: Obx(
                 () => Icon(
-                  Icons.hotel,
+                  AppIcons.bed,
                   size: 50,
                   color:
                       controller.activityLevel.value == ActivityLevel.Sedentary
@@ -227,7 +228,7 @@ class KcalScreen extends GetView<KcalController> {
               onTap: () => controller.updateActivityLevel(ActivityLevel.Light),
               child: Obx(
                 () => Icon(
-                  Icons.directions_walk,
+                  AppIcons.walk,
                   size: 50,
                   color: controller.activityLevel.value == ActivityLevel.Light
                       ? Colors.green
@@ -240,7 +241,7 @@ class KcalScreen extends GetView<KcalController> {
                   controller.updateActivityLevel(ActivityLevel.Moderate),
               child: Obx(
                 () => Icon(
-                  Icons.directions_run,
+                  AppIcons.run,
                   size: 50,
                   color:
                       controller.activityLevel.value == ActivityLevel.Moderate
@@ -254,7 +255,7 @@ class KcalScreen extends GetView<KcalController> {
                   controller.updateActivityLevel(ActivityLevel.Intense),
               child: Obx(
                 () => Icon(
-                  Icons.fitness_center,
+                  AppIcons.barbell,
                   size: 50,
                   color: controller.activityLevel.value == ActivityLevel.Intense
                       ? Colors.red
@@ -267,8 +268,8 @@ class KcalScreen extends GetView<KcalController> {
                   controller.updateActivityLevel(ActivityLevel.VeryIntense),
               child: Obx(
                 () => Icon(
-                  Icons.flash_on,
-                  size: 50,
+                  AppIcons.flash,
+                  size: 40,
                   color: controller.activityLevel.value ==
                           ActivityLevel.VeryIntense
                       ? Colors.purple
@@ -293,7 +294,7 @@ class KcalScreen extends GetView<KcalController> {
               onTap: () => controller.updateGender(Gender.Male),
               child: Obx(
                 () => Icon(
-                  Ionicons.man,
+                  AppIcons.man,
                   size: 60,
                   color: controller.gender.value == Gender.Male
                       ? Colors.blue
@@ -305,7 +306,7 @@ class KcalScreen extends GetView<KcalController> {
               onTap: () => controller.updateGender(Gender.Female),
               child: Obx(
                 () => Icon(
-                  Ionicons.woman,
+                  AppIcons.woman,
                   size: 60,
                   color: controller.gender.value == Gender.Female
                       ? Colors.pink

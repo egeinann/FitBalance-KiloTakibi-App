@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -57,7 +58,7 @@ class OpenedPremiumScreen extends StatelessWidget {
             flex: 1,
             child: Center(
               child: customFloatingActionButton(
-                widget: const Icon(Icons.done),
+                widget: const Icon(AppIcons.done),
                 onPressed: () {
                   Get.back();
                 },

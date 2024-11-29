@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
@@ -33,7 +33,7 @@ class OnboardingController extends GetxController {
           message: "This section cannot be left blank".tr,
           backgroundColor: Colors.red,
           duration: const Duration(seconds: 2),
-          icon: const Icon(Ionicons.person),
+          icon: const Icon(AppIcons.person),
         );
 
         // İsim ekranına geri dön

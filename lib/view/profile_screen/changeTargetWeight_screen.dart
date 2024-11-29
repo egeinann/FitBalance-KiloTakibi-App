@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -83,7 +83,7 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
         padding: const EdgeInsets.only(bottom: 30, right: 5),
         child: customFloatingActionButton(
           heroTag: "profile",
-          widget: const Icon(Icons.done),
+          widget: const Icon(AppIcons.done),
           onPressed: () {
             // "Done" düğmesine basıldığında geçici hedef ağırlığı kaydet
             controller.setTargetWeight(controller.temporaryTargetWeight.value);
@@ -93,7 +93,7 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
               message: "Good luck".tr,
               backgroundColor: Colors.green,
               duration: const Duration(seconds: 2),
-              icon: const Icon(Ionicons.golf),
+              icon: const Icon(AppIcons.flag),
             );
           },
         ),

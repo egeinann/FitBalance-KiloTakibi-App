@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/rive_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
@@ -96,7 +97,7 @@ class AnimationBackgroundScreen extends GetView<RiveController> {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 30, right: 5),
                 child: customFloatingActionButton(
-                  widget: const Icon(Icons.done),
+                  widget: const Icon(AppIcons.done),
                   onPressed: () {
                     Get.back(); // geri git
                   },

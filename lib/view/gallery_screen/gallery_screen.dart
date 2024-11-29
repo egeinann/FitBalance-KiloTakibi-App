@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -98,7 +98,7 @@ class GalleryScreen extends GetView<Controller> {
                   customFloatingActionButton(
                     mini: true,
                     heroTag: "${rec.photoUrl}_goRecordScreenButton",
-                    widget: const Icon(Ionicons.arrow_forward),
+                    widget: const Icon(AppIcons.forward),
                     onPressed: () {
                       Future.delayed(
                         const Duration(milliseconds: 150),

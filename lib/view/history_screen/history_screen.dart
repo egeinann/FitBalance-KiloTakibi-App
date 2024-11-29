@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
@@ -90,13 +90,13 @@ class HistoryScreen extends StatelessWidget {
                   children: [
                     customFloatingActionButton(
                       mini: true,
-                      widget: const Icon(Ionicons.search),
+                      widget: const Icon(AppIcons.search),
                       onPressed: _showMonthSelector,
                     ),
                     const SizedBox(width: 10),
                     customFloatingActionButton(
                       mini: true,
-                      widget: const Icon(Icons.delete),
+                      widget: const Icon(AppIcons.delete),
                       onPressed: deleteAllShowDialog,
                     ),
                   ],
@@ -210,7 +210,7 @@ class HistoryScreen extends StatelessWidget {
       );
     } else {
       SnackbarHelper.showSnackbar(
-        icon: const Icon(Icons.error),
+        icon: const Icon(AppIcons.alert),
         title: "No records found for this month".tr,
         message: "Please select a different month.".tr,
         backgroundColor: Colors.orange,
@@ -235,7 +235,7 @@ class HistoryScreen extends StatelessWidget {
               message: "There are no more records".tr,
               backgroundColor: Colors.red,
               duration: const Duration(milliseconds: 1500),
-              icon: const Icon(Icons.delete),
+              icon: const Icon(AppIcons.delete),
             );
           },
         );

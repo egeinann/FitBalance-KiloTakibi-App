@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gauge_indicator/gauge_indicator.dart'; // Gauge göstergesi için
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
@@ -47,7 +47,7 @@ class BmiScreen extends GetView<BMIController> {
       padding: const EdgeInsets.only(bottom: 20, right: 5),
       child: customFloatingActionButton(
         heroTag: "bmi",
-        widget: const Icon(Icons.question_mark_sharp),
+        widget: const Icon(AppIcons.information),
         onPressed: () {
           Get.toNamed(Routes.bmiinfoscreen);
         },
@@ -153,7 +153,7 @@ class BmiScreen extends GetView<BMIController> {
                       ),
                     ),
                   ),
-                  const Icon(Ionicons.fitness),
+                  const Icon(AppIcons.fitness),
                 ],
               ),
             ),
@@ -168,7 +168,7 @@ class BmiScreen extends GetView<BMIController> {
     return Stack(
       alignment: Alignment.centerLeft,
       children: [
-        const Icon(Ionicons.speedometer),
+        const Icon(AppIcons.indicator),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -197,7 +197,7 @@ class BmiScreen extends GetView<BMIController> {
     return Stack(
       alignment: Alignment.centerLeft,
       children: [
-        const Icon(Icons.man),
+        const Icon(AppIcons.man),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:get/get.dart'; 
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_ai_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_photoGallery_screen.dart';
@@ -56,7 +56,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
                     ),
                     customFloatingActionButton(
                       heroTag: "onboarding",
-                      widget: const Icon(Ionicons.arrow_forward),
+                      widget: const Icon(AppIcons.forward),
                       onPressed: () {
                         controller.goToNextPage();
                       },

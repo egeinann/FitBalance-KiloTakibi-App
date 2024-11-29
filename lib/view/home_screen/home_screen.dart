@@ -4,7 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
@@ -100,7 +100,7 @@ class HomeScreen extends GetView<Controller> {
               padding: const EdgeInsets.only(bottom: 15),
               child: customFloatingActionButton(
                 heroTag: "onboarding",
-                widget: const Icon(Icons.add),
+                widget: const Icon(AppIcons.add),
                 onPressed: () => Get.toNamed(Routes.addscreen),
               ),
             ),
@@ -151,7 +151,7 @@ class HomeScreen extends GetView<Controller> {
                         style: Get.theme.textTheme.bodySmall,
                       ),
                       const Icon(
-                        Ionicons.chevron_forward,
+                        AppIcons.forward,
                         size: 16,
                       ),
                     ],
@@ -194,7 +194,7 @@ class HomeScreen extends GetView<Controller> {
                 ),
                 const Column(
                   children: [
-                    Icon(Ionicons.camera),
+                    Icon(AppIcons.camera),
                     CustomDivider(),
                   ],
                 )
@@ -232,7 +232,7 @@ class HomeScreen extends GetView<Controller> {
                   widget: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Ionicons.rocket),
+                      const Icon(AppIcons.rocket),
                       const SizedBox(width: 5),
                       AutoSizeText(
                         "Try Premium".tr,
@@ -359,7 +359,7 @@ class HomeScreen extends GetView<Controller> {
                   visible: !_settingsController.hasPaid.value,
                   child: Column(
                     children: [
-                      const Icon(Ionicons.lock_closed),
+                      const Icon(AppIcons.lock),
                       Text(
                         "Charts".tr,
                         style: Get.theme.textTheme.bodyLarge,
@@ -557,7 +557,7 @@ class HomeScreen extends GetView<Controller> {
             children: [
               Row(
                 children: [
-                  const Icon(Ionicons.ribbon),
+                  const Icon(AppIcons.ribbon),
                   const SizedBox(width: 5),
                   Text(
                     "Target point".tr,
@@ -574,7 +574,7 @@ class HomeScreen extends GetView<Controller> {
                     ),
                   ),
                   const SizedBox(width: 5),
-                  const Icon(Ionicons.chevron_forward),
+                  const Icon(AppIcons.forward),
                 ],
               ),
             ],
@@ -605,7 +605,7 @@ class HomeScreen extends GetView<Controller> {
             children: [
               Row(
                 children: [
-                  const Icon(Ionicons.flag),
+                  const Icon(AppIcons.flag),
                   const SizedBox(width: 5),
                   Text("Starting point".tr,
                       style: Get.theme.textTheme.bodySmall),
@@ -624,7 +624,7 @@ class HomeScreen extends GetView<Controller> {
                     () => Icon(
                       controller.records.isEmpty
                           ? Icons.data_array
-                          : Ionicons.chevron_forward,
+                          : AppIcons.forward,
                     ),
                   ),
                 ],
@@ -673,7 +673,7 @@ class HomeScreen extends GetView<Controller> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Ionicons.speedometer,
+                          Icon(AppIcons.indicator,
                               color: Get.theme.dialogBackgroundColor),
                           const SizedBox(height: 5),
                           Text(
@@ -710,7 +710,7 @@ class HomeScreen extends GetView<Controller> {
                             Flexible(
                               child: customFloatingActionButton(
                                 heroTag: "bmi",
-                                widget: const Icon(Ionicons.speedometer),
+                                widget: const Icon(AppIcons.indicator),
                                 onPressed: () {
                                   Get.toNamed(Routes.bmiscreen);
                                 },
@@ -767,7 +767,7 @@ class HomeScreen extends GetView<Controller> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Ionicons.pulse,
+                          Icon(AppIcons.pulse,
                               color: Get.theme.scaffoldBackgroundColor),
                           const SizedBox(height: 5),
                           Text(
@@ -804,7 +804,7 @@ class HomeScreen extends GetView<Controller> {
                             Flexible(
                               child: customFloatingActionButton(
                                 heroTag: "balance",
-                                widget: const Icon(Ionicons.pulse),
+                                widget: const Icon(AppIcons.pulse),
                                 onPressed: () {
                                   Get.toNamed(Routes.infoscreen);
                                 },
@@ -861,7 +861,7 @@ class HomeScreen extends GetView<Controller> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Ionicons.fast_food,
+                          Icon(AppIcons.food,
                               color: Get.theme.scaffoldBackgroundColor),
                           const SizedBox(height: 5),
                           Text(
@@ -899,7 +899,7 @@ class HomeScreen extends GetView<Controller> {
                             Flexible(
                               child: customFloatingActionButton(
                                 heroTag: "kcal",
-                                widget: const Icon(Ionicons.fast_food),
+                                widget: const Icon(AppIcons.food),
                                 onPressed: () {
                                   Get.toNamed(Routes.kcalscreen);
                                 },

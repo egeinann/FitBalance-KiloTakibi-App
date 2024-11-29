@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
@@ -56,7 +56,7 @@ class ProfileScreen extends GetView<Controller> {
             children: [
               Row(
                 children: [
-                  const Icon(Ionicons.ribbon),
+                  const Icon(AppIcons.ribbon),
                   const SizedBox(width: 5),
                   Text("PREMIUM MODE".tr, style: Get.theme.textTheme.bodySmall),
                 ],
@@ -65,14 +65,14 @@ class ProfileScreen extends GetView<Controller> {
                 children: [
                   Obx(
                     () => Icon(
-                      Ionicons.rocket,
+                      AppIcons.rocket,
                       color: _settingsController.hasPaid.value
                           ? Get.theme.focusColor
                           : Colors.grey,
                     ),
                   ),
                   const SizedBox(width: 5),
-                  const Icon(Ionicons.chevron_forward),
+                  const Icon(AppIcons.forward),
                 ],
               ),
             ],
@@ -100,7 +100,7 @@ class ProfileScreen extends GetView<Controller> {
             children: [
               Row(
                 children: [
-                  const Icon(Ionicons.golf),
+                  const Icon(AppIcons.flag),
                   const SizedBox(width: 5),
                   Text("TARGET WEIGHT".tr,
                       style: Get.theme.textTheme.bodySmall),
@@ -115,7 +115,7 @@ class ProfileScreen extends GetView<Controller> {
                     ),
                   ),
                   const SizedBox(width: 5),
-                  const Icon(Ionicons.chevron_forward),
+                  const Icon(AppIcons.forward),
                 ],
               ),
             ],
@@ -143,7 +143,7 @@ class ProfileScreen extends GetView<Controller> {
             children: [
               Row(
                 children: [
-                  const Icon(Ionicons.person),
+                  const Icon(AppIcons.person),
                   const SizedBox(width: 5),
                   Text("NAME".tr, style: Get.theme.textTheme.bodySmall),
                 ],
@@ -157,7 +157,7 @@ class ProfileScreen extends GetView<Controller> {
                     ),
                   ),
                   const SizedBox(width: 5),
-                  const Icon(Ionicons.chevron_forward),
+                  const Icon(AppIcons.forward),
                 ],
               ),
             ],

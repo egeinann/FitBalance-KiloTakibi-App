@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
@@ -27,7 +27,7 @@ class MainScreen extends GetView<Controller> {
                         onPointerUp: (_) {
                           controller.dotData(false);
                         },
-                        child: const Icon(Ionicons.analytics),
+                        child: const Icon(AppIcons.analytics),
                       )
                     : const SizedBox();
               default:
@@ -35,7 +35,7 @@ class MainScreen extends GetView<Controller> {
                   onPressed: () {
                     Get.toNamed(Routes.chatscreen);
                   },
-                  icon: const Icon(Ionicons.chatbox_ellipses),
+                  icon: const Icon(AppIcons.chatBox),
                 );
             }
           },
@@ -70,7 +70,7 @@ class MainScreen extends GetView<Controller> {
                                     controller.onPageChanged(
                                         1); // Sayfa indeksini güncelle
                                   },
-                                  icon: const Icon(Ionicons.arrow_down),
+                                  icon: const Icon(AppIcons.arrowDown),
                                 )
                               : IconButton(
                                   onPressed: () {
@@ -83,7 +83,7 @@ class MainScreen extends GetView<Controller> {
                                     controller.onPageChanged(
                                         0); // Sayfa indeksini güncelle
                                   },
-                                  icon: const Icon(Ionicons.arrow_up),
+                                  icon: const Icon(AppIcons.arrowUp),
                                 ),
                         )
                       : const SizedBox();
@@ -92,7 +92,7 @@ class MainScreen extends GetView<Controller> {
                     onPressed: () {
                       Get.toNamed(Routes.settingsscreen);
                     },
-                    icon: const Icon(Ionicons.settings),
+                    icon: const Icon(AppIcons.settings),
                   );
                 default:
                   return const SizedBox();

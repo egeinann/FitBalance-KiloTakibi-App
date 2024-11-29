@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 
 class InfoSleepScreen extends StatelessWidget {
@@ -43,7 +43,7 @@ class InfoSleepScreen extends StatelessWidget {
                     style: Get.theme.textTheme.bodySmall,
                   ),
                   const Icon(
-                    Ionicons.moon_outline,
+                    AppIcons.moon,
                     size: 25,
                   )
                 ],

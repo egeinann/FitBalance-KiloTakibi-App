@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -21,7 +21,7 @@ class ChatScreen extends StatelessWidget {
           onPressed: () {
             Get.back();
           },
-          icon: const Icon(Ionicons.close),
+          icon: const Icon(AppIcons.close),
         ),
         actions: [
           Obx(
@@ -30,7 +30,7 @@ class ChatScreen extends StatelessWidget {
                 visible: _settingsController.hasPaid.value,
                 child: IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.delete),
+                  icon: const Icon(AppIcons.delete),
                 ),
               );
             },
@@ -131,7 +131,7 @@ class ChatScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: customFloatingActionButton(
-                          widget: const Icon(Ionicons.send),
+                          widget: const Icon(AppIcons.sendMessage),
                           onPressed: () {},
                         ),
                       ),

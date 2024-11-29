@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/view/home_screen/home_screen.dart';
 import 'package:kilo_takibi_uyg/view/gallery_screen/gallery_screen.dart';
@@ -52,23 +52,23 @@ Widget bottomNavigationBar(BuildContext context) {
           showSelectedLabels: false,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.show_chart),
+              icon: Icon(AppIcons.chart),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Ionicons.image),
+              icon: Icon(AppIcons.image),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Ionicons.home),
+              icon: Icon(AppIcons.home),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Ionicons.time),
+              icon: Icon(AppIcons.time),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Ionicons.person),
+              icon: Icon(AppIcons.person),
               label: "",
             ),
           ],

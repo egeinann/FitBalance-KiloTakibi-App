@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/models/record_model/record.dart';
 
@@ -98,7 +98,7 @@ class RecordListTile extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        const Icon(Ionicons.chevron_forward),
+        const Icon(AppIcons.forward),
       ],
     );
   }

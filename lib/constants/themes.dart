@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kilo_takibi_uyg/config/colors.dart';
+import 'package:kilo_takibi_uyg/constants/colors.dart';
 
 class ThemeClass {
   // *** LIGHT THEME ***

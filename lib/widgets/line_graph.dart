@@ -50,8 +50,8 @@ Obx lineGraph() {
                           label: HorizontalLineLabel(
                             show: true,
                             style: const TextStyle(
-                              color: Colors.green, // Etiket rengi
-                              fontSize: 10, // Etiket font boyutu
+                              color: Colors.deepPurpleAccent, // Etiket rengi
+                              fontSize: 12, // Etiket font boyutu
                               fontWeight:
                                   FontWeight.bold, // Etiket font kalınlığı
                               fontFamily: "Poppins",
@@ -61,8 +61,8 @@ Obx lineGraph() {
                           ),
                           y: controller.targetWeight
                               .toDouble(), // Hedef kiloyu burada kullanıyoruz
-                          color: Colors.green, // Çizginin rengi
-                          strokeWidth: 2, // Çizginin kalınlığı
+                          color: Colors.deepPurpleAccent, // Çizginin rengi
+                          strokeWidth: 3, // Çizginin kalınlığı
                           dashArray: [
                             5,
                             5
@@ -71,6 +71,8 @@ Obx lineGraph() {
                       ],
                     ),
                     lineTouchData: LineTouchData(
+                      touchSpotThreshold:
+                          50, // Hassasiyet aralığını artırır (default: 10)
                       touchTooltipData: LineTouchTooltipData(
                         tooltipRoundedRadius: 8,
                         fitInsideHorizontally: true,
@@ -259,8 +261,8 @@ Obx lineGraph() {
                           show: true,
                           gradient: LinearGradient(
                             colors: [
-                              Colors.transparent,
-                              Get.theme.primaryColor.withOpacity(0.3),
+                              Get.theme.primaryColor.withOpacity(0.2),
+                              Get.theme.primaryColor.withOpacity(0.7),
                             ],
                           ),
                         ),

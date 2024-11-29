@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -34,7 +34,7 @@ class RecordScreen extends GetView<Controller> {
             onPressed: () {
               showDeleteConfirmation(rec);
             },
-            icon: const Icon(Icons.delete),
+            icon: const Icon(AppIcons.delete),
           ),
         ],
       ),
@@ -61,7 +61,7 @@ class RecordScreen extends GetView<Controller> {
       padding: const EdgeInsets.only(bottom: 30, right: 5),
       child: customFloatingActionButton(
         heroTag: "_editButton",
-        widget: const Icon(Icons.draw),
+        widget: const Icon(AppIcons.draw),
         onPressed: () {
           _showEditModalBottomSheet(context, rec);
         },
@@ -168,7 +168,7 @@ class RecordScreen extends GetView<Controller> {
                       right: 0,
                       top: 0,
                       child: IconButton(
-                        icon: const Icon(Ionicons.close,
+                        icon: const Icon(AppIcons.close,
                             color: Colors.white),
                         onPressed: () {
                           showDeletePhoto(rec);
@@ -263,7 +263,7 @@ class RecordScreen extends GetView<Controller> {
                           noteController.clear(); // TextField'ı sıfırla
                           note = ""; // note değişkenini de sıfırla
                         },
-                        icon: const Icon(Icons.backspace),
+                        icon: const Icon(AppIcons.chevronBack),
                       ),
                       maxLength: 80,
                     ),
@@ -325,7 +325,7 @@ class RecordScreen extends GetView<Controller> {
               .format(rec.dateTime),
           backgroundColor: Colors.green,
           duration: const Duration(milliseconds: 1500),
-          icon: const Icon(Icons.save));
+          icon: const Icon(AppIcons.done));
     });
   }
 
@@ -368,7 +368,7 @@ class RecordScreen extends GetView<Controller> {
                     .format(rec.dateTime),
                 backgroundColor: Colors.green,
                 duration: const Duration(milliseconds: 1500),
-                icon: const Icon(Icons.camera_alt));
+                icon: const Icon(AppIcons.camera));
           },
         );
       },

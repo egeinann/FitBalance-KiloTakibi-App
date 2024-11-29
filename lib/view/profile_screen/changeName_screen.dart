@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -23,7 +23,7 @@ class ChangeNameScreen extends GetView<Controller> {
           onPressed: () {
             Get.back();
           },
-          icon: const Icon(Ionicons.arrow_back),
+          icon: const Icon(AppIcons.arrowBack),
         ),
         centerTitle: true,
         title: Text(
@@ -70,7 +70,7 @@ class ChangeNameScreen extends GetView<Controller> {
                         controller.temporaryUserName.value = value;
                       },
                       titleIcon: Icon(
-                        Ionicons.person,
+                        AppIcons.person,
                         color: Colors.grey.shade700,
                       ),
                       maxLength: 12,
@@ -86,7 +86,7 @@ class ChangeNameScreen extends GetView<Controller> {
         padding: const EdgeInsets.only(bottom: 30, right: 5),
         child: customFloatingActionButton(
           heroTag: "profile",
-          widget: const Icon(Icons.done),
+          widget: const Icon(AppIcons.done),
           onPressed: () {
             changeNameSave();
           },
@@ -103,7 +103,7 @@ class ChangeNameScreen extends GetView<Controller> {
         message: "Please enter your name".tr,
         backgroundColor: Colors.red,
         duration: const Duration(milliseconds: 1500),
-        icon: const Icon(Ionicons.cloud_offline),
+        icon: const Icon(AppIcons.alert),
       );
     } else {
       controller.setUserName(controller.temporaryUserName.value);
@@ -114,7 +114,7 @@ class ChangeNameScreen extends GetView<Controller> {
         message: "${controller.userName}",
         backgroundColor: Colors.green,
         duration: const Duration(milliseconds: 1500),
-        icon: const Icon(Ionicons.person),
+        icon: const Icon(AppIcons.person),
       );
     }
   }

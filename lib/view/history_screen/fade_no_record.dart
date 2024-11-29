@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 
@@ -56,7 +56,7 @@ class FadeNoRecord extends GetView<Controller> {
                 ),
                 const SizedBox(height: 10),
                 customFloatingActionButton(
-                  widget: const FittedBox(child: Icon(Ionicons.chevron_back)),
+                  widget: const FittedBox(child: Icon(AppIcons.add)),
                   onPressed: () {
                     controller.goToHomeScreen(); // Ana ekrana git
                   },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/models/record_model/record.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/record_list_tile.dart';
@@ -66,7 +66,7 @@ class Controller extends GetxController {
         message: "Change the date".tr,
         backgroundColor: Colors.red,
         duration: const Duration(milliseconds: 1500),
-        icon: const Icon(Ionicons.calendar_outline),
+        icon: const Icon(AppIcons.calendar),
       );
       return;
     }

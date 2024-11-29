@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
@@ -39,7 +39,7 @@ class IntroNameScreen extends GetView<Controller> {
                   controller.setUserName(value);
                 },
                 titleIcon: Icon(
-                  Ionicons.person,
+                  AppIcons.person,
                   color: Colors.grey.shade700,
                 ),
                 maxLength: 12,

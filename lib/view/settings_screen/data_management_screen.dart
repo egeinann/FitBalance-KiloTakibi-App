@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 
 class DataManagementScreen extends StatelessWidget {
@@ -42,7 +43,7 @@ class DataManagementScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ), // Metin
-                icon: const Icon(Icons.cloud, color: Colors.white), // İkon
+                icon: const Icon(AppIcons.cloud, color: Colors.white), // İkon
               ),
               const SizedBox(height: 15),
               FloatingActionButton.extended(
@@ -65,7 +66,7 @@ class DataManagementScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ), // Metin
-                icon: const Icon(Icons.restore, color: Colors.white), // İkon
+                icon: const Icon(AppIcons.time, color: Colors.white), // İkon
               ),
               const SizedBox(height: 15),
               FloatingActionButton.extended(
@@ -85,7 +86,7 @@ class DataManagementScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ), // Metin
-                icon: const Icon(Icons.delete, color: Colors.white), // İkon
+                icon: const Icon(AppIcons.delete, color: Colors.white), // İkon
               ),
             ],
           ),

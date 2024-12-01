@@ -36,7 +36,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
                     const IntroGraphScreen(),
                     const IntroPhotoGalleryScreen(),
                     const IntroAiScreen(),
-                    IntroNameScreen(),
+                    const IntroNameScreen(),
                     IntroTargetWeightScreen(),
                   ],
                 ),
@@ -56,7 +56,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
                     ),
                     customFloatingActionButton(
                       heroTag: "onboarding",
-                      widget: const Icon(AppIcons.forward),
+                      widget: const Icon(AppIcons.arrowForward),
                       onPressed: () {
                         controller.goToNextPage();
                       },

@@ -66,7 +66,7 @@ class InfoScreen extends GetView<InfoController> {
                       ),
                       customFloatingActionButton(
                         heroTag: "balance",
-                        widget: const Icon(AppIcons.forward),
+                        widget: const Icon(AppIcons.arrowForward),
                         onPressed: () {
                           controller.goToNextInfo();
                         },

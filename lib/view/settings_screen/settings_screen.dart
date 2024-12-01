@@ -6,6 +6,7 @@ import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/services/email_service.dart';
+import 'package:kilo_takibi_uyg/widgets/bottom_sheet.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/models/settings_model/settings_model.dart';
@@ -39,7 +40,43 @@ class SettingsScreen extends GetView<SettingsController> {
           ),
         ),
         onTap: () {
-          _showLanguageSelectionBottomSheet();
+          BottomSheetHelper.showCustomBottomSheet(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: controller.languageOptions.entries.map(
+                    (entry) {
+                      final languageCode = entry.key;
+                      final languageName = entry.value;
+                      return Obx(
+                        () {
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: controller.selectedLanguage.value ==
+                                      languageCode
+                                  ? Get.theme.primaryColor // Seçili dilin rengi
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: ListTile(
+                              title: Text(languageName),
+                              onTap: () {
+                                controller.changeLanguage(languageCode);
+                                Future.delayed(
+                                  const Duration(milliseconds: 200),
+                                  () => Get.back(),
+                                );
+                              },
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ).toList(),
+                ),
+              ),
+              color: Get.theme.canvasColor);
         },
       ),
       SettingsModel(
@@ -243,65 +280,4 @@ class SettingsScreen extends GetView<SettingsController> {
       ),
     );
   }
-
-  // *** DİL SEÇİMİ İÇİN BOTTOMSHEET ***
-  void _showLanguageSelectionBottomSheet() {
-    Get.bottomSheet(
-      Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: 20), // Yanlardan boşluk ekliyoruz
-        child: Container(
-          padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-            color: Get.theme.primaryColor, // Arka plan rengi aynı kalır
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(25),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                blurRadius: 10,
-                offset: const Offset(0, -5),
-              ),
-            ],
-        ),
-        child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: controller.languageOptions.entries.map((entry) {
-              final languageCode = entry.key;
-              final languageName = entry.value;
-
-              return Obx(() {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: controller.selectedLanguage.value == languageCode
-                          ? Get.theme.cardColor // Seçili dilin rengi
-                          : Colors.transparent,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ListTile(
-                    title: Text(languageName),
-                    onTap: () {
-                      controller.changeLanguage(languageCode);
-                      Future.delayed(
-                        const Duration(milliseconds: 200),
-                        () => Get.back(),
-                      );
-                    },
-                  ),
-                );
-              });
-            }).toList(),
-          ),
-        ),
-      ),
-      ),
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      barrierColor: Colors.black.withOpacity(0.5),
-    );
-  }
-
 }

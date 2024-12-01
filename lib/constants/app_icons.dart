@@ -15,6 +15,7 @@ class AppIcons {
   static const IconData search = Ionicons.search;
   static const IconData camera = Ionicons.camera;
   static const IconData arrowBack = Ionicons.arrow_back;
+  static const IconData arrowForward = Ionicons.arrow_forward;
   static const IconData barbell = Ionicons.barbell;
   static const IconData footSteps = Ionicons.footsteps;
   static const IconData battery = Ionicons.battery_charging;

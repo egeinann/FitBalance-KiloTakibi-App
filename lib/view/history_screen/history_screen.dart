@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
+import 'package:kilo_takibi_uyg/widgets/bottom_sheet.dart';
 import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
 import 'package:kilo_takibi_uyg/widgets/divider.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
@@ -91,7 +92,43 @@ class HistoryScreen extends StatelessWidget {
                     customFloatingActionButton(
                       mini: true,
                       widget: const Icon(AppIcons.search),
-                      onPressed: _showMonthSelector,
+                      onPressed: () {
+                        BottomSheetHelper.showCustomBottomSheet(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Select Month'.tr,
+                                style: Get.textTheme.labelSmall,
+                              ),
+                              const SizedBox(height: 20),
+                              SizedBox(
+                                height: 300, // Listenin yüksekliğini belirleyin
+                                child: ListView.builder(
+                                  itemCount: 12,
+                                  itemBuilder: (context, index) {
+                                    return ListTile(
+                                      title: Center(
+                                        child: Text(
+                                          _getMonthName(index),
+                                          style: Get.textTheme.bodyMedium,
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        Get.back();
+                                        _scrollToMonth(index + 1);
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                          color: Get.theme.canvasColor,
+                        );
+                      },
                     ),
                     const SizedBox(width: 10),
                     customFloatingActionButton(
@@ -106,64 +143,6 @@ class HistoryScreen extends StatelessWidget {
           ],
         ),
       ],
-    );
-  }
-
-  // *** AY SEÇİMİ BOTTOMSHEET ***
-  void _showMonthSelector() {
-    Get.bottomSheet(
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: Get.theme.cardColor,
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(25),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                blurRadius: 10,
-                offset: const Offset(0, -5),
-              ),
-            ],
-          ),
-          height: 300,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Select Month'.tr,
-                style: Get.textTheme.labelSmall,
-              ),
-              const SizedBox(height: 20),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 12,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Center(
-                        child: Text(
-                          _getMonthName(index),
-                          style: Get.textTheme.bodyMedium,
-                        ),
-                      ),
-                      onTap: () {
-                        Get.back();
-                        _scrollToMonth(index + 1);
-                      },
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      barrierColor: Colors.black.withOpacity(0.5),
     );
   }
 

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/widgets/bottom_sheet.dart';
 import 'package:kilo_takibi_uyg/widgets/delete_show_dialog.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
@@ -63,7 +64,79 @@ class RecordScreen extends GetView<Controller> {
         heroTag: "_editButton",
         widget: const Icon(AppIcons.draw),
         onPressed: () {
-          _showEditModalBottomSheet(context, rec);
+          final selectedValue = RxDouble(rec.weight); // Observable value
+          final note = RxString(rec.note ?? "");
+          final TextEditingController noteController =
+              TextEditingController(text: note.value);
+          BottomSheetHelper.showCustomBottomSheet(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 10),
+                Text(
+                  DateFormat("d MMM, y", Get.locale.toString())
+                      .format(rec.dateTime),
+                  style: const TextStyle(
+                    fontFamily: "Poppins",
+                    color: Colors.grey,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                Obx(
+                  () => NumberPickerWeight(
+                    isKgSelected: _settingsController.isKgSelected,
+                    value: selectedValue.value,
+                    onChanged: (value) {
+                      selectedValue(value); // Update observable
+                    },
+                  ),
+                ),
+                const SizedBox(height: 10),
+                CustomTextField(
+                  controller: noteController,
+                  labelText: "note".tr,
+                  onChanged: (value) {
+                    note(value); // Update observable
+                  },
+                  titleIcon: IconButton(
+                    onPressed: () {
+                      noteController.clear(); // Clear TextField
+                      note(""); // Update observable
+                    },
+                    icon: const Icon(AppIcons.chevronBack),
+                  ),
+                  maxLength: 80,
+                ),
+                const SizedBox(height: 10),
+                customFloatingActionButton(
+                  heroTag: "_editButton",
+                  widget: Text(
+                    "Save".tr,
+                    style: const TextStyle(
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  onPressed: () {
+                    onPressedSave(
+                      context,
+                      selectedValue.value,
+                      note.value,
+                      noteController,
+                      rec,
+                    );
+                  },
+                ),
+              ],
+            ),
+            color: Get.theme.canvasColor,
+          );
         },
       ),
     );
@@ -168,8 +241,7 @@ class RecordScreen extends GetView<Controller> {
                       right: 0,
                       top: 0,
                       child: IconButton(
-                        icon: const Icon(AppIcons.close,
-                            color: Colors.white),
+                        icon: const Icon(AppIcons.close, color: Colors.white),
                         onPressed: () {
                           showDeletePhoto(rec);
                         },
@@ -182,118 +254,6 @@ class RecordScreen extends GetView<Controller> {
     } else {
       return Expanded(flex: 4, child: Center(child: Text("No photo !".tr)));
     }
-  }
-
-  // *** edit model bottom sheet  ***
-  void _showEditModalBottomSheet(BuildContext context, Record rec) {
-    double selectedValue = rec.weight;
-    String? note = rec.note;
-    TextEditingController noteController = TextEditingController(text: note);
-
-    Get.bottomSheet(
-      StatefulBuilder(
-        builder: (BuildContext context, StateSetter setState) {
-          return SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            reverse: false,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Get.theme.cardColor,
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(25),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 10,
-                      offset: const Offset(0, -5),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Container(
-                        width: 50,
-                        height: 5,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      DateFormat("d MMM, y", Get.locale.toString())
-                          .format(rec.dateTime),
-                      style: const TextStyle(
-                        fontFamily: "Poppins",
-                        color: Colors.grey,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 10),
-                    NumberPickerWeight(
-                      isKgSelected: _settingsController.isKgSelected,
-                      value: selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedValue = value;
-                        });
-                      },
-                    ),
-                    const SizedBox(height: 10),
-                    CustomTextField(
-                      controller: noteController,
-                      labelText: "note".tr,
-                      onChanged: (value) {
-                        note = value;
-                      },
-                      titleIcon: IconButton(
-                        onPressed: () {
-                          noteController.clear(); // TextField'ı sıfırla
-                          note = ""; // note değişkenini de sıfırla
-                        },
-                        icon: const Icon(AppIcons.chevronBack),
-                      ),
-                      maxLength: 80,
-                    ),
-                    const SizedBox(height: 10),
-                    customFloatingActionButton(
-                      heroTag: "_editButton",
-                      widget: Text(
-                        "Save".tr,
-                        style: const TextStyle(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      onPressed: () {
-                        onPressedSave(
-                            context, selectedValue, note, noteController, rec);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      barrierColor: Colors.black.withOpacity(0.5),
-    );
   }
 
   // *** editActionButton save ***

@@ -146,7 +146,6 @@ abstract class AppPages {
     GetPage(
       name: Routes.recordscreen,
       page: () => RecordScreen(),
-      arguments: Record,
       transition: Transition.rightToLeftWithFade,
     ),
     GetPage(

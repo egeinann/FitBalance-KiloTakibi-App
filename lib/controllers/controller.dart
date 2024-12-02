@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/models/record_model/record.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/record_list_tile.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 
 class Controller extends GetxController {
+  final UserController _userController = Get.find();
   final PageController pageController =
       PageController(); // grafik aşağı yukarı page controller
   RxList<Record> records = <Record>[].obs; // record objeleri tutan liste
@@ -29,27 +31,14 @@ class Controller extends GetxController {
   var note = ''.obs; // Not
   final TextEditingController noteController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-  var userName = ''.obs; // username
-  var targetWeight = 70.0.obs; // hedef kilo
   var targetAchieved = false.obs; // hedef kiloya ulaşıldı mı
-  final RxString temporaryUserName = ''.obs; // username kopya
-  final RxDouble temporaryTargetWeight = 70.0.obs; // hedefkilo kopya
-
-  // NAME TUTAN FONK ***
-  void setUserName(String name) {
-    userName.value = name;
-  }
-
-  // HEDEF KILO TUTAN FONK ***
-  void setTargetWeight(double weight) {
-    targetWeight.value = weight;
-  }
 
   // Hedefe ulaşılıp ulaşılmadığını kontrol eden fonksiyon
   void checkTargetAchieved() {
     const double tolerance = 1.0; // 1 kilogramlık tolerans
     targetAchieved.value =
-        (currentWeight.value - targetWeight.value).abs() <= tolerance;
+        (currentWeight.value - _userController.user.value.targetWeight).abs() <=
+            tolerance;
   }
 
   // *** RECORD EKLE ***

@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/services/instagram_service.dart';
@@ -18,6 +19,7 @@ import 'package:lottie/lottie.dart';
 
 class HomeScreen extends GetView<Controller> {
   HomeScreen({super.key});
+  final UserController _userController = Get.find();
   final SettingsController _settingsController = Get.find();
   final RxDouble _1containerHeight = 80.0.obs;
   final RxDouble _1containerWidth = 120.0.obs;
@@ -557,7 +559,7 @@ class HomeScreen extends GetView<Controller> {
             children: [
               Row(
                 children: [
-                  const Icon(AppIcons.ribbon),
+                  const Icon(AppIcons.flag),
                   const SizedBox(width: 5),
                   Text(
                     "Target point".tr,
@@ -569,7 +571,7 @@ class HomeScreen extends GetView<Controller> {
                 children: [
                   Obx(
                     () => Text(
-                      "${controller.targetWeight} ${_settingsController.weightUnit}",
+                      "${_userController.user.value.targetWeight} ${_settingsController.weightUnit}",
                       style: Get.theme.textTheme.labelSmall,
                     ),
                   ),
@@ -605,7 +607,7 @@ class HomeScreen extends GetView<Controller> {
             children: [
               Row(
                 children: [
-                  const Icon(AppIcons.flag),
+                  const Icon(AppIcons.man),
                   const SizedBox(width: 5),
                   Text("Starting point".tr,
                       style: Get.theme.textTheme.bodySmall),

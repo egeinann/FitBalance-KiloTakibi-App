@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
@@ -11,10 +12,15 @@ import 'package:kilo_takibi_uyg/widgets/number_picker_weight.dart';
 
 class ChangeTargetWeightScreen extends GetView<Controller> {
   final SettingsController _settingsController = Get.find();
+  final UserController _userController = Get.find();
+  RxDouble temporaryTargetWeight = 70.0.obs;
   ChangeTargetWeightScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    controller.temporaryTargetWeight.value = controller.targetWeight.value;
+    // temporaryTargetWeight'i geçici olarak saklıyoruz
+    temporaryTargetWeight.value = _userController.user.value.targetWeight;
+
     return Scaffold(
       backgroundColor: Get.theme.scaffoldBackgroundColor,
       appBar: AppBar(
@@ -59,9 +65,11 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
                         Obx(
                           () => NumberPickerWeight(
                             isKgSelected: _settingsController.isKgSelected,
-                            value: controller.temporaryTargetWeight.value,
+                            value: temporaryTargetWeight
+                                .value, // Geçici değeri kullanıyoruz
                             onChanged: (value) {
-                              controller.temporaryTargetWeight.value = value;
+                              // temporaryTargetWeight değerini güncelliyoruz
+                              temporaryTargetWeight.value = value;
                             },
                           ),
                         ),
@@ -71,7 +79,7 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
                           style: Get.theme.textTheme.labelSmall,
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -85,8 +93,8 @@ class ChangeTargetWeightScreen extends GetView<Controller> {
           heroTag: "profile",
           widget: const Icon(AppIcons.done),
           onPressed: () {
-            // "Done" düğmesine basıldığında geçici hedef ağırlığı kaydet
-            controller.setTargetWeight(controller.temporaryTargetWeight.value);
+            // Save butonuna basıldığında geçici değeri gerçek değere atıyoruz
+            _userController.setTargetWeight(temporaryTargetWeight.value);
             Get.back();
             SnackbarHelper.showSnackbar(
               title: "Your target weight has been updated".tr,

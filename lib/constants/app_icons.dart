@@ -21,7 +21,6 @@ class AppIcons {
   static const IconData battery = Ionicons.battery_charging;
   static const IconData rocket = Ionicons.rocket;
   static const IconData lock = Ionicons.lock_closed;
-  static const IconData ribbon = Ionicons.ribbon;
   static const IconData flag = Ionicons.flag;
   static const IconData indicator = Ionicons.speedometer;
   static const IconData pulse = Ionicons.pulse;

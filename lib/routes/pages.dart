@@ -65,7 +65,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.intronamescreen,
-      page: () => const IntroNameScreen(),
+      page: () => IntroNameScreen(),
     ),
     GetPage(
       name: Routes.introphotogalleryscreen,

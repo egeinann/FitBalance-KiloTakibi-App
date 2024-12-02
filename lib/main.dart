@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/themes.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/language/language.dart';
 import 'package:kilo_takibi_uyg/routes/pages.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
@@ -35,6 +36,7 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   Get.lazyPut(() => SettingsController());
+  Get.lazyPut(() => UserController());
   Get.put(Controller());
   runApp(const MyApp());
 }
@@ -53,7 +55,7 @@ class MyApp extends GetView<SettingsController> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        initialRoute: Routes.splashscreen, // app başlangıç sayfası
+        initialRoute: Routes.onboardingscreen, // app başlangıç sayfası
         getPages: AppPages.pages, // app sayfalar listesi
         supportedLocales: Languages.languageList, // Desteklenen diller
         locale: Get.deviceLocale, // Cihazın dilini al

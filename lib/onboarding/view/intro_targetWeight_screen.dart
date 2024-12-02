@@ -5,11 +5,13 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/onboarding_controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:kilo_takibi_uyg/widgets/number_picker_weight.dart';
 import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
 class IntroTargetWeightScreen extends GetView<Controller> {
+  final UserController _userController = Get.find();
   final onboardingController = Get.find<OnboardingController>();
   final SettingsController _settingsController = Get.find();
   IntroTargetWeightScreen({super.key}) {
@@ -22,11 +24,13 @@ class IntroTargetWeightScreen extends GetView<Controller> {
   }
 
   void animateTargetWeight() {
-    controller.targetWeight.value = 70.0; // Başlangıç değeri
+    _userController.setTargetWeight(70.0); // Başlangıç değeri
     Timer.periodic(const Duration(milliseconds: 20), (timer) {
-      controller.targetWeight.value -= 1;
-      if (controller.targetWeight.value <= 60) {
-        timer.cancel(); // 50'ye ulaştığında animasyonu durdur
+      // Değer azaldıkça hedef kilo güncelleniyor
+      double currentTargetWeight = _userController.user.value.targetWeight - 1;
+      _userController.setTargetWeight(currentTargetWeight);
+      if (currentTargetWeight <= 60) {
+        timer.cancel(); // 60'a ulaştığında animasyonu durdur
       }
     });
   }
@@ -51,9 +55,10 @@ class IntroTargetWeightScreen extends GetView<Controller> {
                 Obx(
                   () => NumberPickerWeight(
                     isKgSelected: _settingsController.isKgSelected,
-                    value: controller.targetWeight.value,
+                    value: _userController.user.value.targetWeight,
                     onChanged: (value) {
-                      controller.setTargetWeight(value);
+                      _userController.setTargetWeight(
+                          value); // targetWeight'i controller üzerinden güncelleriz
                     },
                   ),
                 ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 
 class SettingsController extends GetxController {
+  final UserController _userController = Get.find();
   final Controller controller = Get.find(); // Controller'a erişim
   var isMale = true.obs; // cinsiyet seçimi varsayılan erkek
   Rx<ThemeMode> themeMode = ThemeMode.system.obs; // tema durumu
@@ -81,10 +83,21 @@ class SettingsController extends GetxController {
         : (controller.currentWeight.value * 2.20462)
             .toPrecision(1); // Convert to Lbs
 
-    // targetWeight kısmı için convert
-    controller.targetWeight.value = isKgSelected.value
-        ? (controller.targetWeight.value / 2.20462).toPrecision(1)
-        : (controller.targetWeight.value * 2.20462).toPrecision(1);
+// Convert current weight
+    controller.currentWeight.value = isKgSelected.value
+        ? (controller.currentWeight.value / 2.20462)
+            .toPrecision(1) // Convert to Kg
+        : (controller.currentWeight.value * 2.20462)
+            .toPrecision(1); // Convert to Lbs
+
+    // ** Update targetWeight through the model **
+    _userController.user.value = _userController.user.value.copyWith(
+      targetWeight: isKgSelected.value
+          ? (_userController.user.value.targetWeight / 2.20462)
+              .toPrecision(1) // Convert to Kg
+          : (_userController.user.value.targetWeight * 2.20462)
+              .toPrecision(1), // Convert to Lbs
+    );
 
     controller.updateFilteredRecords();
     update();

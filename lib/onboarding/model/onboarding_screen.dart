@@ -36,7 +36,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
                     const IntroGraphScreen(),
                     const IntroPhotoGalleryScreen(),
                     const IntroAiScreen(),
-                    const IntroNameScreen(),
+                    IntroNameScreen(),
                     IntroTargetWeightScreen(),
                   ],
                 ),

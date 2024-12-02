@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 
 final Controller controller = Get.find();
+final UserController _userController = Get.find();
 final SettingsController _settingsController = Get.find();
 
 Obx lineGraph() {
@@ -59,7 +61,7 @@ Obx lineGraph() {
                             alignment: Alignment
                                 .topRight, // Etiketin konumu (başka seçenekler de var)
                           ),
-                          y: controller.targetWeight
+                          y: _userController.user.value.targetWeight
                               .toDouble(), // Hedef kiloyu burada kullanıyoruz
                           color: Colors.deepPurpleAccent, // Çizginin rengi
                           strokeWidth: 3, // Çizginin kalınlığı
@@ -261,7 +263,7 @@ Obx lineGraph() {
                           show: true,
                           gradient: LinearGradient(
                             colors: [
-                              Get.theme.primaryColor.withOpacity(0.2),
+                              Get.theme.primaryColor.withOpacity(0.3),
                               Get.theme.primaryColor.withOpacity(0.7),
                             ],
                           ),

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/floatingActionButton.dart';
 import 'package:kilo_takibi_uyg/widgets/snackbar.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
@@ -10,12 +11,17 @@ import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
 class ChangeNameScreen extends GetView<Controller> {
   ChangeNameScreen({super.key});
-
+  final UserController _userController = Get.find();
   final SettingsController _settingsController = Get.find();
+
+  // Temporary değer
+  RxString temporaryUserName = "".obs;
 
   @override
   Widget build(BuildContext context) {
-    controller.temporaryUserName.value = controller.userName.value;
+    // Geçici değeri, gerçek değerden başlatıyoruz
+    temporaryUserName.value = _userController.user.value.userName;
+
     return Scaffold(
       backgroundColor: Get.theme.scaffoldBackgroundColor,
       appBar: AppBar(
@@ -62,12 +68,12 @@ class ChangeNameScreen extends GetView<Controller> {
                   children: [
                     CustomTextField(
                       controller: TextEditingController(
-                          text: controller.temporaryUserName
-                              .value), // TextEditingController'ı burada kullanıyoruz
+                          text: temporaryUserName
+                              .value), // Geçici değeri kullanıyoruz
                       labelText: "Your name".tr,
                       onChanged: (value) {
-                        // nameController'dan gelen değeri güncelliyoruz
-                        controller.temporaryUserName.value = value;
+                        // TextField'dan gelen değeri geçici değişkende güncelliyoruz
+                        temporaryUserName.value = value;
                       },
                       titleIcon: Icon(
                         AppIcons.person,
@@ -95,9 +101,9 @@ class ChangeNameScreen extends GetView<Controller> {
     );
   }
 
-  // *** NEW NICKNAME BUTTON SAVE ***
+  // *** SAVE BUTONU İLE YAPILAN DEĞİŞİKLİĞİ KAYDETME ***
   void changeNameSave() {
-    if (controller.temporaryUserName.value.isEmpty) {
+    if (temporaryUserName.value.isEmpty) {
       SnackbarHelper.showSnackbar(
         title: "Name ?".tr,
         message: "Please enter your name".tr,
@@ -106,12 +112,17 @@ class ChangeNameScreen extends GetView<Controller> {
         icon: const Icon(AppIcons.alert),
       );
     } else {
-      controller.setUserName(controller.temporaryUserName.value);
+      // Temporary değeri gerçek değere aktarıyoruz
+      _userController.setUserName(temporaryUserName.value);
+
+      // Focus'u kaybetme ve geri gitme işlemi
       Get.focusScope?.unfocus();
       Get.back();
+
+      // Snackbar ile başarı mesajı gösterme
       SnackbarHelper.showSnackbar(
         title: "You changed your name".tr,
-        message: "${controller.userName}",
+        message: temporaryUserName.value, // Yeni kullanıcı adı
         backgroundColor: Colors.green,
         duration: const Duration(milliseconds: 1500),
         icon: const Icon(AppIcons.person),

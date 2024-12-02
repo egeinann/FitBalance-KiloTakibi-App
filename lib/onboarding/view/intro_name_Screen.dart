@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/widgets/animated_text.dart';
 import 'package:kilo_takibi_uyg/widgets/textField.dart';
 
 class IntroNameScreen extends GetView<Controller> {
-  const IntroNameScreen({super.key});
+  IntroNameScreen({super.key});
+  final UserController _userController = Get.find();
   @override
   Widget build(BuildContext context) {
     final FocusNode focusNode = FocusNode(); // FocusNode KASMA SORUNU İÇİN
@@ -36,7 +38,7 @@ class IntroNameScreen extends GetView<Controller> {
                 labelText: "Your name".tr,
                 focusNode: focusNode, // FocusNode kullanılıyor
                 onChanged: (value) {
-                  controller.setUserName(value);
+                  _userController.setUserName(value);
                 },
                 titleIcon: Icon(
                   AppIcons.person,

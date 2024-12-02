@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/extensions/padding_extensions.dart';
 import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
@@ -10,6 +11,7 @@ import 'package:kilo_takibi_uyg/widgets/toggle_button.dart';
 class ProfileScreen extends GetView<Controller> {
   ProfileScreen({super.key});
   final SettingsController _settingsController = Get.find();
+  final UserController _userController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +58,7 @@ class ProfileScreen extends GetView<Controller> {
             children: [
               Row(
                 children: [
-                  const Icon(AppIcons.ribbon),
+                  const Icon(AppIcons.rocket),
                   const SizedBox(width: 5),
                   Text("PREMIUM MODE".tr, style: Get.theme.textTheme.bodySmall),
                 ],
@@ -110,7 +112,7 @@ class ProfileScreen extends GetView<Controller> {
                 children: [
                   Obx(
                     () => Text(
-                      "${controller.targetWeight.value} ${_settingsController.weightUnit}",
+                      "${_userController.user.value.targetWeight} ${_settingsController.weightUnit}",
                       style: Get.theme.textTheme.labelSmall,
                     ),
                   ),
@@ -152,7 +154,8 @@ class ProfileScreen extends GetView<Controller> {
                 children: [
                   Obx(
                     () => Text(
-                      controller.userName.value,
+                      _userController.user.value
+                          .userName, // userController üzerinden erişim
                       style: Get.theme.textTheme.labelSmall,
                     ),
                   ),

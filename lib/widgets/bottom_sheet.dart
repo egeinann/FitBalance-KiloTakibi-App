@@ -7,16 +7,16 @@ class BottomSheetHelper {
     required Color color,
   }) {
     Get.bottomSheet(
-      isScrollControlled: true,
+      isScrollControlled:
+          true, // Bu ayar, alt sheet'in yüksekliğini kontrol etmemizi sağlar
       backgroundColor: Colors.transparent,
       barrierColor: Colors.black.withOpacity(0.5),
       Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: 20), // Yanlardan boşluk ekliyoruz
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Container(
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
-            color: color, // Arka plan rengi aynı kalır
+            color: color,
             borderRadius: const BorderRadius.vertical(
               top: Radius.circular(25),
             ),
@@ -42,7 +42,17 @@ class BottomSheetHelper {
                 ),
               ),
               const SizedBox(height: 10),
-              child,
+              // Bu kısımda içerik olacak, kaydırılabilir olacak
+              SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight:
+                        Get.size.height * 0.7, // Yükseklik sınırlaması burada
+                  ),
+                  child: child,
+                ),
+              ),
             ],
           ),
         ),

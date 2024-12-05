@@ -90,8 +90,7 @@ const Map<String, String> zhCN = {
   "No record found !": "未找到记录！",
 
   // ProfileScreen
-  "Male": "男性",
-  "Female": "女性",
+  "Choose an avatar": "选择一个头像",
   "NAME": "名字",
   "TARGET WEIGHT": "目标体重",
   "PREMIUM MODE": "高级模式",

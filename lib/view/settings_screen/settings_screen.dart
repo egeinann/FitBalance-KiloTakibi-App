@@ -244,6 +244,7 @@ class SettingsScreen extends GetView<SettingsController> {
                   height: 100); // Son öğe boşluk olarak eklendi
             }
             return ListTile(
+              splashColor: Get.theme.focusColor.withOpacity(0.1),
               leading: settingsList[index].icon,
               title: Text(
                 settingsList[index].text,

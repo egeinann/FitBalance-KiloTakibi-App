@@ -47,7 +47,7 @@ class AppIcons {
   static const IconData done = Icons.done;
   static const IconData add = Icons.add;
   static const IconData draw = Icons.draw;
-  static const IconData theme = Icons.format_color_fill_rounded;
+  static const IconData theme = Icons.sunny;
   static const IconData chart = Icons.show_chart;
   static const IconData bed = Icons.hotel;
   static const IconData walk = Icons.directions_walk;

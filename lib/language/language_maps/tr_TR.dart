@@ -96,8 +96,7 @@ const Map<String, String> trTR = {
   "No record found !": "Kayıt bulunamadı!",
 
   // ProfileScreen
-  "Male": "Erkek",
-  "Female": "Kadın",
+  "Choose an avatar": "Bir avatar seçin",
   "NAME": "İSİM",
   "TARGET WEIGHT": "HEDEF AĞIRLIK",
   "PREMIUM MODE": "PREMİUM MODU",

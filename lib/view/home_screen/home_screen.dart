@@ -5,6 +5,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
+import 'package:kilo_takibi_uyg/constants/colors.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
 import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
@@ -126,11 +127,14 @@ class HomeScreen extends GetView<Controller> {
           children: [
             const Expanded(
               flex: 2,
-              child: Image(
-                image: AssetImage(
-                  "assets/images/mainScreen/home_instagram.png",
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Image(
+                  image: AssetImage(
+                    "assets/images/mainScreen/home_instagram.png",
+                  ),
+                  fit: BoxFit.scaleDown,
                 ),
-                fit: BoxFit.scaleDown,
               ),
             ),
             Expanded(
@@ -285,92 +289,99 @@ class HomeScreen extends GetView<Controller> {
       children: [
         Expanded(
           flex: 2,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              // İçerik (lineGraph)
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: Get.theme.focusColor,
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                  color: Get.theme.cardColor.withOpacity(0.5), // Hafif opaklık
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: FittedBox(
-                    fit: BoxFit.cover, // İçerik sığdırma
-                    alignment: Alignment.topCenter,
-                    child: SizedBox(
-                      width: Get.size.width, // Genişlik ayarı
-                      height: 300, // lineGraph yüksekliği
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: controller.records.isNotEmpty
-                            ? homeLineChart()
-                            : Obx(
-                                () => _settingsController.hasPaid.value
-                                    ? Center(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const Icon(
-                                              Icons.show_chart,
-                                              size: 40,
-                                            ),
-                                            AutoSizeText(
-                                              "No records available yet!".tr,
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  Get.theme.textTheme.bodyLarge,
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                    : const SizedBox(),
-                              ),
-                      ),
+          child: GestureDetector(
+            onTap: () => !_settingsController.hasPaid.value
+                ? Get.toNamed(Routes.upgradepremiumscreen)
+                : controller.goToGraphScreen(),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                // İçerik (lineGraph)
+                Container(
+                  height: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 1,
+                      color: Get.theme.focusColor.withOpacity(0.8),
                     ),
+                    borderRadius: BorderRadius.circular(10),
+                    color:
+                        Get.theme.cardColor.withOpacity(0.5), // Hafif opaklık
                   ),
-                ),
-              ),
-              // Bulanık arka plan
-              Obx(
-                () => Visibility(
-                  visible: !_settingsController.hasPaid.value,
-                  child: Positioned.fill(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10), // Köşe yuvarlama
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(
-                            sigmaX: 5, sigmaY: 5), // Bulanıklık miktarı
-                        child: Container(
-                          color: Colors.transparent, // Transparan arka plan
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: FittedBox(
+                      fit: BoxFit.cover, // İçerik sığdırma
+                      alignment: Alignment.topCenter,
+                      child: SizedBox(
+                        width: Get.size.width, // Genişlik ayarı
+                        height: 300, // lineGraph yüksekliği
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: controller.records.isNotEmpty
+                              ? homeLineChart()
+                              : Obx(
+                                  () => _settingsController.hasPaid.value
+                                      ? Center(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Icon(
+                                                Icons.show_chart,
+                                                size: 40,
+                                              ),
+                                              AutoSizeText(
+                                                "No records available yet!".tr,
+                                                textAlign: TextAlign.center,
+                                                style: Get
+                                                    .theme.textTheme.bodyLarge,
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      : const SizedBox(),
+                                ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Obx(
-                () => Visibility(
-                  visible: !_settingsController.hasPaid.value,
-                  child: Column(
-                    children: [
-                      const Icon(AppIcons.lock),
-                      Text(
-                        "Charts".tr,
-                        style: Get.theme.textTheme.bodyLarge,
+                // Bulanık arka plan
+                Obx(
+                  () => Visibility(
+                    visible: !_settingsController.hasPaid.value,
+                    child: Positioned.fill(
+                      child: ClipRRect(
+                        borderRadius:
+                            BorderRadius.circular(10), // Köşe yuvarlama
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(
+                              sigmaX: 8, sigmaY: 8), // Bulanıklık miktarı
+                          child: Container(
+                            color: Colors.transparent, // Transparan arka plan
+                          ),
+                        ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+                Obx(
+                  () => Visibility(
+                    visible: !_settingsController.hasPaid.value,
+                    child: Column(
+                      children: [
+                        const Icon(AppIcons.lock),
+                        Text(
+                          "Charts".tr,
+                          style: Get.theme.textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         const SizedBox(width: 5),
@@ -531,7 +542,7 @@ class HomeScreen extends GetView<Controller> {
                 ),
                 belowBarData: BarAreaData(
                   show: true,
-                  color: Get.theme.focusColor.withOpacity(0.1),
+                  color: Get.theme.focusColor.withOpacity(0.5),
                 ),
               ),
             ],
@@ -675,15 +686,18 @@ class HomeScreen extends GetView<Controller> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(AppIcons.indicator,
-                              color: Get.theme.dialogBackgroundColor),
+                          const Icon(
+                            AppIcons.indicator,
+                            color: LightColors.colorBackground,
+                          ),
                           const SizedBox(height: 5),
                           Text(
                             "BMI".tr,
-                            style: TextStyle(
-                              color: Get.theme.scaffoldBackgroundColor,
-                              fontWeight: FontWeight.bold,
+                            style: const TextStyle(
+                              fontFamily: "Poppins",
+                              color: LightColors.colorBackground,
                               fontSize: 12,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
@@ -712,7 +726,10 @@ class HomeScreen extends GetView<Controller> {
                             Flexible(
                               child: customFloatingActionButton(
                                 heroTag: "bmi",
-                                widget: const Icon(AppIcons.indicator),
+                                widget: const Icon(
+                                  AppIcons.indicator,
+                                  color: LightColors.colorBackground,
+                                ),
                                 onPressed: () {
                                   Get.toNamed(Routes.bmiscreen);
                                 },
@@ -769,15 +786,18 @@ class HomeScreen extends GetView<Controller> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(AppIcons.pulse,
-                              color: Get.theme.scaffoldBackgroundColor),
+                          const Icon(
+                            AppIcons.pulse,
+                            color: LightColors.colorBackground,
+                          ),
                           const SizedBox(height: 5),
                           Text(
                             "Balance".tr,
-                            style: TextStyle(
-                              color: Get.theme.scaffoldBackgroundColor,
-                              fontWeight: FontWeight.bold,
+                            style: const TextStyle(
+                              fontFamily: "Poppins",
+                              color: LightColors.colorBackground,
                               fontSize: 12,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
@@ -806,7 +826,10 @@ class HomeScreen extends GetView<Controller> {
                             Flexible(
                               child: customFloatingActionButton(
                                 heroTag: "balance",
-                                widget: const Icon(AppIcons.pulse),
+                                widget: const Icon(
+                                  AppIcons.pulse,
+                                  color: LightColors.colorBackground,
+                                ),
                                 onPressed: () {
                                   Get.toNamed(Routes.infoscreen);
                                 },
@@ -863,15 +886,18 @@ class HomeScreen extends GetView<Controller> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(AppIcons.food,
-                              color: Get.theme.scaffoldBackgroundColor),
+                          const Icon(
+                            AppIcons.food,
+                            color: LightColors.colorBackground,
+                          ),
                           const SizedBox(height: 5),
                           Text(
                             "kcal/day".tr,
-                            style: TextStyle(
-                              color: Get.theme.scaffoldBackgroundColor,
-                              fontWeight: FontWeight.bold,
+                            style: const TextStyle(
+                              fontFamily: "Poppins",
+                              color: LightColors.colorBackground,
                               fontSize: 12,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
@@ -901,7 +927,10 @@ class HomeScreen extends GetView<Controller> {
                             Flexible(
                               child: customFloatingActionButton(
                                 heroTag: "kcal",
-                                widget: const Icon(AppIcons.food),
+                                widget: const Icon(
+                                  AppIcons.food,
+                                  color: LightColors.colorBackground,
+                                ),
                                 onPressed: () {
                                   Get.toNamed(Routes.kcalscreen);
                                 },

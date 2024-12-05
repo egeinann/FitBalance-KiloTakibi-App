@@ -95,8 +95,7 @@ const Map<String, String> esES = {
   "No record found !": "¡Registro no encontrado!",
 
   // ProfileScreen
-  "Male": "Masculino",
-  "Female": "Femenino",
+  "Choose an avatar": "Elige un avatar",
   "NAME": "NOMBRE",
   "TARGET WEIGHT": "PESO OBJETIVO",
   "PREMIUM MODE": "MODO PREMIUM",

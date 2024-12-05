@@ -56,6 +56,7 @@ dependencies:
   animations: ^2.0.11
   animated_text_kit: ^4.2.2
   rive: ^0.13.15
+  flutter_svg: ^2.0.16
 
 dev_dependencies:
   flutter_test:
@@ -93,6 +94,7 @@ flutter:
     - assets/images/bmi/
     - assets/images/upgradePremium/
     - assets/rive/
+    - assets/images/profile/avatars/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

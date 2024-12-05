@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
@@ -12,7 +13,6 @@ import 'package:kilo_takibi_uyg/widgets/textField.dart';
 class ChangeNameScreen extends GetView<Controller> {
   ChangeNameScreen({super.key});
   final UserController _userController = Get.find();
-  final SettingsController _settingsController = Get.find();
 
   // Temporary değer
   RxString temporaryUserName = "".obs;
@@ -45,18 +45,18 @@ class ChangeNameScreen extends GetView<Controller> {
             children: [
               Expanded(
                 flex: 1,
-                child: Obx(
-                  () => Image(
-                    image: AssetImage(
-                      _settingsController.isMale
-                              .value // Cinsiyet durumu burada kontrol ediliyor
-                          ? "assets/images/name/name_male.png"
-                          : "assets/images/name/name_female.png",
-                    ),
-                    fit: BoxFit.scaleDown,
-                    height: Get.size.height * 0.2,
-                  ),
-                ),
+                child: _userController.user.value.userAvatar == null
+                    ? Image(
+                        image: const AssetImage(
+                            "assets/images/profile/female.png"),
+                        fit: BoxFit.scaleDown,
+                        height: Get.size.height * 0.2,
+                      )
+                    : SvgPicture.asset(
+                        _userController.user.value.userAvatar!,
+                        fit: BoxFit.scaleDown,
+                        height: Get.size.height * 0.3,
+                      ),
               ),
               SizedBox(
                 height: Get.size.height * 0.05,

@@ -6,7 +6,6 @@ import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 class SettingsController extends GetxController {
   final UserController _userController = Get.find();
   final Controller controller = Get.find(); // Controller'a erişim
-  var isMale = true.obs; // cinsiyet seçimi varsayılan erkek
   Rx<ThemeMode> themeMode = ThemeMode.system.obs; // tema durumu
   var selectedLanguage = 'en'.obs; // Varsayılan dil
   var isKgSelected = true.obs; // ağırlık birimi seçimi varsayılan kg
@@ -46,11 +45,6 @@ class SettingsController extends GetxController {
     controller.appBarTitle.value = controller
         .getTitleForIndex(controller.currentTabIndex.value)
         .tr; // controlerdaki appbartitle günceler
-  }
-
-  // *** CİNSİYET TOGGLE BUTTONLAR DEĞİŞİMİ ***
-  void toggleGender(int index) {
-    isMale.value = !isMale.value;
   }
 
   // *** TEMA DURUMU DEĞİŞTİRME ***

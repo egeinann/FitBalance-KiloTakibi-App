@@ -74,7 +74,6 @@ class RecordScreen extends GetView<Controller> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const SizedBox(height: 10),
                 Text(
                   DateFormat("d MMM, y", Get.locale.toString())
                       .format(rec.dateTime),

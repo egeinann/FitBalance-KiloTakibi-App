@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+    android:enableOnBackInvokedCallback="true"
         android:label="kilo_takibi_uyg"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

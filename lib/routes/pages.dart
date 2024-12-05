@@ -5,7 +5,7 @@ import 'package:kilo_takibi_uyg/binding/kcal_binding.dart';
 import 'package:kilo_takibi_uyg/binding/onboarding_binding.dart';
 import 'package:kilo_takibi_uyg/binding/rive_binding.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
-import 'package:kilo_takibi_uyg/onboarding/model/onboarding_screen.dart';
+import 'package:kilo_takibi_uyg/onboarding/main/onboarding_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_ai_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_graph_screen.dart';
 import 'package:kilo_takibi_uyg/onboarding/view/intro_name_Screen.dart';

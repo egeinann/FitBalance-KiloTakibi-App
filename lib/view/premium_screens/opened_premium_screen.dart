@@ -12,7 +12,7 @@ class OpenedPremiumScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF865DFF),
+      backgroundColor: const Color(0xFF640D5F),
       body: Column(
         children: [
           Expanded(
@@ -44,7 +44,7 @@ class OpenedPremiumScreen extends StatelessWidget {
                       "Now you are all set to achieve your weight goals! Congratulations on embarking on this journey."
                           .tr,
                   textStyle: const TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontFamily: "Poppins",
                     fontSize: 14,
                     fontWeight: FontWeight.bold,

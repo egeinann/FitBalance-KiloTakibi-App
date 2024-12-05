@@ -99,8 +99,7 @@ const Map<String, String> frFR = {
   "No record found !": "Aucun enregistrement trouvé !",
 
   // ProfileScreen
-  "Male": "Homme",
-  "Female": "Femme",
+  "Choose an avatar": "Choisissez un avatar",
   "NAME": "NOM",
   "TARGET WEIGHT": "POIDS CIBLE",
   "PREMIUM MODE": "MODE PREMIUM",

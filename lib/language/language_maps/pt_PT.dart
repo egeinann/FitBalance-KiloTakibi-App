@@ -97,8 +97,7 @@ const Map<String, String> ptPT = {
   "No record found !": "Registro não encontrado!",
 
   // ProfileScreen
-  "Male": "Masculino",
-  "Female": "Feminino",
+  "Choose an avatar": "Escolha um avatar",
   "NAME": "NOME",
   "TARGET WEIGHT": "PESO ALVO",
   "PREMIUM MODE": "MODO PREMIUM",

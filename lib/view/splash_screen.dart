@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -31,6 +32,7 @@ class SplashScreen extends StatelessWidget {
     // Tüm controller'ların başlatılmasını bekle
     await Future.wait([
       Get.putAsync(() async => Controller()), // Controller başlatılması
+      Get.putAsync(() async => UserController()), // Controller başlatılması
       Get.putAsync(
           () async => SettingsController()), // SettingsController başlatılması
       Get.putAsync(() async =>

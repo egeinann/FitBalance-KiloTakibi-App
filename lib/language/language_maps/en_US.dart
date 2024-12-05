@@ -94,8 +94,7 @@ const Map<String, String> enUS = {
   "No record found !": "No record found !",
 
   // ProfileScreen
-  "Male": "Male",
-  "Female": "Female",
+  "Choose an avatar": "Choose an avatar",
   "NAME": "NAME",
   "TARGET WEIGHT": "TARGET WEIGHT",
   "PREMIUM MODE": "PREMIUM MODE",

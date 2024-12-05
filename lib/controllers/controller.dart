@@ -241,6 +241,11 @@ class Controller extends GetxController {
     changeTabIndex(3);
   }
 
+  // *** NAVBAR GRAPHSCREEN YÖNLENDİRME ***
+  void goToGraphScreen() {
+    changeTabIndex(0);
+  }
+
   // *** BAR GRAPH AYLIK ORTALAMA HESAPLAMA ***
   Map<String, double> calculateMonthlyAverages() {
     final Map<String, List<double>> monthlyWeights = {};

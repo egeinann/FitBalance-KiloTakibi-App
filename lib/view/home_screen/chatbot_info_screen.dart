@@ -8,7 +8,7 @@ import 'package:lottie/lottie.dart';
 
 class ChatBotInfoScreen extends StatelessWidget {
   const ChatBotInfoScreen({super.key});
-  static const Color _pageColor = Color(0xFFF4CE14);
+  static const Color _pageColor = Color(0xFFAB4459);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class ChatBotInfoScreen extends StatelessWidget {
           },
           icon: const Icon(
             AppIcons.arrowBack,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),
@@ -42,7 +42,7 @@ class ChatBotInfoScreen extends StatelessWidget {
                   "Leverage the power of AI to reach your goals faster! With Fit-Balance Premium..."
                       .tr,
               textStyle: const TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontFamily: "Poppins",
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -62,7 +62,7 @@ class ChatBotInfoScreen extends StatelessWidget {
                     title: AutoSizeText(
                       "Receive personalized advice.!".tr,
                       style: const TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontFamily: "Poppins",
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
@@ -77,7 +77,7 @@ class ChatBotInfoScreen extends StatelessWidget {
                     title: AutoSizeText(
                       "Benefit from insights that support your progress!".tr,
                       style: const TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontFamily: "Poppins",
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
@@ -92,7 +92,7 @@ class ChatBotInfoScreen extends StatelessWidget {
                     title: AutoSizeText(
                       "Gain daily tips to boost your motivation!".tr,
                       style: const TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontFamily: "Poppins",
                         fontSize: 13,
                         fontWeight: FontWeight.bold,

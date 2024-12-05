@@ -103,13 +103,16 @@ class HistoryScreen extends StatelessWidget {
                                 'Select Month'.tr,
                                 style: Get.textTheme.labelSmall,
                               ),
-                              const SizedBox(height: 20),
+                              const SizedBox(height: 10),
                               SizedBox(
-                                height: 300, // Listenin yüksekliğini belirleyin
+                                height: Get.size.height *
+                                    0.3, // Listenin yüksekliğini belirleyin
                                 child: ListView.builder(
+                                  physics: const BouncingScrollPhysics(),
                                   itemCount: 12,
                                   itemBuilder: (context, index) {
                                     return ListTile(
+                                      enableFeedback: true,
                                       title: Center(
                                         child: Text(
                                           _getMonthName(index),

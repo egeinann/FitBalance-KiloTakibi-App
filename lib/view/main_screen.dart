@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:kilo_takibi_uyg/constants/app_icons.dart';
 import 'package:kilo_takibi_uyg/controllers/controller.dart';
 import 'package:kilo_takibi_uyg/controllers/settings_controller.dart';
+import 'package:kilo_takibi_uyg/controllers/user_controller.dart';
 import 'package:kilo_takibi_uyg/routes/routes.dart';
 import 'package:kilo_takibi_uyg/widgets/navigation_bar.dart';
 
 class MainScreen extends GetView<Controller> {
   MainScreen({super.key});
   final SettingsController _settingsController = Get.find();
+  final UserController _userController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,6 +90,69 @@ class MainScreen extends GetView<Controller> {
                                 ),
                         )
                       : const SizedBox();
+                case 1:
+                  return IconButton(
+                    onPressed: () {
+                      controller.currentTabIndex.value = 4;
+                    },
+                    icon: _userController.user.value.userAvatar == null
+                        ? CircleAvatar(
+                            child: Image(
+                              image: const AssetImage(
+                                  "assets/images/profile/female.png"),
+                              fit: BoxFit.scaleDown,
+                              height: Get.size.height * 0.2,
+                              alignment: Alignment.center,
+                            ),
+                          )
+                        : CircleAvatar(
+                            backgroundColor: const Color(0xFF85c5e5),
+                            child: SvgPicture.asset(
+                                _userController.user.value.userAvatar!),
+                          ),
+                  );
+                case 2:
+                  return IconButton(
+                    onPressed: () {
+                      controller.currentTabIndex.value = 4;
+                    },
+                    icon: _userController.user.value.userAvatar == null
+                        ? CircleAvatar(
+                            child: Image(
+                              image: const AssetImage(
+                                  "assets/images/profile/female.png"),
+                              fit: BoxFit.scaleDown,
+                              height: Get.size.height * 0.2,
+                              alignment: Alignment.center,
+                            ),
+                          )
+                        : CircleAvatar(
+                            backgroundColor: const Color(0xFF85c5e5),
+                            child: SvgPicture.asset(
+                                _userController.user.value.userAvatar!),
+                          ),
+                  );
+                case 3:
+                  return IconButton(
+                    onPressed: () {
+                      controller.currentTabIndex.value = 4;
+                    },
+                    icon: _userController.user.value.userAvatar == null
+                        ? CircleAvatar(
+                            child: Image(
+                              image: const AssetImage(
+                                  "assets/images/profile/female.png"),
+                              fit: BoxFit.scaleDown,
+                              height: Get.size.height * 0.2,
+                              alignment: Alignment.center,
+                            ),
+                          )
+                        : CircleAvatar(
+                            backgroundColor: const Color(0xFF85c5e5),
+                            child: SvgPicture.asset(
+                                _userController.user.value.userAvatar!),
+                          ),
+                  );
                 case 4:
                   return IconButton(
                     onPressed: () {

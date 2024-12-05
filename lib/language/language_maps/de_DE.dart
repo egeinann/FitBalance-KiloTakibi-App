@@ -99,8 +99,7 @@ const Map<String, String> deDE = {
   "No record found !": "Keine Aufzeichnung gefunden!",
 
   // ProfileScreen
-  "Male": "Männlich",
-  "Female": "Weiblich",
+  "Choose an avatar": "Wähle einen Avatar",
   "NAME": "NAME",
   "TARGET WEIGHT": "ZIELGEWICHT",
   "PREMIUM MODE": "PREMIUM MODUS",

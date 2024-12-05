@@ -232,7 +232,7 @@ class AddScreen extends GetView<Controller> {
         decoration: BoxDecoration(
           color: Get.theme.cardColor,
           borderRadius: const BorderRadius.vertical(
-            top: Radius.circular(25),
+            top: Radius.circular(10),
           ),
           boxShadow: [
             BoxShadow(
@@ -251,6 +251,7 @@ class AddScreen extends GetView<Controller> {
               onTap: () => Get.back(result: ImageSource.camera),
             ),
             ListTile(
+              enableFeedback: false,
               leading: const Icon(AppIcons.image),
               title: Text('Pick from gallery'.tr),
               onTap: () => Get.back(result: ImageSource.gallery),
